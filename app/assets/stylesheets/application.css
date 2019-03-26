@@ -13,3 +13,54 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .landmark{
+     background-image: url('https://wallpapercave.com/wp/0LibLqi.jpg');
+     padding: 0px;
+     /* background: black; */
+     background-repeat: no-repeat;
+    background-size:100% 100%;
+     color: white;
+     display: flex;
+     flex-direction: column;
+     /* min-height: 75%; */
+     /* line-height: 75 */
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 10px;
+    height: 1300px;
+    width: 100%;
+    /* line-height: 1.2; */
+ }
+ .landmark-header{
+     position: relative;
+     display: flex;
+     justify-content: flex-end;
+     justify-content: space-evenly;
+     margin-right: 0;
+     line-height: 100px;
+     padding: 10px;
+ }
+ .landmark-body{
+    position: relative;
+    top: 40px;
+    bottom: 10px;
+    width: 100%;
+    font-size: 40px;
+    height: 90%;
+ }
+ .landmark-button{
+     background: red;
+     color: white;
+     border: 10px;
+     padding: 10px;
+     border-radius: 10px;
+     line-height: 10px;
+ }
+.footer{
+    position: relative;
+    background: black;
+    height: 20vh;
+    color: gray;
+    margin-top: 0px;
+}

@@ -9,13 +9,27 @@ class Splash extends React.Component{
     <div className="landmark">
       <div className="landmark-header">
         <Link to="/"><img src="" alt="logo" /></Link>
-        <Link to="/login">Sing In</Link>
+        <Link className="landmark-button"to="/login">Sing In</Link>
       </div>
       <div className="landmark-body">
-        body goes here
-      </div>
-      <div className='landmark-footer'>
-        footer goes here
+        <p>body goes here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </p>
       </div>
     </div>
       )
