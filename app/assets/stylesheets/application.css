@@ -21,9 +21,10 @@
 
  .landmark{
      background-color: black;
-     background-image: url('https://wallpapercave.com/wp/0LibLqi.jpg');
+     /* background-image: url('https://wallpapercave.com/wp/0LibLqi.jpg'); */
      padding: 0px;
      background-repeat: no-repeat;
+     background-attachment: fixed;
     background-size:100% 100%;
      color: white;
      display: flex;
@@ -32,7 +33,36 @@
     font-size: 10px;
     height: 1000px;
     width: 100%;
+    /* position: static; */
  }
+
+ #main-img {
+  
+    height: 250px;
+    width:100%
+  } 
+  
+  @media screen and (max-width: 758px) {   
+      .landmark{
+          background-image: url(https://wallpapercave.com/wp/UuIrwpy.jpg)
+        } 
+    }
+    
+    /* @media screen and (min-width: 768px) {      
+        #main-img{      
+            background-image: url(https://wallpapercave.com/wp/0LibLqi.jpg);
+        } 
+    }  */
+    @media (min-width: 758px) {      
+        .landmark{        
+            background-image: url(https://wallpapercave.com/wp/HGMtO8W.jpg);
+        } 
+  }
+  /* @media (min-width: 1200px) {    
+       #main-img{         
+           background-image: url(http://subtlepatterns.com/patterns/paisley.png);
+       } 
+  } */
  .landmark-header{
     background: 0 0;
      position: absolute;
@@ -129,7 +159,7 @@ padding: 7px 17px; */
 }
 .demo-button{
     
-    position: absolute;
+    /* position: absolute; */
     font-weight: lighter;
     /* top: 40px; */
     /* right: 80px; */
@@ -137,19 +167,25 @@ padding: 7px 17px; */
     border-radius: 3px;
     color: white; 
     padding: 8px 22px;
-    text-align: center;
-    display: inline-block;
-    border: 1 solid white;
-    font-size: 40px;
+    /* text-align: center; */
+    /* display: inline-block; */
+    border: 1 20px 1 20px solid white;
+    /* font-size: 25px; */
+    
+    
     /* font-weight: ; */
     /* font-weight: lighter; */
-    width: 400px;
+    border-width: 400px;
     text-decoration: none;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; 
+    
+     
+     /* font-family: arial, helvetica, sans-serif; */
+
     height: 60px;
     text-align: center;
-    top: 450px;
-    font-size: 50px;
+    padding: 3% 20%;
+    /* top: 450px; */
     /* font-family: Helvetica; */
 }
 .demo-button:hover{
@@ -159,7 +195,7 @@ padding: 7px 17px; */
 .landmark-button:hover{
     background: red;
 }
-
+/* 
 .landmark-text{
     position: absolute;
 
@@ -172,4 +208,47 @@ padding: 7px 17px; */
     align-content: center;
     text-align: center;
 
+} */
+.landmark-container{
+    position: absolute;
+    padding: 8px 22px;
+    text-align: center;
+    display: inline-block;
+    border: 1 solid white;
+    height: 60px;
+    text-align: center;
+    top: 125px;
+    /* font-family:sans-serif; */
+    font-size: 30px;
+    /* font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+     */
+     font-family: arial, helvetica, sans-serif;
+}
+.landmark-container > p{
+    font-size: 1.2vw;
+    width: 1.
+}
+
+.landmark-tex-sub{
+    width: 100%;
+    font-size: 2.2vw;
+    margin-bottom: 5px;
+    padding: 5px;
+    font-weight: lighter;
+}
+
+.landmark-tex-main{
+    font-size: 3.2vw;
+    
+}
+.landmark-tex-main > h1{
+    margin-bottom: 0px;
+    /* font-size: 5.5vw; */
+    width: 100%;
+    font-size: 80px;
+}
+h2{
+    font-weight: lighter;
+    font-size: 100%;
+    padding-bottom: 30px;
 }
