@@ -27,7 +27,7 @@ class SessionForm extends React.Component{
                 <li key={idx}>{error}</li>
             )
         })
-        const 
+        // const 
         return(
         <div className="header">
             <Link to="/"><img src="" alt="Logo"/></Link>

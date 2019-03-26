@@ -15,6 +15,9 @@ const App = () => (
       <AuthRoute exact path="/" component= {Splash} />
       <AuthRoute path='/login' component={LoginFormContainer}/>
       <AuthRoute path='/signup' component={SignupFormContainer}/>
+      <div className="Footer">
+        <p>Some text Here</p>
+      </div>
     </div>
   </div>
 );
