@@ -14,53 +14,89 @@
  *= require_self
  */
 
+ body, html{
+     background: black;
+     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif
+ }
 
  .landmark{
+     background-color: black;
      background-image: url('https://wallpapercave.com/wp/0LibLqi.jpg');
      padding: 0px;
-     /* background: black; */
      background-repeat: no-repeat;
     background-size:100% 100%;
      color: white;
      display: flex;
      flex-direction: column;
-     /* min-height: 75%; */
-     /* line-height: 75 */
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    /* font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; */
     font-size: 10px;
     height: 1300px;
     width: 100%;
-    /* line-height: 1.2; */
  }
  .landmark-header{
-     position: relative;
+    background: 0 0;
+     position: absolute;
+     width: 100%;
+     z-index: 100000;
+     height: 90px;
+     border: 0;
      display: flex;
+     justify-content: space-between;
+
+     flex-direction: flex-end;
+     /* display: flex; */
+     /* display: flex;
      justify-content: flex-end;
      justify-content: space-evenly;
      margin-right: 0;
-     line-height: 100px;
-     padding: 10px;
+     height: 200px;
+     padding: 10px; */
+ }
+ .landmark-header > a{
+     text-decoration: none;
+     line-height: 90px;
+     vertical-align: middle;
+     margin-left: 3%;
+     
  }
  .landmark-body{
-    position: relative;
-    top: 40px;
+    position: absolute;
+    top: 100px;
     bottom: 10px;
     width: 100%;
     font-size: 40px;
-    height: 90%;
- }
- .landmark-button{
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+.landmark-button{
+    /* margin-left: auto; */
+    display: flex;
+     /* position: absolute; */
      background: red;
      color: white;
-     border: 10px;
+     /* border: 10px;
      padding: 10px;
-     border-radius: 10px;
-     line-height: 10px;
+     border-radius: 10px; */
+     line-height: normal;
+     font-size: 16px;
+     border-radius: 3px;
+     font-weight: 200;
+margin: 18px 3% 0;
+padding: 7px 17px;
+
+/* align-items: right; */
+/* margin-left: auto; */
+/* line-height: 90px; */
+/* align-self: flex-end; */
  }
-.footer{
-    position: relative;
+.Footer{
+    position: absolute;
+    height: 300px;
     background: black;
     height: 20vh;
-    color: gray;
+    color: grey;
     margin-top: 0px;
+    z-index: 100000;
 }
