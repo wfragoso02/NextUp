@@ -182,9 +182,7 @@ input::placeholder{
     display: block;
   }
   
-  .remember-me:hover{
-      cursor: pointer;
-  }
+  
   .session-bottom{
       color: gray;
       font-family: 'Arial';

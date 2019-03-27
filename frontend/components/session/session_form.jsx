@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
+import { fetchProfiles } from '../../actions/profile_actions';
+import { Redirect } from 'react-router-dom';
 
 class SessionForm extends React.Component{
     constructor(props){
@@ -29,7 +31,11 @@ class SessionForm extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.processForm(this.state);
+        this.props.processForm(this.state).then(() => {
+            return(
+                <Redirect to="/home"></Redirect>
+            )
+        });
     }
 
     render(){
@@ -41,7 +47,7 @@ class SessionForm extends React.Component{
         // const 
         return(
         <div className="sessions-form">
-            <Link to="/"><img src={window.logo}/></Link>
+            <Link to="/"><img src={window.logo} className="logo1"/></Link>
             <div className="session-body" css="text-align:center">
                 <ul>
                     {sessionErrors}
