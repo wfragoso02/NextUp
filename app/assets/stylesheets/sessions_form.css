@@ -1,0 +1,146 @@
+.session-form{
+    /* background: black;
+    background-color: black;
+     /* background-image: url('https://wallpapercave.com/wp/0LibLqi.jpg'); */
+     /* padding: 0px;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+    background-size:100% 100%;
+     color: white;
+     display: flex;
+     flex-direction: column;
+    /* font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; */
+    /* font-size: 10px;
+    min-height: 1000px;
+    width: 100%;
+    z-index: 1000; */
+    
+}
+
+
+@media (min-width: 758px) {      
+    .sessions-form{        
+        background:  radial-gradient(
+            rgba(0, 0, 0, 0.596), 
+            rgba(0, 0, 0, 0.582)
+          ),url(http://media.popculture.com/2017/06/netflix-2017--20003853.jpg);
+        position: relative;
+        /* background-repeat: no-repeat; */
+    height: 800px;
+} 
+}
+@media screen and (max-width: 758px) {   
+    .sessions-form{
+        background: black;
+    } 
+}
+
+.session-body{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 90px;
+    align-self: center;
+    color: white;
+    align-items: left; 
+    height: 200px;
+    justify-content: space-between;
+    border: 1px solid rgb(27, 27, 27); 
+    left: 33%;
+    background: rgba(8, 8, 8, 0.815);
+    border: 20%;
+    padding: 40px 50px;
+    height: 400px;
+    width: 300px;
+    padding-bottom: 100px;
+    border-radius: 3px;
+
+    /* opacity: 0.5; */
+    
+     /* display: inline-table */
+     /* width: 100%; */
+
+    /* bottom: 10px; */
+  }
+/* @media only screen and (min-width: 740px){
+    .session-form:before {
+    content: "";
+    height: 91px;
+    display: block;
+} */
+
+  .session-bottom{
+    margin-top: 90px;
+  }
+
+  .display-form{
+    margin-top: -100px;
+    margin-bottom: 50px;
+  }
+  .session-body{
+    padding-top: 100px;
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+
+  .display-form > h1{
+      font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+      font-weight: normal;
+  }
+
+  .form-input{
+      background: rgb(51, 51, 51);
+      height: 4.5vh;;
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid rgb(27, 27, 27);
+      color: white;
+      font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+      font-size: 15px;
+      font-weight: lighter;
+      padding-left: 15px;
+      padding-right: 0px;
+  }
+  input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+/* .form-input
+{
+    position: relative;
+}
+
+.form-input::after
+{
+    position: absolute;
+    left: 5px;
+    top: 3px;
+    content: attr(placeholder);
+    pointer-events: none;
+    opacity: 0.6;
+} */
+input::placeholder{
+    font-weight: lighter;
+    font-size: 17px;
+}
+.session-button{
+    background: red;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    color: white;
+    border: 1px solid rgb(27, 27, 27);
+    font-size: 17px;
+    margin-top: 50px;
+    border-radius: 5px;
+    align-items: center;
+    width: 320px;
+}
+.session-button:hover{
+    cursor: pointer;
+    
+}
