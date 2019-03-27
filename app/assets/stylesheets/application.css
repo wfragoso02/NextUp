@@ -16,7 +16,7 @@
 
  body, html{
      background: black;
-     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif
+     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
  }
 
  .landmark{
@@ -164,7 +164,7 @@ padding: 7px 17px; */
     border: 1 solid white;
     font-size: 18px;
     text-decoration: none;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
  }
 .Footer{
     position: absolute;
@@ -245,7 +245,7 @@ padding: 7px 17px; */
 }
 .landmark-container > p{
     font-size: 1.2vw;
-    width: 1.
+    width: 1;
 }
 
 .landmark-tex-sub{
