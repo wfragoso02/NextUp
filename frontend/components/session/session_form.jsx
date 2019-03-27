@@ -6,9 +6,21 @@ class SessionForm extends React.Component{
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            checked: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    update(){
+        return(e) => {
+
+            if (this.state.checked === ''){
+                this.setState({ checked: 'checked'});
+            }else{
+                this.setState({ checked: '' });
+            }
+        };
     }
 
     handleInput(type){
@@ -17,7 +29,7 @@ class SessionForm extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.processForm(this.state).then();
+        this.props.processForm(this.state);
     }
 
     render(){
@@ -39,7 +51,7 @@ class SessionForm extends React.Component{
 
                 
                     <h1>{this.props.formType}</h1>
-                    <form action="">
+                    <form >
                         <br/>
                         <input className="form-input" type="text" value={this.state.email} onChange={this.handleInput('email')} placeholder="Email"/>
                         <br/><br/>
@@ -50,8 +62,8 @@ class SessionForm extends React.Component{
                     </form>
                     <div className="form-sub">
                         <label className='remember-me'>
-                            <span class="checkmark"></span>
-                            <input type="checkbox" checked="checked" />Remember me
+                            <span className="checkmark"></span>
+                            <input type="checkbox" checked={this.state.checked} onChange={this.update()}/>Remember me
                             
                         </label>
                         <a className="sub-a"href="">Need help?</a>
