@@ -14,7 +14,7 @@ const msp = (state, ownProps) => {
 const mdp = (dispatch) => {
     return {
         processForm: (formUser) => dispatch(signup(formUser)),
-        formText: () => (<p>Already a Member? <Link to="/login">Sign In</Link></p>)
+        formText: () => (<p>Already a Member? <Link className="session-a"to="/login">Sign In</Link></p>)
     };
 };
 
