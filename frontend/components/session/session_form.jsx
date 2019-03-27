@@ -41,7 +41,7 @@ class SessionForm extends React.Component{
         // const 
         return(
         <div className="sessions-form">
-            <Link to="/"><img src="" alt="Logo"/></Link>
+            <Link to="/"><img src={window.logo}/></Link>
             <div className="session-body" css="text-align:center">
                 <ul>
                     {sessionErrors}
