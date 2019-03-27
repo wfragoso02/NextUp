@@ -11,7 +11,7 @@ export default (state = _nullState, action) => {
     case RECEIVE_CURRENT_USER:
       return merge({}, {id: action.currentUser.id});
     case LOGOUT_CURRENT_USER:
-    return _nullState;
+      return _nullState;
     default:
       return state;
   }
