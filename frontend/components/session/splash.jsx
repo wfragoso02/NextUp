@@ -8,11 +8,8 @@ class Splash extends React.Component{
 
     <div className="landmark">
       <div id="main-img"></div>
-      {/* <div className="landmark-header">
-        <Link to="/"><img src="" alt="logo" /></Link>
-        <Link className="landmark-button"to="/login">Sign In</Link>
-      </div> */}
       <div className="landmark-body">
+        <img src={window.logo} className="logo"/>
        <Link to="/login" className="landmark-button">Sign In</Link>
        <div className="landmark-container">
         <div className="landmark-tex-main"><h1>See what's next.</h1></div>

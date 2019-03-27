@@ -151,11 +151,28 @@ padding: 7px 17px; */
 /* margin-left: auto; */
 /* line-height: 90px; */
 /* align-self: flex-end; */
+
+ }
+ .logo1{
+     position: absolute;
+    top: -70px;
+    left: 10px;
+    /* left: 80px; */
+    /* background: rgb(221, 0, 0); */
+    border-radius: 5px;
+    color: white; 
+    padding: 8px 22px;
+    text-align: right;
+    display: inline-block;
+    border: 1 solid white;
+    font-size: 18px;
+    text-decoration: none;
  }
  .logo {
     position: absolute;
-    top: 50px;
-    background: rgb(221, 0, 0);
+    top: -40px;
+    /* left: 80px; */
+    /* background: rgb(221, 0, 0); */
     border-radius: 5px;
     color: white; 
     padding: 8px 22px;
