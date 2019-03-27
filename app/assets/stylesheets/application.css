@@ -36,28 +36,44 @@
     /* position: static; */
  }
 
- #main-img {
   
-    height: 250px;
-    width:100%
-  } 
-  
-  @media screen and (max-width: 758px) {   
+  @media screen and (max-width: 665px) {   
       .landmark{
-          background-image: url(https://wallpapercave.com/wp/UuIrwpy.jpg)
-        } 
-    }
-    
+          background:
+      /* top, transparent black, faked with gradient */ 
+      radial-gradient(
+        rgba(14, 14, 14, 0.24), 
+        rgba(0, 0, 0, 0.925)
+      ),
+      /* bottom, image */
+      url(http://media.popculture.com/2017/06/netflix-2017--20003853.jpg);
+     /* background-repeat: no-repeat; */
+    /* background-size:50% 50%; */
+
+
+  }
+}
+      
     /* @media screen and (min-width: 768px) {      
         #main-img{      
             background-image: url(https://wallpapercave.com/wp/0LibLqi.jpg);
         } 
     }  */
-    @media (min-width: 758px) {      
+    @media (min-width: 665px) {      
         .landmark{        
-            background-image: url(https://wallpapercave.com/wp/HGMtO8W.jpg);
+            /* background-image: url(https://www.iptvbr.org/wp-content/uploads/2018/09/Netflix-Background.jpg); */
+            
+            background:
+                       /* top, transparent black, faked with gradient */ 
+                       radial-gradient(
+                         rgba(14, 14, 14, 0.24), 
+                         rgba(0, 0, 0, 0.925)
+                       ),
+                       /* bottom, image */
+                       url(https://www.iptvbr.org/wp-content/uploads/2018/09/Netflix-Background.jpg);
+                   }
         } 
-  }
+  
   /* @media (min-width: 1200px) {    
        #main-img{         
            background-image: url(http://subtlepatterns.com/patterns/paisley.png);
@@ -100,6 +116,8 @@
     align-items: center;
     /* justify-content: space-around; */
     flex-direction: column;
+    z-index: 10000;
+    opacity: 1.0;
 }
 .landmark-button{
     font-weight: lighter;
@@ -178,6 +196,7 @@ padding: 7px 17px; */
     border-width: 400px;
     text-decoration: none;
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; 
+    
     
      
      /* font-family: arial, helvetica, sans-serif; */
