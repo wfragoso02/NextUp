@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
-import { fetchProfiles } from '../../actions/profile_actions';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class SessionForm extends React.Component{
     constructor(props){
@@ -31,11 +30,7 @@ class SessionForm extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.processForm(this.state).then(() => {
-            return(
-                <Redirect to="/home"></Redirect>
-            )
-        });
+        this.props.processForm(this.state).then(() => this.props.history.push('/home'));
     }
 
     render(){
@@ -83,4 +78,4 @@ class SessionForm extends React.Component{
     }
 }
 
-export default SessionForm;
+export default withRouter(SessionForm);
