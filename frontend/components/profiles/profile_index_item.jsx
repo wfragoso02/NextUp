@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom'
 
 const profileIndexItem = (props) => {
     return(
-        <div className="profile-index-items">
+        <li>
             
-            <Link to={`/${props.profile.name}`}><img className="profile-pic" src={props.profile.image_url}/></Link>
-            <br/>
-            {props.profile.name}
+            <Link className="profile-link" to={`/${props.profile.name}`}><img className="profile-pic" src={props.profile.image_url}/><p className="profile-name">{props.profile.name}</p></Link>
+
             
-        </div>
+        </li>
     )
 }
 
