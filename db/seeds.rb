@@ -12,8 +12,8 @@ Genre.destroy_all
 
 
 User.create!({email: 'faker@gmail.com', password: 'password'})
-Profile.create!({name: 'Marcus', user_id: User.all.last.id, image_url: 'marcus.png'})
-Profile.create!({name: 'Nicolas', user_id: User.all.last.id ,image_url: 'nicolas.png'})
+Profile.create!({name: 'Marcus', user_id: User.all.last.id, image_url: '/assets/marcus.png'})
+Profile.create!({name: 'Nicolas', user_id: User.all.last.id ,image_url: '/assets/nicolas.png'})
 ('A'..'z').to_a.each do |alpha|
     Genre.create!({name: alpha})
 end
