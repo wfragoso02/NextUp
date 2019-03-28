@@ -8,7 +8,12 @@
 
 User.destroy_all
 Profile.destroy_all
+Genre.destroy_all
+
 
 User.create!({email: 'faker@gmail.com', password: 'password'})
-Profile.create!({name: 'Marcus', user_id: 1, image_url: 'https://globalgamejam.org/sites/default/files/styles/game_sidebar__normal/public/game/featured_image/promo_5.png?itok=9dymM8JD'})
-Profile.create!({name: 'Nicolas', user_id: 1,image_url: 'https://ichef.bbci.co.uk/news/660/cpsprodpb/37B5/production/_89716241_thinkstockphotos-523060154.jpg'})
+Profile.create!({name: 'Marcus', user_id: User.all.last.id, image_url: 'https://globalgamejam.org/sites/default/files/styles/game_sidebar__normal/public/game/featured_image/promo_5.png?itok=9dymM8JD'})
+Profile.create!({name: 'Nicolas', user_id: User.all.last.id ,image_url: 'https://ichef.bbci.co.uk/news/660/cpsprodpb/37B5/production/_89716241_thinkstockphotos-523060154.jpg'})
+('A'..'z').to_a.each do |alpha|
+    Genre.create!({name: alpha})
+end

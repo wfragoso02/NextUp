@@ -16,9 +16,10 @@
     flex-direction: column;
    /* font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; */
    font-size: 10px;
-   height: 700px;
    width: 100%;
+   height: 700px;
    /* position: static; */
+
 }
 
  
@@ -32,6 +33,8 @@
      ),
      /* bottom, image */
      url(http://media.popculture.com/2017/06/netflix-2017--20003853.jpg);
+      /* width: 100vw; */
+
     /* background-repeat: no-repeat; */
    /* background-size:50% 50%; */
 
@@ -157,15 +160,7 @@ padding: 7px 17px; */
    text-decoration: none;
    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
 }
-.Footer{
-   position: absolute;
-   height: 300px;
-   background: black;
-   height: 20vh;
-   color: grey;
-   margin-top: 0px;
-   z-index: 100000;
-}
+
 .demo-button{
 letter-spacing: 7px;
    background: red;
