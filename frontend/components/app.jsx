@@ -1,12 +1,13 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import { Link } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import SplashContainer from './session/splash_container';
 import ProfileContainer from './profiles/profile_container';
 import GenreIndexContainer from './genres/genre_container';
+import NavContainer from './nav/nav_cotainer';
+import Footer from './footer';
 
 
 const App = () => (
@@ -14,16 +15,17 @@ const App = () => (
     <div className="home">
     </div>
     <div>
-
-      <AuthRoute exact path='/login' component={LoginFormContainer}/>
-      {/* <Route exact path="/:profilename" component={GenreIndexContainer} /> */}
-      <ProtectedRoute path="/home" component={ProfileContainer} />
-      <AuthRoute path='/signup' component={SignupFormContainer}/>
-      <AuthRoute exact path="/" component={SplashContainer}/>
+      {/* <ProtectedRoute path="/" component={NavContainer}/> */}
+      <Switch>
+        <AuthRoute exact path='/login' component={LoginFormContainer}/>
+        <ProtectedRoute exact path="/home" component={ProfileContainer} />
+        <ProtectedRoute exact path="/:profilename" component={GenreIndexContainer} />
+        <AuthRoute path='/signup' component={SignupFormContainer}/>
+        <AuthRoute exact path="/" component={SplashContainer}/>
+      </Switch>
     </div>
-      <div className="Footer">
-        <p>Footer Goes Here</p>
-      </div>
+      <Footer/>
+      
   </div>
 );
 
