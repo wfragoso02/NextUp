@@ -3,7 +3,6 @@ import ProfileIndex from './profile_index';
 import { fetchProfiles } from '../../actions/profile_actions';
 
 const msp = state => {
-    debugger
     return{
         profiles: Object.values(state.entities.profiles)
     };

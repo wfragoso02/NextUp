@@ -3,8 +3,8 @@ import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form';
-import { AuthRoute } from '../util/route_util';
-import Splash from './session/splash';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import SplashContainer from './session/splash_container';
 import ProfileContainer from './profiles/profile_container';
 
 
@@ -13,10 +13,10 @@ const App = () => (
     <div className="home">
     </div>
     <div>
-      <Route exact path="/" component={Splash}/>
-      <Route path="/home" component={ProfileContainer} />
+      <ProtectedRoute path="/home" component={ProfileContainer} />
       <AuthRoute path='/login' component={LoginFormContainer}/>
       <AuthRoute path='/signup' component={SignupFormContainer}/>
+      <AuthRoute exact path="/" component={SplashContainer}/>
       <div className="Footer">
         <p>Footer Goes Here</p>
       </div>

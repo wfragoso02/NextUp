@@ -6,7 +6,6 @@ class profileIndex extends React.Component{
         this.props.fetchProfiles();
     }
     render(){
-        debugger
         const profiles = this.props.profiles.map((profile, idx) => {
             return <ProfileIndexItem key={idx} profile={profile} />
         });
