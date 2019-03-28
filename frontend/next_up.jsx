@@ -5,6 +5,7 @@ import Root from './components/root';
 import {logout} from './actions/session_actions';
 import { fetchProfiles} from './actions/profile_actions';
 import * as ProfileApiUtil from './util/profile_api_util';
+import * as GenresApiUtil from './util/genre_api_util';
 // import 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,7 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
   //testing
-  window.fetchProfiles = ProfileApiUtil.fetchProfiles;
+  // window.fetchProfiles = ProfileApiUtil.fetchProfiles;
+  window.fetchGenres = GenresApiUtil.fetchGenres;
   window.getState = store.getState;
   window.dispatch= store.dispatch;
   window.logout = logout;
