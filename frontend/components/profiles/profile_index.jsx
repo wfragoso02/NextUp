@@ -1,5 +1,6 @@
 import React from 'react';
 import ProfileIndexItem from './profile_index_item';
+import { Link } from 'react-router-dom';
 
 class profileIndex extends React.Component{
     componentDidMount(){
@@ -7,17 +8,19 @@ class profileIndex extends React.Component{
     }
     render(){
         const profiles = this.props.profiles.map((profile, idx) => {
-            return <ProfileIndexItem key={idx} profile={profile} />
+            return <ProfileIndexItem key={idx} profile={profile} className="profile-item"/>
         });
 
         return(
-            <div className="profiles">
-                <button onClick={this.props.logout}>Log Out</button>
-                <h1>Hello to our new page</h1>
-                <ul>
+            <div>
+            <Link to="/Marcus"><img src={window.logo} className="logo2"/></Link>
+            
+            <div className="profiles-page">
+                <ul className="profiles">
                     {profiles}
                 </ul>
 
+            </div>
             </div>
         )
     }

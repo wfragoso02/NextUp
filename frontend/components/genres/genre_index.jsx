@@ -1,5 +1,6 @@
 import React from 'react';
 import GenreIndexItem from './genre_index_item';
+import Nav from '../nav/nav_cotainer';
 
 
 
@@ -13,9 +14,12 @@ class GenreIndex extends React.Component{
         });
         
         return(
-            <ul>
-                {genres}
-            </ul>
+            <div>
+                <Nav />
+                <ul>
+                    {genres}
+                </ul>
+            </div>
         )
     }
 }

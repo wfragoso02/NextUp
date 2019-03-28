@@ -1,7 +1,39 @@
 .profile-index-items{
     color:red;
+    
+/* justify-content: center; */
 }
-
-.profiles{
+.profiles-page{
+    /* position: absolute; */
     height: 700px;
+    background: rgba(17, 17, 17, 0.685);
 }
+.profile-item{
+
+}
+.profiles{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.profile-pic{
+    margin-top: 190%;
+    width: 14vh;
+    height: 7vw;
+    padding: 20px 20px;
+}
+.logo2 {
+    height: 15%;
+    position: absolute;
+    top: -40px;
+    border-radius: 5px;
+    color: white; 
+    /* padding: 8px 22px; */
+    text-align: right;
+    display: inline-block;
+    border: 1 solid white;
+    /* font-size: 18px; */
+    text-decoration: none;
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+ }
