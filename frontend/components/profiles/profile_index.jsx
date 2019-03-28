@@ -12,6 +12,7 @@ class profileIndex extends React.Component{
 
         return(
             <div>
+                <button onClick={this.props.logout}>Log Out</button>
                 <h1>Hello to our new page</h1>
                 <ul>
                     {profiles}

@@ -18,12 +18,13 @@
 }
 
 
+
 @media (min-width: 758px) {      
     .sessions-form{        
         background:  radial-gradient(
             rgba(0, 0, 0, 0.596), 
             rgba(0, 0, 0, 0.582)
-          ),url(http://media.popculture.com/2017/06/netflix-2017--20003853.jpg);
+          ),url(background.jpg);
         position: relative;
         /* background-repeat: no-repeat; */
     height: 800px;
@@ -39,21 +40,26 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 90px;
+    top: 11%;
     align-self: center;
     color: white;
     align-items: left; 
-    height: 200px;
+    height: 60%;
     justify-content: space-between;
     border: 1px solid rgb(27, 27, 27); 
-    left: 33%;
-    background: rgba(8, 8, 8, 0.815);
+    left: 31.25%;
+    background: rgba(8, 8, 8, 0.842);
     border: 20%;
-    padding: 40px 50px;
-    height: 400px;
-    width: 300px;
+    padding: 50px 50px;
+    /* height: 400px; */
+    width: 308px;
     padding-bottom: 100px;
     border-radius: 3px;
+    padding-left: 60px;
+    padding-right: 60px;
+    bottom: 80px;
+    border-radius: 1.5%;
+    
 
     /* opacity: 0.5; */
     
@@ -70,37 +76,51 @@
 } */
 
   .session-bottom{
-    margin-top: 90px;
+    /* margin-top: 90px; */
+    position: relative;
+    top: 14%;
   }
 
   .display-form{
-    margin-top: -100px;
-    margin-bottom: 50px;
+    /* margin-top: -100px; */
+    margin-bottom: 33%;
+    margin-top: -3%;
   }
   .session-body{
-    padding-top: 100px;
+    /* padding-top: 100px; */
     padding-left: 70px;
     padding-right: 70px;
   }
 
   .display-form > h1{
+      position: relative;
       font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
-      font-weight: normal;
+      font-weight: 500;
+      font-size: 30px;
+      letter-spacing: 1px;
+      padding-bottom: 3%;
   }
 
+
   .form-input{
+      position: relative;
+      /* top: 15%; */
+      height: 10px;
       background: rgb(51, 51, 51);
-      height: 4.5vh;;
+      height: 5.5vh;;
+      left: -1.5%;
       width: 100%;
-      padding: 10px;
+      padding: 4px;
       border-radius: 5px;
       border: 1px solid rgb(27, 27, 27);
       color: white;
       font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
       font-size: 15px;
       font-weight: lighter;
-      padding-left: 15px;
-      padding-right: 0px;
+      width: 310px;
+      margin-top: -1%;
+      /* padding-left: 15px; */
+      /* padding-right: 0px; */
   }
   input:focus,
 select:focus,
@@ -124,22 +144,28 @@ button:focus {
     opacity: 0.6;
 } */
 input::placeholder{
-    font-weight: normal;
-    font-size: 17px;
+    font-weight: 100;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
     /* font-family: 'sans-serif'; */
 }
 .session-button{
-    background: red;
+    position: relative;
+    background: rgba(223, 3, 3, 0.986);
     width: 100%;
     height: 50px;
     padding: 10px;
     color: white;
     border: 1px solid rgb(51, 51, 51);
-    font-size: 17px;
-    margin-top: 50px;
+    font-size: 16px;
+    font-weight: 300;
+    /* margin-top: 50px; */
     border-radius: 5px;
     align-items: center;
-    width: 320px;
+    width: 316px;
+    top: 36px;
+    /* top: 90%; */
+    left: -1.3%;
 }
 .session-button:hover{
     cursor: pointer;
@@ -155,47 +181,104 @@ input::placeholder{
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 14px;
     padding: 8px;
+    top: 20px;
 
 }
 .sub-a {
+    position: relative;
     color: gray;
     text-decoration: none;
+    top: 45px;
+    left: -2%;
+
 }
 .sub-a:hover{
     text-decoration: underline;
 }
+.remember-me{
+    position: relative;
+    top: 45px;
+    left: -2%;
+    display: flex;
+    /* justify-content: space-around; */
 
-.checkmark {
+}
+
+/* .checkmark {
     position: absolute;
     height: 15px;
     width: 15px;
     background-color:gray;
     border-radius: 2px;
-  }
-  .remember-me input:checked ~ .checkmark:after {
+  } */
+  /* .remember-me input:checked ~ .checkmark:after {
     display: block;
-  }
-  .remember-me input {
-    display: none;
-  }
-  .remember-me input:checked ~ .checkmark:after {
+  } */
+  /* .remember-me input:checked {
+      background: grey;
+      color: black; */
+    /* display: none; */
+  /* } */
+  /* .remember-me input:checked ~ .checkmark:after {
     display: block;
-  }
+  } */
   
   
   .session-bottom{
       color: gray;
-      font-family: 'Arial';
-      font-size: 17px;
+      font-family: sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      transform: scale(1, 1.1);
+      
   }
   .session-a{
       color: white;
       text-decoration: none;
-      font-family: 'Arial';
-      font-size: 17px;
-      font-weight: normal;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      font-weight: 100;
   }
   .session-a:hover{
     text-decoration: underline;
   }
+  .logo1{
+    position: relative;
+    /* height: 10%; */
+    top: -10%;
+    height: 30%;
+   /* top: -70px; */
+   /* left: 10px; */
+   /* left: 80px; */
+   /* background: rgb(221, 0, 0); */
+   border-radius: 5px;
+   color: white; 
+   padding: 8px 22px;
+   /* text-align: right; */
+   /* display: inline-block; */
+   border: 1 solid white;
+   font-size: 18px;
+   text-decoration: none;
+   /* left: 20%; */
+}
+.fb-logo {
+    position: relative;
+    top: 19%;
+    font-family: sans-serif;
+    font-size: 13px;
+    color: grey;
+}
+.fb-logo:hover{
+    cursor: pointer;
+}
+.fb-logo > img{
+    width: 7%;
+    height: 77%;
+    /* background-image: url(fb.png);
+    z-index: 100000000;
+    background-repeat: no-repeat;
+    background-size: 20% 20%;
+    height: 10%;
+    position: relative; */
+}
   

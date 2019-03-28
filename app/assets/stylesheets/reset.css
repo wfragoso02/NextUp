@@ -9,3 +9,8 @@ header, nav, section, ul, ol, li {
   text-decoration: none;
   color: inherit;
 }
+
+html body {
+  height: 100%;
+  width: 100%;
+}

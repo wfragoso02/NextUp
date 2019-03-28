@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import ProfileIndex from './profile_index';
 import { fetchProfiles } from '../../actions/profile_actions';
+import { logout } from '../../actions/session_actions';
 
 const msp = state => {
     return{
@@ -10,7 +11,8 @@ const msp = state => {
 
 const mdp = dispatch => {
     return {
-        fetchProfiles: () => dispatch(fetchProfiles())
+        fetchProfiles: () => dispatch(fetchProfiles()),
+        logout: () => dispatch(logout())
     };
 };
 
