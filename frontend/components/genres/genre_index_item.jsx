@@ -1,10 +1,11 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 
 const GenreIndexItem = (props) => {
     return(
         <div className="genreItems">
-            <h1>{props.genre.name}</h1>
+            <Link className="genres-index" to={`/${props.profile.id}/${props.genre.name}`}>{props.genre.name}</Link>
         </div>
     )
 }
