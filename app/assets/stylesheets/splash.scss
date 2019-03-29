@@ -4,7 +4,7 @@ html{
 .landmark{
    background-repeat: no-repeat;
    background-size:100% 100%;
-   background:radial-gradient(rgba(14, 14, 14, 0.24), rgba(0, 0, 0, 0.925)), url(background.jpg);
+   background:radial-gradient(rgba(14, 14, 14, 0.24), rgba(0, 0, 0, 0.925)), image_url('background.jpg');
    color: white;
    display: flex;
    flex-direction: column;
