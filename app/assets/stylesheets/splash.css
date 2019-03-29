@@ -1,97 +1,16 @@
-
- body, html{
-    background: black;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+html{
+   background: black;
 }
-
 .landmark{
-    background-color: black;
-    /* background-image: url('https://wallpapercave.com/wp/0LibLqi.jpg'); */
-    padding: 0px;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+   background-repeat: no-repeat;
    background-size:100% 100%;
-    color: white;
-    display: flex;
-    flex-direction: column;
-   /* font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; */
+   background:radial-gradient(rgba(14, 14, 14, 0.24), rgba(0, 0, 0, 0.925)), url(background.jpg);
+   color: white;
+   display: flex;
+   flex-direction: column;
    font-size: 10px;
    width: 100%;
-   height: 700px;
-   /* position: static; */
-
-}
-
- 
- @media screen and (max-width: 665px) {   
-     .landmark{
-         background:
-     /* top, transparent black, faked with gradient */ 
-     radial-gradient(
-       rgba(14, 14, 14, 0.24), 
-       rgba(0, 0, 0, 0.925)
-     ),
-     /* bottom, image */
-     url(http://media.popculture.com/2017/06/netflix-2017--20003853.jpg);
-      /* width: 100vw; */
-
-    /* background-repeat: no-repeat; */
-   /* background-size:50% 50%; */
-
-
- }
-}
-     
-   /* @media screen and (min-width: 768px) {      
-       #main-img{      
-           background-image: url(https://wallpapercave.com/wp/0LibLqi.jpg);
-       } 
-   }  */
-   @media (min-width: 665px) {      
-       .landmark{        
-           /* background-image: url(https://www.iptvbr.org/wp-content/uploads/2018/09/Netflix-Background.jpg); */
-           
-           background:
-                      /* top, transparent black, faked with gradient */ 
-                      radial-gradient(
-                        rgba(14, 14, 14, 0.24), 
-                        rgba(0, 0, 0, 0.925)
-                      ),
-                      /* bottom, image */
-                      url(https://www.iptvbr.org/wp-content/uploads/2018/09/Netflix-Background.jpg);
-                  }
-       } 
- 
- /* @media (min-width: 1200px) {    
-      #main-img{         
-          background-image: url(http://subtlepatterns.com/patterns/paisley.png);
-      } 
- } */
-.landmark-header{
-   background: 0 0;
-    position: absolute;
-    width: 100%;
-    z-index: 100000;
-    height: 90px;
-    border: 0;
-    display: flex;
-    justify-content: space-between;
-
-    flex-direction: flex-end;
-    /* display: flex; */
-    /* display: flex;
-    justify-content: flex-end;
-    justify-content: space-evenly;
-    margin-right: 0;
-    height: 200px;
-    padding: 10px; */
-}
-.landmark-header > a{
-    text-decoration: none;
-    line-height: 90px;
-    vertical-align: middle;
-    margin-left: 3%;
-    
+   height: 720px;
 }
 .landmark-body{
    position: absolute;
@@ -102,7 +21,6 @@
    height: 700px;
    display: flex;
    align-items: center;
-   /* justify-content: space-around; */
    flex-direction: column;
    z-index: 10000;
    opacity: 1.0;
@@ -110,60 +28,40 @@
 .landmark-button{
     transform: scale(1, 1.1);
     letter-spacing: 1px;
-   font-weight: lighter;
-   position: absolute;
-   top: 50px;
-   right: 80px;
-   background: rgb(221, 0, 0);
-   border-radius: 5px;
-   color: white; 
-   padding: 8px 22px;
-   text-align: right;
-   display: inline-block;
-   border: 1 solid white;
-   font-size: 15px;
-   text-decoration: none;
-   font-family: 'Helvetica Neue';
-   
-   /* font-weight: lighter; */
-   /* margin-left: auto; */
-   /* display: flex; */
-    /* position: absolute; */
-    /* background: red;
-    /* border: 10px;
-    border-radius: 10px; */
-    /* line-height: normal;
-    font-size: 16px;
-    font-weight: 200;
-margin: 18px 3% 0;
-padding: 7px 17px; */
-
-/* align-items: right; */
-/* margin-left: auto; */
-/* line-height: 90px; */
-/* align-self: flex-end; */
-
+    position: absolute;
+    top: 6.5%;
+    right: 4.5%;
+    background: rgb(221, 0, 0);
+    border-radius: 4px;
+    color: white; 
+    padding: 0.6% 1.1%;
+    border: 1 solid white;
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: lighter;
+    width: 4.5%;
+    align-items: center;
+    display: inline;
 }
 
 .logo {
    position: absolute;
-   top: -40px;
-   /* left: 80px; */
-   /* background: rgb(221, 0, 0); */
+   top: -8%;
+   right: 79%;
    border-radius: 5px;
    color: white; 
    padding: 8px 22px;
    text-align: right;
    display: inline-block;
    border: 1 solid white;
-   font-size: 18px;
-   text-decoration: none;
-   font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+
+
 }
 
 .demo-button{
 letter-spacing: 7px;
-   background: red;
+   background: rgb(221, 0, 0);
    width: 100%;
    height: 50px;
    padding: 10px;
@@ -178,45 +76,12 @@ letter-spacing: 7px;
    position: relative;
    top: 100px;
    width: 500px;
-   /* position: absolute; */
-   /* font-weight: lighter; */
-   /* top: 40px; */
-   /* right: 80px; */
-   /* background: rgb(221, 0, 0);
-   border-radius: 3px;
-   color: white; 
-   padding: 8px 22px; */
-   /* text-align: center; */
-   /* display: inline-block; */
-   /* border: 1 20px 1 20px solid white; */
-   /* font-size: 25px; */
-   
-   
-   /* font-weight: ; */
-   /* font-weight: lighter; */
-   /* border-width: 400px;
-   text-decoration: none;
-   font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;  */
-   
-   
-    
-    /* font-family: arial, helvetica, sans-serif; */
-/* 
-   height: 60px;
-   text-align: center;
-   padding: 3% 20%; */
-   /* top: 450px; */
-   /* font-family: Helvetica; */
-}
-.demo-button:hover{
-   background: red;
-   /* cursor: pointer; */
 }
 button:hover{
    cursor: pointer;
 }
 
-.landmark-button:hover{
+.demo-button:hover{
    background: red;
 }
 /* 
