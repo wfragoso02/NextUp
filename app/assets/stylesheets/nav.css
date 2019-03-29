@@ -51,6 +51,7 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
     z-index: 1;
+    width: 50px;
   }
   
   .nav-dropdown:hover .dropdown-content {
@@ -58,8 +59,8 @@
   }
   .nav-pic{
       display: flex;
-        width: 50%;
-      height: 50%; 
+        width: 30%;
+      height: 30%; 
   } 
    .nav-logo{
     height: 100%;
@@ -78,3 +79,12 @@
     display: flex;
     padding-left: 0px;
  } 
+ .nav-profile-list{
+   display: flex;
+   justify-content: space-between;
+ }
+ .nav-pic-list{
+   display: flex;
+   width:20%;
+   height: 20%;
+ }

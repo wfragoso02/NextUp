@@ -7,6 +7,19 @@ class Nav extends React.Component{
     }
     
     render(){
+        let list;
+        if (this.props.profile.id){
+            let profiles = Object.values(this.props.profiles);
+            profiles = profiles.filter(profile => 
+                profile.id !== this.props.profile.id
+                
+            );
+            list = profiles.map(profile => {
+                return(
+                    <li className="nav-profile-list" key={profile.id} ><Link to={`/${profile.id}`}><img className="nav-pic" src={profile.image_url}/>{profile.name}</Link></li>
+                )
+            })
+        }
         return(
             <nav className="nav-bar">
                 <ul className="primary-nav">
@@ -25,7 +38,9 @@ class Nav extends React.Component{
                     <li className="left-nav-links"><div className="nav-dropdown">
                         <span><img className="nav-pic"src={this.props.profile.image_url} alt=""/></span>
                         <div className="dropdown-content">
-                        <p>profiles</p>
+                        <ul>
+                            {list}
+                        </ul>
                         <p>manage profile</p>
                         <p>account</p>
                         <p>help center</p>
