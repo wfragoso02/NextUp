@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginFormContainer from './login_form_container';
 import { Link } from 'react-router-dom';
+import Footer from '../footer';
 
 class Splash extends React.Component{
   handleSubmit(e){
@@ -10,7 +11,7 @@ class Splash extends React.Component{
   
   render(){
     return(
-
+     <div> 
     <div className="landmark">
       <div id="main-img"></div>
       <div className="landmark-body">
@@ -22,6 +23,8 @@ class Splash extends React.Component{
         <button onClick={this.handleSubmit.bind(this)} className="demo-button">TRY DEMO</button>
         </div>
       </div>
+    </div>
+    <Footer />
     </div>
       )
   }
