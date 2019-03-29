@@ -14,7 +14,8 @@ class Api::ProfilesController < ApplicationController
     end
 
     def show
-        # @profile = Profile.find(params[])
+        @profile = Profile.find(params[:id])
+        render :show
     end
 
     def edit

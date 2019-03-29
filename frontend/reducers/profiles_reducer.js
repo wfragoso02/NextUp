@@ -1,4 +1,4 @@
-import { RECEIVE_ALL_PROFILES}from '../actions/profile_actions';
+import { RECEIVE_ALL_PROFILES, RECEIVE_PROFILE}from '../actions/profile_actions';
 import { merge } from 'lodash';
 
 const profileReducer = (state ={}, action) => {
@@ -7,6 +7,8 @@ const profileReducer = (state ={}, action) => {
     switch(action.type){
         case RECEIVE_ALL_PROFILES:
             return action.profiles;
+        case RECEIVE_PROFILE:
+            return merge({}, state, {[action.profile.id]: action.profile});
         default:
             return state;
     }

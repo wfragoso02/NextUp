@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import Footer from '../footer';
 
 class SessionForm extends React.Component{
     constructor(props){
@@ -41,6 +42,7 @@ class SessionForm extends React.Component{
         })
         // const 
         return(
+            <div>
         <div className="sessions-form">
             <Link to="/"><img src={window.logo} className="logo1"/></Link>
             <div className="session-body" css="text-align:center">
@@ -74,6 +76,8 @@ class SessionForm extends React.Component{
                     {this.props.formText()}
                 </div>
             </div>
+        </div>
+        <Footer />
         </div>
         )
     }
