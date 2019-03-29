@@ -60,6 +60,16 @@
 a > p{
     margin: 10px;
 }
+.whos-watching{
+    /* margin: 0 auto; */
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    font-size: 60px;
+    position: relative;
+    margin-top: -11%;
+    left: 33%;
+    
+}
 .profile-name{
     margin: 0 auto;
     position: relative;
@@ -84,7 +94,7 @@ a > p{
     height: 15%;
     position: absolute;
     left: 3%;
-    top: -40px;
+    top: -35px;
     border-radius: 5px;
     color: white; 
     /* padding: 8px 22px; */

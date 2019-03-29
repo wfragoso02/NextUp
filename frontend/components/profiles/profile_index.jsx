@@ -21,12 +21,13 @@ class profileIndex extends React.Component{
             {link}
             
             <div className="profiles-page">
+                    <h1 className="whos-watching">Who's watching?</h1>
                     <ul className="profiles">
                 <div className="profile-container">
                         {profiles}
                 </div>
                     </ul>
-
+                    <h2>Manage Profiles</h2>
             </div>
             </div>
         )
