@@ -12,7 +12,7 @@ class profileIndex extends React.Component{
         });
         let link;
         if (this.props.profiles[0]){
-            link = <Link to={`/${this.props.profiles[0].id}`}><img src={window.logo} className="logo2"/></Link>
+            link = <Link to={`/${this.props.profiles[0].id}`} profile={this.props.profiles[0]}><img src={window.logo} className="logo2"/></Link>
         }else{
             link = " ";
         }

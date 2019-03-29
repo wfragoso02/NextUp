@@ -6,7 +6,6 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import SplashContainer from './session/splash_container';
 import ProfileContainer from './profiles/profile_container';
 import GenreIndexContainer from './genres/genre_container';
-import NavContainer from './nav/nav_cotainer';
 import Footer from './footer';
 
 
@@ -15,7 +14,6 @@ const App = () => (
     <div className="home">
     </div>
     <div>
-      {/* <ProtectedRoute path="/" component={NavContainer}/> */}
       <Switch>
         <AuthRoute exact path='/login' component={LoginFormContainer}/>
         <AuthRoute exact path='/signup' component={SignupFormContainer}/>

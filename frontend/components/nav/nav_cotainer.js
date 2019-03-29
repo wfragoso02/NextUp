@@ -4,7 +4,6 @@ import { logout } from '../../actions/session_actions';
 import { fetchProfiles } from '../../actions/profile_actions';
 
 const msp = (state,ownProps) => {
-    debugger
     return{
         profiles: state.entities.profiles || {},
     }
