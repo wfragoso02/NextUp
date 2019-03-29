@@ -23,8 +23,8 @@ class GenreIndex extends React.Component{
         
         return(
             <div>
-                <Nav />
-                <ul>
+                <Nav profile={this.props.profile}/>
+                <ul className="genre-index">
                     {genres}
                 </ul>
             </div>
