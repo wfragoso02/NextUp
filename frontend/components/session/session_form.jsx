@@ -42,42 +42,42 @@ class SessionForm extends React.Component{
         })
         // const 
         return(
-            <div>
         <div className="sessions-form">
-            <Link to="/"><img src={window.logo} className="logo1"/></Link>
-            <div className="session-body" css="text-align:center">
-                <ul>
-                    {sessionErrors}
-                </ul>
-                <div className="display-form">
+            <div className="temp">
+                <Link to="/"><img src={window.logo} className="logo1"/></Link>
+                <div className="session-body">
+                    <ul>
+                        {sessionErrors}
+                    </ul>
+                    <div className="display-form">
 
-                
-                    <h1>{this.props.formType}</h1>
-                    <form >
-                        <br/>
-                        <input className="form-input" type="text" value={this.state.email} onChange={this.handleInput('email')} placeholder="Email"/>
-                        <br/><br/>
-                        <input className="form-input" type="password" value={this.state.password} onChange={this.handleInput('password')}placeholder="Password"/>
-                        <br/>
-                        <button className="session-button" onClick={this.handleSubmit}>{this.props.formType}</button>
+                    
+                        <h1>{this.props.formType}</h1>
+                        <form >
+                            <br/>
+                            <input className="form-input" type="text" value={this.state.email} onChange={this.handleInput('email')} placeholder="Email"/>
+                            <br/><br/>
+                            <input className="form-input" type="password" value={this.state.password} onChange={this.handleInput('password')}placeholder="Password"/>
+                            <br/>
+                            <button className="session-button" onClick={this.handleSubmit}>{this.props.formType}</button>
 
-                    </form>
-                    <div className="form-sub">
-                        <label className='remember-me'>
-                            <input type="checkbox" checked={this.state.checked} onChange={this.update()}/>
-                            <span className="checkmark">Remember me</span>
-                            
-                        </label>
-                        <a className="sub-a"href="">Need help?</a>
+                        </form>
+                        <div className="form-sub">
+                            <label className='remember-me'>
+                                <input type="checkbox" checked={this.state.checked} onChange={this.update()}/>
+                                <span className="checkmark">Remember me</span>
+                                
+                            </label>
+                            <a className="sub-a"href="">Need help?</a>
+                        </div>
+                    </div>
+                    <div className="fb-logo"> <img src={window.fb} alt=""/>    Login with Facebook</div>
+                    <div className="session-bottom">
+                        {this.props.formText()}
                     </div>
                 </div>
-                <div className="fb-logo"> <img src={window.fb} alt=""/>    Login with Facebook</div>
-                <div className="session-bottom">
-                    {this.props.formText()}
-                </div>
             </div>
-        </div>
-        <Footer />
+            <Footer />
         </div>
         )
     }

@@ -1,54 +1,35 @@
-.session-form{
-    /* background: black;
-    background-color: black;
-     /* background-image: url('https://wallpapercave.com/wp/0LibLqi.jpg'); */
-     /* padding: 0px;
-     background-repeat: no-repeat;
-     background-attachment: fixed;
-    background-size:100% 100%;
-     color: white;
-     display: flex;
-     flex-direction: column;
-    /* font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; */
-    /* font-size: 10px;
-    min-height: 1000px;
-    width: 100%;
-    z-index: 1000; */
-    
+.sessions-form{
+    background:  radial-gradient(
+        rgba(0, 0, 0, 0.596), 
+        rgba(0, 0, 0, 0.582)
+      ),image-url('background.jpg');
+
+    display: flex;
+    flex-direction: column;
+    height: 135vh;
 }
 
+.temp{
+    position: relative;
+    height:123vh;
 
+}
 
-@media (min-width: 758px) {      
-    .sessions-form{        
-        background:  radial-gradient(
-            rgba(0, 0, 0, 0.596), 
-            rgba(0, 0, 0, 0.582)
-          ),image-url('background.jpg');
-        position: relative;
-        /* background-repeat: no-repeat; */
-    height: 1100px;
-} 
-}
-@media screen and (max-width: 758px) {   
-    .sessions-form{
-        background: black;
-    } 
-}
 
 .session-body{
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 11%;
-    align-self: center;
+    top: 95px;
+    // align-self: center;
     color: white;
-    align-items: left; 
-    height: 65%;
+    // align-items: left; 
+    height: 64vh;
     justify-content: space-between;
     border: 1px solid rgba(27, 27, 27, 0.904); 
-    left: 31.25%;
-    background: rgba(8, 8, 8, 0.767);
+    margin-left: 34vw;
+    margin-right: 36vw;
+    background: rgba(0, 0, 0, 0.829);
     border: 20%;
     padding: 50px 50px;
     /* height: 400px; */
@@ -57,8 +38,8 @@
     border-radius: 3px;
     padding-left: 60px;
     padding-right: 60px;
-    bottom: 80px;
-    border-radius: 1.5%;
+    // bottom: 80px;
+    // border-radius: 1.5%;
     
 
     /* opacity: 0.5; */
@@ -151,7 +132,7 @@ input::placeholder{
 }
 .session-button{
     position: relative;
-    background: rgba(223, 3, 3, 0.986);
+    background: rgb(221, 0, 0);
     width: 100%;
     height: 50px;
     padding: 10px;
@@ -244,9 +225,12 @@ input::placeholder{
   }
   .logo1{
     position: absolute;
-    left: 1.9%;
-    top: -8%;
-    height: 20%;
+    // left: 1.9%;
+    // top: -8%;
+    left: 28px;
+    top: -80px;
+    height: 250px;
+    width: 200px;
    border: 1 solid white;
 }
 .fb-logo {
