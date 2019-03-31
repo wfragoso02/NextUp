@@ -20,6 +20,18 @@ class Nav extends React.Component{
                 )
             })
         }
+        
+        const header = $(".nav-bar");
+  
+        $(window).scroll(function() {    
+            const scroll = $(window).scrollTop();
+            if (scroll >= 50) {
+                header.addClass("scrolled");
+            } else {
+                header.removeClass("scrolled");
+            }
+        });
+
         return(
             <nav className="nav-bar">
                 <ul className="primary-nav">

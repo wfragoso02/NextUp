@@ -9,7 +9,9 @@ class SessionForm extends React.Component{
         this.state = {
             email: '',
             password: '',
-            checked: ''
+            checked: '',
+            errorsEmail: '',
+            errorsPassword: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -26,7 +28,23 @@ class SessionForm extends React.Component{
     }
 
     handleInput(type){
-        return (e) => this.setState({[type]: e.target.value});
+        return (e) =>{
+            const valid = ['@yahoo.com','@gmail.com', '@aol.com', '@hotmail.com' ];
+            if (type === 'password' && (this.state.password.length < 4 ||this.state.password.length  > 60) ){
+                this.setState({errorsPassword: 'Your password must contain between 4 and 60 characters.'});
+            }else if ((this.state.password.length > 4 && this.state.password.length  < 60)){
+                this.setState({errorsPassword: ''});
+            }
+
+            if (type === 'email' && (!valid.includes(this.state.email))){
+                this.setState({errorsEmail: 'Please enter a valid email address'});
+            }else if(valid.includes(this.state.email)){
+                this.setState({errorsEmail: ''});
+            }
+
+            this.setState({[type]: e.target.value});
+        };
+            
     }
 
     handleSubmit(e){
@@ -40,24 +58,37 @@ class SessionForm extends React.Component{
                 <li key={idx}>{error}</li>
             )
         })
+        let a = "";
+        let b = "";
+        if (this.state.errorsEmail.length  > 0){
+            a = "form-input-with-email-error"
+        }else{
+            a = 'form-input'
+        }
+        if (this.state.errorsPassword.length > 0){
+            b = "form-input-with-password-error"
+        }else{
+            b = 'form-input'
+        }
+
         // const 
         return(
         <div className="sessions-form">
             <div className="temp">
                 <Link to="/"><img src={window.logo} className="logo1"/></Link>
                 <div className="session-body">
-                    <ul>
-                        {sessionErrors}
-                    </ul>
                     <div className="display-form">
 
-                    
+        
                         <h1>{this.props.formType}</h1>
                         <form >
+                            {sessionErrors}
                             <br/>
-                            <input className="form-input" type="text" value={this.state.email} onChange={this.handleInput('email')} placeholder="Email"/>
-                            <br/><br/>
-                            <input className="form-input" type="password" value={this.state.password} onChange={this.handleInput('password')}placeholder="Password"/>
+                            <input className={a} type="text" value={this.state.email} onChange={this.handleInput('email')} placeholder="Email"/>
+                            <h3 className="session-errors">{this.state.errorsEmail}</h3>
+                            <br/>
+                            <input className={b}  type="password" value={this.state.password} onChange={this.handleInput('password')}placeholder="Password"/>
+                            <h3 className="session-errors">{this.state.errorsPassword}</h3>
                             <br/>
                             <button className="session-button" onClick={this.handleSubmit}>{this.props.formType}</button>
 

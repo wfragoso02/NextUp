@@ -6,6 +6,7 @@ import {logout} from './actions/session_actions';
 import { fetchProfiles} from './actions/profile_actions';
 import * as ProfileApiUtil from './util/profile_api_util';
 import * as GenresApiUtil from './util/genre_api_util';
+import * as VideoApuUtil from './util/video_api_util';
 // import 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   //testing
   // window.fetchProfiles = ProfileApiUtil.fetchProfiles;
+  window.fetchVideo = VideoApuUtil.fetchVideo;
   window.fetchGenres = GenresApiUtil.fetchGenres;
   window.getState = store.getState;
   window.dispatch= store.dispatch;
