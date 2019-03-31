@@ -10,7 +10,7 @@ class Api::SessionsController < ApplicationController
         login!(@user)
         render 'api/users/show'
       else
-        render json: ['Invalid credentials'], status: 401
+        render json: ["Sorry, we can't find an account with this email address. Please try again or create a new account."], status: 401
       end
     end
   

@@ -4,6 +4,7 @@ import { fetchGenres } from '../../actions/genre_actions';
 import { fetchProfile } from '../../actions/profile_actions';
 
 const msp = (state, ownProps) => {
+
     return{
         genres: Object.values(state.entities.genres),
         profile: state.entities.profiles[ownProps.match.params.profileId] || {}

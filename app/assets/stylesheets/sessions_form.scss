@@ -24,7 +24,7 @@
     // align-self: center;
     color: white;
     // align-items: left; 
-    height: 64vh;
+    height: 63vh;
     justify-content: space-between;
     border: 1px solid rgba(27, 27, 27, 0.904); 
     margin-left: 34vw;
@@ -59,7 +59,7 @@
   .session-bottom{
     /* margin-top: 90px; */
     position: relative;
-    top: 14%;
+    top: 7.5vh;
   }
 
   .display-form{
@@ -87,7 +87,7 @@
       position: relative;
       /* top: 15%; */
       height: 10px;
-      background: rgb(51, 51, 51);
+      background: rgb(41, 41, 41);
       height: 5.5vh;;
       left: -1.5%;
       width: 100%;
@@ -103,11 +103,71 @@
       /* padding-left: 15px; */
       /* padding-right: 0px; */
   }
+
+  .form-input-with-email-error{
+    position: relative;
+    /* top: 15%; */
+    height: 10px;
+    background: rgb(41, 41, 41);
+    height: 5.5vh;;
+    left: -1.5%;
+    width: 100%;
+    padding: 4px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    color: white;
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    font-weight: lighter;
+    width: 310px;
+    margin-top: -1%;
+    border-bottom-color: #e87c03;;
+    /* padding-left: 15px; */
+    /* padding-right: 0px; */
+}
+.form-input-with-password-error{
+    position: relative;
+    /* top: 15%; */
+    height: 10px;
+    background: rgb(41, 41, 41);
+    height: 5.5vh;;
+    left: -1.5%;
+    width: 100%;
+    padding: 4px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    border-bottom-color: #e87c03;
+    color: white;
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    font-weight: lighter;
+    width: 310px;
+    margin-top: -1%;
+    /* padding-left: 15px; */
+    /* padding-right: 0px; */
+}
   input:focus,
 select:focus,
 textarea:focus,
 button:focus {
     outline: none;
+    
+}
+.a{
+    border-bottom-color: #e87c03;
+}
+.b{
+    border-bottom-color: #e87c03;
+}
+.session-errors{
+    margin-top: 2%;
+    color: #e87c03;;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: lighter;
+}
+.form-input:focus{
+    background: rgb(63, 63, 63);
 }
 
 /* .form-input
@@ -234,10 +294,10 @@ input::placeholder{
    border: 1 solid white;
 }
 .fb-logo {
-    position: relative;
-    top: 19%;
+    position: absolute;
+    top: 71vh;
     font-family: sans-serif;
-    font-size: 13px;
+    font-size: 15px;
     color: grey;
 }
 .fb-logo:hover{

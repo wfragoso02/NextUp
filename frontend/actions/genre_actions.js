@@ -11,6 +11,7 @@ const receiveGenres = (genres) => {
 };
 
 const receiveGenre = (genre) => {
+    
     return{
         type: RECEIVE_GENRE,
         genre
