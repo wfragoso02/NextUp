@@ -10,12 +10,13 @@
 #  updated_at :datetime         not null
 #
 
+
+#need to get my list here through listitems
 class Profile < ApplicationRecord
     validate :name, :image_url
     belongs_to :user
-    has_many :list_items
 
-    has_many :my_list_videos,
-        through: :list_items,
-        source: :videos
+
+
+    
 end

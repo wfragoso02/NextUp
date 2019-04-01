@@ -18,17 +18,16 @@ class profileIndex extends React.Component{
         }
         return(
             <div>
-            {link}
-            
-            <div className="profiles-page">
+                {link}
+                <div className="profiles-page">
                     <h1 className="whos-watching">Who's watching?</h1>
                     <ul className="profiles">
-                <div className="profile-container">
-                        {profiles}
-                </div>
+                        <div className="profile-container">
+                            {profiles}
+                        </div>
                     </ul>
-                    <h2>Manage Profiles</h2>
-            </div>
+                    <Link className="manage-profiles" to="/manage-profiles" ><h2 >MANAGE PROFILES</h2></Link>
+                </div>
             </div>
         )
     }
