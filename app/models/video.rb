@@ -16,6 +16,7 @@
 class Video < ApplicationRecord
     validates :title, :year, :rating, :description, presence: true
     has_one_attached :image
+    has_one_attached :movie
     has_many :categories,
         foreign_key: :video_id,
         class_name: :Category

@@ -17,10 +17,12 @@ Profile.create!({name: 'Marcus', user_id: User.all.last.id, image_url: '/assets/
 Profile.create!({name: 'Nicolas', user_id: User.all.last.id ,image_url: '/assets/nicolas.png'})
 marvel = Video.create!({title: 'Avengers End Game', year: 2019, rating: 'PG-13', description: 'Greatest Film of All time'})
 marvel.image.attach(io: File.open('app/assets/images/avenger_end_game.jpg'), filename: 'avengers.jpg')
+marvel.movie.attach(io: File.open('Marvel Studios Avengers Endgame - Official Trailer.mp4'), filename: 'avengers-trailer.mp4')
 dc = Video.create!({title: 'Justice League', year: 2018, rating: 'PG-13', description: 'Sucky Film'})
 dc.image.attach(io: File.open('app/assets/images/justice_league.jpg'), filename: 'dc.jpg')
+dc.movie.attach(io: File.open('Marvel Studios Avengers Endgame - Official Trailer.mp4'), filename: 'dc-trailer.mp4')
 
-('A'..'z').to_a.each do |alpha|
+['Action','Movies','superHero','Ultimate Movies'].to_a.each do |alpha|
     alpha = Genre.create!({name: alpha})
     Category.create!(genre_id: alpha.id, video_id: marvel.id)
     Category.create!(genre_id: alpha.id, video_id: dc.id)
