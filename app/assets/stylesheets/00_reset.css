@@ -7,7 +7,7 @@ header, nav, section, ul, ol, li {
   font-size: 100%;
   font: inherit;
   text-decoration: none;
-  color: inherit;
+  color: white;
 }
 
 html {
