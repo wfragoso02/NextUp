@@ -14,7 +14,7 @@ const GenreIndexItem = ({genre, profile}) => {
     })
     return(
         <div className="genreItems">
-            <Link className="genres-index" genre={genre} to={`/${profile.id}/genre/${genre.id}`}>{genre.name}</Link>
+            <h2 className="genre-index-links"><Link className="genres-index" genre={genre} to={`/${profile.id}/genre/${genre.id}`}>{genre.name}</Link></h2>
             <ul className="video-container" >
                 {videos}
             </ul>

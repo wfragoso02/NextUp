@@ -8,12 +8,12 @@
  position: fixed;
   width: 100%;
   z-index: 10000;
-  transition: 0.5s;
+  transition: 1s;
 
 }
 .scrolled{
   background-color: #141414;
-  transition: 0.5s;
+  transition: 1s;
 }
 
 .primary-nav{
@@ -69,6 +69,7 @@
   } 
    .nav-logo{
     height: 100%;
+    padding: 0 4%;
 }
 .logo-3 {
     /* margin-right: 3px; */
@@ -77,6 +78,7 @@
 
      position: relative;
     padding-left: 0px;
+    padding: 0 4%;
  } 
 
  .left-nav{
@@ -92,4 +94,7 @@
    display: flex;
    width:20%;
    height: 20%;
+ }
+ .genre-index-links{
+   /* padding-bottom: 0; */
  }

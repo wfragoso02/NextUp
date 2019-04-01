@@ -1,5 +1,6 @@
 import React from 'react';
 import VideoItem from '../videos/video_item';
+import NavContainer from '../nav/nav_cotainer';
 
 class GenreShow extends React.Component{
     componentDidMount(){
@@ -12,13 +13,15 @@ class GenreShow extends React.Component{
         }
     }
     render(){
-        const videos = this.props.genre.videos.map(video=> {
+        const videos = Object.values(this.props.genre.videos).map(video=> {
             return(
-                <VideoItem  video={video}key={video.id}/>
+                <VideoItem  video={video} key={video.id}/>
             )
         })
+        debugger
         return(
             <div>
+                <NavContainer profile={this.props.match.params.profileId}/>
                 <ul>
                     {videos}
                 </ul>

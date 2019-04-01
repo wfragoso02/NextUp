@@ -3,7 +3,7 @@ import React from 'react';
 const VideoItem = ({video}) => {
     return(
         <div>
-            {video.title}
+            <img src={video.image_url} />
         </div>
     )
 }

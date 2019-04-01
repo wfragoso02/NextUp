@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :profiles, only: %i(create new update edit index show destroy)
       resources :genres, only: %i(index show)
       resources :videos, only: %i(show)
+      resources :lists, only: %i(index)
     end
   end
 end
