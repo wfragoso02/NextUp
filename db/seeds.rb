@@ -16,9 +16,9 @@ User.create!({email: 'faker@gmail.com', password: 'password'})
 Profile.create!({name: 'Marcus', user_id: User.all.last.id, image_url: '/assets/marcus.png'})
 Profile.create!({name: 'Nicolas', user_id: User.all.last.id ,image_url: '/assets/nicolas.png'})
 marvel = Video.create!({title: 'Avengers End Game', year: 2019, rating: 'PG-13', description: 'Greatest Film of All time'})
-marvel.image.attach(io: File.open('https://s3.amazonaws.com/nextup-dev/TWYesiCoEr3M17EjDrH1hFGN'), filename: 'avengers.jpg')
+marvel.image.attach(io: File.open('app/assets/images/avenger_end_game.jpg'), filename: 'avengers.jpg')
 dc = Video.create!({title: 'Justice League', year: 2018, rating: 'PG-13', description: 'Sucky Film'})
-dc.image.attach(io: File.open('https://s3.amazonaws.com/nextup-dev/TWYesiCoEr3M17EjDrH1hFGN'), filename: 'dc.jpg')
+dc.image.attach(io: File.open('app/assets/images/justice_league.jpg'), filename: 'dc.jpg')
 
 ('A'..'z').to_a.each do |alpha|
     alpha = Genre.create!({name: alpha})
