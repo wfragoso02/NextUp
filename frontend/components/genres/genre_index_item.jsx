@@ -11,25 +11,27 @@ const GenreIndexItem = ({genre, profile}) => {
                 <li key={video.id} className="inner-row">
                     <VideoIndexItem video={video} />
                 </li>
-                <li className="inner-row">
-                    <Link to={`/${video.title}`}><img className="genre-video-index" src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81d663ad0fbad6055b8b84f70cc5ed8d292a768a/avengers.jpg" /></Link>
+                {/* <li className="inner-row">
+                    <Link to={`/${video.title}`}><img className="tile__img" src="https://s3.amazonaws.com/nextup-dev/39RPCNMUmQcfUDYg92WsV1gN" /></Link>
                 </li >
                 <li className="inner-row">
-                    <Link to={`/${video.title}`}><img className="genre-video-index" src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81d663ad0fbad6055b8b84f70cc5ed8d292a768a/avengers.jpg" /></Link>
+                    <Link to={`/${video.title}`}><img className="tile__img" src="https://s3.amazonaws.com/nextup-dev/39RPCNMUmQcfUDYg92WsV1gN" /></Link>
                 </li>
                 <li className="inner-row">
-                    <Link to={`/${video.title}`}><img className="genre-video-index" src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81d663ad0fbad6055b8b84f70cc5ed8d292a768a/avengers.jpg" /></Link>
-                </li> 
+                    <Link to={`/${video.title}`}><img className="tile__img" src="https://s3.amazonaws.com/nextup-dev/39RPCNMUmQcfUDYg92WsV1gN" /></Link>
+                </li>  */}
             </>
         )
     })
     return(
-        <div className="genreItems">
+        <>
+        <div className="genreItems" >
             <h2 className="genre-index-links"><Link className="genres-index" genre={genre} to={`/${profile.id}/genre/${genre.id}`}>{genre.name}</Link></h2>
-            <ul className="video-container" >
+            <ul className="row" >
                 {videos}
             </ul>
         </div>
+        </>
     )
 }
 

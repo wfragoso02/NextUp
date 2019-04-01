@@ -18,7 +18,6 @@ class GenreShow extends React.Component{
                 <VideoItem  video={video} key={video.id}/>
             )
         })
-        debugger
         return(
             <div>
                 <NavContainer profile={this.props.match.params.profileId}/>
