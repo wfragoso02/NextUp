@@ -26,7 +26,10 @@ class GenreIndex extends React.Component{
             <div className="genre-index-container">
                 <Nav profile={this.props.profile}/>
                 <div className="home" >
-                    <img className="home-trailer" src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81d663ad0fbad6055b8b84f70cc5ed8d292a768a/avengers.jpg" />
+                    <video  controls={true} className="home-trailer" >
+                        <source src="https://www.youtube.com/watch?v=TcMBFSGVi1c&t=25s" type="video/mp4" />
+                    </video>
+                    {/* <img src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81d663ad0fbad6055b8b84f70cc5ed8d292a768a/avengers.jpg" /> */}
                 </div>
                 <ul className="genre-index">
                     {genres}

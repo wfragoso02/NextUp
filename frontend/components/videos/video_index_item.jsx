@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 const videoIndexItem = ({video}) => {
     return(
-        <div >
+        <div className="videoIndexItem">
             <Link to={`/${video.title}`}><img className="genre-video-index" src={video.image_url} /></Link>
         </div>
     )
