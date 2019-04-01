@@ -7,9 +7,20 @@ const GenreIndexItem = ({genre, profile}) => {
     
     const videos = Object.values(genre.videos).map(video => {
         return(
-            <li key={video.id} >
-                <VideoIndexItem video={video} />
-            </li>
+            <>
+                <li key={video.id} className="inner-row">
+                    <VideoIndexItem video={video} />
+                </li>
+                <li className="inner-row">
+                    <Link to={`/${video.title}`}><img className="genre-video-index" src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81d663ad0fbad6055b8b84f70cc5ed8d292a768a/avengers.jpg" /></Link>
+                </li >
+                <li className="inner-row">
+                    <Link to={`/${video.title}`}><img className="genre-video-index" src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81d663ad0fbad6055b8b84f70cc5ed8d292a768a/avengers.jpg" /></Link>
+                </li>
+                <li className="inner-row">
+                    <Link to={`/${video.title}`}><img className="genre-video-index" src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81d663ad0fbad6055b8b84f70cc5ed8d292a768a/avengers.jpg" /></Link>
+                </li> 
+            </>
         )
     })
     return(
