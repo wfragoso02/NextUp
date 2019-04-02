@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
+  
   //testing
   // window.fetchProfiles = ProfileApiUtil.fetchProfiles;
   window.fetchVideo = VideoApuUtil.fetchVideo;

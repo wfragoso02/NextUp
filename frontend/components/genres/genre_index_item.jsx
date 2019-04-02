@@ -7,20 +7,9 @@ const GenreIndexItem = ({genre, profile}) => {
     
     const videos = Object.values(genre.videos).map(video => {
         return(
-            <>
-                <li key={video.id} className="inner-row">
-                    <VideoIndexItem video={video} />
-                </li>
-                {/* <li className="inner-row">
-                    <Link to={`/${video.title}`}><img className="tile__img" src="https://s3.amazonaws.com/nextup-dev/39RPCNMUmQcfUDYg92WsV1gN" /></Link>
-                </li >
-                <li className="inner-row">
-                    <Link to={`/${video.title}`}><img className="tile__img" src="https://s3.amazonaws.com/nextup-dev/39RPCNMUmQcfUDYg92WsV1gN" /></Link>
-                </li>
-                <li className="inner-row">
-                    <Link to={`/${video.title}`}><img className="tile__img" src="https://s3.amazonaws.com/nextup-dev/39RPCNMUmQcfUDYg92WsV1gN" /></Link>
-                </li>  */}
-            </>
+            <li key={Math.floor(Math.random()*1000000)} className="inner-row">
+                <VideoIndexItem video={video} />
+            </li>
         )
     })
     return(
