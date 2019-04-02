@@ -1,0 +1,234 @@
+.video-player{
+    width: 100%;
+    
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.player{
+    object-fit: cover;
+    height: 100vh;
+    width: 100vw;
+}
+.volume-button{
+    position: absolute;
+    bottom: 4vh;
+    background: transparent;
+    border: 1px solid transparent;
+    font-size: 2.5vw;
+    color: white;
+    left: 18%;
+    font-weight: 700;
+}
+.volume-button:hover{
+    transform: scale(1.2);
+    transition:0.3s all ease;
+}
+.volume-button:hover .volume-bar{
+    display: block;
+    transition:0.3s all ease;
+}
+
+.parsed-button{
+    position: absolute;
+    bottom: 4vh;
+    background: transparent;
+    border: 1px solid transparent;
+    font-size: 2.5vw;
+    color: white;
+    left: 1%;
+    font-weight: 700;
+}
+.parsed-button:hover{
+    transform: 1.5;
+    transition:0.3s all ease;
+    font-size: 3vw;
+
+}
+.rewind-button{
+    position: absolute;
+    left: 7%;
+    bottom: 4vh;
+    background: transparent;
+    border: 1px solid transparent;
+    font-size: 1.5vw;
+    color: white;
+    font-weight: 700;
+}
+.rewind-button:hover{
+    transform: scale(1.2);
+    transition:0.3s all ease;
+}
+.video-info{
+    position: absolute;
+    left: 24.5%;
+    bottom: 4.3vh;
+    background: transparent;
+    border: 1px solid transparent;
+    color: white;
+    font-weight: 700;
+    font-size: 2vw;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.forward-button{
+    position: absolute;
+    left: 12%;
+    bottom: 4vh;
+    background: transparent;
+    border: 1px solid transparent;
+    color: white;
+    font-weight: 700;
+    font-size: 1.5vw;
+
+}
+.forward-button:hover{
+    transform: scale(1.2);
+    transition:0.3s all ease;
+}
+.volume-bar{
+    position: absolute;
+    left: 19%;
+    bottom: 4.5vh;
+    background: grey;
+    border: 1px solid transparent;
+    color: white;
+    font-weight: 700;
+    font-size: 1vw; 
+    height: 2px;
+    display: none;
+    -webkit-appearance: none;
+    outline: none;
+    z-index: 10000;
+}
+.view-bar{
+    position: absolute;
+    // left: 19%;
+    width: 90%;
+    bottom: 13vh;
+    background: grey;
+    border: 1px solid transparent;
+    color: white;
+    font-weight: 700;
+    font-size: 1vw; 
+    height: 2px;
+    -webkit-appearance: none;
+    outline: none;
+    left: 1%;
+}
+// .volume-bar:hover{
+//     opacity: 1;
+// }
+// .volume-bar{
+//         position: absolute;
+//         display: none;
+//         -webkit-appearance: none;  /* Override default CSS styles */
+//         appearance: none;
+//         width: 100%; /* Full-width */
+//         height: 25px; /* Specified height */
+//         background: #d3d3d3; /* Grey background */
+//         outline: none; /* Remove outline */
+//         opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+//         -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+//         transition: opacity .2s;
+// }
+// .volume-bar:hover{
+//     display: block;
+// }
+// .volume-bar::-webkit-slider-thumb {
+//     -webkit-appearance: none; /* Override default look */
+//     appearance: none;
+//     width: 25px; /* Set a specific slider handle width */
+//     height: 25px; /* Slider handle height */
+//     background: #4CAF50; /* Green background */
+//     cursor: pointer; /* Cursor on hover */
+//   }
+.toggle-full{
+    position: absolute;
+    bottom: 4vh;
+    background: transparent;
+    border: 1px solid transparent;
+    font-size: 2.5vw;
+    color: white;
+    right: 1%;
+    font-weight: 700;
+}
+.toggle-full:hover{
+    transform: scale(1.2);
+    transition:0.3s all ease;
+}
+.movie-duration{
+    position: absolute;
+    bottom: 12vh;
+    background: transparent;
+    border: 1px solid transparent;
+    font-size: 1.5vw;
+    font-weight: 100;
+    color: white;
+    right: 1%;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input[type=range][orient=vertical]{
+    writing-mode: bt-lr; 
+    -webkit-appearance: slider-vertical; 
+    width: 8px;
+    height: 10vh;
+    padding: 0 5px;
+}
+
+.fa-undo{
+    font-size: 2.5vw;
+}
+.fa-redo{
+    font-size: 2.5vw;
+}
+.controls{
+    display: flex;
+    z-index: 100;
+    position: relative;
+
+}
+.back{
+    position: absolute;
+    background: transparent;
+    color: white;
+    height: 10vh;
+    width: 20vw;
+    display: flex;
+    flex-direction: row;
+}
+.fa-arrow-left{
+    position: absolute;
+    font-size: 200%;
+    color: white;
+    font-weight: 100;
+    top: 45%;
+    
+    left: 23%;
+   z-index: 10000;
+}
+.back:hover .fa-arrow-left{
+    transform: scale(1.2);
+    transition: 0.3s all ease;
+}
+.back:hover .back-text{
+    display: block;
+}
+.back-text{
+    display: none;
+    white-space: nowrap;
+    font-size: 35%;
+    position: absolute;
+    top: 40%;
+    left: 120%;
+    
+}
+.forward-button{
+    position: absolute;
+    bottom: 2%;
+}
+.rewind-button{
+    position: absolute;
+    bottom: 2%;
+}
