@@ -230,6 +230,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  aws-sdk-core
   aws-sdk-s3
   bcrypt
   better_errors
