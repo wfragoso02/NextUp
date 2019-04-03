@@ -65,7 +65,6 @@ class Video extends React.Component {
         };
     }
     changeSeek(e){
-        debugger
         const time = this.refs.player.duration * (e.target.value / 100);
         this.refs.player.currentTime = time;
         this.setState({seek: time});
@@ -120,7 +119,7 @@ class Video extends React.Component {
 
         return (
             <div >
-                <Link to="/home" className="back"><i className="fas fa-arrow-left" ><h6 className="back-text">Back to Browser</h6></i></Link>
+                <Link to={`/${this.props.profile.id}`} className="back"><i className="fas fa-arrow-left" ><h6 className="back-text">Back to Browser</h6></i></Link>
                 <div className="video-player">
                     <video ref="player" className="player" src={this.state.video.video_url} poster={this.state.video.image_url} preload="meta"></video>
                     <button onClick={this.handleVideo} className="parsed-button" >{this.state.content}

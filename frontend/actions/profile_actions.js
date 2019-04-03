@@ -9,10 +9,10 @@ const receiveProfiles = (profiles) => {
         profiles
     };
 };
-const receiveProfile = (profile) => {
+const receiveProfile = (payload) => {
     return{
         type: RECEIVE_PROFILE,
-        profile
+        payload
     }
 }
 
@@ -21,5 +21,5 @@ export const fetchProfiles = () => dispatch => (
 );
 
 export const fetchProfile = (id) => dispatch => (
-    ProfileApiUtil.fetchProfile(id).then(profile => dispatch(receiveProfile(profile)))
+    ProfileApiUtil.fetchProfile(id).then(payload => dispatch(receiveProfile(payload)))
 )

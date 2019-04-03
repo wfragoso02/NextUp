@@ -10,20 +10,26 @@ User.destroy_all
 Profile.destroy_all
 Genre.destroy_all
 Video.destroy_all
+List.destroy_all
+ListItem.destroy_all
 
 
 User.create!({email: 'faker@gmail.com', password: 'password'})
-Profile.create!({name: 'Marcus', user_id: User.all.last.id, image_url: '/assets/marcus.png'})
-Profile.create!({name: 'Nicolas', user_id: User.all.last.id ,image_url: '/assets/nicolas.png'})
+marcus = Profile.create!({name: 'Marcus', user_id: User.all.last.id, image_url: '/assets/marcus.png'})
+nicolas = Profile.create!({name: 'Nicolas', user_id: User.all.last.id ,image_url: '/assets/nicolas.png'})
 marvel = Video.create!({title: 'Avengers End Game', year: 2019, rating: 'PG-13', description: 'Greatest Film of All time'})
 marvel.image.attach(io: File.open('app/assets/images/avenger_end_game.jpg'), filename: 'avengers.jpg')
 marvel.movie.attach(io: File.open('Marvel Studios Avengers Endgame - Official Trailer.mp4'), filename: 'avengers-trailer.mp4')
 dc = Video.create!({title: 'Justice League', year: 2018, rating: 'PG-13', description: 'Sucky Film'})
 dc.image.attach(io: File.open('app/assets/images/justice_league.jpg'), filename: 'dc.jpg')
-dc.movie.attach(io: File.open('Marvel Studios Avengers Endgame - Official Trailer.mp4'), filename: 'dc-trailer.mp4')
+dc.movie.attach(io: File.open('JUSTICE LEAGUE - Official Heroes Trailer copy.mp4'), filename: 'dc-trailer.mp4')
 
 ['Action','Movies','superHero','Ultimate Movies'].to_a.each do |alpha|
     alpha = Genre.create!({name: alpha})
     Category.create!(genre_id: alpha.id, video_id: marvel.id)
     Category.create!(genre_id: alpha.id, video_id: dc.id)
 end
+marcusList = List.create!({profile: marcus})
+nicolasList = List.create!({profile: nicolas})
+ListItem.create({list: marcusList, video: marvel })
+ListItem.create({list: nicolasList, video: dc })

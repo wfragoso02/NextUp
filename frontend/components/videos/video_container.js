@@ -6,6 +6,7 @@ import Video from './video';
 const msp = (state, ownProps )=> {
     const video = state.entities.videos[ownProps.match.params.videoId] || { title: "", video_url: ""};
     return{
+        profile: state.session.profile,
         video,
     };
 };

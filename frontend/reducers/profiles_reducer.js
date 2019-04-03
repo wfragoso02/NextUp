@@ -8,7 +8,7 @@ const profileReducer = (state ={}, action) => {
         case RECEIVE_ALL_PROFILES:
             return action.profiles;
         case RECEIVE_PROFILE:
-            return merge({}, state, {[action.profile.id]: action.profile});
+            return merge({}, state, {[action.payload.profile.id]: action.payload.profile});
         default:
             return state;
     }
