@@ -5,11 +5,11 @@ import { fetchProfile } from '../../actions/profile_actions';
 import { fetchList } from '../../actions/list_actions';
 
 const msp = (state, ownProps) => {
-
+    debugger
     return{
         genres: Object.values(state.entities.genres),
         profile: state.entities.profiles[ownProps.match.params.profileId] || {},
-        list: state.entities.list || {}
+        list: state.entities.list
     };
 };
 

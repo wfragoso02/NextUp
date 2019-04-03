@@ -8,7 +8,7 @@ const listReducer = (state={}, action) => {
     let newState;
     switch(action.type){
         case RECEIVE_PROFILE:
-            return merge({}, state, {[action.payload.list.id]: action.payload.list})
+            return merge({}, {[action.payload.list.id]: action.payload.list});
         default:
             return state;
     }

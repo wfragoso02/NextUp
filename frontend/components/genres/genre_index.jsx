@@ -2,6 +2,7 @@ import React from 'react';
 import GenreIndexItem from './genre_index_item';
 import Nav from '../nav/nav_cotainer';
 import VideoIndexItem from '../videos/video_index_item';
+import {Link} from 'react-router-dom';
 
 
 class GenreIndex extends React.Component{
@@ -38,20 +39,21 @@ class GenreIndex extends React.Component{
                 <h1>No Video Here</h1>
             )
         }
+        debugger
 
-        // let listVideos;
-        // if (!this.props.profile.myList){
-        //     return null
-        // }else{
-        //     listVideos = this.props.profile.myList.videos.map(video => {
-        //         return (
-        //             <li key={Math.floor(Math.random() * 1000000)}>
-        //                 <VideoIndexItem video={video} />
-        //             </li>
-        //         )
-        //     })
-        // }
-     
+        let listVideos;
+        if (Object.values(this.props.list).length === 0){
+            return null;
+        }else{
+            debugger
+            listVideos = Object.values(this.props.list)[0].videos.map(video => {
+                return (
+                    <li key={Math.floor(Math.random() * 1000000)}>
+                        <VideoIndexItem video={video} />
+                    </li>
+                )
+            })
+        }
         return(
             <div className="genre-index-container">
                 <Nav profile={this.props.profile} />
@@ -59,9 +61,9 @@ class GenreIndex extends React.Component{
                     {mainVideo}
                 </div>
                 <div className="my-list-items">
-                    <h1>My List</h1>
+                    <Link to={`/myList/${this.props.list.id}`}>My List</Link>
                     <ul>
-                        {/* {listVideos} */}
+                        {listVideos}
                     </ul>
                 </div>
                 <ul className="genre-index">

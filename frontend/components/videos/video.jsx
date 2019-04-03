@@ -35,11 +35,10 @@ class Video extends React.Component {
             this.props.fetchVideo(this.props.match.params.videoId);
 
         }
-
-                
-       
     }
-   
+    componentWillUnmount(){
+        clearInterval(this.handle);
+    }
     handleVideo(){
         if (this.state.content === "►"){
             this.refs.player.play();
@@ -95,20 +94,21 @@ class Video extends React.Component {
         }
     }
     checkSeek(){
+        debugger
         const time = this.refs.player.currentTime;
         if (this.state.seek !== time){
             this.setState({seek: time});
         }
     }
 
-    // setInterval(() => {
-    //     this.checkSeek;
-    // }, 1000);
 
 
     render() {
         if (!this.state.video.video_url) {
             return null;
+        }
+        if (this.ref){
+            this.hanlde = setInterval((this.checkSeek), 1000);
         }
         let volumes;
         if (this.state.volume === 0) {
@@ -134,7 +134,7 @@ class Video extends React.Component {
                     <button onClick={this.setMuted} className="volume-button">{volumes}
                     <input type="range" orient="vertical" min="0" max="1" step="0.00000000000000000000000000001"value={this.state.volume} className="volume-bar" onChange={this.changeVolume}/></button>
                     </div>
-                    <input type="range" min="0" max="100" step="0.00000000000000001" value={this.state.seek} className="view-bar" onChange={this.changeSeek}/>
+                    <input type="range" min="0" max="100" step="1" value={this.state.seek} className="view-bar" onChange={this.changechanSeek}/>
                     <h1 className="video-info">{this.state.video.title}</h1>
                     <h6 className="movie-duration">{this.state.seek}</h6>
                 </div>
