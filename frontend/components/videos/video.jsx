@@ -94,7 +94,6 @@ class Video extends React.Component {
         }
     }
     checkSeek(){
-        debugger
         const time = this.refs.player.currentTime;
         if (this.state.seek !== time){
             this.setState({seek: time});
