@@ -3,12 +3,12 @@ import {Link} from 'react-router-dom';
 import VideoIndexItem from '../videos/video_index_item';
 
 
-const GenreIndexItem = ({genre, profile}) => {
+const GenreIndexItem = ({genre, profile, deleteListItem, list, createListItem}) => {
     
     const videos = Object.values(genre.videos).map(video => {
         return(
             <li key={Math.floor(Math.random()*1000000)} className="inner-row">
-                <VideoIndexItem video={video} />
+                <VideoIndexItem deleteListItem={deleteListItem}  list={list}createListItem={createListItem} video={video} />
             </li>
         )
     })

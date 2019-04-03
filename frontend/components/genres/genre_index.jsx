@@ -11,23 +11,27 @@ class GenreIndex extends React.Component{
         this.props.fecthProfile(this.props.match.params.profileId);
         this.props.fetchGenres();
     }
-    // componentDidUpdate(prevProps){
-    //     if (this.props.match.params.profileId !== prevProps.profile.id ){
-    //         if(this.props.profile.myList.id !== prevProps.profile.myList.id){
-    //             this.fetchList(this.props.profile.myList.id);
-    //         }
-    //     }
-    // }
+    componentDidUpdate(prevProps){
+        if (prevProps.profile.id !== this.props.profile.id){
+            this.props.fecthProfile(this.props.match.params.profileId);
+        }
+
+        if (prevProps.list.video_ids && this.props.list.video_ids.length !== prevProps.list.video_ids.length){
+            this.props.fetchList();
+        }
+        
+    }
 
     render(){
         const genres = this.props.genres.map((genre, idx) => {
             return (
                 <li key={idx} className="genre-container">
-                    <GenreIndexItem  profile={this.props.profile} genre={genre} />
+                    <GenreIndexItem  deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} profile={this.props.profile} genre={genre} />
                 </li>
             )
         });
         let mainVideo;
+        // if (this.list.)
         if (this.props.genres[0]){
             mainVideo = (
                 <video  autoPlay={false} className="home-trailer" >
@@ -39,17 +43,14 @@ class GenreIndex extends React.Component{
                 <h1>No Video Here</h1>
             )
         }
-        debugger
-
         let listVideos;
-        if (Object.values(this.props.list).length === 0){
+        if (!this.props.list.videos){
             return null;
         }else{
-            debugger
-            listVideos = Object.values(this.props.list)[0].videos.map(video => {
+            listVideos = this.props.list.videos.map(video => {
                 return (
                     <li key={Math.floor(Math.random() * 1000000)}>
-                        <VideoIndexItem video={video} />
+                        <VideoIndexItem deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} video={video} />
                     </li>
                 )
             })
