@@ -23,4 +23,6 @@ class Video < ApplicationRecord
     has_many :genres,
         through: :categories,
         source: :genre
+
+    has_many :list_items
 end

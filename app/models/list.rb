@@ -11,4 +11,8 @@
 class List < ApplicationRecord
     belongs_to :profile
     has_many :list_items
+
+    has_many :videos,
+        through: :list_items,
+        source: :video
 end
