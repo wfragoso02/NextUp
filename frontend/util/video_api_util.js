@@ -4,3 +4,11 @@ export const fetchVideo = (id) => (
         url: `api/videos/${id}`
     })
 );
+
+export const fetchVideos = (filter) => (
+    $.ajax({
+        method: "GET",
+        url: `api/videos`,
+        data: filter
+    })
+);

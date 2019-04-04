@@ -3,9 +3,16 @@ import GenreIndexItem from './genre_index_item';
 import Nav from '../nav/nav_cotainer';
 import VideoIndexItem from '../videos/video_index_item';
 import {Link} from 'react-router-dom';
+import Footer from '../footer';
 
 
 class GenreIndex extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            volume: "1"
+        };
+    }
 
     componentDidMount(){
         this.props.fecthProfile(this.props.match.params.profileId);
@@ -21,36 +28,82 @@ class GenreIndex extends React.Component{
         }
         
     }
+    setMuted(){
+
+        if (this.refs.player.muted) {
+            this.refs.player.muted = false;
+            this.setState({ volume: 1 });
+        } else {
+            this.refs.player.muted = true;
+            this.setState({ volume: 0 });
+        }
+    }
 
     render(){
         const genres = this.props.genres.map((genre, idx) => {
             return (
-                <li key={idx} className="genre-container">
-                    <GenreIndexItem  deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} profile={this.props.profile} genre={genre} />
-                </li>
+                <>
+                    <GenreIndexItem  key={idx} profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} profile={this.props.profile} genre={genre} />
+                </>
             )
         });
+        let defaultButton = "";
+        if (!this.props.list.video_ids || !this.props.genres[0]){
+            return null;
+        }
+        if (this.props.list.video_ids.includes(Object.values(this.props.genres[0].videos)[0].id)) {
+            defaultButton = (<button onClick={() => this.props.deleteListItem(Object.values(this.props.genres[0].videos)[0].id)} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
+        } else {
+            defaultButton = (<button onClick={() => this.props.createListItem({ video_id: Object.values(this.props.genres[0].videos)[0].id, list_id: this.props.list.id })} className="front-page-button"><h3 className="fa-plus-text"><i className="fas fa-plus"></i>My List</h3></button>)
+        }
+        // if(this.refs.player){
+        //     $(window).scroll(function() {
+        //         $('video').each(function() {
+        //             debugger
+        //             if ($(this).visible(true)) {
+        //                 $(this)[0].play();
+        //             } else {
+        //                 $(this)[0].pause();
+        //             }
+        //         })
+        //     });
+        // }
+        let volumes;
+        if (this.state.volume === 0) {
+            volumes = <i className="fas fa-volume-mute fa-xs"></i>
+        } else {
+            volumes = <i className="fas fa-volume-up fa-xs"></i>
+        }
         let mainVideo;
-        // if (this.list.)
         if (this.props.genres[0]){
+            
             mainVideo = (
-                <video  autoPlay={false} className="home-trailer" >
+                <>
+                <video  ref='player' className="home-trailer" >
                     <source src={Object.values(this.props.genres[0].videos)[0].video_url} />
                 </video>
+                <Link to={`/${this.props.profile.id}/videos/${Object.values(this.props.genres[0].videos)[0].id}`} className="play-button"><h3>► Play</h3></Link>
+                {defaultButton}
+                <button onClick={this.setMuted} className="home-page-volume-button">{volumes}</button>
+                <h1 className="main-video-title">{Object.values(this.props.genres[0].videos)[0].title}</h1>
+                </>
             )
+            
         }else{
             mainVideo = (
                 <h1>No Video Here</h1>
             )
         }
+        
+        
         let listVideos;
         if (!this.props.list.videos){
             return null;
         }else{
             listVideos = this.props.list.videos.map(video => {
                 return (
-                    <li key={Math.floor(Math.random() * 1000000)}>
-                        <VideoIndexItem deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} video={video} />
+                    <li key={Math.floor(Math.random() * 1000000)} className="vid">
+                        <VideoIndexItem profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} video={video} className="actual-video" />
                     </li>
                 )
             })
@@ -62,14 +115,15 @@ class GenreIndex extends React.Component{
                     {mainVideo}
                 </div>
                 <div className="my-list-items">
-                    <Link to={`/myList/${this.props.list.id}`}>My List</Link>
-                    <ul>
+                    <Link to={`/myList/${this.props.list.id}`} className="content">My List</Link>
+                    <ul className="row">
                         {listVideos}
                     </ul>
                 </div>
                 <ul className="genre-index">
                     {genres}
                 </ul>
+                <Footer />
             </div>
         )
     }

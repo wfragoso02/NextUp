@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resource :session, only: %i(create destroy)
       resources :profiles, only: %i(create new update edit index show destroy)
       resources :genres, only: %i(index show)
-      resources :videos, only: %i(show)
+      resources :videos, only: %i(show index)
       resources :lists, only: %i(index show)
       resources :list_items, only: %i(create destroy)
     end
