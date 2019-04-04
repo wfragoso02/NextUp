@@ -10,11 +10,11 @@ class Video extends React.Component {
             video: this.props.video,
             content: "►",
             volume: "1",
-            seek: "0"
+            seek: "0",
+            time: '0'
             
         };
-        // this.play = this.play.bind(this);
-        // this.pause = this.pause.bind(this);
+
         this.load = this.load.bind(this);
         this.changeCurrentTime = this.changeCurrentTime.bind(this);
         this.seek = this.seek.bind(this);
@@ -22,19 +22,33 @@ class Video extends React.Component {
         this.setMuted = this.setMuted.bind(this);
         this.handleVideo = this.handleVideo.bind(this);
         this.changeSeek = this.changeSeek.bind(this);
+        this.checkSeek = this.checkSeek.bind(this);
     }
     componentDidMount() {
         this.mounted = true;
         this.props.fetchVideo(this.props.match.params.videoId).then(({ video }) => {
             this.setState({ video: video });
         });
-        
+        debugger
+        this.props.fetchProfile(this.props.match.params.profileId);
+
+        this.handle = setInterval(this.checkSeek, 500);
+
     }
     componentDidUpdate(prevProps) {
         if (this.props.match.params.videoId !== prevProps.match.params.videoId) {
             this.props.fetchVideo(this.props.match.params.videoId);
-
         }
+        debugger
+        if (this.props.match.params.profileId !== prevProps.match.params.profileId) {
+            this.props.fetchProfile(this.props.match.params.profileId);
+            
+        }
+
+        
+
+        // debugger
+
     }
     componentWillUnmount(){
         clearInterval(this.handle);
@@ -63,10 +77,12 @@ class Video extends React.Component {
             this.refs.player.seek(seconds);
         };
     }
-    changeSeek(e){
-        const time = this.refs.player.duration * (e.target.value / 100);
-        this.refs.player.currentTime = time;
-        this.setState({seek: time});
+    changeSeek(max){
+        return(e) => {
+            const time = this.refs.player.duration * (e.target.value / max);
+            this.refs.player.currentTime = time;
+            this.setState({seek: time});
+        }
     }
     changeVolume(e) {
         this.refs.player.volume = e.target.value;
@@ -82,6 +98,22 @@ class Video extends React.Component {
                 }
         };
     }
+    secondsToString(seconds){
+    let numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
+    let numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+    let numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+    if(numhours < 10){
+        numhours = '0' + numhours;
+    }
+    if(numminutes < 10){
+        numminutes = '0' + numminutes;
+    }
+    if(numseconds < 10){
+        numseconds = '0' + numseconds;
+    }
+    return  numhours + ":" + numminutes + ":" + numseconds;
+    
+    }
 
     setMuted(){
 
@@ -94,10 +126,9 @@ class Video extends React.Component {
         }
     }
     checkSeek(){
-        const time = this.refs.player.currentTime;
-        if (this.state.seek !== time){
-            this.setState({seek: time});
-        }
+        debugger
+        this.setState({seek: this.refs.player.currentTime});
+        this.setState({time: this.secondsToString(Math.floor(this.refs.player.duration - this.refs.player.currentTime))});
     }
 
 
@@ -106,15 +137,21 @@ class Video extends React.Component {
         if (!this.state.video.video_url) {
             return null;
         }
-        if (this.ref){
-            this.hanlde = setInterval((this.checkSeek), 1000);
-        }
+        
         let volumes;
         if (this.state.volume === 0) {
             volumes = <i className="fas fa-volume-mute"></i>
         } else {
             volumes = <i className="fas fa-volume-up"></i>
         }
+        let max;
+        if(this.refs.player){
+            max = Math.floor(this.refs.player.duration)
+        }else{
+            max = 0;
+        }
+        
+        debugger 
 
         return (
             <div >
@@ -131,11 +168,11 @@ class Video extends React.Component {
                     </button>
                     <div className="volume-controls">
                     <button onClick={this.setMuted} className="volume-button">{volumes}
-                    <input type="range" orient="vertical" min="0" max="1" step="0.00000000000000000000000000001"value={this.state.volume} className="volume-bar" onChange={this.changeVolume}/></button>
+                    <input type="range" orient="vertical" min="0" max="1" step="0.00000000000000000000000000001" value={this.state.volume} className="volume-bar" onChange={this.changeVolume}/></button>
                     </div>
-                    <input type="range" min="0" max="100" step="1" value={this.state.seek} className="view-bar" onChange={this.changechanSeek}/>
+                    <input type="range" min="0" max={max} step="1" value={this.state.seek} className="view-bar" onChange={this.changeSeek(max)}/>
                     <h1 className="video-info">{this.state.video.title}</h1>
-                    <h6 className="movie-duration">{this.state.seek}</h6>
+                    <h6 className="movie-duration">{this.state.time}</h6>
                 </div>
             </div>
         )

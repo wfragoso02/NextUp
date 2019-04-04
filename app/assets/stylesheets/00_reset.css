@@ -8,6 +8,7 @@ header, nav, section, ul, ol, li {
   font: inherit;
   text-decoration: none;
   color: white;
+  list-style: none;
 }
 
 html {
