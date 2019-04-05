@@ -59,7 +59,6 @@ class GenreIndex extends React.Component{
         // if(this.refs.player){
         //     $(window).scroll(function() {
         //         $('video').each(function() {
-        //             debugger
         //             if ($(this).visible(true)) {
         //                 $(this)[0].play();
         //             } else {
@@ -116,7 +115,8 @@ class GenreIndex extends React.Component{
                     {mainVideo}
                 </div>
                 <div className="my-list-items">
-                    <Link to={`/myList/${this.props.list.id}`} className="content">My List</Link>
+                    {/* <Link to={`/myList/${this.props.list.id}`} className="content">My List</Link> */}
+                    <h1  className="content">My List</h1>
                     <ul className="row">
                         {listVideos}
                     </ul>

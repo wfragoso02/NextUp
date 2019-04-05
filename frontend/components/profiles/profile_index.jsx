@@ -10,6 +10,7 @@ class profileIndex extends React.Component{
         const profiles = this.props.profiles.map((profile, idx) => {
             return <ProfileIndexItem key={idx} profile={profile} className="profile-item"/>
         });
+        
         let link;
         if (this.props.profiles[0]){
             link = <Link to={`/${this.props.profiles[0].id}`} profile={this.props.profiles[0]}><img src={window.logo} className="logo2"/></Link>
