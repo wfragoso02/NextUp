@@ -86,6 +86,7 @@ class GenreIndex extends React.Component{
                 {defaultButton}
                 <button onClick={this.setMuted} className="home-page-volume-button">{volumes}</button>
                 <h1 className="main-video-title">{Object.values(this.props.genres[0].videos)[0].title}</h1>
+                <h1 className="main-video-rating">{Object.values(this.props.genres[0].videos)[0].rating}</h1>
                 </>
             )
             

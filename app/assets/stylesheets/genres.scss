@@ -187,11 +187,37 @@ color: black;
   
 .home-page-volume-button{
   position: absolute;
-    top: 43.5%;
-    right: 4%;
+    top: 8.4vw;
+    right:9.5vw;
     color: white;
-  
+    background: rgba(0, 0, 0, 0.671);
+    border: 2px solid grey;
+    border-radius: 50%;
+    font-size: 1.5vw;
 }
+
+.home-page-volume-button:hover{
+  transform: scale(1.2);
+  border-color: white;
+  transition: 0.3s ease-in-out;
+}
+.main-video-rating{
+  position: absolute;
+    top: 8vw;
+    right: 0%;
+    color: white;
+    background: rgba(0,0,0,.4);
+    border-left: 5px solid white;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.4vw;
+    font-weight: 400;
+    padding-left: 0.85vw;
+    padding-right: 3.3vw;
+    padding-top: 0.9vh;
+    padding-bottom: 0.9vh;
+
+}
+
 // .tile{
 // position: relative;
 // display: inline-block;
