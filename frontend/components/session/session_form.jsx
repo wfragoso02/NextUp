@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Footer from '../footer';
+import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
 
 class SessionForm extends React.Component{
     constructor(props){
@@ -104,11 +106,24 @@ class SessionForm extends React.Component{
                                 <span className="checkmark">Remember me</span>
                                 
                             </label>
-                            <a className="sub-a"href="">Need help?</a>
+                                <a className="sub-a" href="">Need help?</a>
+                            </div>
                         </div>
-                    </div>
-                    <div className="fb-logo"> <img src={window.fb} alt=""/>    Login with Facebook</div>
-                    <div className="session-bottom">
+                        {/* <GoogleLogin
+                            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                            buttonText="Login"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            cookiePolicy={'single_host_origin'}
+                        />
+                        <FacebookLogin
+                            appId="358268101562524"
+                            autoLoad={true}
+                            fields="name,email,picture"
+                            onClick={componentClicked}
+                            callback={responseFacebook} /> */}
+                        <div className="fb-logo"> <img src={window.fb} alt="" />    Login with Facebook</div>
+                        <div className="session-bottom">
                         {this.props.formText()}
                     </div>
                 </div>

@@ -29,7 +29,6 @@ class Video extends React.Component {
         this.props.fetchVideo(this.props.match.params.videoId).then(({ video }) => {
             this.setState({ video: video });
         });
-        debugger
         this.props.fetchProfile(this.props.match.params.profileId);
 
         this.handle = setInterval(this.checkSeek, 500);
@@ -39,7 +38,6 @@ class Video extends React.Component {
         if (this.props.match.params.videoId !== prevProps.match.params.videoId) {
             this.props.fetchVideo(this.props.match.params.videoId);
         }
-        debugger
         if (this.props.match.params.profileId !== prevProps.match.params.profileId) {
             this.props.fetchProfile(this.props.match.params.profileId);
             
@@ -47,7 +45,6 @@ class Video extends React.Component {
 
         
 
-        // debugger
 
     }
     componentWillUnmount(){
@@ -126,7 +123,6 @@ class Video extends React.Component {
         }
     }
     checkSeek(){
-        debugger
         this.setState({seek: this.refs.player.currentTime});
         this.setState({time: this.secondsToString(Math.floor(this.refs.player.duration - this.refs.player.currentTime))});
     }
@@ -151,7 +147,6 @@ class Video extends React.Component {
             max = 0;
         }
         
-        debugger 
 
         return (
             <div >
