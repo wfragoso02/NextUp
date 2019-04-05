@@ -27,7 +27,8 @@ class profileIndex extends React.Component{
                             {profiles}
                         </div>
                     </ul>
-                    <Link className="manage-profiles" to="/manage-profiles" ><h2 >MANAGE PROFILES</h2></Link>
+                    {/* <Link className="manage-profiles" to="/manage-profiles" ><h2 >MANAGE PROFILES</h2></Link> */}
+                    <h1 className="manage-profiles" to="/manage-profiles" ><h2 >MANAGE PROFILES</h2></h1>
                 </div>
             </div>
         )
