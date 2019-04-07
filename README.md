@@ -12,9 +12,7 @@ NextUp is a functionaln single page app that streams popular trailers for Movies
 
 # Highlight Features
 ### Nextup has a custom video player that resembles Netflix. 
-* Netflix: 
-![alt text](https://github.com/wfragoso02/NextUp/blob/master/app/assets/images/Screen%20Shot%202019-04-05%20at%2011.55.09%20AM.png)
-* Nextup
+
 ![alt text](https://github.com/wfragoso02/NextUp/blob/master/app/assets/images/Screen%20Shot%202019-04-05%20at%2011.55.23%20AM.png)
 
 ### AWS
