@@ -66,7 +66,13 @@ class ManageProfiles extends React.Component{
         }else{
             newProfile = (
                 <li className="profile-item">
-                    <button className="manage-profile-link" onClick={this.showNewModal}><i className="fas fa-plus-circle add-new-profile"></i><p className="profile-name">Add Profile</p></button>
+                    <button className="manage-profile-link" onClick={this.showNewModal}>
+                        <div className="temp-manage">
+
+                        <i className="fas fa-plus-circle add-new-profile" styles={{display:"flex"}}></i>
+                        </div>
+                        <p className="profile-name">Add Profile</p>
+                    </button>
                     <NewProfileModal createProfile={this.props.createProfile} show={this.state.showNew} handleClose={this.hideNewModal} />
                 </li>
             )

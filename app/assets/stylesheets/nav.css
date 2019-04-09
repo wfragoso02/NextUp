@@ -9,11 +9,41 @@
   width: 100%;
   z-index: 10000;
   transition: 1s;
+  font-family: 'Rubik', sans-serif;
+  font-size: 0.75vw;
 
 }
 .scrolled{
   background-color: #141414;
   transition: 1s;
+}
+.index-profile{
+  display: flex;
+  flex-direction: row;
+  /* justify-content: baseline; */
+}
+.index-profile:hover{
+  cursor: pointer;
+}
+.fa-sort-down{
+  font-size: 1vw;
+}
+.fa-sort-up{
+  position: absolute;
+  top: -0.7vw;
+  right: 1vw;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1vw;
+  align-self: center;
+  display: none;
+}
+
+/* .index-profile:hover .fa-sort-up{
+  display: block;
+} */
+.fa-search{
+  font-size: 1vw;
 }
 
 .primary-nav{
@@ -50,22 +80,41 @@
   } 
   
    .dropdown-content {
-    display: none;
+    /* display: none; */
+    opacity: 0;
+    height: 0;
+    transition: 0.5s ease-out;
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.541);
+    background-color: rgba(0, 0, 0, 0.89);
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
+    /* padding: 0.75vw 1vw; */
     z-index: 1;
-    width: 50px;
+    width: 10vw;
+    right: 3vw; 
+    top: -33vw;
+    /* -webkit-transition: padding 2s; */
+    /* width: 20vw; */
   }
-  
+
   .nav-dropdown:hover .dropdown-content {
+    /* display: block; */
+    opacity: 1;
+    height: auto;
+    top: 3vw; 
+
+    /* transition: opacity 2.5s ease-in-out; */
+    /* transition: transform 2s;
+    transition-timing-function: easein--out;
+  transition-timing-function: cubic-bezier(0, 0, 0.58, 1); */
+  }
+  .nav-dropdown:hover .Rand{
     display: block;
   }
   .nav-pic{
-      display: flex;
-        width: 30%;
-      height: 30%; 
+       /* display: flex; */
+      width: 1.75vw; 
+      height: 1.75vw;
+      margin-right: 0.7vw;
   } 
    .nav-logo{
     height: 100%;
@@ -86,15 +135,47 @@
     display: flex;
     padding-left: 0px;
  } 
- .nav-profile-list{
+ .nav-col{
    display: flex;
-   justify-content: space-between;
+   flex-direction: column;
+   border-bottom: 1px solid grey;
+   padding: 0.60vw 0.5vw;
+ }
+ .nav-2-col{
+  padding: 0.75vw 0.25vw;
+ }
+ .nav-profile-list{
+   padding: 0.2vw 0;
+   /* flex-direction: row; */
+   /* justify-content: space-between; */
+ }
+ .nav-profile-row{
+   display: flex;
  }
  .nav-pic-list{
+   font-size: 0.5vw;
    display: flex;
    width:20%;
    height: 20%;
  }
  .genre-index-links{
    /* padding-bottom: 0; */
+ }
+ .nav-profile-text{
+  font-size: 0.65vw;
+ }
+ .nav-2-col > button{
+   background: transparent;
+   border: 1px solid transparent;
+   color: white;
+   font-size: 0.65vw;
+   font-weight: 600;
+ }
+ .sign-out-button{
+   background: transparent;
+   
+ }
+ .manage-profile-link-nav{
+   padding-top: 0.7vw;
+   font-size: 0.65vw;
  }

@@ -16,7 +16,12 @@ class Nav extends React.Component{
             );
             list = profiles.map(profile => {
                 return(
-                    <li className="nav-profile-list" key={profile.id} ><Link to={`/${profile.id}`}><img className="nav-pic" src={profile.image_url}/>{profile.name}</Link></li>
+                    <li className="nav-profile-list" key={profile.id} >
+                        <Link to={`/${profile.id}`} className="nav-profile-row">
+                            <img className="nav-pic" src={profile.image_url}/>
+                            <p className="nav-profile-text"style={{display:"flex"}}>{profile.name}</p>
+                        </Link>
+                    </li>
                 )
             })
         }
@@ -36,27 +41,27 @@ class Nav extends React.Component{
             <nav className="nav-bar">
                 <ul className="primary-nav">
                     <li><Link to={`/${this.props.profile.id}`}><img src={window.logo} className="logo-3"/></Link></li>
-                    <li><Link to="/home" className="left-nav-links">home</Link></li>
-                    <li><Link to="/home" className="left-nav-links">tv shows</Link></li>
-                    <li><Link to="/home" className="left-nav-links">movies</Link></li>
-                    <li><Link to="/home" className="left-nav-links">recently added</Link></li>
-                    <li><Link to="/home" className="left-nav-links">my List</Link></li>
+                    <li><Link to={`/${this.props.profile.id}`} className="left-nav-links">Home</Link></li>
+                    <li><Link to="/tv-shows" className="left-nav-links">TV Shows</Link></li>
+                    <li><Link to="/movies" className="left-nav-links">Movies</Link></li>
+                    <li><Link to="/my-list" className="left-nav-links">My List</Link></li>
                 </ul>
                 <ul className="secondary-nav">
-                    <li className="left-nav-links">search bar</li>
-                    <li className="left-nav-links">kids</li>
-                    <li className="left-nav-links">dvd</li>
-                    <li className="left-nav-links">alerts</li>
+                    <li className="left-nav-links"><i class="fas fa-search"></i></li>
                     <li className="left-nav-links"><div className="nav-dropdown">
-                        <span><img className="nav-pic"src={this.props.profile.image_url} alt=""/></span>
+                        <span className="index-profile">
+                            <img className="nav-pic"src={this.props.profile.image_url} alt=""/>
+                            <i class="fas fa-sort-down"></i>
+                        </span>
+                        {/* <div className="Rand">
+                        </div> */}
                         <div className="dropdown-content">
-                        <ul>
-                            {list}
-                        </ul>
-                        <Link to="/manage-profiles" >Manage Profiles</Link>
-                        <p>account</p>
-                        <p>help center</p>
-                        <p><button onClick={this.props.logout}>Log Out</button></p>
+                        <i class="fas fa-sort-up"></i>
+                            <ul className="nav-col">
+                                {list}
+                                <Link to="/manage-profiles"><h1 className="manage-profile-link-nav">Manage Profiles</h1></Link>
+                            </ul>
+                            <p className="nav-2-col"><button className="sign-out-button"onClick={this.props.logout}>Sign out of Nextup</button></p>
                         </div>
                     </div>
                     </li >
