@@ -2,10 +2,12 @@ class Api::ProfilesController < ApplicationController
 
     before_action :ensure_logged_in
 
-    def new
-    end
-
     def create
+        @profile = Profile.new(profile_params)
+        @profile.user_id = current_user.id
+        List.create!({profile: @profile})
+        @profile.save!
+        render :show
     end
 
     def index
@@ -18,18 +20,22 @@ class Api::ProfilesController < ApplicationController
         render :show
     end
 
-    def edit
-    end
 
     def update
+        @profile = Profile.find(params[:id])
+        @profile.update(profile_params);
+        render :show
     end
     
     def destroy
+        @profile = Profile.find(params[:id])
+        @profile.destroy!
+        render :show
     end
 
     private
     def profile_params
-        params.permit(:profile).require(:user_id, :image_url, :name)
+        params.require(:profile).permit(:image_url, :name)
     end
     
 end

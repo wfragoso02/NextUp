@@ -9,6 +9,7 @@ import GenreIndexContainer from './genres/genre_container';
 import videoContainer from "./videos/video_container";
 import GenreShow from './genres/genre_show_container';
 import VideoContainer from './videos/video_container';
+import manageProfilesContainer from './profiles/manage_profiles_container';
 import Footer from './footer';
 
 
@@ -21,6 +22,7 @@ const App = () => (
         <AuthRoute exact path='/login' component={LoginFormContainer}/>
         <AuthRoute exact path='/signup' component={SignupFormContainer}/>
         <ProtectedRoute exact path="/home" component={ProfileContainer} />
+        <ProtectedRoute exact path="/manage-profiles" component={manageProfilesContainer} />
         <ProtectedRoute exact path='/:profileId/videos/:videoId' component={VideoContainer} />
         <ProtectedRoute exact path="/:profileId" component={GenreIndexContainer} />
         <ProtectedRoute exact path="/:profileId/genre/:genreId" component={GenreShow} />

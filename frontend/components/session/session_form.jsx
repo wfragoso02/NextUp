@@ -58,11 +58,17 @@ class SessionForm extends React.Component{
         this.props.processForm(this.state).then(() => this.props.history.push('/home'));
         
     }
+    componentClicked(){
+        
+    }
+    responseFacebook(response){
+        console.log(response);
+    }
 
     render(){
         const sessionErrors = this.props.errors.map((error,idx) => {
             return(
-                <li key={idx}>{error}</li>
+                <li key={idx} className="error">{error}</li>
             )
         })
         let a = "";
@@ -109,19 +115,19 @@ class SessionForm extends React.Component{
                                 <a className="sub-a" href="">Need help?</a>
                             </div>
                         </div>
-                        {/* <GoogleLogin
+                        {/* /* <GoogleLogin
                             clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
                             buttonText="Login"
                             onSuccess={responseGoogle}
                             onFailure={responseGoogle}
                             cookiePolicy={'single_host_origin'}
-                        />
-                        <FacebookLogin
+                        /> */}
+                        {/* <FacebookLogin
                             appId="358268101562524"
                             autoLoad={true}
                             fields="name,email,picture"
-                            onClick={componentClicked}
-                            callback={responseFacebook} /> */}
+                            onClick={this.componentClicked.bind(this)}
+                            callback={this.responseFacebook.bind(this)} />  */}
                         <div className="fb-logo"> <img src={window.fb} alt="" />    Login with Facebook</div>
                         <div className="session-bottom">
                         {this.props.formText()}
