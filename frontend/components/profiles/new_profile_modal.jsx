@@ -3,7 +3,7 @@ import React from "react";
 class newProfileModal extends React.Component {
     constructor(props){
         super(props);
-        const images = ['https://s3.amazonaws.com/nextup-seed/marcus.png', 'https://s3.amazonaws.com/nextup-seed/nicolas.png', "https://art-s.nflximg.net/a7774/574ffd46d2bcef69802752f39db6320328fa7774.png"];
+        const images = ['https://s3.amazonaws.com/nextup-seed/marcus.png', 'https://s3.amazonaws.com/nextup-seed/nicolas.png', "https://art-s.nflximg.net/a7774/574ffd46d2bcef69802752f39db6320328fa7774.png", "https://occ-0-999-1001.1.nflxso.net/art/16763/5ef8a49350c96ef8ef702b554285b23e4f616763.png", "https://occ-0-999-1001.1.nflxso.net/art/6f579/22a7771cd88f0743bbdc28030498013d9cf6f579.png", "https://occ-0-999-1001.1.nflxso.net/art/179a8/514618e1d7554648a39e294f43585ddba07179a8.png", "https://occ-0-999-1001.1.nflxso.net/art/59fbc/1ce9bcd3d6f26195c1ab49cd2c691f5fc8f59fbc.png" ];
         const image_url = images[Math.floor(images.length * Math.random())];
         this.state = {
             name: '',

@@ -47,6 +47,7 @@
     
     /* padding: 10px 10px; */
 }
+
 .add-new-profile{
     width: 9.15vw;
     margin: 0 auto;
@@ -55,6 +56,10 @@
     align-items: center;
     border: 4px solid transparent;
     align-self: center;
+    display: flex;
+}
+.add-new-profile i{
+    display: flex;
 }
 .profile-link{
     display: flex; 
@@ -165,6 +170,15 @@ a > p{
     transition: 1s ease ease-out;
 
 }
+.temp-manage i{
+    display: flex;
+}
+.temp-manage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
 .fa-plus-circle{
     font-size: 7vw;
     background:transparent;
@@ -172,6 +186,11 @@ a > p{
     color: grey;
     align-self: center;
     margin: 0 auto;
+    /* display: flex; */
+    /* top: 4vw;
+    bottom: -1vw; */
+    /* padding-top: 2vw;
+    padding-bottom: -2vw; */
 }
 .fa-plus-circle:hover{
     background: white; 
