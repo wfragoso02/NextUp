@@ -152,5 +152,5 @@ Category.create!(genre_id: toprated.id, video_id: hobbs_shaw.id)
 
 
 
-ListItem.create({list: marcusList, video: wolf_of_wall_street })
-ListItem.create({list: nicolasList, video: power })
+ListItem.create({list: marcusList, video: avengers_end_game })
+ListItem.create({list: nicolasList, video: black_panther })

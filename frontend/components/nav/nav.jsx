@@ -53,7 +53,7 @@ class Nav extends React.Component{
                         <ul>
                             {list}
                         </ul>
-                        <p>manage profile</p>
+                        <Link to="/manage-profiles" >Manage Profiles</Link>
                         <p>account</p>
                         <p>help center</p>
                         <p><button onClick={this.props.logout}>Log Out</button></p>

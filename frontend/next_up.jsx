@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   //testing
-  // window.fetchProfiles = ProfileApiUtil.fetchProfiles;
+  window.fetchProfiles = ProfileApiUtil.fetchProfiles;
   // window.fetchVideos = VideoUtil.fetchVideos;
 
   // window.fetchVideo = VideoApuUtil.fetchVideo;

@@ -16,6 +16,7 @@
 }
 
 
+
 .session-body{
     display: flex;
     flex-direction: column;
@@ -91,14 +92,15 @@
       height: 5.5vh;;
       left: -1.5%;
       width: 100%;
-      padding: 4px;
+    padding: 10px 15px 0px 15px;
+      
       border-radius: 5px;
       border: 1px solid rgb(27, 27, 27);
       color: white;
       font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
       font-size: 15px;
-      font-weight: lighter;
-      width: 310px;
+    //   font-weight: lighter;
+      width: 290px;
       margin-top: -1%;
       /* padding-left: 15px; */
       /* padding-right: 0px; */
@@ -112,14 +114,15 @@
     height: 5.5vh;;
     left: -1.5%;
     width: 100%;
-    padding: 4px;
+    padding: 10px 15px 0px 15px;
+    
     border-radius: 5px;
     border: 2px solid transparent;
     color: white;
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 15px;
-    font-weight: lighter;
-    width: 310px;
+    // font-weight: lighter;
+    width: 290px;
     margin-top: -1%;
     border-bottom-color: #e87c03;;
     /* padding-left: 15px; */
@@ -133,7 +136,8 @@
     height: 5.5vh;;
     left: -1.5%;
     width: 100%;
-    padding: 4px;
+    padding: 10px 15px 0px 15px;
+    
     border-radius: 5px;
     border: 2px solid transparent;
     border-bottom-color: #e87c03;
@@ -141,7 +145,7 @@
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 15px;
     font-weight: lighter;
-    width: 310px;
+    width: 290px;
     margin-top: -1%;
     /* padding-left: 15px; */
     /* padding-right: 0px; */
@@ -163,12 +167,21 @@ button:focus {
     margin-top: 2%;
     color: #e87c03;;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: lighter;
 }
-.form-input:focus{
+.form-input:focus  {
     background: rgb(63, 63, 63);
 }
+.form-input-with-email-error:focus{
+    background: rgb(63, 63, 63);
+
+}
+.form-input-with-password-error:focus {
+    background: rgb(63, 63, 63);
+
+}
+
 
 /* .form-input
 {
@@ -314,3 +327,21 @@ input::placeholder{
     position: relative; */
 }
   
+.error{
+    position: relative;
+    /* top: 15%; */
+    height: 10px;
+    background: #e87c03;
+    height: 5.5vh;;
+    left: -1.5%;
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    color: white;
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    width: 290px;
+    margin-top: -1%;
+    padding: 10px 15px 10px 15px;
+
+}

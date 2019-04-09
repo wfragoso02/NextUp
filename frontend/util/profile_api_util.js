@@ -12,5 +12,25 @@ export const fetchProfile = (id) => {
     })
 }
    
-
-
+export const createProfile = (profile) => (
+    $.ajax({
+      url: 'api/profiles',
+      method: 'POST',
+      data: { profile }
+    })
+  );
+  
+  export const updateProfile = (profile) => (
+    $.ajax({
+      url: `api/profiles/${profile.id}`,
+      method: 'PATCH',
+      data: { profile }
+    })
+  );
+  
+  export const deleteProfile = (id) => (
+    $.ajax({
+      url: `api/profiles/${id}`,
+      method: 'DELETE'
+    })
+  );
