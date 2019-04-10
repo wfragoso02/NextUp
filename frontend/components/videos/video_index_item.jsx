@@ -13,7 +13,7 @@ const videoIndexItem = ({video,list, deleteListItem, createListItem, profile }) 
         <div className="tile">
             {defaultButton}
             <Link to={`/${profile.id}/videos/${video.id}`}><img className="tile__img" src={video.image_url}/></Link>
-            {/* <h2>{video.title}</h2> */}
+            <h2 className="video-title">{video.title}</h2>
         </div>
         
     )
