@@ -11,7 +11,7 @@ class Api::ProfilesController < ApplicationController
     end
 
     def index
-        @profiles = current_user.profiles
+        @profiles = current_user.profiles.includes(:list)
         render :index
     end
 
