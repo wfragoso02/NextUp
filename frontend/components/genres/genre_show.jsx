@@ -7,11 +7,12 @@ class GenreShow extends React.Component{
         this.props.fetchGenre(this.props.match.params.genreId);
     }
     componentDidUpdate(prevProps){
-        // debugger
+        debugger
         if (prevProps.match.params.genreId !== this.props.match.params.genreId) {
             this.props.fetchGenre(this.props.match.params.genreId);
         }
     }
+
     render(){
         debugger
         if (!this.props.genre.videos){
