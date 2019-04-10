@@ -7,7 +7,7 @@ class Nav extends React.Component{
     }
     componentDidUpdate(prevProps){
         debugger
-        if(prevProps.match.params.profileId !== this.props.profileId){
+        if(prevProps.profileId !== this.props.profileId){
             this.props.fetchProfiles().then(this.props.fetchProfile(this.props.profileId))
         }
     }
