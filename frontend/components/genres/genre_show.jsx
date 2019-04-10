@@ -7,12 +7,16 @@ class GenreShow extends React.Component{
         this.props.fetchGenre(this.props.match.params.genreId);
     }
     componentDidUpdate(prevProps){
-        if(prevProps.genre.id !== this.props.match.params.genreId){
-        this.props.fetchGenre(this.props.match.params.genreId);
-
+        // debugger
+        if (prevProps.match.params.genreId !== this.props.match.params.genreId) {
+            this.props.fetchGenre(this.props.match.params.genreId);
         }
     }
     render(){
+        debugger
+        if (!this.props.genre.videos){
+            return null;
+        }
         const videos = Object.values(this.props.genre.videos).map(video=> {
             return(
                 <VideoItem  video={video} key={video.id}/>
@@ -20,10 +24,12 @@ class GenreShow extends React.Component{
         })
         return(
             <div>
-                <NavContainer profile={this.props.match.params.profileId}/>
+                <NavContainer profileId={this.props.match.params.profileId}/>
+                <h1>{this.props.genre.title}</h1>
                 <ul>
                     {videos}
                 </ul>
+                {/* <h1>hello</h1> */}
             </div>
         )
     }

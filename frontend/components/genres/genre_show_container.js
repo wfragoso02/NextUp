@@ -7,7 +7,7 @@ import {fetchGenre} from '../../actions/genre_actions';
 
 const msp = (state, ownProps) => {
     return{
-        genre: state.entities.genres[ownProps.match.params.genreId]
+        genre: state.entities.genres[ownProps.match.params.genreId] || {}
     };
 };
 

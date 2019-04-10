@@ -2,7 +2,6 @@ import React from "react";
 
 class editProfileModal extends React.Component{
     constructor(props){
-        debugger
         super(props);
         this.state = {
             name: this.props.profile.name,
@@ -21,7 +20,6 @@ class editProfileModal extends React.Component{
 
     handleDelete(e){
         e.preventDefault();
-        debugger
         this.props.deleteProfile(this.props.profile.id).then(this.props.handleClose);
     }
 
