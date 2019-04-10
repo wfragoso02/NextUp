@@ -43,9 +43,9 @@ class GenreIndex extends React.Component{
     render(){
         const genres = this.props.genres.map((genre, idx) => {
             return (
-                <>
-                    <GenreIndexItem  key={idx} profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} profile={this.props.profile} genre={genre} />
-                </>
+                <li key={Math.floor(Math.random() * 1000000)}>
+                    <GenreIndexItem  key={Math.floor(Math.random() * 1000000)} profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} profile={this.props.profile} genre={genre} />
+                </li>
             )
         });
         let defaultButton = "";
@@ -101,13 +101,12 @@ class GenreIndex extends React.Component{
         }
         return(
             <div className="genre-index-container">
-                <Nav profile={this.props.profile} />
+                <Nav profileId={this.props.profile.id} />
                 <div className="home" >
                     {mainVideo}
                 </div>
                 <div className="my-list-items">
-                    {/* <Link to={`/myList/${this.props.list.id}`} className="content">My List</Link> */}
-                    <h1  className="content">My List</h1>
+                    <Link to={`/myList/${this.props.list.id}`} className="content">My List</Link>
                     <ul className="row">
                         {listVideos}
                     </ul>

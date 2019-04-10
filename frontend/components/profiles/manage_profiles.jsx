@@ -45,7 +45,6 @@ class ManageProfiles extends React.Component{
 
     render(){
         const profiles = this.props.profiles.map((profile, idx) => {
-            debugger
             return (
                 <li key={idx} className="profile-item">
                     <EditProfileModal deleteProfile={this.props.deleteProfile} updateProfile={this.props.updateProfile} profile={profile} show={this.state[idx]} handleClose={this.hideEditModal(idx)} />

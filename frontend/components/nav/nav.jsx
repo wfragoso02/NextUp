@@ -3,9 +3,14 @@ import { Link } from 'react-router-dom';
 
 class Nav extends React.Component{
     componentDidMount(){
-        this.props.fetchProfiles();
+        this.props.fetchProfiles().then(this.props.fetchProfile(this.props.profileId))
     }
-    
+    componentDidUpdate(prevProps){
+        debugger
+        if(prevProps.match.params.profileId !== this.props.profileId){
+            this.props.fetchProfiles().then(this.props.fetchProfile(this.props.profileId))
+        }
+    }
     render(){
         let list;
         if (this.props.profile.id){
@@ -47,16 +52,16 @@ class Nav extends React.Component{
                     <li><Link to="/my-list" className="left-nav-links">My List</Link></li>
                 </ul>
                 <ul className="secondary-nav">
-                    <li className="left-nav-links"><i class="fas fa-search"></i></li>
+                    <li className="left-nav-links"><i className="fas fa-search"></i></li>
                     <li className="left-nav-links"><div className="nav-dropdown">
                         <span className="index-profile">
                             <img className="nav-pic"src={this.props.profile.image_url} alt=""/>
-                            <i class="fas fa-sort-down"></i>
+                            <i className="fas fa-sort-down"></i>
                         </span>
                         {/* <div className="Rand">
                         </div> */}
                         <div className="dropdown-content">
-                        <i class="fas fa-sort-up"></i>
+                        <i className="fas fa-sort-up"></i>
                             <ul className="nav-col">
                                 {list}
                                 <Link to="/manage-profiles"><h1 className="manage-profile-link-nav">Manage Profiles</h1></Link>

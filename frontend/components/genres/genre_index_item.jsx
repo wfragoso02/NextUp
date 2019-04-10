@@ -15,8 +15,8 @@ const GenreIndexItem = ({genre, profile, deleteListItem, list, createListItem}) 
     return(
         <>
         <div className="genreItems" >
-            {/* <h2 className="genre-index-links"><Link className="content" genre={genre} to={`/${profile.id}/genre/${genre.id}`}>{genre.name.toUpperCase()}</Link></h2> */}
-            <h2 className="genre-index-links"><h1 className="content" genre={genre} >{genre.name.toUpperCase()}</h1></h2>
+            {/* <h2 className="genre-index-links"> className="content" >{genre.name.toUpperCase()}</Link></h2> */}
+            <div className="genre-index-links"><h2 className="content"><Link genre={genre} to={`/${profile.id}/genre/${genre.id}`}>{genre.name.toUpperCase()}</Link></h2></div>
             <ul className="row" >
                 {videos}
             </ul>

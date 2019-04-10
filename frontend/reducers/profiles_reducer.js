@@ -7,7 +7,6 @@ const profileReducer = (state ={}, action) => {
     switch(action.type){
         case REMOVE_PROFILE:
         newState = merge({}, state)
-        debugger
             delete newState[action.payload.profile.id]
             return newState;
         case RECEIVE_ALL_PROFILES:

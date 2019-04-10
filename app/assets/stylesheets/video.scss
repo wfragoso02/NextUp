@@ -19,14 +19,16 @@
     color: white;
     left: 18%;
     font-weight: 700;
+    transition:0.3s ease-in-out;
+    text-shadow: 1px 1px 1px black;
+
+    
 }
 .volume-button:hover{
     transform: scale(1.2);
-    transition:0.3s all ease;
 }
 .volume-button:hover .volume-bar{
     display: block;
-    transition:0.3s all ease;
 }
 
 .parsed-button{
@@ -38,10 +40,13 @@
     color: white;
     left: 1%;
     font-weight: 700;
+    transition:0.3s ease-in-out;
+    text-shadow: 1px 1px 1px black;
+
+
 }
 .parsed-button:hover{
     transform: 1.5;
-    transition:0.3s all ease;
     font-size: 3vw;
 
 }
@@ -54,10 +59,12 @@
     font-size: 1.5vw;
     color: white;
     font-weight: 700;
+    transition:0.3s ease-in-out;
+    text-shadow: 1px 1px 1px black;
+
 }
 .rewind-button:hover{
     transform: scale(1.2);
-    transition:0.3s all ease;
 }
 .video-info{
     position: absolute;
@@ -69,6 +76,8 @@
     font-weight: 700;
     font-size: 2vw;
     font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px 1px black;
+
 }
 .forward-button{
     position: absolute;
@@ -79,11 +88,13 @@
     color: white;
     font-weight: 700;
     font-size: 1.5vw;
+    transition:0.3s ease-in-out;
+    text-shadow: 1px 1px 1px black;
+
 
 }
 .forward-button:hover{
     transform: scale(1.2);
-    transition:0.3s all ease;
 }
 .volume-bar{
     position: absolute;
@@ -99,6 +110,10 @@
     -webkit-appearance: none;
     outline: none;
     z-index: 10000;
+    transition:0.3s ease-in-out;
+    text-shadow: 1px 1px 1px black;
+
+
 }
 .view-bar{
     position: absolute;
@@ -114,34 +129,10 @@
     -webkit-appearance: none;
     outline: none;
     left: 1%;
+    text-shadow: 1px 1px 1px black;
+
 }
-// .volume-bar:hover{
-//     opacity: 1;
-// }
-// .volume-bar{
-//         position: absolute;
-//         display: none;
-//         -webkit-appearance: none;  /* Override default CSS styles */
-//         appearance: none;
-//         width: 100%; /* Full-width */
-//         height: 25px; /* Specified height */
-//         background: #d3d3d3; /* Grey background */
-//         outline: none; /* Remove outline */
-//         opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-//         -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-//         transition: opacity .2s;
-// }
-// .volume-bar:hover{
-//     display: block;
-// }
-// .volume-bar::-webkit-slider-thumb {
-//     -webkit-appearance: none; /* Override default look */
-//     appearance: none;
-//     width: 25px; /* Set a specific slider handle width */
-//     height: 25px; /* Slider handle height */
-//     background: #4CAF50; /* Green background */
-//     cursor: pointer; /* Cursor on hover */
-//   }
+
 .toggle-full{
     position: absolute;
     bottom: 4vh;
@@ -151,10 +142,13 @@
     color: white;
     right: 1%;
     font-weight: 700;
+    transition:0.3s ease-in-out;
+    text-shadow: 1px 1px 1px black;
+
+
 }
 .toggle-full:hover{
     transform: scale(1.2);
-    transition:0.3s all ease;
 }
 .movie-duration{
     position: absolute;
@@ -167,6 +161,8 @@
     right: 1%;
     font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px 1px black;
+
 }
 
 input[type=range][orient=vertical]{
@@ -197,6 +193,8 @@ input[type=range][orient=vertical]{
     width: 20vw;
     display: flex;
     flex-direction: row;
+    text-shadow: 1px 1px 1px black;
+
 }
 .fa-arrow-left{
     position: absolute;
@@ -207,10 +205,13 @@ input[type=range][orient=vertical]{
     
     left: 23%;
    z-index: 10000;
+   transition: 0.3s ease-in-out;
+   text-shadow: 1px 1px 1px black;
+
+
 }
 .back:hover .fa-arrow-left{
     transform: scale(1.2);
-    transition: 0.3s all ease;
 }
 .back:hover .back-text{
     display: block;
@@ -222,6 +223,8 @@ input[type=range][orient=vertical]{
     position: absolute;
     top: 40%;
     left: 120%;
+    text-shadow: 1px 1px 1px black;
+
     
 }
 .forward-button{
