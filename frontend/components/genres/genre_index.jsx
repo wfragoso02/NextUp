@@ -18,6 +18,7 @@ class GenreIndex extends React.Component{
         this.props.fecthProfile(this.props.match.params.profileId);
         this.props.fetchGenres();
     }
+
     componentDidUpdate(prevProps){
         if (prevProps.profile.id !== this.props.profile.id){
             this.props.fecthProfile(this.props.match.params.profileId);
@@ -26,8 +27,8 @@ class GenreIndex extends React.Component{
         if (prevProps.list.video_ids && this.props.list.video_ids.length !== prevProps.list.video_ids.length){
             this.props.fetchList();
         }
-        
     }
+
     setMuted(){
 
         if (this.refs.player.muted) {
@@ -56,17 +57,7 @@ class GenreIndex extends React.Component{
         } else {
             defaultButton = (<button onClick={() => this.props.createListItem({ video_id: Object.values(this.props.genres[0].videos)[0].id, list_id: this.props.list.id })} className="front-page-button"><h3 className="fa-plus-text"><i className="fas fa-plus"></i>My List</h3></button>)
         }
-        // if(this.refs.player){
-        //     $(window).scroll(function() {
-        //         $('video').each(function() {
-        //             if ($(this).visible(true)) {
-        //                 $(this)[0].play();
-        //             } else {
-        //                 $(this)[0].pause();
-        //             }
-        //         })
-        //     });
-        // }
+       
         let volumes;
         if (this.state.volume === 0) {
             volumes = <i className="fas fa-volume-mute fa-xs"></i>
@@ -78,14 +69,14 @@ class GenreIndex extends React.Component{
             
             mainVideo = (
                 <>
-                <video  ref='player' className="home-trailer" >
-                    <source src={Object.values(this.props.genres[0].videos)[0].video_url} />
-                </video>
-                <Link to={`/${this.props.profile.id}/videos/${Object.values(this.props.genres[0].videos)[0].id}`} className="play-button"><h3>► Play</h3></Link>
-                {defaultButton}
-                <button onClick={this.setMuted} className="home-page-volume-button">{volumes}</button>
-                <h1 className="main-video-title">{Object.values(this.props.genres[0].videos)[0].title}</h1>
-                <h1 className="main-video-rating">{Object.values(this.props.genres[0].videos)[0].rating}</h1>
+                    <video ref='player' className="home-trailer" >
+                        <source src={Object.values(this.props.genres[0].videos)[0].video_url} />
+                    </video>
+                    <Link to={`/${this.props.profile.id}/videos/${Object.values(this.props.genres[0].videos)[0].id}`} className="play-button"><h3>► Play</h3></Link>
+                    {defaultButton}
+                    <button onClick={this.setMuted} className="home-page-volume-button">{volumes}</button>
+                    <h1 className="main-video-title">{Object.values(this.props.genres[0].videos)[0].title}</h1>
+                    <h1 className="main-video-rating">{Object.values(this.props.genres[0].videos)[0].rating}</h1>
                 </>
             )
             
