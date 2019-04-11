@@ -2,6 +2,7 @@ import React from 'react';
 import VideoIndexItem from '../videos/video_index_item';
 import NavContainer from '../nav/nav_cotainer';
 import { Link } from 'react-router-dom';
+import Footer from '../footer';
 
 class GenreShow extends React.Component{
     constructor(props){
@@ -71,7 +72,7 @@ class GenreShow extends React.Component{
         })
 
         return(
-            <div>
+            <div className="genre-show">
                 <NavContainer profileId={this.props.match.params.profileId}/>
                 <div className="home" >
                     {mainVideo}
@@ -81,7 +82,7 @@ class GenreShow extends React.Component{
                     {videos}
                 </ul>
                 </div>
-                
+                <Footer />
                 {/* <h1>hello</h1> */}
             </div>
         )
