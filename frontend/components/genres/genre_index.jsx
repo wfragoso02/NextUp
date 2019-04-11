@@ -106,7 +106,8 @@ class GenreIndex extends React.Component{
                     {mainVideo}
                 </div>
                 <div className="my-list-items">
-                    <Link to={`/myList/${this.props.list.id}`} className="content">My List</Link>
+                    {/* <Link to={`/myList/${this.props.list.id}`} className="content">My List</Link> */}
+                    <h1 className="content">My List</h1>
                     <ul className="row">
                         {listVideos}
                     </ul>

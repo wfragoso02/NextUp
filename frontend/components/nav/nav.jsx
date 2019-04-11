@@ -47,9 +47,9 @@ class Nav extends React.Component{
                 <ul className="primary-nav">
                     <li><Link to={`/${this.props.profile.id}`}><img src={window.logo} className="logo-3"/></Link></li>
                     <li><Link to={`/${this.props.profile.id}`} className="left-nav-links">Home</Link></li>
-                    <li><Link to="/tv-shows" className="left-nav-links">TV Shows</Link></li>
-                    <li><Link to="/movies" className="left-nav-links">Movies</Link></li>
-                    <li><Link to="/my-list" className="left-nav-links">My List</Link></li>
+                    <li><h1 to="/tv-shows" className="left-nav-links">TV Shows</h1></li>
+                    <li><h1 to="/movies" className="left-nav-links">Movies</h1></li>
+                    <li><h1 to="/my-list" className="left-nav-links">My List</h1></li>
                 </ul>
                 <ul className="secondary-nav">
                     <li className="left-nav-links"><i className="fas fa-search"></i></li>
