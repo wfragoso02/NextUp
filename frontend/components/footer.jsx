@@ -12,7 +12,7 @@ class footer extends React.Component{
                     </div>
                     <br/>
                     
-                    <h3>Thank you for visitin my site.  Enjoy!</h3>
+                    <h3>Thank you for visiting my site.  Enjoy!</h3>
                 </div>
             </div>
         )
