@@ -7,7 +7,6 @@ import { fetchProfile } from '../../actions/profile_actions';
 
 
 const msp = (state, ownProps) => {
-    debugger
     return{
         genre: state.entities.genres[ownProps.match.params.genreId] || {},
         profile: state.entities.profiles[ownProps.match.params.profileId] || {},

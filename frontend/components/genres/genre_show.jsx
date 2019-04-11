@@ -16,14 +16,12 @@ class GenreShow extends React.Component{
 
     }
     componentDidUpdate(prevProps){
-        debugger
         if (prevProps.match.params.genreId !== this.props.match.params.genreId) {
             this.props.fetchGenre(this.props.match.params.genreId);
         }
     }
 
     render(){
-        debugger
         let defaultButton = "";
         if (!this.props.list.video_ids || !this.props.genre.videos){
             return null;
