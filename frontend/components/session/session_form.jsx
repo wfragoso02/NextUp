@@ -62,7 +62,7 @@ class SessionForm extends React.Component{
         
     }
     responseFacebook(response){
-        console.log(response);
+        // console.log(response);
     }
 
     render(){
