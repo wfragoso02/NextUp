@@ -22,6 +22,6 @@ Videos and photos are stored remotely using AWS's S3 buckets through association
 
 
 # Pending Features
-* Facebock Auth
+* Facebook Auth
 * CRUD for profiles
 * show pages for genres
