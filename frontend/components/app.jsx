@@ -10,6 +10,7 @@ import videoContainer from "./videos/video_container";
 import GenreShow from './genres/genre_show_container';
 import VideoContainer from './videos/video_container';
 import manageProfilesContainer from './profiles/manage_profiles_container';
+import ListContainer from './list/list_container';
 import Footer from './footer';
 
 
@@ -27,6 +28,7 @@ const App = () => (
         <ProtectedRoute exact path="/:profileId" component={GenreIndexContainer} />
         <ProtectedRoute exact path="/:profileId/genre/:genreId" component={GenreShow} />
         <ProtectedRoute exact path='/:profileId/videos/:videoId' component={videoContainer} />
+        <ProtectedRoute exact path='/:profileId/myList' component={ListContainer} />
         <AuthRoute exact path="/" component={SplashContainer}/>
       </Switch>
     </div>

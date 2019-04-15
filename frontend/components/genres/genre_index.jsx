@@ -48,6 +48,7 @@ class GenreIndex extends React.Component{
                 </li>
             )
         });
+        
         let defaultButton = "";
         if (!this.props.list.video_ids || !this.props.genres[0]){
             return null;
