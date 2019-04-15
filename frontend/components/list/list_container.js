@@ -1,6 +1,5 @@
 import {connect} from 'react-redux';
-import GenreShow from './genre_show';
-import {fetchGenre} from '../../actions/genre_actions';
+import List from './list';
 import { fetchProfile } from '../../actions/profile_actions';
 import { createListItem, deleteListItem } from '../../actions/list_item_actions';
 import { fetchList } from '../../actions/list_actions';
@@ -10,7 +9,6 @@ import { fetchList } from '../../actions/list_actions';
 
 const msp = (state, ownProps) => {
     return{
-        genre: state.entities.genres[ownProps.match.params.genreId] || {},
         profile: state.entities.profiles[ownProps.match.params.profileId] || {},
         list: state.entities.list
     };
@@ -18,7 +16,6 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => {
     return{
-        fetchGenre: (id) => dispatch(fetchGenre(id)),
         fetchProfile: (id) => dispatch(fetchProfile(id)),
         deleteListItem: (id) => dispatch(deleteListItem(id)),
         createListItem: (listItem) => dispatch(createListItem(listItem)),
@@ -26,4 +23,4 @@ const mdp = dispatch => {
     }
 }
 
-export default connect(msp, mdp)(GenreShow);
+export default connect(msp, mdp)(List);
