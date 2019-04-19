@@ -21,7 +21,6 @@ class GenreShow extends React.Component{
         if (prevProps.match.params.genreId !== this.props.match.params.genreId) {
             this.props.fetchGenre(this.props.match.params.genreId);
         }
-        debugger
         if (prevProps.list.video_ids && this.props.list.video_ids.length !== prevProps.list.video_ids.length){
             this.props.fetchList();
         }
@@ -68,7 +67,6 @@ class GenreShow extends React.Component{
         if (!this.props.genre.videos){
             return null;
         }
-        debugger
         const videos = Object.values(this.props.genre.videos).map(video=> {
             return(
                 <li key={Math.floor(Math.random() * 1000000)} className="vid">

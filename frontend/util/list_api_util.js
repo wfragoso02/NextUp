@@ -1,6 +1,6 @@
-export const fetchList = (id) => (
-    $.ajax({
-        method: "GET",
+export const fetchList = (id) => {
+    return  $.ajax({
+        method: 'GET',
         url: `api/lists/${id}`
     })
-);
+}

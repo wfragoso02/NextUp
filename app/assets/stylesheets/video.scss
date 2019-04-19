@@ -21,14 +21,17 @@
     font-weight: 700;
     transition:0.3s ease-in-out;
     text-shadow: 1px 1px 1px black;
+    transform: 0.5s ease-in-out;
 
     
 }
 .volume-button:hover{
     transform: scale(1.2);
+    z-index: 5;
 }
 .volume-button:hover .volume-bar{
     display: block;
+    z-index: 5;
 }
 
 .parsed-button{

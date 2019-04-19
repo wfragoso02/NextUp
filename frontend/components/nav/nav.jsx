@@ -3,16 +3,26 @@ import { Link } from 'react-router-dom';
 
 class Nav extends React.Component{
     componentDidMount(){
-        this.props.fetchProfiles().then(this.props.fetchProfile(this.props.profileId))
+        this.props.fetchProfiles().then(this.props.fetchProfile(this.props.profileId)).then(this.props.fetchList(this.props.profile.list.id))
+        
     }
     componentDidUpdate(prevProps){
         if(prevProps.profileId !== this.props.profileId){
-            this.props.fetchProfiles().then(this.props.fetchProfile(this.props.profileId))
+            this.props.fetchProfiles().then(this.props.fetchProfile(this.props.profileId)).then(this.props.fetchList(this.props.profile.list.id))
+        }
+        if(prevProps.list.video_ids.length !== this.props.list.video_ids.length){
+            this.props.fetchList(this.props.profile.list.id)
         }
     }
     render(){
         let list;
+        let myList;
         if (this.props.profile.id){
+            if(this.props.list.video_ids.length > 0){
+                myList = <Link to={`/${this.props.profile.id}/myList`} className="left-nav-links">My List</Link>
+            }else{
+                myList = <h1 className="left-nav-links">My List</h1>
+            }
             let profiles = Object.values(this.props.profiles);
             profiles = profiles.filter(profile => 
                 profile.id !== this.props.profile.id
@@ -39,7 +49,7 @@ class Nav extends React.Component{
             } else {
                 header.removeClass("scrolled");
             }
-        });
+        }); 
 
         return(
             <nav className="nav-bar">
@@ -48,7 +58,7 @@ class Nav extends React.Component{
                     <li><Link to={`/${this.props.profile.id}`} className="left-nav-links">Home</Link></li>
                     <li><h1 to="/tv-shows" className="left-nav-links">TV Shows</h1></li>
                     <li><h1 to="/movies" className="left-nav-links">Movies</h1></li>
-                    <li><Link to={`/${this.props.profile.id}/myList`} className="left-nav-links">My List</Link></li>
+                    <li>{myList}</li>
                 </ul>
                 <ul className="secondary-nav">
                     <li className="left-nav-links"><i className="fas fa-search"></i></li>

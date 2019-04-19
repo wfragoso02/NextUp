@@ -1,5 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+
+const msp = state => {
+    return{
+        list: state.entities.list
+    }
+}
 
 const videoIndexItem = ({video,list, deleteListItem, createListItem, profile }) => {
     let defaultButton;
@@ -29,4 +36,4 @@ const videoIndexItem = ({video,list, deleteListItem, createListItem, profile }) 
     )
 }
 
-export default videoIndexItem;
+export default connect(msp, null)(videoIndexItem);
