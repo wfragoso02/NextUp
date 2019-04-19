@@ -1,4 +1,4 @@
-class ListsController < ApplicationController
+class Api::ListsController < ApplicationController
     before_action :ensure_logged_in
 
     def index
@@ -7,7 +7,7 @@ class ListsController < ApplicationController
     end
 
     def show
-        @list = List.find(params[:id]).includes(:videos)
+        @list = List.find(params[:id])
         render :show
     end
 end

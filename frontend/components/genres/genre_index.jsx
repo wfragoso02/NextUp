@@ -24,8 +24,8 @@ class GenreIndex extends React.Component{
             this.props.fecthProfile(this.props.match.params.profileId);
         }
 
-        if (prevProps.list.video_ids && this.props.list.video_ids.length !== prevProps.list.video_ids.length){
-            this.props.fetchList();
+        if (prevProps.list.video_ids && (this.props.list.video_ids.length !== prevProps.list.video_ids.length)){
+            this.props.fetchList(this.props.profile.list.id);
         }
     }
 
@@ -87,11 +87,17 @@ class GenreIndex extends React.Component{
             )
         }
         
+        let myList;
         
         let listVideos;
         if (!this.props.list.videos){
             return null;
         }else{
+            if(this.props.list.video_ids.length > 0){
+                myList = <Link to={`/${this.props.profile.id}/myList`} className="content">My List</Link>
+            }else{
+                myList = <h1 className="content">My List</h1>
+            }
             listVideos = this.props.list.videos.map(video => {
                 return (
                     <li key={Math.floor(Math.random() * 1000000)} className="vid">
@@ -107,8 +113,7 @@ class GenreIndex extends React.Component{
                     {mainVideo}
                 </div>
                 <div className="my-list-items">
-                    {/* <Link to={`/myList/${this.props.list.id}`} className="content">My List</Link> */}
-                    <h1 className="content">My List</h1>
+                    {myList}
                     <ul className="row">
                         {listVideos}
                     </ul>

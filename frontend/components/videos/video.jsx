@@ -9,7 +9,7 @@ class Video extends React.Component {
         this.state = {
             video: this.props.video,
             content: "►",
-            volume: "1",
+            volume: "0.5",
             seek: "0",
             time: '0'
             
@@ -34,22 +34,20 @@ class Video extends React.Component {
         this.handle = setInterval(this.checkSeek, 500);
 
     }
+
     componentDidUpdate(prevProps) {
         if (this.props.match.params.videoId !== prevProps.match.params.videoId) {
             this.props.fetchVideo(this.props.match.params.videoId);
         }
         if (this.props.match.params.profileId !== prevProps.match.params.profileId) {
             this.props.fetchProfile(this.props.match.params.profileId);
-            
         }
-
-        
-
-
     }
+
     componentWillUnmount(){
         clearInterval(this.handle);
     }
+
     handleVideo(){
         if (this.state.content === "►"){
             this.refs.player.play();
@@ -59,6 +57,7 @@ class Video extends React.Component {
             this.setState({content: "►"});
         }
     }
+
     load() {
         this.refs.player.load();
     }
@@ -74,6 +73,7 @@ class Video extends React.Component {
             this.refs.player.seek(seconds);
         };
     }
+
     changeSeek(max){
         return(e) => {
             const time = this.refs.player.duration * (e.target.value / max);
@@ -81,39 +81,41 @@ class Video extends React.Component {
             this.setState({seek: time});
         }
     }
+    
     changeVolume(e) {
         this.refs.player.volume = e.target.value;
+        debugger
         this.setState({volume: e.target.value});
     }
+
     fullScreen(){
         return() => {
                 if (this.refs.player.requestFullscreen) {
                   this.refs.player.requestFullscreen();
                 } else{
-
                     this.refs.player.webkitRequestFullscreen();
                 }
         };
     }
+
     secondsToString(seconds){
-    let numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
-    let numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
-    let numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
-    if(numhours < 10){
-        numhours = '0' + numhours;
-    }
-    if(numminutes < 10){
-        numminutes = '0' + numminutes;
-    }
-    if(numseconds < 10){
-        numseconds = '0' + numseconds;
-    }
-    return  numhours + ":" + numminutes + ":" + numseconds;
-    
+        let numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
+        let numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+        let numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+        if(numhours < 10){
+            numhours = '0' + numhours;
+        }
+        if(numminutes < 10){
+            numminutes = '0' + numminutes;
+        }
+        if(numseconds < 10){
+            numseconds = '0' + numseconds;
+        }
+        return  numhours + ":" + numminutes + ":" + numseconds;
+        
     }
 
     setMuted(){
-
         if (this.refs.player.muted) {
             this.refs.player.muted = false;
             this.setState({ volume: 1 });
@@ -122,12 +124,11 @@ class Video extends React.Component {
             this.setState({ volume: 0 });
         }
     }
+
     checkSeek(){
         this.setState({seek: this.refs.player.currentTime});
         this.setState({time: this.secondsToString(Math.floor(this.refs.player.duration - this.refs.player.currentTime))});
     }
-
-
 
     render() {
         if (!this.state.video.video_url) {
@@ -181,7 +182,7 @@ class Video extends React.Component {
                     </button>
                     <div className="volume-controls">
                     <button onClick={this.setMuted} className="volume-button">{volumes}
-                    <input type="range" orient="vertical" min="0" max="1" step="0.00000000000000000000000000001" value={this.state.volume} className="volume-bar" onChange={this.changeVolume}/></button>
+                    <input type="range" orient="vertical" min="0" max="1" step="0.01" value={this.state.volume} className="volume-bar" onChange={this.changeVolume}/></button>
                     </div>
                     <input type="range" min="0" max={max} step="1" value={this.state.seek} className="view-bar" onChange={this.changeSeek(max)}/>
                     <h1 className="video-info">{this.state.video.title}</h1>

@@ -21,7 +21,7 @@ class Splash extends React.Component{
             <div className="landmark-container">
               <div className="landmark-tex-main"><h1>Unlimited movies, <br/>TV shows, and more.</h1></div>
               <div className="landmark-tex-sub"><h2>Watch anywhere. Cancel anytime.</h2></div>
-              <button onClick={this.handleSubmit.bind(this)} className="demo-button">WATCH FREE FOR 30 DAYS  ></button>
+              <button onClick={this.handleSubmit.bind(this)} className="demo-button">DEMO LOGIN </button>
             </div>
           </div>
         </div>
