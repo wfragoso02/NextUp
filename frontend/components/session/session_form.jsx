@@ -16,11 +16,11 @@ class SessionForm extends React.Component{
             errorsPassword: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleInput = this.handleInput.bind(this);
     }
 
     update(){
         return(e) => {
-
             if (this.state.checked === ''){
                 this.setState({ checked: 'checked'});
             }else{
@@ -28,23 +28,29 @@ class SessionForm extends React.Component{
             }
         };
     }
+
     componentDidMount(){
         this.props.clearErrors();
     }
 
     handleInput(type){
         return (e) =>{
-            const valid = ['@yahoo.com','@gmail.com', '@aol.com', '@hotmail.com' ];
-            if (type === 'password' && (this.state.password.length < 4 ||this.state.password.length  > 60) ){
+            if (type === 'password' && (e.target.value.length < 4 || e.target.value.length  > 60) ){
                 this.setState({errorsPassword: 'Your password must contain between 4 and 60 characters.'});
-            }else if ((this.state.password.length > 4 && this.state.password.length  < 60)){
+            }else if ((e.target.value.length > 4 && e.target.value.length  < 60)){
                 this.setState({errorsPassword: ''});
             }
 
-            if (type === 'email' && (!valid.includes(this.state.email))){
-                this.setState({errorsEmail: 'Please enter a valid email address'});
-            }else if(valid.includes(this.state.email)){
-                this.setState({errorsEmail: ''});
+            const validEmails = ['@yahoo.com','@gmail.com', '@aol.com', '@hotmail.com' ];
+            if (type === 'email'){
+                let valid = false;
+                validEmails.forEach(email => {
+                    if (e.target.value.includes(email)){
+                        this.setState({errorsEmail: ''});
+                        valid = true;
+                    }
+                })
+                if(valid === false) this.setState({errorsEmail: 'Please enter a valid email address'});
             }
 
             this.setState({[type]: e.target.value});

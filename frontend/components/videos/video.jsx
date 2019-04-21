@@ -23,7 +23,11 @@ class Video extends React.Component {
         this.handleVideo = this.handleVideo.bind(this);
         this.changeSeek = this.changeSeek.bind(this);
         this.checkSeek = this.checkSeek.bind(this);
+        this.controlsShow = this.controlsShow.bind(this);
+        this.controlsHide = this.controlsHide.bind(this);
+        this.checkVideo = this.checkVideo.bind(this);
     }
+
     componentDidMount() {
         this.mounted = true;
         this.props.fetchVideo(this.props.match.params.videoId).then(({ video }) => {
@@ -32,6 +36,7 @@ class Video extends React.Component {
         this.props.fetchProfile(this.props.match.params.profileId);
 
         this.handle = setInterval(this.checkSeek, 500);
+        this.videoPlayer = setInterval(this.checkVideo, 3000);
 
     }
 
@@ -46,6 +51,47 @@ class Video extends React.Component {
 
     componentWillUnmount(){
         clearInterval(this.handle);
+        ClearInterval(this.videoPlayer);
+    }
+
+    checkVideo(){
+        if(this.refs.player){
+            if(this.refs.player.paused){
+                this.controlsShow();
+            }else{
+                this.controlsHide();
+            }
+        }
+    }
+
+    controlsShow(){
+        clearTimeout();
+        setTimeout(function(){
+            document.getElementById('parsed-button').style.display="flex";
+            document.getElementById('rewind-button').style.display="block";
+            document.getElementById('forward-button').style.display="block";
+            document.getElementById('back').style.display="block";
+            document.getElementById('volume-button').style.display="flex";
+            document.getElementById('toggle-full').style.display="flex";
+            document.getElementById('movie-duration').style.display="flex";
+            document.getElementById('video-info').style.display="flex";
+            document.getElementById('view-bar').style.display="flex";
+        }, 100);
+    }
+
+    controlsHide(){
+        clearTimeout();
+        setTimeout(function(){
+            document.getElementById('parsed-button').style.display="none";
+            document.getElementById('rewind-button').style.display="none";
+            document.getElementById('forward-button').style.display="none";
+            document.getElementById('back').style.display="none";
+            document.getElementById('volume-button').style.display="none";
+            document.getElementById('toggle-full').style.display="none";
+            document.getElementById('movie-duration').style.display="none";
+            document.getElementById('video-info').style.display="none";
+            document.getElementById('view-bar').style.display="none";
+        }, 2000)
     }
 
     handleVideo(){
@@ -125,10 +171,13 @@ class Video extends React.Component {
         }
     }
 
+
     checkSeek(){
         this.setState({seek: this.refs.player.currentTime});
         this.setState({time: this.secondsToString(Math.floor(this.refs.player.duration - this.refs.player.currentTime))});
     }
+
+   
 
     render() {
         if (!this.state.video.video_url) {
@@ -147,46 +196,28 @@ class Video extends React.Component {
         }else{
             max = 1;
         }
-
-
-        //make sure to incorporate the controls hide when mouse 
-        //is idle
-
-
-
-        // const timeout = null;
-        // if ($(video)){
-
-        //     $(video).on('mousemove', function () {
-        //         clearTimeout(timeout);
-        //         $('.controls').css("bottom", "0px");
-        //         timeout = setTimeout(function () {
-        //             $('.vidCE').css("bottom", "-65px");
-        //         }, 3000);
-        //     });
-        // }
         
 
         return (
-            <div >
-                <Link to={`/${this.props.profile.id}`} className="back"><i className="fas fa-arrow-left" ><h6 className="back-text">Back to Browser</h6></i></Link>
+            <div onMouseMove={this.controlsShow}>
+                <Link to={`/${this.props.profile.id}`} id="back"><i className="fas fa-arrow-left" ><h6 className="back-text">Back to Browser</h6></i></Link>
                 <div className="video-player">
                     <video ref="player" id="thevideo" className="player" src={this.state.video.video_url} poster={this.state.video.image_url} preload="meta"></video>
-                    <button onClick={this.handleVideo} className="parsed-button" >{this.state.content}
+                    <button onMouseOver={this.controlsShow} onClick={this.handleVideo} id="parsed-button" >{this.state.content}
                     </button>
-                    <button onClick={this.changeCurrentTime(10)} className="forward-button"><i className="fas fa-redo"></i><h6>10</h6>
+                    <button onMouseOver={this.controlsShow} onClick={this.changeCurrentTime(10)} id="forward-button"><i className="fas fa-redo"></i><h6>10</h6>
                     </button>
-                    <button onClick={this.changeCurrentTime(-10)} className="rewind-button"><i className="fas fa-undo"></i><h6>10</h6>
+                    <button onMouseOver={this.controlsShow} onClick={this.changeCurrentTime(-10)} id="rewind-button"><i className="fas fa-undo"></i><h6>10</h6>
                     </button>
-                    <button onClick={this.fullScreen()} className="toggle-full"><i className="fas fa-compress"></i>
+                    <button onMouseOver={this.controlsShow} onClick={this.fullScreen()} id="toggle-full"><i className="fas fa-compress"></i>
                     </button>
                     <div className="volume-controls">
-                    <button onClick={this.setMuted} className="volume-button">{volumes}
-                    <input type="range" orient="vertical" min="0" max="1" step="0.01" value={this.state.volume} className="volume-bar" onChange={this.changeVolume}/></button>
+                    <button onMouseOver={this.controlsShow} onClick={this.setMuted} id="volume-button">{volumes}
+                    <input onMouseOver={this.controlsShow} type="range" orient="vertical" min="0" max="1" step="0.01" value={this.state.volume} className="volume-bar" onChange={this.changeVolume}/></button>
                     </div>
-                    <input type="range" min="0" max={max} step="1" value={this.state.seek} className="view-bar" onChange={this.changeSeek(max)}/>
-                    <h1 className="video-info">{this.state.video.title}</h1>
-                    <h6 className="movie-duration">{this.state.time}</h6>
+                    <input onMouseOver={this.controlsShow} type="range" min="0" max={max} step="1" value={this.state.seek} id="view-bar" onChange={this.changeSeek(max)}/>
+                    <h1 onMouseOver={this.controlsShow} id="video-info">{this.state.video.title}</h1>
+                    <h6 onMouseOver={this.controlsShow} id="movie-duration">{this.state.time}</h6>
                 </div>
             </div>
         )

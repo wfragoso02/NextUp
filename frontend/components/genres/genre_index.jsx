@@ -12,6 +12,7 @@ class GenreIndex extends React.Component{
         this.state = {
             volume: "1"
         };
+        this.setMuted = this.setMuted.bind(this);
     }
 
     componentDidMount(){
@@ -70,7 +71,7 @@ class GenreIndex extends React.Component{
             
             mainVideo = (
                 <>
-                    <video ref='player' className="home-trailer" >
+                    <video ref='player' className="home-trailer"  loop autoPlay>
                         <source src={Object.values(this.props.genres[0].videos)[0].video_url} />
                     </video>
                     <Link to={`/${this.props.profile.id}/videos/${Object.values(this.props.genres[0].videos)[0].id}`} className="play-button"><h3>► Play</h3></Link>

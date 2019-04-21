@@ -3,26 +3,40 @@ import VideoIndexItem from '../videos/video_index_item';
 import NavContainer from '../nav/nav_cotainer';
 import { Link } from 'react-router-dom';
 import Footer from '../footer';
-import GenreIndexItem from './genre_index_item';
 
 class GenreShow extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            volume: '1'
+            volume: 1,
+            videos: this.props.list.videos
         }
+        this.setMuted = this.setMuted.bind(this);
     }
+
     componentDidMount(){
         this.props.fetchGenre(this.props.match.params.genreId);
         this.props.fetchProfile(this.props.match.params.profileId)
 
     }
+
     componentDidUpdate(prevProps){
         if (prevProps.match.params.genreId !== this.props.match.params.genreId) {
             this.props.fetchGenre(this.props.match.params.genreId);
         }
         if (prevProps.list.video_ids && this.props.list.video_ids.length !== prevProps.list.video_ids.length){
             this.props.fetchList();
+        }
+    }
+
+    setMuted(){
+        debugger
+        if (this.refs.player.muted) {
+            this.refs.player.muted = false;
+            this.setState({ volume: 1 });
+        } else {
+            this.refs.player.muted = true;
+            this.setState({ volume: 0 });
         }
     }
 

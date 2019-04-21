@@ -10,7 +10,7 @@
     height: 100vh;
     width: 100vw;
 }
-.volume-button{
+#volume-button{
     position: absolute;
     bottom: 4vh;
     background: transparent;
@@ -25,16 +25,17 @@
 
     
 }
-.volume-button:hover{
+#volume-button:hover{
     transform: scale(1.2);
     z-index: 5;
 }
-.volume-button:hover .volume-bar{
+#volume-button:hover .volume-bar{
     display: block;
     z-index: 5;
 }
 
-.parsed-button{
+#parsed-button{
+    display: block;
     position: absolute;
     bottom: 4vh;
     background: transparent;
@@ -43,17 +44,17 @@
     color: white;
     left: 1%;
     font-weight: 700;
-    transition:0.3s ease-in-out;
+    transition:0.9s ease-in-out;
     text-shadow: 1px 1px 1px black;
 
 
 }
-.parsed-button:hover{
+#parsed-button:hover{
     transform: 1.5;
     font-size: 3vw;
 
 }
-.rewind-button{
+#rewind-button{
     position: absolute;
     left: 7%;
     bottom: 4vh;
@@ -66,10 +67,10 @@
     text-shadow: 1px 1px 1px black;
 
 }
-.rewind-button:hover{
+#rewind-button:hover{
     transform: scale(1.2);
 }
-.video-info{
+#video-info{
     position: absolute;
     left: 24.5%;
     bottom: 4.3vh;
@@ -82,7 +83,7 @@
     text-shadow: 1px 1px 1px black;
 
 }
-.forward-button{
+#forward-button{
     position: absolute;
     left: 12%;
     bottom: 4vh;
@@ -96,7 +97,7 @@
 
 
 }
-.forward-button:hover{
+#forward-button:hover{
     transform: scale(1.2);
 }
 .volume-bar{
@@ -118,7 +119,7 @@
 
 
 }
-.view-bar{
+#view-bar{
     position: absolute;
     // left: 19%;
     width: 90%;
@@ -136,7 +137,7 @@
 
 }
 
-.toggle-full{
+#toggle-full{
     position: absolute;
     bottom: 4vh;
     background: transparent;
@@ -150,10 +151,10 @@
 
 
 }
-.toggle-full:hover{
+#toggle-full:hover{
     transform: scale(1.2);
 }
-.movie-duration{
+#movie-duration{
     position: absolute;
     bottom: 12vh;
     background: transparent;
@@ -175,7 +176,9 @@ input[type=range][orient=vertical]{
     height: 10vh;
     padding: 0 5px;
 }
-
+#video-player-control{
+    display: none;
+}
 .fa-undo{
     font-size: 2.5vw;
 }
@@ -188,7 +191,7 @@ input[type=range][orient=vertical]{
     position: relative;
 
 }
-.back{
+#back{
     position: absolute;
     background: transparent;
     color: white;
@@ -213,10 +216,10 @@ input[type=range][orient=vertical]{
 
 
 }
-.back:hover .fa-arrow-left{
+#back:hover .fa-arrow-left{
     transform: scale(1.2);
 }
-.back:hover .back-text{
+#back:hover .back-text{
     display: block;
 }
 .back-text{
@@ -230,11 +233,11 @@ input[type=range][orient=vertical]{
 
     
 }
-.forward-button{
+#forward-button{
     position: absolute;
     bottom: 2%;
 }
-.rewind-button{
+#rewind-button{
     position: absolute;
     bottom: 2%;
 }

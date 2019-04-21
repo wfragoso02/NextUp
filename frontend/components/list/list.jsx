@@ -10,6 +10,8 @@ class List extends React.Component{
         this.state = {
             volume: '1'
         }
+        
+        this.setMuted = this.setMuted.bind(this);
     }
     componentDidMount(){
         this.props.fetchProfile(this.props.match.params.profileId)
@@ -20,6 +22,17 @@ class List extends React.Component{
         }
         if (prevProps.list.video_ids && this.props.list.video_ids.length !== prevProps.list.video_ids.length){
             this.props.fetchList(this.props.profile.list.id);
+        }
+    }
+
+    setMuted(){
+
+        if (this.refs.player.muted) {
+            this.refs.player.muted = false;
+            this.setState({ volume: 1 });
+        } else {
+            this.refs.player.muted = true;
+            this.setState({ volume: 0 });
         }
     }
 
@@ -45,7 +58,7 @@ class List extends React.Component{
             
             mainVideo = (
                 <>
-                    <video ref='player' className="home-trailer" >
+                    <video ref='player' className="home-trailer" loop autoPlay>
                         <source src={Object.values(this.props.list.videos)[0].video_url} />
                     </video>
                     <Link to={`/${this.props.profile.id}/videos/${Object.values(this.props.list.videos)[0].id}`} className="play-button"><h3>► Play</h3></Link>
