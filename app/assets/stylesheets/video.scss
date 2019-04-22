@@ -29,7 +29,7 @@
     transform: scale(1.2);
     z-index: 5;
 }
-#volume-button:hover .volume-bar{
+.volume-controls:hover .volume-bar{
     display: block;
     z-index: 5;
 }
@@ -102,8 +102,8 @@
 }
 .volume-bar{
     position: absolute;
-    left: 19%;
-    bottom: 4.5vh;
+    left: 15%;
+    bottom: 9vw;
     background: grey;
     border: 1px solid transparent;
     color: white;
@@ -116,9 +116,19 @@
     z-index: 10000;
     transition:0.3s ease-in-out;
     text-shadow: 1px 1px 1px black;
-
-
+    transform: rotate(270deg);
 }
+
+.volume-bar::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 1.5vw;
+    width: 1.5vw;
+    border-radius: 50%;
+    background: red;
+    cursor: pointer;
+  }
+
+
 #view-bar{
     position: absolute;
     // left: 19%;
@@ -134,8 +144,17 @@
     outline: none;
     left: 1%;
     text-shadow: 1px 1px 1px black;
+    -webkit-appearance: none;
 
 }
+#view-bar::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 1.5vw;
+    width: 1.5vw;
+    border-radius: 50%;
+    background: red;
+    cursor: pointer;
+  } 
 
 #toggle-full{
     position: absolute;

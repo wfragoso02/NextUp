@@ -1,6 +1,4 @@
 import React from 'react';
-import VideoPlayer from './video_player';
-import { Player, ControlBar, PlayToggle, LoadingSpinner } from 'video-react';
 import { Link } from 'react-router-dom';
 
 class Video extends React.Component {
@@ -9,7 +7,7 @@ class Video extends React.Component {
         this.state = {
             video: this.props.video,
             content: "►",
-            volume: "0.5",
+            volume: "1",
             seek: "0",
             time: '0'
             
@@ -47,11 +45,12 @@ class Video extends React.Component {
         if (this.props.match.params.profileId !== prevProps.match.params.profileId) {
             this.props.fetchProfile(this.props.match.params.profileId);
         }
+
     }
 
     componentWillUnmount(){
         clearInterval(this.handle);
-        ClearInterval(this.videoPlayer);
+        clearInterval(this.videoPlayer);
     }
 
     checkVideo(){
@@ -129,18 +128,19 @@ class Video extends React.Component {
     }
     
     changeVolume(e) {
-        this.refs.player.volume = e.target.value;
+        e.preventDefault();
+        this.refs.player.volume = parseFloat(e.target.value);
         debugger
         this.setState({volume: e.target.value});
     }
 
     fullScreen(){
         return() => {
-                if (this.refs.player.requestFullscreen) {
-                  this.refs.player.requestFullscreen();
-                } else{
-                    this.refs.player.webkitRequestFullscreen();
-                }
+            if (this.refs.player.requestFullscreen) {
+                this.refs.player.requestFullscreen();
+            } else{
+                this.refs.player.webkitRequestFullscreen();
+            }
         };
     }
 
@@ -164,10 +164,10 @@ class Video extends React.Component {
     setMuted(){
         if (this.refs.player.muted) {
             this.refs.player.muted = false;
-            this.setState({ volume: 1 });
+            this.setState({ volume: '1' });
         } else {
             this.refs.player.muted = true;
-            this.setState({ volume: 0 });
+            this.setState({ volume: '0' });
         }
     }
 
@@ -185,16 +185,16 @@ class Video extends React.Component {
         }
         
         let volumes;
-        if (this.state.volume === 0) {
+        if (this.state.volume === '0') {
             volumes = <i className="fas fa-volume-mute"></i>
         } else {
             volumes = <i className="fas fa-volume-up"></i>
         }
         let max;
         if(this.refs.player){
-            max = Math.floor(this.refs.player.duration)
+            max = `${Math.floor(this.refs.player.duration)}`
         }else{
-            max = 1;
+            max = '1';
         }
         
 
@@ -212,8 +212,8 @@ class Video extends React.Component {
                     <button onMouseOver={this.controlsShow} onClick={this.fullScreen()} id="toggle-full"><i className="fas fa-compress"></i>
                     </button>
                     <div className="volume-controls">
-                    <button onMouseOver={this.controlsShow} onClick={this.setMuted} id="volume-button">{volumes}
-                    <input onMouseOver={this.controlsShow} type="range" orient="vertical" min="0" max="1" step="0.01" value={this.state.volume} className="volume-bar" onChange={this.changeVolume}/></button>
+                    <button onMouseOver={this.controlsShow} onClick={this.setMuted} id="volume-button">{volumes}</button>
+                    <input onMouseOver={this.controlsShow} type="range" min="0" max="1" step="0.01" value={this.state.volume} className="volume-bar" onChange={this.changeVolume}/>
                     </div>
                     <input onMouseOver={this.controlsShow} type="range" min="0" max={max} step="1" value={this.state.seek} id="view-bar" onChange={this.changeSeek(max)}/>
                     <h1 onMouseOver={this.controlsShow} id="video-info">{this.state.video.title}</h1>
