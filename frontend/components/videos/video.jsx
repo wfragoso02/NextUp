@@ -51,6 +51,8 @@ class Video extends React.Component {
     componentWillUnmount(){
         clearInterval(this.handle);
         clearInterval(this.videoPlayer);
+        clearTimeout(this.handleContorlsShow);
+
     }
 
     checkVideo(){
@@ -65,8 +67,7 @@ class Video extends React.Component {
 
     controlsShow(){
         clearTimeout();
-        if (this.refs.player){
-            setTimeout(function(){
+            this.handleContorlsShow = setTimeout(function(){
                 document.getElementById('parsed-button').style.display="flex";
                 document.getElementById('rewind-button').style.display="block";
                 document.getElementById('forward-button').style.display="block";
@@ -77,7 +78,6 @@ class Video extends React.Component {
                 document.getElementById('video-info').style.display="flex";
                 document.getElementById('view-bar').style.display="flex";
             }, 100);
-        }
     }
 
     controlsHide(){
