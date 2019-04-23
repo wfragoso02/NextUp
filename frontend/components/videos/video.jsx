@@ -184,9 +184,7 @@ class Video extends React.Component {
         if (!this.state.video.video_url) {
             return null;
         }
-        if(!this.refs.player){
-            return null;
-        }
+        
         
         let volumes;
         if (this.state.volume === '0') {
