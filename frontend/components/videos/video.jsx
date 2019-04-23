@@ -172,8 +172,10 @@ class Video extends React.Component {
 
 
     checkSeek(){
-        this.setState({seek: this.refs.player.currentTime});
-        this.setState({time: this.secondsToString(Math.floor(this.refs.player.duration - this.refs.player.currentTime))});
+        if(this.refs.player){
+            this.setState({seek: this.refs.player.currentTime});
+            this.setState({time: this.secondsToString(Math.floor(this.refs.player.duration - this.refs.player.currentTime))});
+        }
     }
 
    
