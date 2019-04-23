@@ -30,7 +30,6 @@ class GenreShow extends React.Component{
     }
 
     setMuted(){
-        debugger
         if (this.refs.player.muted) {
             this.refs.player.muted = false;
             this.setState({ volume: 1 });

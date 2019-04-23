@@ -130,7 +130,6 @@ class Video extends React.Component {
     changeVolume(e) {
         e.preventDefault();
         this.refs.player.volume = parseFloat(e.target.value);
-        debugger
         this.setState({volume: e.target.value});
     }
 

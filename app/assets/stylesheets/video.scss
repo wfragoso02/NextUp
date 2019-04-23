@@ -17,7 +17,7 @@
     border: 1px solid transparent;
     font-size: 2.5vw;
     color: white;
-    left: 18%;
+    left: 18vw;
     font-weight: 700;
     transition:0.3s ease-in-out;
     text-shadow: 1px 1px 1px black;
@@ -32,6 +32,10 @@
 .volume-controls:hover .volume-bar{
     display: block;
     z-index: 5;
+    transition: 1.3s ease-in-out;
+}
+.volume-controls{
+    transition: 1.3s ease-in-out;
 }
 
 #parsed-button{
@@ -101,37 +105,41 @@
     transform: scale(1.2);
 }
 .volume-bar{
+    border: 1.1vw solid #353535;
+    border-radius: 4px;
     position: absolute;
-    left: 15%;
-    bottom: 9vw;
-    background: grey;
-    border: 1px solid transparent;
+    left: 14.5vw;
+    bottom: 9.5vw;
+    height: 0.3vw;
     color: white;
-    font-weight: 700;
-    font-size: 1vw; 
-    height: 2px;
+    width: 8.5vw;
     display: none;
     -webkit-appearance: none;
     outline: none;
     z-index: 10000;
-    transition:0.3s ease-in-out;
-    text-shadow: 1px 1px 1px black;
+    transition: 1.3 ease-in-out;
     transform: rotate(270deg);
+    background: red;
 }
+
 
 .volume-bar::-webkit-slider-thumb{
     -webkit-appearance: none;
-    height: 1.5vw;
-    width: 1.5vw;
+    height: 1.2vw;
+    width: 1.2vw;
     border-radius: 50%;
     background: red;
     cursor: pointer;
-  }
+}
+input[type='range']::-webkit-slider-thumb:before{
+    background: red;
+    transition: 1.3s ease-in-out;
+
+}
 
 
 #view-bar{
     position: absolute;
-    // left: 19%;
     width: 90%;
     bottom: 13vh;
     background: grey;
@@ -145,8 +153,8 @@
     left: 1%;
     text-shadow: 1px 1px 1px black;
     -webkit-appearance: none;
-
 }
+
 #view-bar::-webkit-slider-thumb{
     -webkit-appearance: none;
     height: 1.5vw;

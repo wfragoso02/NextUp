@@ -9,9 +9,7 @@ const msp = state => {
 }
 class videoIndexItem extends React.Component{
     displayVideo(){
-        debugger
-
-            document.getElementById("hidden-video-show").style.display="block";
+        document.getElementById("hidden-video-show").style.display="block";
     }
 
     render(){
@@ -45,11 +43,11 @@ class videoIndexItem extends React.Component{
                     <Link to={`/${profile.id}/videos/${video.id}`} className="video-play-button"><i className="fas fa-play"></i></Link>
                     <Link to={`/${profile.id}/videos/${video.id}`}><img className="tile__img" src={video.image_url}/></Link>
                     <Link to={`/${profile.id}/videos/${video.id}`}><h2 className="video-title">{video.title}</h2></Link>
-                    <button onClick={this.displayVideo.bind(this)}></button>
+                    {/* <button onClick={this.displayVideo.bind(this)}></button> */}
                 </div>
-                <div id="hidden-video-show">
+                {/* <div id="hidden-video-show">
                     <h1>hello</h1>
-                </div>
+                </div> */}
             </div>
         )
     }
