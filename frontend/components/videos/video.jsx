@@ -65,17 +65,19 @@ class Video extends React.Component {
 
     controlsShow(){
         clearTimeout();
-        setTimeout(function(){
-            document.getElementById('parsed-button').style.display="flex";
-            document.getElementById('rewind-button').style.display="block";
-            document.getElementById('forward-button').style.display="block";
-            document.getElementById('back').style.display="block";
-            document.getElementById('volume-button').style.display="flex";
-            document.getElementById('toggle-full').style.display="flex";
-            document.getElementById('movie-duration').style.display="flex";
-            document.getElementById('video-info').style.display="flex";
-            document.getElementById('view-bar').style.display="flex";
-        }, 100);
+        if (this.refs.player){
+            setTimeout(function(){
+                document.getElementById('parsed-button').style.display="flex";
+                document.getElementById('rewind-button').style.display="block";
+                document.getElementById('forward-button').style.display="block";
+                document.getElementById('back').style.display="block";
+                document.getElementById('volume-button').style.display="flex";
+                document.getElementById('toggle-full').style.display="flex";
+                document.getElementById('movie-duration').style.display="flex";
+                document.getElementById('video-info').style.display="flex";
+                document.getElementById('view-bar').style.display="flex";
+            }, 100);
+        }
     }
 
     controlsHide(){
