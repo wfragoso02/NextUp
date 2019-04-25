@@ -12,19 +12,12 @@ const listReducer = (state={}, action) => {
         case RECEIVE_LIST:
             return merge({}, action.list)
         case RECEIVE_LIST_ITEM:
-        // const newStateVideoIds = state.video_ids.slice();
-        //     const newStateVideos = state.videos.slice();
-        //     newStateVideoIds.unshift(action.listItem.video_id);
-        //     newStateVideos.unshift(action.listItem.video);
-        //     newState = merge({}, state, {'video_ids': newStateVideoIds})
-        //     newState = merge({}, state, {'videos': newStateVideos})
-        //     return newState;
-            newState = state;
+            newState = merge({}, state);
             newState.video_ids.unshift(action.listItem.video_id);
             newState.videos.unshift(action.listItem.video);
             return newState;
         case REMOVE_LIST_ITEM:
-            newState = state;
+            newState = merge({}, state);
             const index = newState.video_ids.indexOf(action.listItem.video_id);
             delete newState.video_ids[index];
             delete newState.videos[index]
