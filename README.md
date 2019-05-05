@@ -37,14 +37,14 @@ componentDidMount() {
         this.props.fetchProfile(this.props.match.params.profileId);
         this.handle = setInterval(this.checkSeek, 500);
         this.videoPlayer = setInterval(this.checkVideo, 3000);
-    }
+}
     
-    componentWillUnmount(){
+componentWillUnmount(){
         this.mounted = false;
         clearInterval(this.handle);
         clearInterval(this.videoPlayer);
         clearTimeout(this.handleControlsShow);
-    }
+}
 ```
 
 ```javascript
