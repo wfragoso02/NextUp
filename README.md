@@ -80,4 +80,4 @@ Videos and photos are stored remotely using AWS's S3 buckets through Active Reco
 Because of AWS the speed of my app is alot faster.
 
 # Credit
-This app is inspired by the popular straming site [Netflix](https://netflix.com).
+This app is inspired by the popular streaming site [Netflix](https://netflix.com).
