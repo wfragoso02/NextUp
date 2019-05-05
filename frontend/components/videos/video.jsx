@@ -51,7 +51,7 @@ class Video extends React.Component {
     componentWillUnmount(){
         clearInterval(this.handle);
         clearInterval(this.videoPlayer);
-        clearTimeout(this.handleContorlsShow);
+        clearTimeout(this.handleControlsShow);
 
     }
 
@@ -67,7 +67,7 @@ class Video extends React.Component {
 
     controlsShow(){
         clearTimeout();
-            this.handleContorlsShow = setTimeout(function(){
+            this.handleControlsShow = setTimeout(function(){
                 document.getElementById('parsed-button').style.display="flex";
                 document.getElementById('rewind-button').style.display="block";
                 document.getElementById('forward-button').style.display="block";
