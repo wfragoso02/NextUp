@@ -1,7 +1,7 @@
 # NextUp
 
 ### Welcome to NextUp
-NextUp is a fully functional single page pixel perfect app clone from the popular streaming app, Netflix that streams popular trailers for Movies and TV shows.  Users can sign in/sign up and manage up to 5 profiles using CRUD.  Each profile is associated, through Active Record associations, to a respective customizable list.  Users can add and remove items to and from a profiles respective list for later watch.
+NextUp is a fully functional single page pixel perfect app clone from the popular streaming app, Netflix that streams popular trailers for Movies and TV shows.  Users can sign in/sign up and manage up to 5 profiles using CRUD.  Each profile is associated, through ActiveRecord associations, to a respective customizable list.  Users can add and remove items to and from a profiles respective list for later watch.
 
 Visit the [Live](http://nextup-app.herokuapp.com/#/) site here!
   
@@ -23,7 +23,7 @@ Visit the [Live](http://nextup-app.herokuapp.com/#/) site here!
 
 # Highlight Features
 ### Custom Video Player
-Nextup manipulates lifecycle methods and the event loop for a more controlled and user friendly video player.    
+NextUp manipulates lifecycle methods and the event loop for a more controlled and user friendly video player.    
 ![alt text](https://github.com/wfragoso02/NextUp/blob/master/app/assets/images/Screen%20Shot%202019-04-05%20at%2011.55.23%20AM.png)
   
   
@@ -35,17 +35,15 @@ componentDidMount() {
             this.setState({ video: video });
         });
         this.props.fetchProfile(this.props.match.params.profileId);
-
         this.handle = setInterval(this.checkSeek, 500);
         this.videoPlayer = setInterval(this.checkVideo, 3000);
-
     }
+    
     componentWillUnmount(){
         this.mounted = false;
         clearInterval(this.handle);
         clearInterval(this.videoPlayer);
         clearTimeout(this.handleControlsShow);
-
     }
 ```
 
@@ -76,8 +74,8 @@ return (
 ```
 
 ### AWS
-Videos and photos are stored remotely using AWS's S3 buckets through Active Record Associations, taking the weight off my app and placing the dependency on the cloud.
-Because of AWS the speed of my app is alot faster.
+Videos and photos are stored remotely using AWS' S3 buckets through ActiveRecord Associations, taking the weight off my app and placing the dependency on the cloud.
+Because of AWS the runtime of my app increased significantly.
 
 # Credit
 This app is inspired by the popular streaming site [Netflix](https://netflix.com).
