@@ -41,6 +41,18 @@ class List extends React.Component{
         if (!this.props.list.video_ids){
             return null;
         }
+
+        if (this.props.list.video_ids.length === 0){
+            return(
+                <div className="genre-show">
+                    <NavContainer profileId={this.props.match.params.profileId} />
+                    <div className="no-list" >
+                        <h1 className="no-list-text">Add Items to your List</h1>
+                    </div>
+                    <Footer />
+                </div>
+            )
+        }
         // if (this.props.list.video_ids.includes(Object.values(this.props.list.videos)[0].id)) {
             defaultButton = (<button onClick={() => this.props.deleteListItem(Object.values(this.props.genre.videos)[0].id)} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
         // } else {

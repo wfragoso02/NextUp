@@ -35,7 +35,6 @@ class Video extends React.Component {
 
         this.handle = setInterval(this.checkSeek, 500);
         this.videoPlayer = setInterval(this.checkVideo, 3000);
-
     }
 
     componentDidUpdate(prevProps) {

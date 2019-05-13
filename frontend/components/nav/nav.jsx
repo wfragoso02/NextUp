@@ -18,11 +18,8 @@ class Nav extends React.Component{
         let list;
         let myList;
         if (this.props.profile.id){
-            if(this.props.list.video_ids.length > 0){
-                myList = <Link to={`/${this.props.profile.id}/myList`} className="left-nav-links">My List</Link>
-            }else{
-                myList = <h1 className="left-nav-links">My List</h1>
-            }
+            myList = <Link to={`/${this.props.profile.id}/myList`} className="left-nav-links">My List</Link>
+            
             let profiles = Object.values(this.props.profiles);
             profiles = profiles.filter(profile => 
                 profile.id !== this.props.profile.id

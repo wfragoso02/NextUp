@@ -94,11 +94,8 @@ class GenreIndex extends React.Component{
         if (!this.props.list.videos){
             return null;
         }else{
-            if(this.props.list.video_ids.length > 0){
-                myList = <Link to={`/${this.props.profile.id}/myList`} className="content">My List</Link>
-            }else{
-                myList = <h1 className="content">My List</h1>
-            }
+            myList = <Link to={`/${this.props.profile.id}/myList`} className="content">My List</Link>
+            
             listVideos = this.props.list.videos.map(video => {
                 return (
                     <li key={Math.floor(Math.random() * 1000000)} className="vid">

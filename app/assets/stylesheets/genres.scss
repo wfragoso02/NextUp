@@ -326,3 +326,23 @@ color: black;
   position: absolute;
   left: -5vw;
 }
+
+.no-list{
+  position: relative;
+  height: 75vw;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+
+}
+
+.no-list-text{
+  height: 50%;
+  position: relative;
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+}
