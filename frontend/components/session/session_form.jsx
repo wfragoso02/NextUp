@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Footer from '../footer';
-import GoogleLogin from 'react-google-login';
-import FacebookLogin from 'react-facebook-login';
+import Facebook from './facebook_container';
 
 class SessionForm extends React.Component{
     constructor(props){
@@ -62,13 +61,6 @@ class SessionForm extends React.Component{
         e.preventDefault();
         
         this.props.processForm(this.state).then(() => this.props.history.push('/home'));
-        
-    }
-    componentClicked(){
-        
-    }
-    responseFacebook(response){
-        // console.log(response);
     }
 
     render(){
@@ -121,20 +113,15 @@ class SessionForm extends React.Component{
                                 <a className="sub-a" href="">Need help?</a>
                             </div>
                         </div>
-                        {/* /* <GoogleLogin
-                            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-                            buttonText="Login"
-                            onSuccess={responseGoogle}
-                            onFailure={responseGoogle}
-                            cookiePolicy={'single_host_origin'}
-                        /> */}
+                        <Facebook processForm={this.props.processForm}/>
+                   
                         {/* <FacebookLogin
                             appId="358268101562524"
                             autoLoad={true}
                             fields="name,email,picture"
                             onClick={this.componentClicked.bind(this)}
                             callback={this.responseFacebook.bind(this)} />  */}
-                        <div className="fb-logo"> <img src={window.fb} alt="" />    Login with Facebook</div>
+                        
                         <div className="session-bottom">
                         {this.props.formText()}
                     </div>
