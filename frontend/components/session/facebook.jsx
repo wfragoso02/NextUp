@@ -12,7 +12,6 @@ export default class Facebook extends React.Component{
     }
 
     componentClicked(object) {
-        console.log("clicked");
         this.props.login(object)
         .then(() => {
             this.props.history.push('/home'), this.props.signup(object)
@@ -20,7 +19,6 @@ export default class Facebook extends React.Component{
     }
 
     responseFacebook(response){
-        console.log(response);
         this.componentClicked({ email: response.email, password: response.userID }).bind(this)
     }
 
