@@ -6,20 +6,18 @@ export default class Facebook extends React.Component{
         super(props);
         this.state = {
             isLoggedIn: false,
-            email: "",
-            password: ""
         };
+        this.componentClicked = this.componentClicked.bind(this);
+        this.responseFacebook = this.responseFacebook.bind(this);
     }
 
     componentClicked(object) {
         this.props.login(object)
-        .then(() => {
-            this.props.history.push('/home'), this.props.signup(object)
-        })
+        .then( null, () => this.props.signup(object));
     }
 
     responseFacebook(response){
-        this.componentClicked({ email: response.email, password: response.userID }).bind(this)
+        this.componentClicked({ email: response.email, password: response.userID })
     }
 
     render(){
@@ -32,7 +30,7 @@ export default class Facebook extends React.Component{
                     appId="358268101562524"
                     autoLoad={false}
                     fields="email"
-                    callback={this.responseFacebook.bind(this)} 
+                    callback={this.responseFacebook} 
                     className="fb-logo"/> 
             )
         }
