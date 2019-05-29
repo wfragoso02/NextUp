@@ -3,7 +3,7 @@
 ### Welcome to NextUp
 NextUp is a fully functional single page pixel perfect app clone from the popular streaming app, Netflix that streams popular trailers for Movies and TV shows.  Users can sign in/sign up and manage up to 5 profiles using CRUD.  Each profile is associated, through ActiveRecord associations, to a respective customizable list.  Users can add and remove items to and from a profiles respective list for later watch.
 
-Visit the [Live](http://nextup-app.herokuapp.com/#/) site here!
+Visit the [Live](https://nextup-app.herokuapp.com/#/) site here!
   
   
   
