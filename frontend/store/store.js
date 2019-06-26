@@ -5,11 +5,14 @@ import thunk from 'redux-thunk';
 import rootReducer from '../reducers/root_reducer';
 
 //logger only on development
+// const logger = createLogger({
+//   predicate: (getState, action) => ! conf.production
+// });
 const configureStore = (preloadedState = {}) => (
   createStore(
     rootReducer,
     preloadedState,
-    applyMiddleware(thunk)
+    applyMiddleware(thunk, logger)
   )
 );
 

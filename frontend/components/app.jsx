@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
@@ -11,13 +11,11 @@ import GenreShow from './genres/genre_show_container';
 import VideoContainer from './videos/video_container';
 import manageProfilesContainer from './profiles/manage_profiles_container';
 import ListContainer from './list/list_container';
-import Footer from './footer';
 
 
 const App = () => (
   <div>
-    <div className="home">
-    </div>
+    <div className="home"></div>
     <div>
       <Switch>
         <AuthRoute exact path='/login' component={LoginFormContainer}/>
@@ -32,8 +30,6 @@ const App = () => (
         <AuthRoute exact path="/" component={SplashContainer}/>
       </Switch>
     </div>
-      
-      
   </div>
 );
 
