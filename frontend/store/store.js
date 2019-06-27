@@ -6,12 +6,10 @@ import rootReducer from '../reducers/root_reducer';
 let middleware;
 process.env.NODE_ENV === 'development' ? middleware = applyMiddleware(thunk, logger) : middleware = applyMiddleware(thunk);
 
-const configureStore = (preloadedState = {}) => (
+export default (preloadedState = {}) => (
   createStore(
     rootReducer,
     preloadedState,
     middleware
   )
 );
-
-export default configureStore;
