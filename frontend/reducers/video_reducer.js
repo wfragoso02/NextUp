@@ -1,8 +1,7 @@
 import {merge} from 'lodash';
-import { RECEIVE_VIDEO } from '../actions/video_actions';
+import { RECEIVE_VIDEO } from '../actions/types';
 
-const videoReducer = (state = {}, action) => {
-    let newState;
+export default (state = {}, action) => {
     Object.freeze(state);
     switch(action.type){
         case RECEIVE_VIDEO:
@@ -11,5 +10,3 @@ const videoReducer = (state = {}, action) => {
             return state;
     }
 };
-
-export default videoReducer;

@@ -1,7 +1,7 @@
-import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { merge } from 'lodash';
+import { RECEIVE_CURRENT_USER } from '../actions/types';
 
-const userReducer = (state = {}, action) => {
+export default (state = {}, action) => {
 
   Object.freeze(state);
   switch(action.type){
@@ -11,5 +11,3 @@ const userReducer = (state = {}, action) => {
       return state;
   }
 };
-
-export default userReducer;

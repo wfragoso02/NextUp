@@ -1,19 +1,15 @@
 import * as VideoApiUtil from '../util/video_api_util';
-export const RECEIVE_VIDEO = "RECEIVE_VIDEO";
-export const RECEIVE_VIDEOS = "RECEIVE_VIDEOS";
+import { RECEIVE_VIDEO, RECEIVE_VIDEOS } from './types'
 
-const receiveVideo = (video) => {
-    return{
-        type: RECEIVE_VIDEO,
-        video
-    };
-};
-const receiveVideos = (videos) => {
-    return{
-        type: RECEIVE_VIDEOS,
-        videos
-    };
-};
+const receiveVideo = (video) => ({
+    type: RECEIVE_VIDEO,
+    video
+});
+
+const receiveVideos = (videos) => ({
+    type: RECEIVE_VIDEOS,
+    videos
+});
 
 export const fetchVideo = (id) => dispatch => (
     VideoApiUtil.fetchVideo(id).then(video => dispatch(receiveVideo(video)))

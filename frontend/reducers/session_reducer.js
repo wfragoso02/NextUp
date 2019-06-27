@@ -1,6 +1,5 @@
-import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_actions';
 import { merge } from 'lodash';
-import { RECEIVE_PROFILE } from '../actions/profile_actions';
+import { RECEIVE_PROFILE, RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/types';
 
 const _nullState = {
   id: null

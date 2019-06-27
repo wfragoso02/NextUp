@@ -1,8 +1,7 @@
 import { merge } from 'lodash';
-import { RECEIVE_ALL_GENRES, RECEIVE_GENRE } from '../actions/genre_actions';
+import { RECEIVE_ALL_GENRES, RECEIVE_GENRE } from '../actions/types';
 
-
-const genreReducer = (state = {}, action) => {
+export default (state = {}, action) => {
     Object.freeze(state);
     switch(action.type){
         case RECEIVE_GENRE:
@@ -13,5 +12,3 @@ const genreReducer = (state = {}, action) => {
             return state;
     }
 };
-
-export default genreReducer;

@@ -1,11 +1,7 @@
-// import { RECEIVE_LIST } from '../actions/list_actions';
 import {merge } from 'lodash';
-import { RECEIVE_PROFILE } from '../actions/profile_actions';
-import { RECEIVE_LIST_ITEM, REMOVE_LIST_ITEM } from '../actions/list_item_actions';
-import { RECEIVE_LIST } from '../actions/list_actions';
+import { RECEIVE_PROFILE, RECEIVE_LIST, RECEIVE_LIST_ITEM, REMOVE_LIST_ITEM } from '../actions/types';
 
-
-const listReducer = (state={}, action) => {
+export default (state={}, action) => {
     Object.freeze(state);
     let newState;
     switch(action.type){
@@ -28,5 +24,3 @@ const listReducer = (state={}, action) => {
             return state;
     }
 }
-
-export default listReducer;

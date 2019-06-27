@@ -1,6 +1,6 @@
-import { RECEIVE_SESSIONS_ERRORS, CLEAR_ERRORS } from '../actions/session_actions';
+import { RECEIVE_SESSIONS_ERRORS, CLEAR_ERRORS } from '../actions/types';
 
-const sessionErrorsReducer = (state = [], action) => {
+export default (state = [], action) => {
   Object.freeze(state);
   switch(action.type){
     case RECEIVE_SESSIONS_ERRORS:
@@ -11,5 +11,3 @@ const sessionErrorsReducer = (state = [], action) => {
       return ([]);
   }
 };
-
-export default sessionErrorsReducer;

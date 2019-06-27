@@ -1,51 +1,35 @@
-
-export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
-export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
-export const RECEIVE_SESSIONS_ERRORS = "RECEIVE_SESSIONS_ERRORS";
-export const CLEAR_ERRORS = "CLEAR_ERRORS";
-
 import * as APIUtil from '../util/session_api_util';
+import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSIONS_ERRORS, CLEAR_ERRORS } from './types';
 
-const receiveCurrentUser = (currentUser) => (
-  {
-    type: RECEIVE_CURRENT_USER,
-    currentUser
-  }
-);
+const receiveCurrentUser = (currentUser) => ({
+  type: RECEIVE_CURRENT_USER,
+  currentUser
+});
 
-const logoutCurrentUser = () => (
-  {
-    type: LOGOUT_CURRENT_USER
-  }
-);
+const logoutCurrentUser = () => ({
+  type: LOGOUT_CURRENT_USER
+});
 
-const receiveErrors = (errors) => (
-  {
-    type: RECEIVE_SESSIONS_ERRORS,
-    errors
-  }
-);
+const receiveErrors = (errors) => ({
+  type: RECEIVE_SESSIONS_ERRORS,
+  errors
+});
 
-export const clearErrors = () => {
-  return {
-    type: CLEAR_ERRORS
-  }
-}
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS
+});
 
 export const login = (formUser) => dispatch => (
-  APIUtil.login(formUser).then(
-    (user)=>(dispatch(receiveCurrentUser(user))), 
+  APIUtil.login(formUser).then((user)=>(dispatch(receiveCurrentUser(user))), 
     (errors) => dispatch(receiveErrors(errors.responseJSON))
-  ));
+));
   
 export const logout = () => dispatch => (
-  APIUtil.logout().then(
-    ()=>(dispatch(logoutCurrentUser())),
+  APIUtil.logout().then(()=>(dispatch(logoutCurrentUser())),
     (errors) => dispatch(receiveErrors(errors.responseJSON))
-  ));
+));
 
 export const signup = (formUser) => dispatch => (
-  APIUtil.signup(formUser).then(
-    (user) => (dispatch(receiveCurrentUser(user))), 
+  APIUtil.signup(formUser).then((user) => (dispatch(receiveCurrentUser(user))), 
     (errors) => dispatch(receiveErrors(errors.responseJSON))
-  ));
+));

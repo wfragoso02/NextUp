@@ -1,7 +1,7 @@
-import { RECEIVE_ALL_PROFILES, RECEIVE_PROFILE, REMOVE_PROFILE }from '../actions/profile_actions';
 import { merge } from 'lodash';
+import { RECEIVE_ALL_PROFILES, RECEIVE_PROFILE, REMOVE_PROFILE } from '../actions/types';
 
-const profileReducer = (state ={}, action) => {
+export default (state ={}, action) => {
     let newState;
     Object.freeze(state);
     switch(action.type){
@@ -17,6 +17,3 @@ const profileReducer = (state ={}, action) => {
             return state;
     }
 };
-
-
-export default profileReducer;
