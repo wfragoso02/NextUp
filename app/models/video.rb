@@ -25,4 +25,13 @@ class Video < ApplicationRecord
         source: :genre
 
     has_many :list_items
+
+    def review
+        if(like ){
+            return true
+        }elsif(dislike){
+            return false
+        }
+        return nil
+    end
 end
