@@ -16,25 +16,29 @@ const GenreIndexItem = ({genre, profile, deleteListItem, list, createListItem, a
         const videos = Object.values(genre.video_ids).map(video_id => {
             return(
                 <>
-                <li key={Math.floor(Math.random()*1000000)} className="vid">
                     <VideoIndexItem profile={profile} deleteListItem={deleteListItem}  list={list}createListItem={createListItem} video={all_videos[video_id]} />
-                </li>
-                {/* <li key={Math.floor(Math.random()*1000000)} className="vid">
                     <VideoIndexItem profile={profile} deleteListItem={deleteListItem}  list={list}createListItem={createListItem} video={all_videos[video_id]} />
-                </li> */}
                 </>
             )
         })
         return(
             <>
-                <div className="genreItems" >
-                    <div className="genre-index-links"><h2 className="content"><Link genre={genre} to={`/${profile.id}/genre/${genre.id}`}>{genre.name.toUpperCase()}</Link></h2></div>
+                <div>
+                    <div className="genre-index-links"><h2 className="genre-content"><Link genre={genre} to={`/${profile.id}/genre/${genre.id}`}>{genre.name.toUpperCase()}</Link></h2></div>
+                    <br/>
                     <ul className="row" >
                         {videos}
                     </ul>
+                    <div className="content">
+                        <div className="background">
+                            <div className="left">left</div>
+                            <div className="right">right</div>
+                        </div>
+                        <div className="content-container">content here...</div>
+                    </div>
                 </div>
             </>
         )
     }
-    }
+}
 export default connect(msp, null)(GenreIndexItem);

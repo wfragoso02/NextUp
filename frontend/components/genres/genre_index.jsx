@@ -103,15 +103,13 @@ class GenreIndex extends React.Component{
         let myList;
         
         let listVideos;
-        myList = <Link to={`/${this.props.profile.id}/myList`} className="content">My List</Link>
+        myList = <div className="genre-index-links"><h2 className="genre-content"><Link to={`/${this.props.profile.id}/myList`} >My List</Link></h2></div>
         if (!this.props.list.video_ids){
             return null;
         }else{
             listVideos = this.props.list.video_ids.map(video_id => {
                 return (
-                    <li key={Math.floor(Math.random() * 1000000)} className="vid">
                         <VideoIndexItem profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} video={this.props.all_videos[video_id]} className="actual-video" />
-                    </li>
                 )
             })
         }
@@ -121,12 +119,22 @@ class GenreIndex extends React.Component{
                 <div className="home" >
                     {mainVideo}
                 </div>
-                <div className="my-list-items">
+                <div>
                     {myList}
+                    <br/>
                     <ul className="row">
                         {listVideos}
                     </ul>
+                    <div className="content">
+                        <div className="background">
+                            <div className="left">left</div>
+                            <div className="right">right</div>
+                        </div>
+                        <div className="content-container">content here...</div>
+                    </div>
                 </div>
+                <br/>
+
                 <InfiniteScroll
                 dataLength={this.state.count}
                 next={this.updateCount}

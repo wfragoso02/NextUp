@@ -41,6 +41,7 @@ class videoIndexItem extends React.Component{
         const liked = video.like;
         const disLiked = video.dislike;
 
+
         let likeButton;
         let dislikeButton;
         let like;
@@ -79,19 +80,14 @@ class videoIndexItem extends React.Component{
             )
         }
         return(
-            <div>
-                <div className="tile">
-                    {likeButton}
-                    {dislikeButton}
-                    {defaultButton}
-                    <Link to={`/${profile.id}/videos/${video.id}`} className="video-play-button"><i className="fas fa-play"></i></Link>
-                    <Link to={`/${profile.id}/videos/${video.id}`}><img className="tile__img" src={video.image_url}/></Link>
-                    <Link to={`/${profile.id}/videos/${video.id}`}><h2 className="video-title">{video.title}</h2></Link>
-                    {/* <button onClick={this.displayVideo.bind(this)}></button> */}
-                </div>
-                {/* <div id="hidden-video-show">
-                    <h1>hello</h1>
-                </div> */}
+            <div className="tile">
+                {likeButton}
+                {dislikeButton}
+                {defaultButton}
+                <Link to={`/${profile.id}/videos/${video.id}`} className="video-play-button"><i className="fas fa-play"></i></Link>
+                <Link to={`/${profile.id}/videos/${video.id}`}><img className="tile__img" src={video.image_url}/></Link>
+                <Link to={`/${profile.id}/videos/${video.id}`}><h2 className="video-title">{video.title}</h2></Link>
+                {/* <button onClick={this.displayVideo.bind(this)}></button> */}
             </div>
         )
     }
