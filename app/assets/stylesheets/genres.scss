@@ -263,12 +263,11 @@ color: black;
 .default-button:hover .fa-check-text-link{
   display: block;
 }
-.tile:hover .default-button{
+.tile:hover .default-button, .tile:hover .like-button, .tile:hover .dislike-button{
   opacity: 1;
-  // transition: 0.1s all ease;
 }
 
-.default-button{
+.default-button, .like-button, .dislike-button{
   opacity: 0;
   position: absolute;
   z-index: 2;
@@ -276,13 +275,29 @@ color: black;
   background: rgba(0, 0, 0, 0.671);
   border: 2px solid grey;
   border-radius: 50%;
-  font-size: 0.9vw;
+  font-size: 0.5vw;
   right: 1vw;
-  top: 11.5vw;
   font-weight: lighter;
-  height: 3vw;
-  width: 3vw;
+  height: 2.3vw;
+  width: 2.3vw;
+}
 
+.default-button{
+  top: 11.5vw;
+}
+.dislike-button{
+  top: 9vw;
+}
+.like-button{
+  top: 6.5vw;
+}
+
+.dislike{
+  color: red;
+}
+
+.like{
+  color: blue;
 }
 .tile:hover .video-title{
   opacity: 1;

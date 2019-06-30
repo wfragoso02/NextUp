@@ -5,17 +5,17 @@ import VideoIndexItem from '../videos/video_index_item';
 import {Link} from 'react-router-dom';
 import Footer from '../footer';
 
-
 class GenreIndex extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            volume: "1"
+            volume: "1",
         };
         this.setMuted = this.setMuted.bind(this);
     }
 
     componentDidMount(){
+        this.props.fetchVideos();
         this.props.fecthProfile(this.props.match.params.profileId);
         this.props.fetchGenres();
     }
@@ -42,6 +42,7 @@ class GenreIndex extends React.Component{
     }
 
     render(){
+        
         const genres = this.props.genres.map((genre, idx) => {
             return (
                 <li key={Math.floor(Math.random() * 1000000)}>
@@ -54,10 +55,10 @@ class GenreIndex extends React.Component{
         if (!this.props.list.video_ids || !this.props.genres[0]){
             return null;
         }
-        if (this.props.list.video_ids.includes(Object.values(this.props.genres[0].videos)[0].id)) {
-            defaultButton = (<button onClick={() => this.props.deleteListItem(Object.values(this.props.genres[0].videos)[0].id)} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
+        if (this.props.list.video_ids.includes(this.props.genres[0].video_ids[0])) {
+            defaultButton = (<button onClick={() => this.props.deleteListItem(this.props.genres[0].video_ids[0])} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
         } else {
-            defaultButton = (<button onClick={() => this.props.createListItem({ video_id: Object.values(this.props.genres[0].videos)[0].id, list_id: this.props.list.id })} className="front-page-button"><h3 className="fa-plus-text"><i className="fas fa-plus"></i>My List</h3></button>)
+            defaultButton = (<button onClick={() => this.props.createListItem({ video_id: this.props.genres[0].video_ids[0], list_id: this.props.list.id })} className="front-page-button"><h3 className="fa-plus-text"><i className="fas fa-plus"></i>My List</h3></button>)
         }
        
         let volumes;
@@ -67,18 +68,18 @@ class GenreIndex extends React.Component{
             volumes = <i className="fas fa-volume-up fa-xs"></i>
         }
         let mainVideo;
-        if (this.props.genres[0]){
-            
+        if (this.props.all_videos){
+            const mainVid = this.props.all_videos[this.props.genres[0].video_ids[0]]
             mainVideo = (
                 <>
                     <video ref='player' className="home-trailer"  loop autoPlay>
-                        <source src={Object.values(this.props.genres[0].videos)[0].video_url} />
+                        <source src={mainVid.video_url} />
                     </video>
-                    <Link to={`/${this.props.profile.id}/videos/${Object.values(this.props.genres[0].videos)[0].id}`} className="play-button"><h3>► Play</h3></Link>
+                    <Link to={`/${this.props.profile.id}/videos/${mainVid.id}`} className="play-button"><h3>► Play</h3></Link>
                     {defaultButton}
                     <button onClick={this.setMuted} className="home-page-volume-button">{volumes}</button>
-                    <h1 className="main-video-title">{Object.values(this.props.genres[0].videos)[0].title}</h1>
-                    <h1 className="main-video-rating">{Object.values(this.props.genres[0].videos)[0].rating}</h1>
+                    <h1 className="main-video-title">{mainVid.title}</h1>
+                    <h1 className="main-video-rating">{mainVid.rating}</h1>
                 </>
             )
             
@@ -91,14 +92,14 @@ class GenreIndex extends React.Component{
         let myList;
         
         let listVideos;
-        if (!this.props.list.videos){
+        myList = <Link to={`/${this.props.profile.id}/myList`} className="content">My List</Link>
+        if (!this.props.list.video_ids){
             return null;
         }else{
-            myList = <Link to={`/${this.props.profile.id}/myList`} className="content">My List</Link>
-            listVideos = this.props.list.videos.map(video => {
+            listVideos = this.props.list.video_ids.map(video_id => {
                 return (
                     <li key={Math.floor(Math.random() * 1000000)} className="vid">
-                        <VideoIndexItem profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} video={video} className="actual-video" />
+                        <VideoIndexItem profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} video={this.props.all_videos[video_id]} className="actual-video" />
                     </li>
                 )
             })

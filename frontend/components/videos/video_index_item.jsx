@@ -1,15 +1,35 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
+import {updateVideo} from '../../actions/video_actions';
 
 const msp = state => {
     return{
         list: state.entities.list
     }
 }
+
+const mdp = dispatch => {
+    return{
+        updateVideo: (video) => dispatch(updateVideo(video))
+    }
+}
 class videoIndexItem extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = this.props.video;
+    }
+
     displayVideo(){
         document.getElementById("hidden-video-show").style.display="block";
+    }
+
+    like(){
+        this.setState({like: true, dislike: false}, () => this.props.updateVideo(this.state));
+    }
+
+    dislike(){
+        this.setState({like: false, dislike: true}, () => this.props.updateVideo(this.state));
     }
 
     render(){
@@ -18,6 +38,28 @@ class videoIndexItem extends React.Component{
         const deleteListItem = this.props.deleteListItem;
         const createListItem = this.props.createListItem; 
         const profile = this.props.profile;
+        const liked = video.like;
+        const disLiked = video.dislike;
+
+        let likeButton;
+        let dislikeButton;
+        let like;
+        let dislike;
+
+        liked === true ? like = "like" : like = "";
+        disLiked === true ? dislike = "dislike" : dislike = "";
+        
+        likeButton = (
+            <button className={`like-button ${like}`} onClick={() => this.like()}>
+                <i className="fas fa-thumbs-up"></i>
+            </button>
+        )
+
+        dislikeButton = (
+            <button className={`dislike-button ${dislike}`} onClick={() => this.dislike()}>
+                <i className="fas fa-thumbs-down"></i>
+            </button>
+        )
         
         let defaultButton;
         if (list.video_ids.includes(video.id)){
@@ -39,6 +81,8 @@ class videoIndexItem extends React.Component{
         return(
             <div>
                 <div className="tile">
+                    {likeButton}
+                    {dislikeButton}
                     {defaultButton}
                     <Link to={`/${profile.id}/videos/${video.id}`} className="video-play-button"><i className="fas fa-play"></i></Link>
                     <Link to={`/${profile.id}/videos/${video.id}`}><img className="tile__img" src={video.image_url}/></Link>
@@ -53,4 +97,4 @@ class videoIndexItem extends React.Component{
     }
 }
 
-export default connect(msp, null)(videoIndexItem);
+export default connect(msp, mdp)(videoIndexItem);

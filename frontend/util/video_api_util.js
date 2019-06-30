@@ -12,3 +12,11 @@ export const fetchVideos = (filter) => (
         data: filter
     })
 );
+
+export const updateVideo = (video) => (
+    $.ajax({
+      url: `api/videos/${video.id}`,
+      method: 'PATCH',
+      data: { video }
+    })
+);

@@ -1,4 +1,8 @@
-json.extract! video, :id, :title, :year, :description, :rating, :review 
-json.image_url url_for(video.image)
+# json.extract! video, :id, :title, :year, :description, :rating, :like, :dislike 
+# json.image_url url_for(video.image)
 
+# json.video_url url_for(video.movie)
+
+json.extract! video, :id, :title, :year, :description, :rating, :like, :dislike
+json.image_url url_for(video.image) 
 json.video_url url_for(video.movie)

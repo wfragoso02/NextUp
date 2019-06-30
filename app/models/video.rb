@@ -26,12 +26,4 @@ class Video < ApplicationRecord
 
     has_many :list_items
 
-    def review
-        if(like)
-            return true
-        elsif(dislike)
-            return false
-        end
-        return nil
-    end
 end
