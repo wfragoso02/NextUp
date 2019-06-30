@@ -4,20 +4,28 @@ import Nav from '../nav/nav_cotainer';
 import VideoIndexItem from '../videos/video_index_item';
 import {Link} from 'react-router-dom';
 import Footer from '../footer';
+import InfiniteScroll from 'react-infinite-scroll-component';
+
 
 class GenreIndex extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             volume: "1",
+            start: 0,
+            count: 1,
+            genres: []
         };
+        this.updateCount = this.updateCount.bind(this)
         this.setMuted = this.setMuted.bind(this);
     }
 
     componentDidMount(){
         this.props.fetchVideos();
         this.props.fecthProfile(this.props.match.params.profileId);
-        this.props.fetchGenres();
+        this.props.fetchGenres().then((res) =>{ 
+        this.setState({genres: Object.values(res.genres).slice(this.state.start, this.state.count)})
+        });
     }
 
     componentDidUpdate(prevProps){
@@ -28,6 +36,10 @@ class GenreIndex extends React.Component{
         if (prevProps.list.video_ids && (this.props.list.video_ids.length !== prevProps.list.video_ids.length)){
             this.props.fetchList(this.props.profile.list.id);
         }
+    }
+
+    updateCount(){
+        this.setState({start : this.state.count, count: this.state.count + 1, genres: this.state.genres.concat(this.props.genres.slice(this.state.count, this.state.count + 1))})
     }
 
     setMuted(){
@@ -42,8 +54,7 @@ class GenreIndex extends React.Component{
     }
 
     render(){
-        
-        const genres = this.props.genres.map((genre, idx) => {
+        const genres = this.state.genres.map((genre, idx) => {
             return (
                 <li key={Math.floor(Math.random() * 1000000)}>
                     <GenreIndexItem  key={Math.floor(Math.random() * 1000000)} profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} profile={this.props.profile} genre={genre} />
@@ -116,9 +127,15 @@ class GenreIndex extends React.Component{
                         {listVideos}
                     </ul>
                 </div>
-                <ul className="genre-index">
-                    {genres}
-                </ul>
+                <InfiniteScroll
+                dataLength={this.state.count}
+                next={this.updateCount}
+                hasMore={true}
+                >
+                    <ul className="genre-index">
+                        {genres}
+                    </ul>
+                </InfiniteScroll>
                 <Footer />
             </div>
         )
