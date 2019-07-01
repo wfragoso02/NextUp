@@ -5,6 +5,7 @@ import VideoIndexItem from '../videos/video_index_item';
 import {Link} from 'react-router-dom';
 import Footer from '../footer';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import GenreContent from './genre_content';
 
 
 class GenreIndex extends React.Component{
@@ -14,10 +15,13 @@ class GenreIndex extends React.Component{
             volume: "1",
             start: 0,
             count: 1,
-            genres: []
+            genres: [],
+            listSelected: null
         };
         this.updateCount = this.updateCount.bind(this)
         this.setMuted = this.setMuted.bind(this);
+        this.selectListItem = this.selectListItem.bind(this);
+        // this.closeContent = this.closeContent.bind(this);
     }
 
     componentDidMount(){
@@ -27,6 +31,8 @@ class GenreIndex extends React.Component{
         this.setState({genres: Object.values(res.genres).slice(this.state.start, this.state.count)})
         });
     }
+
+    
 
     componentDidUpdate(prevProps){
         if (prevProps.profile.id !== this.props.profile.id){
@@ -53,11 +59,22 @@ class GenreIndex extends React.Component{
         }
     }
 
+    closeContent(){
+        this.setState({listSelected: null})
+
+    }
+    
+    selectListItem(video){
+        // debugger
+        this.setState({listSelected: video});
+    }
+
     render(){
+        console.log(this.state.listSelected)
         const genres = this.state.genres.map((genre, idx) => {
             return (
                 <li key={Math.floor(Math.random() * 1000000)}>
-                    <GenreIndexItem  key={Math.floor(Math.random() * 1000000)} profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} profile={this.props.profile} genre={genre} />
+                    <GenreIndexItem  key={Math.floor(Math.random() * 1000000)} closeContent={this.closeContent} profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} profile={this.props.profile} genre={genre} />
                 </li>
             )
         });
@@ -109,7 +126,7 @@ class GenreIndex extends React.Component{
         }else{
             listVideos = this.props.list.video_ids.map(video_id => {
                 return (
-                        <VideoIndexItem profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} video={this.props.all_videos[video_id]} className="actual-video" />
+                        <VideoIndexItem selectListItem={this.selectListItem} profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} video={this.props.all_videos[video_id]} className="actual-video" />
                 )
             })
         }
@@ -125,13 +142,7 @@ class GenreIndex extends React.Component{
                     <ul className="row">
                         {listVideos}
                     </ul>
-                    <div className="content">
-                        <div className="background">
-                            <div className="left">left</div>
-                            <div className="right">right</div>
-                        </div>
-                        <div className="content-container">content here...</div>
-                    </div>
+                    <GenreContent movie={this.state.listSelected} closeContent={this.closeContent}/>
                 </div>
                 <br/>
 

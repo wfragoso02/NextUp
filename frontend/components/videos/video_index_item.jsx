@@ -40,6 +40,7 @@ class videoIndexItem extends React.Component{
         const profile = this.props.profile;
         const liked = video.like;
         const disLiked = video.dislike;
+        const selectListItem = this.props.selectListItem;
 
 
         let likeButton;
@@ -87,7 +88,10 @@ class videoIndexItem extends React.Component{
                 <Link to={`/${profile.id}/videos/${video.id}`} className="video-play-button"><i className="fas fa-play"></i></Link>
                 <Link to={`/${profile.id}/videos/${video.id}`}><img className="tile__img" src={video.image_url}/></Link>
                 <Link to={`/${profile.id}/videos/${video.id}`}><h2 className="video-title">{video.title}</h2></Link>
-                {/* <button onClick={this.displayVideo.bind(this)}></button> */}
+                <div className="random">
+
+                <button className="dropdown-button" onClick={() => selectListItem(video)}><i className="fas fa-chevron-down"></i></button>
+                </div>
             </div>
         )
     }

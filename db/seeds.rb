@@ -32,10 +32,18 @@ tv = Genre.create({name: "TV Shows" })
 toprated = Genre.create({name: "Top-Rated"})
 
 
+
+
 captain_marvel = Video.create!({title: 'Captain Marvel', year: 2019, rating: 'PG-13', description: "In 1995, on the Kree Empire's capital planet of Hala, Starforce member Vers suffers from amnesia and recurring nightmares involving an older woman. Yon-Rogg, her mentor and commander, trains her to control her abilities while the Supreme Intelligence, the artificial intelligence that rules the Kree, urges her to keep her emotions in check."})
 captain_marvel.image.attach(io: open('https://s3.amazonaws.com/nextup-seed/captain-maervel-image.jpg'), filename: 'Captain Marvel.jpg')
 captain_marvel.movie.attach(io: open('https://s3.amazonaws.com/nextup-seed/Marvel+Studios+Captain+Marvel+-+Official+Trailer.mp4'), filename: 'Captain Marveltrailer.mp4')
 Category.create!(genre_id: marvel.id, video_id: captain_marvel.id)
+
+
+spider_man_far_from_home = Video.create!({title: 'Spider Man: Far From Home', year: 2019, rating: 'PG-13', description: "In Mexico, Nick Fury and Maria Hill encounter a storm, which is revealed to be the Earth Elemental. A superpowered man, Quentin Beck, arrives to fight the creature. In New York City, the Midtown School of Science and Technology restarts its academic year to accommodate the students who were among those resurrected by Bruce Banner eight months earlier. The school organizes a two-week summer field trip to Europe. Peter Parker, while still distraught over the death of Tony Stark, plans to confess his growing feelings for classmate MJ. He attends a fundraiser for the homeless, coordinated by his Aunt May. There he disconnects a call from Fury and leaves after being posed questions about Stark."})
+spider_man_far_from_home.image.attach(io: open('https://nextup-seed.s3.amazonaws.com/spider-man-far-from-home-poster-f.jpg'), filename: 'Spider Man: Far From Home.jpg')
+spider_man_far_from_home.movie.attach(io: open('https://nextup-seed.s3.amazonaws.com/Spider-Man+Far+From+Home+Teaser+Trailer+1+(2019)++Movieclips+Trailers.mp4'), filename: 'Spider Man: Far From Home-trailer.mp4')
+Category.create!(genre_id: marvel.id, video_id: spider_man_far_from_home.id)
 
 
 thor_ragnarok = Video.create!({title: 'Thor: Ragnarok', year: 2017, rating: 'PG-13', description: "Two years after the battle of Sokovia,[N 1] Thor is imprisoned by the fire demon Surtur, who reveals that Thor's father Odin is no longer on Asgard. He explains that the realm will soon be destroyed during the prophesied Ragnarök, once Surtur unites his crown with the Eternal Flame that burns in Odin's vault. Thor frees himself, defeats Surtur and takes his crown, believing he has prevented Ragnarök."})
@@ -79,6 +87,10 @@ wonder_woman.image.attach(io: open('https://s3.amazonaws.com/nextup-seed/nder-wo
 wonder_woman.movie.attach(io: open('https://s3.amazonaws.com/nextup-seed/WONDER+WOMAN+-+Official+Trailer+%5BHD%5D.mp4'), filename: 'Wonder Woman-trailer.mp4')
 Category.create!(genre_id: dc.id, video_id: wonder_woman.id)
 
+watchmen = Video.create!({title: 'Watchmen', year: 2009, rating: 'PG-13', description: 'Using an alternative timeline and applying multiverse theory, the story exists in a nearly identical, but separate America, while slightly mimicking both historically significant time periods. Initially starting in 1939, during the fading Interwar Period, a team of costumed crime fighters called the Minutemen formed in response to a rise in costumed gangs and criminals; this creation and timeline occurring prior to, and similarly covering the 1960s Vietnam War Era through mid-1980s Cold War Era America, saw the rise of the "Watchmen" team formed decades later'})
+watchmen.image.attach(io: open('https://nextup-seed.s3.amazonaws.com/watchmen-hbo.jpg'), filename: 'Watchmen.jpg')
+watchmen.movie.attach(io: open('https://nextup-seed.s3.amazonaws.com/Watchmen+(2009)+Official+Trailer+-+Zac+Snyder+Superhero+Movie+HD.mp4'), filename: 'Watchmen.mp4')
+Category.create!(genre_id: dc.id, video_id: watchmen.id)
 
 frozen_2 = Video.create!({title: 'Frozen 2', year: 2019, rating: 'PG', description: 'Elsa the Snow Queen and her sister embark on an adventure far away from the kingdom of Arendelle.'})
 frozen_2.image.attach(io: open('https://s3.amazonaws.com/nextup-seed/frozen-image.png'), filename: 'Frozen 2.jpg')
@@ -102,6 +114,12 @@ toy_story = Video.create!({title: 'Toy Story 4', year: 2019, rating: 'PG', descr
 toy_story.image.attach(io: open('https://s3.amazonaws.com/nextup-seed/toy-story-4-image.jpg'), filename: 'Toy Story 4.jpg')
 toy_story.movie.attach(io: open('https://s3.amazonaws.com/nextup-seed/Toy+Story+4++Official+Trailer.mp4'), filename: 'Toy Story 4-trailer.mp4')
 Category.create!(genre_id: animation.id, video_id: toy_story.id)
+
+
+coco = Video.create!({title: 'Coco', year: 2019, rating: 'PG', description: "In Santa Cecilia, Mexico, 12-year-old Miguel dreams of becoming a musician, even though his family strictly forbids it. His great-great-grandmother Imelda was married to a man who left her and their 3-year-old daughter Coco to pursue a career in music, and when he never returned, Imelda banished music from her family's life and started a shoemaking business."})
+coco.image.attach(io: open('https://nextup-seed.s3.amazonaws.com/coco.jpg'), filename: 'Coco.jpg')
+coco.movie.attach(io: open('https://nextup-seed.s3.amazonaws.com/Coco+Trailer+(2017)++Find+Your+Voice++Movieclips+Trailers.mp4'), filename: 'Coco-trailer.mp4')
+Category.create!(genre_id: animation.id, video_id: coco.id)
 
 
 power = Video.create!({title: 'Power', year: 2019, rating: 'R', description: "James 'Ghost' St. Patrick, a wealthy New York night club owner who has it all, catering to the city's elite and dreaming big, lives a double life as a drug kingpin. ... He wants to build an empire, turn the club into a Fortune 500 business, but there's just one problem: Ghost is living a double life"})
@@ -128,6 +146,12 @@ got.movie.attach(io: open('https://s3.amazonaws.com/nextup-seed/Game+of+Thrones+
 Category.create!(genre_id: tv.id, video_id: got.id)
 
 
+lucifer = Video.create!({title: 'Lucifer', year: 2019, rating: 'TV-MA', description: 'The series focuses on Lucifer Morningstar, the Devil, who is bored and unhappy as the Lord of Hell. He resigns his throne in defiance to his father (God) and abandons his kingdom for Los Angeles, where he ends up running his nightclub "Lux". He becomes involved in a murder case with Detective Chloe Decker, and is subsequently invited to be a consultant to the LAPD. Throughout the series, several celestial and demonic threats come to L.A.; at the same time, Lucifer and Chloe fall in love.'})
+lucifer.image.attach(io: open('https://nextup-seed.s3.amazonaws.com/Webp.net-resizeimage.png'), filename: 'Lucifer.jpg')
+lucifer.movie.attach(io: open('https://nextup-seed.s3.amazonaws.com/Official+Trailer++Season+1++LUCIFER.mp4'), filename: 'Lucifer-trailer.mp4')
+Category.create!(genre_id: tv.id, video_id: lucifer.id)
+
+
 beautiful_boy = Video.create!({title: 'Beautiful Boy', year: 2018, rating: 'R', description: "New York Times writer David Sheff discovers his teenage son Nicholas is missing, and two days later, he reappears in their home. Seeing obvious signs of drug use, David takes Nic to a rehab clinic. Progress is made, and Nic requests to be transferred to a halfway house, where there is less security, and free time is given outside of a facility, to which David and Nic's doctors agree. Days later, however, Nic does not return home, and David finds him in the streets."})
 beautiful_boy.image.attach(io: open('https://s3.amazonaws.com/nextup-seed/beautiful-boy-image.jpg'), filename: 'Beautiful Boy.jpg')
 beautiful_boy.movie.attach(io: open('https://s3.amazonaws.com/nextup-seed/Beautiful+Boy+Trailer+1+(2018)++Movieclips+Trailers.mp4'), filename: 'Beautiful Boy-trailer.mp4')
@@ -150,6 +174,12 @@ hobbs_shaw = Video.create!({title: 'Hobbs & Shaw', year: 2019, rating: 'R', desc
 hobbs_shaw.image.attach(io: open('https://s3.amazonaws.com/nextup-seed/hobbs-and-shaw-image.jpg'), filename: 'Hobbs & Shaw.jpg')
 hobbs_shaw.movie.attach(io: open('https://s3.amazonaws.com/nextup-seed/Fast++Furious+Presents+Hobbs++Shaw++Official+Trailer++MTV+Movies.mp4'), filename: 'Hobbs & Shaw-trailer.mp4')
 Category.create!(genre_id: toprated.id, video_id: hobbs_shaw.id)
+
+
+equilizer = Video.create!({title: 'THE EQUALIZER 2', year: 2018, rating: 'R', description: "Former Marine and Defense Intelligence Agency (DIA) operative Robert McCall now lives in a diverse apartment complex in Roxbury, Boston. He is working as a Lyft driver and assists the less fortunate with the help of his close friend and former CIA colleague, Susan Plummer. McCall travels to Istanbul to retrieve a Boston bookstore owner's daughter, kidnapped by her father. He also helps Sam Rubinstein, an elderly Holocaust survivor who is looking for a painting of his sister; the siblings were separated in the Nazi death camps and the painting had been auctioned off. After discovering the apartment's courtyard has been vandalised, McCall accepts an offer from Miles Whittaker, a young resident with an artistic but troubled background, to repaint the walls. McCall later rescues Miles, who had been lured away by a local gang."})
+equilizer.image.attach(io: open('https://nextup-seed.s3.amazonaws.com/equilizer.jpg'), filename: 'Equilizer 2.jpg')
+equilizer.movie.attach(io: open('https://nextup-seed.s3.amazonaws.com/THE+EQUALIZER+2+-+Official+Trailer+(HD).mp4'), filename: 'Equilizer 2-trailer.mp4')
+Category.create!(genre_id: toprated.id, video_id: equilizer.id)
 
 
 

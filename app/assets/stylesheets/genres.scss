@@ -282,23 +282,25 @@ color: black;
 .default-button:hover .fa-check-text-link{
   display: block;
 }
-.tile:hover .default-button, .tile:hover .like-button, .tile:hover .dislike-button{
+.tile:hover .default-button, .tile:hover .like-button, .tile:hover .dislike-button, .tile:hover .dropdown-button{
   opacity: 1;
 }
 
-.default-button, .like-button, .dislike-button{
+.default-button, .like-button, .dislike-button, .dropdown-button{
   opacity: 0;
   position: absolute;
   z-index: 2;
   color: white;
   background: rgba(0, 0, 0, 0.671);
-  border: 2px solid grey;
-  border-radius: 50%;
-  font-size: 0.3vw;
-  right: 1vw;
   font-weight: lighter;
   height: 1.5vw;
   width: 1.5vw;
+}
+.default-button, .like-button, .dislike-button{
+  font-size: 0.3vw;
+  right: 1vw;
+  border: 2px solid grey;
+  border-radius: 50%;
 }
 
 .default-button{
@@ -317,6 +319,28 @@ color: black;
 
 .like{
   color: blue;
+}
+.random{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.dropdown-button{
+  justify-content: center;
+  color:white;
+  cursor: pointer;
+  top: 9vw;
+  font-size: 1.7vw;
+  border: none;
+  background: transparent;
+}
+.dropdown-button:hover{
+  color: red;
+  font-size: 2vw;
+
+}
+.bring-up-button{
+  
 }
 .tile:hover .video-title{
   opacity: 1;
@@ -381,7 +405,7 @@ color: black;
   top: 50%;
 }
 
-.content {
+#content {
   margin-top: 40px;
   height: 25vw;
   position: relative;
