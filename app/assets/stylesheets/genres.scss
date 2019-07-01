@@ -340,6 +340,13 @@ color: black;
 
 }
 .bring-up-button{
+  position: absolute;
+  right: 2vw;
+  top: 2vw;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 2vw;
   
 }
 .tile:hover .video-title{
@@ -414,6 +421,7 @@ color: black;
 .background {
   display: flex;
   height: 100%;
+  background-repeat: no-repeat;
 }
 
 .left {
@@ -433,8 +441,26 @@ color: black;
 }
 
 .right {
-  background: green;
+  background: transparent;
   width: 70%;
+}
+
+.genre_content_header, .genre_content_text, .genre_content_year{
+  display: flex;
+  justify-content: center;
+  font-family: 'Rubik', sans-serif;
+}
+.genre_content_text{
+  position: absolute;
+  bottom: 0;
+  font-size: 1.3vw;
+}
+.genre_content_header{
+
+  font-size: 4vw;
+}
+.genre_content_year{
+  font-size: 3vw;
 }
 
 .content-container {

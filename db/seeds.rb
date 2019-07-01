@@ -46,7 +46,7 @@ spider_man_far_from_home.movie.attach(io: open('https://nextup-seed.s3.amazonaws
 Category.create!(genre_id: marvel.id, video_id: spider_man_far_from_home.id)
 
 
-thor_ragnarok = Video.create!({title: 'Thor: Ragnarok', year: 2017, rating: 'PG-13', description: "Two years after the battle of Sokovia,[N 1] Thor is imprisoned by the fire demon Surtur, who reveals that Thor's father Odin is no longer on Asgard. He explains that the realm will soon be destroyed during the prophesied Ragnarök, once Surtur unites his crown with the Eternal Flame that burns in Odin's vault. Thor frees himself, defeats Surtur and takes his crown, believing he has prevented Ragnarök."})
+thor_ragnarok = Video.create!({title: 'Thor: Ragnarok', year: 2017, rating: 'PG-13', description: "Two years after the battle of Sokovia, Thor is imprisoned by the fire demon Surtur, who reveals that Thor's father Odin is no longer on Asgard. He explains that the realm will soon be destroyed during the prophesied Ragnarök, once Surtur unites his crown with the Eternal Flame that burns in Odin's vault. Thor frees himself, defeats Surtur and takes his crown, believing he has prevented Ragnarök."})
 thor_ragnarok.image.attach(io: open('https://s3.amazonaws.com/nextup-seed/thor-image.jpg'), filename: 'Thor: Ragnarok.jpg')
 thor_ragnarok.movie.attach(io: open('https://s3.amazonaws.com/nextup-seed/Thor+Ragnarok+Official+Trailer.mp4'), filename: 'Thor: Ragnarok.mp4')
 Category.create!(genre_id: marvel.id, video_id: thor_ragnarok.id)

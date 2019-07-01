@@ -32,6 +32,7 @@ class GenreIndexItem extends React.Component{
     const createListItem = this.props.createListItem 
     const all_videos = this.props.all_videos 
     const closeContent = this.props.closeContent;
+    const selectedItem = this.props.selectedItem
 
     if(Object.values(all_videos).length === 0){
         return null
@@ -39,7 +40,7 @@ class GenreIndexItem extends React.Component{
         const videos = Object.values(genre.video_ids).map(video_id => {
             return(
                 <>
-                    <VideoIndexItem selectListItem={this.selectListItem} profile={profile} deleteListItem={deleteListItem}  list={list}createListItem={createListItem} video={all_videos[video_id]} />
+                    <VideoIndexItem selectedItem={selectedItem} selectListItem={this.selectListItem} profile={profile} deleteListItem={deleteListItem}  list={list}createListItem={createListItem} video={all_videos[video_id]} />
                 </>
             )
         })
