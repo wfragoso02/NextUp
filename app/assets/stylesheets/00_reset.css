@@ -14,6 +14,7 @@ header, nav, section, ul, ol, li {
 html {
   height: 100%;
   width: 100%;
+  overflow-x: hidden;
 }
 body {
   min-height: 100%;
