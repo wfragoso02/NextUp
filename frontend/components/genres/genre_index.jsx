@@ -30,7 +30,7 @@ class GenreIndex extends React.Component{
         this.props.fetchVideos();
         this.props.fecthProfile(this.props.match.params.profileId);
         this.props.fetchGenres().then((res) =>{ 
-        this.setState({genres: Object.values(res.genres).slice(this.state.start, this.state.count)})
+        this.setState({genres: Object.values(res.genres)})
         });
     }
 
@@ -77,7 +77,6 @@ class GenreIndex extends React.Component{
     }
 
     render(){
-        console.log(this.state.selectedItem)
         const genres = this.state.genres.map((genre, idx) => {
             return (
                 <li key={Math.floor(Math.random() * 1000000)}>
@@ -162,15 +161,15 @@ class GenreIndex extends React.Component{
                 </div>
                 <br/>
 
-                <InfiniteScroll
+                {/* <InfiniteScroll
                 dataLength={this.state.count}
                 next={this.updateCount}
                 hasMore={true}
-                >
+                > */}
                     <ul className="genre-index">
                         {genres}
                     </ul>
-                </InfiniteScroll>
+                {/* </InfiniteScroll> */}
                 <Footer />
             </div>
         )
