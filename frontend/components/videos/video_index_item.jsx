@@ -103,7 +103,7 @@ class videoIndexItem extends React.Component{
         }
 
         return(
-            <div className={`tile ${this.props.genreId}`}
+            <div className={`tile ${this.props.classId}`}
             onMouseEnter={() =>{
                 if(this.props.currVid && this.props.currVid.id !== video.id){
                     selectListItem(video)

@@ -16,7 +16,9 @@ class GenreIndex extends React.Component{
             start: 0,
             count: 1,
             genres: [],
-            selectedItem: null
+            selectedItem: null,
+            length: 0,
+            shift: 0
         };
 
         this.updateCount = this.updateCount.bind(this)
@@ -30,7 +32,7 @@ class GenreIndex extends React.Component{
         this.props.fetchVideos();
         this.props.fecthProfile(this.props.match.params.profileId);
         this.props.fetchGenres().then((res) =>{ 
-        this.setState({genres: Object.values(res.genres)})
+        this.setState({genres: Object.values(res.genres), length: this.props.list.video_ids.length})
         });
     }
 
@@ -66,6 +68,31 @@ class GenreIndex extends React.Component{
             this.selectListItem(video)
         }
     }
+    shiftRight(){
+        if(this.state.shift < this.state.length){
+            const elements = document.getElementsByClassName(`${this.props.list.id}`)
+            Array.from(elements).map(element => {
+                const leftIdx = element.style.transform.indexOf("(");
+                const rightIdx = element.style.transform.indexOf(")");
+                element.style.transform.length < 1 ? element.style.transform = "translateX(-19vw)" : 
+                element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx + 1, rightIdx - 2)) - 19}vw)`;
+            })
+            this.setState({shift: this.state.shift + 1})
+        }
+    }
+
+    shiftLeft(){
+        if(this.state.shift > 0){
+            const elements = document.getElementsByClassName(`${this.props.list.id}`)
+            Array.from(elements).map(element => {
+                const leftIdx = element.style.transform.indexOf("(");
+                const rightIdx = element.style.transform.indexOf(")");
+                element.style.transform.length < 1 ? element.style.transform = "translateX(19vw)" : 
+                element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx + 1, rightIdx - 2)) + 19}vw)`;
+            })
+            this.setState({shift: this.state.shift - 1})
+        }
+    }
 
     closeContent(){
         this.setState({selectedItem: null})
@@ -76,6 +103,7 @@ class GenreIndex extends React.Component{
     }
 
     render(){
+        if(!this.props.list)return null;
         const genres = this.state.genres.map((genre, idx) => {
             return (
                 <li key={Math.floor(Math.random() * 1000000)}>
@@ -132,6 +160,7 @@ class GenreIndex extends React.Component{
             listVideos = this.props.list.video_ids.map(video_id => {
                 return (
                         <VideoIndexItem 
+                        classId={this.props.list.id}
                         currVid={this.state.selectedItem}
                         selectListItem={this.selectListItem} 
                         profile={this.props.profile} 
@@ -143,6 +172,21 @@ class GenreIndex extends React.Component{
                 )
             })
         }
+        let arrowLeft;
+        this.state.shift > 0 ? 
+        arrowLeft = (
+            <>
+                <button className="slider_left" onClick={() => this.shiftLeft()}><i className="fas fa-chevron-left"></i></button>
+            </>
+        ) : arrowLeft = null;
+
+        let arrowRight 
+        this.state.shift < this.state.length ? 
+        arrowRight= (
+            <>
+                <button className="slider_right" onClick={() => this.shiftRight()}><i className="fas fa-chevron-right"></i></button>
+            </>
+        ) : arrowRight = null;
         
         return(
             <div className="genre-index-container">
@@ -154,8 +198,11 @@ class GenreIndex extends React.Component{
                     {myList}
                     <br/>
                     <ul className="row">
+                    {arrowLeft}
                         {listVideos}
+                    {arrowRight}
                     </ul>
+
                     <GenreContent video={this.state.selectedItem} closeContent={this.closeContent}/>
                 </div>
                 <br/>

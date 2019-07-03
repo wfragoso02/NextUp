@@ -88,7 +88,7 @@ class GenreIndexItem extends React.Component{
             return(
                 <>
                 <VideoIndexItem 
-                    genreId={genre.id}
+                    classId={genre.id}
                     currVid={this.state.selectedItem}
                     selectListItem={this.selectListItem} 
                     profile={this.props.profile} 
