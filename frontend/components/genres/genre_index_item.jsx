@@ -49,13 +49,11 @@ class GenreIndexItem extends React.Component{
         if(this.state.shift > 0){
             const elements = document.getElementsByClassName(`${this.props.genre.id}`)
             Array.from(elements).map(element => {
-                debugger
                 const leftIdx = element.style.transform.indexOf("(");
                 const rightIdx = element.style.transform.indexOf(")");
                 element.style.transform.length < 1 ? element.style.transform = "translateX(19vw)" : 
                 element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx + 1, rightIdx - 2)) + 19}vw)`;
             })
-            // debugger
             this.setState({shift: this.state.shift - 1})
         }
     }

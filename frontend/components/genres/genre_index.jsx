@@ -62,7 +62,6 @@ class GenreIndex extends React.Component{
     }
 
     hoverItem(video){
-        debugger
         if(this.state.selectedItem && this.state.selectedItem.id !== video.id){
             this.selectListItem(video)
         }
