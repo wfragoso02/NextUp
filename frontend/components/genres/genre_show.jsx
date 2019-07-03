@@ -3,15 +3,21 @@ import VideoIndexItem from '../videos/video_index_item';
 import NavContainer from '../nav/nav_cotainer';
 import { Link } from 'react-router-dom';
 import Footer from '../footer';
+import GenreContent from './genre_content';
 
 class GenreShow extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             volume: 1,
-            videos: this.props.list.videos
+            videos: this.props.list.videos,
+            selectedItem: null
+
         }
         this.setMuted = this.setMuted.bind(this);
+        this.selectListItem = this.selectListItem.bind(this);
+        this.closeContent = this.closeContent.bind(this);
+        this.hoverItem = this.hoverItem.bind(this);
     }
 
     componentDidMount(){
@@ -27,6 +33,20 @@ class GenreShow extends React.Component{
         if (prevProps.list.video_ids && this.props.list.video_ids.length !== prevProps.list.video_ids.length){
             this.props.fetchList();
         }
+    }
+    hoverItem(video){
+        if(this.state.selectedItem && this.state.selectedItem.id !== video.id){
+            this.selectListItem(video)
+        }
+    }
+
+    closeContent(){
+        this.setState({selectedItem: null})
+    }
+
+    selectListItem(video){
+        debugger
+        this.setState({selectedItem: video});
     }
 
     setMuted(){
@@ -81,11 +101,21 @@ class GenreShow extends React.Component{
             return null;
         }
         const videos = Object.values(this.props.genre.videos).map(video=> {
+
             return(
-                <li key={Math.floor(Math.random() * 1000000)} className="vid">
-                    <VideoIndexItem profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list} createListItem={this.props.createListItem} video={video} />
-                </li>
+                // (
+                    <VideoIndexItem 
+                    currVid={this.state.selectedItem}
+                    selectListItem={this.selectListItem} 
+                    profile={this.props.profile} 
+                    deleteListItem={this.props.deleteListItem}  
+                    list={this.props.list}
+                    createListItem={this.props.createListItem} 
+                    video={video} 
+                    className="actual-video" />
             )
+            //     <VideoIndexItem profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list} createListItem={this.props.createListItem} video={video} />
+            // )
         })
 
         return(
@@ -98,9 +128,9 @@ class GenreShow extends React.Component{
                 <ul className="row">
                     {videos}
                 </ul>
+                <GenreContent video={this.state.selectedItem} closeContent={this.closeContent}/>
                 </div>
                 <Footer />
-                {/* <h1>hello</h1> */}
             </div>
         )
     }
