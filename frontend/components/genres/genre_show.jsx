@@ -60,7 +60,6 @@ class GenreShow extends React.Component{
     }
 
     render(){
-        debugger
         let defaultButton = "";
         if (!this.props.list.video_ids || !this.props.genre.videos || Object.values(this.props.all_videos).length < 1){
             return null;

@@ -50,7 +50,10 @@ class List extends React.Component{
 
     componentDidMount(){
         this.props.fetchProfile(this.props.match.params.profileId).then(() => {
-            this.setState({length: this.props.list.video_ids.length - 5});
+            function onlyUnique(value, index, self) { 
+                return self.indexOf(value) === index;
+            }
+            this.setState({length: this.props.list.video_ids.filter(onlyUnique).length - 5});
         })
     }
 
@@ -59,7 +62,10 @@ class List extends React.Component{
         if (prevProps.profile.id !== this.props.profile.id) this.props.fetchProfile(this.props.match.params.profileId).then(() => this.props.fetchVideos());
         if (prevProps.list.video_ids && this.props.list.video_ids.length !== prevProps.list.video_ids.length){
             this.props.fetchList(this.props.profile.list.id).then((res) => {
-                this.setState({length: res.list.video_ids.length - 5});
+                function onlyUnique(value, index, self) { 
+                    return self.indexOf(value) === index;
+                }
+                this.setState({length: res.list.video_ids.filter(onlyUnique).length - 5});
             });
         }
     }
@@ -141,7 +147,10 @@ class List extends React.Component{
                 <h1>No Video Here</h1>
             )
         }
-        const videos = this.props.list.video_ids.map(video_id=> {
+        function onlyUnique(value, index, self) { 
+            return self.indexOf(value) === index;
+        }
+        const videos = this.props.list.video_ids.filter(onlyUnique).map(video_id=> {
             return(
                 <VideoIndexItem 
                     classId={this.props.list.id}

@@ -7,7 +7,6 @@ export default (state = {}, action) => {
         case RECEIVE_ALL_VIDEOS:
             return action.videos;
         case RECEIVE_VIDEO:
-            debugger
             return merge({}, state, {[action.video.id]: action.video});
         default:
             return state;

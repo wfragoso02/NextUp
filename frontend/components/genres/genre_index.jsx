@@ -32,7 +32,10 @@ class GenreIndex extends React.Component{
         this.props.fetchVideos();
         this.props.fecthProfile(this.props.match.params.profileId);
         this.props.fetchGenres().then((res) =>{ 
-        this.setState({genres: Object.values(res.genres), length: this.props.list.video_ids.length - 5})
+            function onlyUnique(value, index, self) { 
+                return self.indexOf(value) === index;
+            }
+        this.setState({genres: Object.values(res.genres), length: this.props.list.video_ids.filter(onlyUnique).length - 5})
         });
     }
 
@@ -45,7 +48,10 @@ class GenreIndex extends React.Component{
 
         if (prevProps.list.video_ids && (this.props.list.video_ids.length !== prevProps.list.video_ids.length)){
             this.props.fetchList(this.props.profile.list.id).then((res => {
-                this.setState({length: res.list.video_ids.length - 5})
+                function onlyUnique(value, index, self) { 
+                    return self.indexOf(value) === index;
+                }
+                this.setState({length: res.list.video_ids.filter(onlyUnique).length - 5})
             }
             ))
         }
@@ -65,6 +71,7 @@ class GenreIndex extends React.Component{
             this.setState({ volume: 0 });
         }
     }
+    
 
     hoverItem(video){
         if(this.state.selectedItem && this.state.selectedItem.id !== video.id){
@@ -164,7 +171,10 @@ class GenreIndex extends React.Component{
         if (!this.props.list.video_ids){
             return null;
         }else{
-            listVideos = this.props.list.video_ids.map(video_id => {
+            function onlyUnique(value, index, self) { 
+                return self.indexOf(value) === index;
+            }
+            listVideos = this.props.list.video_ids.filter(onlyUnique).map(video_id => {
                 return (
                         <VideoIndexItem 
                         classId={this.props.list.id}
