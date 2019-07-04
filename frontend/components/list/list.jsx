@@ -84,7 +84,6 @@ class List extends React.Component{
 
     render(){
         if (!this.props.list.video_ids || Object.values(this.props.all_videos).length < 1) return null;
-        debugger
         let arrowLeft;
         this.state.shift > 0 ? 
         arrowLeft = (
@@ -143,7 +142,6 @@ class List extends React.Component{
             )
         }
         const videos = this.props.list.video_ids.map(video_id=> {
-            console.log(this.props.all_videos[video_id])
             return(
                 <VideoIndexItem 
                     classId={this.props.list.id}
