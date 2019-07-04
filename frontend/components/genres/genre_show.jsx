@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import VideoIndexItem from '../videos/video_index_item';
 import NavContainer from '../nav/nav_cotainer';
-import { Link } from 'react-router-dom';
 import Footer from '../footer';
 import GenreContent from './genre_content';
 
@@ -34,6 +34,7 @@ class GenreShow extends React.Component{
             this.props.fetchList();
         }
     }
+
     hoverItem(video){
         if(this.state.selectedItem && this.state.selectedItem.id !== video.id){
             this.selectListItem(video)

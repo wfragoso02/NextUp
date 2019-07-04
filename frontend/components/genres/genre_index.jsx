@@ -18,7 +18,7 @@ class GenreIndex extends React.Component{
             genres: [],
             selectedItem: null,
             length: 0,
-            shift: 0
+            shift: 0,
         };
 
         this.updateCount = this.updateCount.bind(this)
@@ -32,7 +32,7 @@ class GenreIndex extends React.Component{
         this.props.fetchVideos();
         this.props.fecthProfile(this.props.match.params.profileId);
         this.props.fetchGenres().then((res) =>{ 
-        this.setState({genres: Object.values(res.genres), length: this.props.list.video_ids.length})
+        this.setState({genres: Object.values(res.genres), length: this.props.list.video_ids.length - 5})
         });
     }
 
@@ -44,7 +44,10 @@ class GenreIndex extends React.Component{
         }
 
         if (prevProps.list.video_ids && (this.props.list.video_ids.length !== prevProps.list.video_ids.length)){
-            this.props.fetchList(this.props.profile.list.id);
+            this.props.fetchList(this.props.profile.list.id).then((res => {
+                this.setState({length: res.list.video_ids.length - 5})
+            }
+                ))
         }
     }
 
@@ -104,10 +107,13 @@ class GenreIndex extends React.Component{
 
     render(){
         if(!this.props.list)return null;
+
         const genres = this.state.genres.map((genre, idx) => {
             return (
                 <li key={Math.floor(Math.random() * 1000000)}>
-                    <GenreIndexItem  key={Math.floor(Math.random() * 1000000)} selectedItem={this.state.selectedItem} closeContent={this.closeContent} profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list}createListItem={this.props.createListItem} profile={this.props.profile} genre={genre} />
+                    <GenreIndexItem  key={Math.floor(Math.random() * 1000000)} 
+                    profile={this.props.profile} 
+                    genre={genre} />
                 </li>
             )
         });
@@ -116,11 +122,12 @@ class GenreIndex extends React.Component{
         if (!this.props.list.video_ids || !this.props.genres[0]){
             return null;
         }
-        if (this.props.list.video_ids.includes(this.props.genres[0].video_ids[0])) {
+
+        this.props.list.video_ids.includes(this.props.genres[0].video_ids[0]) ? 
             defaultButton = (<button onClick={() => this.props.deleteListItem(this.props.genres[0].video_ids[0])} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
-        } else {
+        :
             defaultButton = (<button onClick={() => this.props.createListItem({ video_id: this.props.genres[0].video_ids[0], list_id: this.props.list.id })} className="front-page-button"><h3 className="fa-plus-text"><i className="fas fa-plus"></i>My List</h3></button>)
-        }
+        ;
        
         let volumes;
         if (this.state.volume === 0) {
@@ -129,7 +136,7 @@ class GenreIndex extends React.Component{
             volumes = <i className="fas fa-volume-up fa-xs"></i>
         }
         let mainVideo;
-        if (this.props.all_videos){
+        if (this.props.all_videos && this.props.genres){
             const mainVid = this.props.all_videos[this.props.genres[0].video_ids[0]]
             mainVideo = (
                 <>
@@ -207,15 +214,15 @@ class GenreIndex extends React.Component{
                 </div>
                 <br/>
 
-                {/* <InfiniteScroll
+                <InfiniteScroll
                 dataLength={this.state.count}
                 next={this.updateCount}
                 hasMore={true}
-                > */}
+                >
                     <ul className="genre-index">
                         {genres}
                     </ul>
-                {/* </InfiniteScroll> */}
+                </InfiniteScroll>
                 <Footer />
             </div>
         )

@@ -17,20 +17,10 @@ const mdp = dispatch => {
 
 class videoIndexItem extends React.Component{
     constructor(props){
+        debugger
         super(props);
         this.state = this.props.video;
     }
-
-    // componentDidMount(){
-    //     const start = setInterval(() => {
-            
-    //     }, 1000);
-    // }
-
-    // componentWillUnmount(){
-    //     clearInterval(start)
-    // }
-
     
     displayVideo(){
         document.getElementById("hidden-video-show").style.display="block";
@@ -44,17 +34,9 @@ class videoIndexItem extends React.Component{
         this.setState({like: false, dislike: true}, () => this.props.updateVideo(this.state));
     }
 
-    // selectThisVideo(){
-        
-    //     new MouseEvent("mouseover",() => {
-    //         if(this.props.selectedItem.id !== video.id){
-    //             this.props.selectListItem(video);
-    //         }
-    //     } )
-    // }
-
     render(){
         const video = this.props.video;
+        if(!video) return null;
         const list = this.props.list; 
         const deleteListItem = this.props.deleteListItem;
         const createListItem = this.props.createListItem; 
@@ -104,11 +86,11 @@ class videoIndexItem extends React.Component{
 
         return(
             <div className={`tile ${this.props.classId}`}
-            onMouseEnter={() =>{
-                if(this.props.currVid && this.props.currVid.id !== video.id){
-                    selectListItem(video)
-                }
-            }}
+                onMouseEnter={() =>{
+                    if(this.props.currVid && this.props.currVid.id !== video.id){
+                        selectListItem(video)
+                    }
+                }}
             >
                 {likeButton}
                 {dislikeButton}
@@ -117,7 +99,7 @@ class videoIndexItem extends React.Component{
                 <Link to={`/${profile.id}/videos/${video.id}`}><img className="tile__img" src={video.image_url}/></Link>
                 <Link to={`/${profile.id}/videos/${video.id}`}><h2 className="video-title">{video.title}</h2></Link>
                 <div className="random">
-                <button className="dropdown-button" onClick={() => selectListItem(video)}><i className="fas fa-chevron-down"></i></button>
+                    <button className="dropdown-button" onClick={() => selectListItem(video)}><i className="fas fa-chevron-down"></i></button>
                 </div>
             </div>
         )

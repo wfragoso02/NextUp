@@ -1,12 +1,25 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import VideoIndexItem from '../videos/video_index_item';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createListItem, deleteListItem } from '../../actions/list_item_actions';
+import { fetchList } from '../../actions/list_actions';
+import VideoIndexItem from '../videos/video_index_item';
 import GenreContent from './genre_content';
+
+
 
 const msp = state => {
     return{
-        all_videos: state.entities.videos 
+        all_videos: state.entities.videos,
+        list: state.entities.list
+    }
+}
+
+const mdp = dispatch => {
+    return{
+        deleteListItem: (id) => dispatch(deleteListItem(id)),
+        createListItem: (listItem) => dispatch(createListItem(listItem)),
+        fetchList: (id) => dispatch(fetchList(id))
     }
 }
 
@@ -36,37 +49,39 @@ class GenreIndexItem extends React.Component{
         if(this.state.shift < this.state.length){
             const elements = document.getElementsByClassName(`${this.props.genre.id}`)
             Array.from(elements).map(element => {
-                const leftIdx = element.style.transform.indexOf("(");
-                const rightIdx = element.style.transform.indexOf(")");
-                element.style.transform.length < 1 ? element.style.transform = "translateX(-19vw)" : 
-                element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx + 1, rightIdx - 2)) - 19}vw)`;
+                const leftIdx = element.style.transform.indexOf("(") + 1;
+                const rightIdx = element.style.transform.indexOf(")") - 2;
+                element.style.transform.length < 1 ? 
+                element.style.transform = "translateX(-19vw)" : 
+                element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx, rightIdx)) - 19}vw)`;
             })
+
             this.setState({shift: this.state.shift + 1})
         }
     }
 
     shiftLeft(){
         if(this.state.shift > 0){
-            const elements = document.getElementsByClassName(`${this.props.genre.id}`)
+            const elements = document.getElementsByClassName(`${this.props.genre.id}`);
             Array.from(elements).map(element => {
                 const leftIdx = element.style.transform.indexOf("(");
                 const rightIdx = element.style.transform.indexOf(")");
                 element.style.transform.length < 1 ? element.style.transform = "translateX(19vw)" : 
                 element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx + 1, rightIdx - 2)) + 19}vw)`;
-            })
-            this.setState({shift: this.state.shift - 1})
+            });
+            this.setState({shift: this.state.shift - 1});
         }
     }
 
     render(){
-    const genre = this.props.genre
-    const profile = this.props.profile
-    const all_videos = this.props.all_videos 
+        const genre = this.props.genre
+        const profile = this.props.profile
+        const all_videos = this.props.all_videos 
 
+        if(Object.values(all_videos).length === 0){
+            return null
+        }
 
-    if(Object.values(all_videos).length === 0){
-        return null
-    }else{
         let arrowLeft;
         this.state.shift > 0 ? 
         arrowLeft = (
@@ -75,7 +90,7 @@ class GenreIndexItem extends React.Component{
             </>
         ) : arrowLeft = null;
 
-        let arrowRight 
+        let arrowRight;
         this.state.shift < this.state.length ? 
         arrowRight= (
             <>
@@ -84,7 +99,7 @@ class GenreIndexItem extends React.Component{
         ) : arrowRight = null;
 
         
-        const videos = Object.values(genre.video_ids).map(video_id => {
+        const videos = genre.video_ids.map(video_id => {
             return(
                 <>
                 <VideoIndexItem 
@@ -98,8 +113,9 @@ class GenreIndexItem extends React.Component{
                     video={this.props.all_videos[video_id]} 
                     className="actual-video" />
                 </>
-            )
-        })
+            );
+        });
+
         return(
                 <div>
                     <br/>
@@ -115,5 +131,5 @@ class GenreIndexItem extends React.Component{
         )
     }
 }
-}
-export default connect(msp, null)(GenreIndexItem);
+
+export default connect(msp, mdp)(GenreIndexItem);

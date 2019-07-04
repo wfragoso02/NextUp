@@ -5,9 +5,6 @@ import { fetchProfile } from '../../actions/profile_actions';
 import { createListItem, deleteListItem } from '../../actions/list_item_actions';
 import { fetchList } from '../../actions/list_actions';
 
-
-
-
 const msp = (state, ownProps) => {
     return{
         genre: state.entities.genres[ownProps.match.params.genreId] || {},

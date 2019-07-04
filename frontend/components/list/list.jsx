@@ -3,25 +3,64 @@ import VideoIndexItem from '../videos/video_index_item';
 import NavContainer from '../nav/nav_cotainer';
 import { Link } from 'react-router-dom';
 import Footer from '../footer';
+import GenreContent from '../genres/genre_content';
 
 class List extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            volume: '1'
+            volume: '1',
+            selectedItem: null,
+            length: 0,
+            shift: 0
         }
+        this.closeContent = this.closeContent.bind(this);
         
+        this.selectListItem = this.selectListItem.bind(this);
         this.setMuted = this.setMuted.bind(this);
+        this.shiftLeft = this.shiftLeft.bind(this);
+        this.shiftRight = this.shiftRight.bind(this);
     }
+
+    shiftRight(){
+        if(this.state.shift < this.state.length){
+            const elements = document.getElementsByClassName(`${this.props.list.id}`)
+            Array.from(elements).map(element => {
+                const leftIdx = element.style.transform.indexOf("(");
+                const rightIdx = element.style.transform.indexOf(")");
+                element.style.transform.length < 1 ? element.style.transform = "translateX(-19vw)" : 
+                element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx + 1, rightIdx - 2)) - 19}vw)`;
+            })
+            this.setState({shift: this.state.shift + 1})
+        }
+    }
+
+    shiftLeft(){
+        if(this.state.shift > 0){
+            const elements = document.getElementsByClassName(`${this.props.list.id}`)
+            Array.from(elements).map(element => {
+                const leftIdx = element.style.transform.indexOf("(");
+                const rightIdx = element.style.transform.indexOf(")");
+                element.style.transform.length < 1 ? element.style.transform = "translateX(19vw)" : 
+                element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx + 1, rightIdx - 2)) + 19}vw)`;
+            })
+            this.setState({shift: this.state.shift - 1})
+        }
+    }
+
     componentDidMount(){
-        this.props.fetchProfile(this.props.match.params.profileId)
+        this.props.fetchProfile(this.props.match.params.profileId).then(() => {
+            this.setState({length: this.props.list.video_ids.length - 5});
+        })
     }
     componentDidUpdate(prevProps){
         if (prevProps.profile.id !== this.props.profile.id){
             this.props.fetchProfile(this.props.match.params.profileId);
         }
         if (prevProps.list.video_ids && this.props.list.video_ids.length !== prevProps.list.video_ids.length){
-            this.props.fetchList(this.props.profile.list.id);
+            this.props.fetchList(this.props.profile.list.id).then((res) => {
+                this.setState({length: res.list.video_ids.length - 5});
+            });
         }
     }
 
@@ -36,11 +75,36 @@ class List extends React.Component{
         }
     }
 
+    closeContent(){
+        this.setState({selectedItem: null})
+    }
+
+    selectListItem(video){
+        debugger
+        this.setState({selectedItem: video});
+    }
     render(){
         let defaultButton = "";
         if (!this.props.list.video_ids){
             return null;
         }
+
+        let arrowLeft;
+        this.state.shift > 0 ? 
+        arrowLeft = (
+            <>
+                <button className="slider_left" onClick={() => this.shiftLeft()}><i className="fas fa-chevron-left"></i></button>
+            </>
+        ) : arrowLeft = null;
+
+        let arrowRight 
+        this.state.shift < this.state.length ? 
+        arrowRight= (
+            <>
+                <button className="slider_right" onClick={() => this.shiftRight()}><i className="fas fa-chevron-right"></i></button>
+            </>
+        ) : arrowRight = null;
+
 
         if (this.props.list.video_ids.length === 0){
             return(
@@ -91,9 +155,18 @@ class List extends React.Component{
         }
         const videos = Object.values(this.props.list.videos).map(video=> {
             return(
-                <li key={Math.floor(Math.random() * 1000000)} className="vid">
-                    <VideoIndexItem profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list} createListItem={this.props.createListItem} video={video} />
-                </li>
+                // <li key={Math.floor(Math.random() * 1000000)} >
+                    <VideoIndexItem 
+                    classId={this.props.list.id}
+                    currVid={this.state.selectedItem}
+                    selectListItem={this.selectListItem} 
+                    profile={this.props.profile} 
+                    deleteListItem={this.props.deleteListItem}  
+                    list={this.props.list} 
+                    createListItem={this.props.createListItem} 
+                    video={video} 
+                    className="actual-video"/>
+                /* </li> */
             )
         })
 
@@ -103,11 +176,14 @@ class List extends React.Component{
                 <div className="home" >
                     {mainVideo}
                 </div>
-                <div className="genreItems">
-                <ul className="row">
-                    {videos}
-                </ul>
+                {/* <div className="genreItems"> */}
+                <div className="row">
+                {arrowLeft}
+                        {videos}
+                    {arrowRight}
                 </div>
+                <GenreContent video={this.state.selectedItem} closeContent={this.closeContent}/>
+                {/* </div> */}
                 <Footer />
             </div>
         )
