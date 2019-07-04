@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import {updateVideo} from '../../actions/video_actions';
+import {fetchList} from "../../actions/list_actions";
 
 const msp = state => {
     return{
@@ -11,7 +12,8 @@ const msp = state => {
 
 const mdp = dispatch => {
     return{
-        updateVideo: (video) => dispatch(updateVideo(video))
+        updateVideo: (video) => dispatch(updateVideo(video)),
+        // fetchList: (id) => dispatch(fetchList(id))
     }
 }
 
@@ -19,13 +21,18 @@ class videoIndexItem extends React.Component{
     constructor(props){
         debugger
         super(props);
-        this.state = this.props.video;
+        this.state=this.props.video;
     }
     
     displayVideo(){
         document.getElementById("hidden-video-show").style.display="block";
     }
-
+    componentUpdate(){
+        this.setState({id: this.props.video.id});
+    }
+    componentUpdate(){
+        this.props.fetchList()
+    }
     like(){
         this.setState({like: true, dislike: false}, () => this.props.updateVideo(this.state));
     }
@@ -35,8 +42,15 @@ class videoIndexItem extends React.Component{
     }
 
     render(){
+        // debugger
+        
         const video = this.props.video;
-        if(!video) return null;
+        if(video === undefined) return null;
+
+        console.log(this.state)
+        console.log(video)
+        // debugger
+
         const list = this.props.list; 
         const deleteListItem = this.props.deleteListItem;
         const createListItem = this.props.createListItem; 

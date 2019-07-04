@@ -47,7 +47,7 @@ class GenreIndex extends React.Component{
             this.props.fetchList(this.props.profile.list.id).then((res => {
                 this.setState({length: res.list.video_ids.length - 5})
             }
-                ))
+            ))
         }
     }
 

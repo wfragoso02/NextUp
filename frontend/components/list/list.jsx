@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import VideoIndexItem from '../videos/video_index_item';
 import NavContainer from '../nav/nav_cotainer';
-import { Link } from 'react-router-dom';
 import Footer from '../footer';
 import GenreContent from '../genres/genre_content';
 
@@ -53,10 +53,10 @@ class List extends React.Component{
             this.setState({length: this.props.list.video_ids.length - 5});
         })
     }
+
     componentDidUpdate(prevProps){
-        if (prevProps.profile.id !== this.props.profile.id){
-            this.props.fetchProfile(this.props.match.params.profileId);
-        }
+
+        if (prevProps.profile.id !== this.props.profile.id) this.props.fetchProfile(this.props.match.params.profileId).then(() => this.props.fetchVideos());
         if (prevProps.list.video_ids && this.props.list.video_ids.length !== prevProps.list.video_ids.length){
             this.props.fetchList(this.props.profile.list.id).then((res) => {
                 this.setState({length: res.list.video_ids.length - 5});
@@ -65,7 +65,6 @@ class List extends React.Component{
     }
 
     setMuted(){
-
         if (this.refs.player.muted) {
             this.refs.player.muted = false;
             this.setState({ volume: 1 });
@@ -80,15 +79,12 @@ class List extends React.Component{
     }
 
     selectListItem(video){
-        debugger
         this.setState({selectedItem: video});
     }
-    render(){
-        let defaultButton = "";
-        if (!this.props.list.video_ids){
-            return null;
-        }
 
+    render(){
+        if (!this.props.list.video_ids || Object.values(this.props.all_videos).length < 1) return null;
+        debugger
         let arrowLeft;
         this.state.shift > 0 ? 
         arrowLeft = (
@@ -117,11 +113,8 @@ class List extends React.Component{
                 </div>
             )
         }
-        // if (this.props.list.video_ids.includes(Object.values(this.props.list.videos)[0].id)) {
-            defaultButton = (<button onClick={() => this.props.deleteListItem(Object.values(this.props.genre.videos)[0].id)} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
-        // } else {
-        //     defaultButton = (<button onClick={() => this.props.createListItem({ video_id: Object.values(this.props.genre.videos)[0].id, list_id: this.props.list.id })} className="front-page-button"><h3 className="fa-plus-text"><i className="fas fa-plus"></i>My List</h3></button>)
-        // }
+
+        const  defaultButton = (<button onClick={() => this.props.deleteListItem(Object.values(this.props.genre.videos)[0].id)} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
        
         let volumes;
         if (this.state.volume === 0) {
@@ -129,9 +122,9 @@ class List extends React.Component{
         } else {
             volumes = <i className="fas fa-volume-up fa-xs"></i>
         }
+
         let mainVideo;
         if (this.props.list.videos){
-            
             mainVideo = (
                 <>
                     <video ref='player' className="home-trailer" loop autoPlay>
@@ -144,19 +137,15 @@ class List extends React.Component{
                     <h1 className="main-video-rating">{Object.values(this.props.list.videos)[0].rating}</h1>
                 </>
             )
-            
         }else{
             mainVideo = (
                 <h1>No Video Here</h1>
             )
         }
-        if (!this.props.list.videos){
-            return null;
-        }
-        const videos = Object.values(this.props.list.videos).map(video=> {
+        const videos = this.props.list.video_ids.map(video_id=> {
+            console.log(this.props.all_videos[video_id])
             return(
-                // <li key={Math.floor(Math.random() * 1000000)} >
-                    <VideoIndexItem 
+                <VideoIndexItem 
                     classId={this.props.list.id}
                     currVid={this.state.selectedItem}
                     selectListItem={this.selectListItem} 
@@ -164,9 +153,9 @@ class List extends React.Component{
                     deleteListItem={this.props.deleteListItem}  
                     list={this.props.list} 
                     createListItem={this.props.createListItem} 
-                    video={video} 
-                    className="actual-video"/>
-                /* </li> */
+                    video={this.props.all_videos[video_id]} 
+                    className="actual-video"
+                />
             )
         })
 
@@ -176,14 +165,12 @@ class List extends React.Component{
                 <div className="home" >
                     {mainVideo}
                 </div>
-                {/* <div className="genreItems"> */}
                 <div className="row">
                 {arrowLeft}
                         {videos}
                     {arrowRight}
                 </div>
                 <GenreContent video={this.state.selectedItem} closeContent={this.closeContent}/>
-                {/* </div> */}
                 <Footer />
             </div>
         )
