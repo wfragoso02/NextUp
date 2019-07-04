@@ -21,14 +21,14 @@ class GenreShow extends React.Component{
     }
 
     componentDidMount(){
+        this.props.fetchVideos();
         this.props.fetchGenre(this.props.match.params.genreId);
-        this.props.fetchProfile(this.props.match.params.profileId)
-
+        this.props.fetchProfile(this.props.match.params.profileId);
     }
 
     componentDidUpdate(prevProps){
         if (prevProps.match.params.genreId !== this.props.match.params.genreId) {
-            this.props.fetchGenre(this.props.match.params.genreId);
+            this.props.fetchGenre(this.props.match.params.genreId).then(() => this.props.fetchVideos());
         }
         if (prevProps.list.video_ids && this.props.list.video_ids.length !== prevProps.list.video_ids.length){
             this.props.fetchList();
@@ -46,7 +46,6 @@ class GenreShow extends React.Component{
     }
 
     selectListItem(video){
-        debugger
         this.setState({selectedItem: video});
     }
 
@@ -61,8 +60,9 @@ class GenreShow extends React.Component{
     }
 
     render(){
+        debugger
         let defaultButton = "";
-        if (!this.props.list.video_ids || !this.props.genre.videos){
+        if (!this.props.list.video_ids || !this.props.genre.videos || Object.values(this.props.all_videos).length < 1){
             return null;
         }
         if (this.props.list.video_ids.includes(Object.values(this.props.genre.videos)[0].id)) {
@@ -83,13 +83,13 @@ class GenreShow extends React.Component{
             mainVideo = (
                 <>
                     <video ref='player' className="home-trailer" >
-                        <source src={Object.values(this.props.genre.videos)[0].video_url} />
+                        <source src={this.props.all_videos[this.props.genre.video_ids.sort()[0]].video_url} />
                     </video>
-                    <Link to={`/${this.props.profile.id}/videos/${Object.values(this.props.genre.videos)[0].id}`} className="play-button"><h3>► Play</h3></Link>
+                    <Link to={`/${this.props.profile.id}/videos/${this.props.all_videos[this.props.genre.video_ids.sort()[0]].id}`} className="play-button"><h3>► Play</h3></Link>
                     {defaultButton}
                     <button onClick={this.setMuted} className="home-page-volume-button">{volumes}</button>
                     <h1 className="main-video-title">{this.props.genre.name}</h1>
-                    <h1 className="main-video-rating">{Object.values(this.props.genre.videos)[0].rating}</h1>
+                    <h1 className="main-video-rating">{this.props.all_videos[this.props.genre.video_ids.sort()[0]].rating}</h1>
                 </>
             )
             
@@ -98,25 +98,21 @@ class GenreShow extends React.Component{
                 <h1>No Video Here</h1>
             )
         }
-        if (!this.props.genre.videos){
-            return null;
-        }
-        const videos = Object.values(this.props.genre.videos).map(video=> {
+        console.log(this.props.genre.video_ids);
 
+        const videos = this.props.genre.video_ids.sort().map(video_id=> {
             return(
-                // (
-                    <VideoIndexItem 
+                <VideoIndexItem 
                     currVid={this.state.selectedItem}
                     selectListItem={this.selectListItem} 
                     profile={this.props.profile} 
                     deleteListItem={this.props.deleteListItem}  
                     list={this.props.list}
                     createListItem={this.props.createListItem} 
-                    video={video} 
-                    className="actual-video" />
+                    video={this.props.all_videos[video_id]} 
+                    className="actual-video" 
+                />
             )
-            //     <VideoIndexItem profile={this.props.profile} deleteListItem={this.props.deleteListItem}  list={this.props.list} createListItem={this.props.createListItem} video={video} />
-            // )
         })
 
         return(
@@ -129,7 +125,7 @@ class GenreShow extends React.Component{
                 <ul className="row">
                     {videos}
                 </ul>
-                <GenreContent video={this.state.selectedItem} closeContent={this.closeContent}/>
+                    <GenreContent video={this.state.selectedItem} closeContent={this.closeContent}/>
                 </div>
                 <Footer />
             </div>
