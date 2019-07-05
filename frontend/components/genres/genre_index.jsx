@@ -25,7 +25,6 @@ class GenreIndex extends React.Component{
         this.setMuted = this.setMuted.bind(this);
         this.selectListItem = this.selectListItem.bind(this);
         this.closeContent = this.closeContent.bind(this);
-        this.hoverItem = this.hoverItem.bind(this);
     }
 
     componentDidMount(){
@@ -71,13 +70,7 @@ class GenreIndex extends React.Component{
             this.setState({ volume: 0 });
         }
     }
-    
 
-    hoverItem(video){
-        if(this.state.selectedItem && this.state.selectedItem.id !== video.id){
-            this.selectListItem(video)
-        }
-    }
     shiftRight(){
         if(this.state.shift < this.state.length){
             const elements = document.getElementsByClassName(`${this.props.list.id}`)
@@ -122,7 +115,6 @@ class GenreIndex extends React.Component{
 
     render(){
         if(!this.props.list)return null;
-        console.log(this.state)
         const genres = this.state.genres.map((genre, idx) => {
             return (
                 <>

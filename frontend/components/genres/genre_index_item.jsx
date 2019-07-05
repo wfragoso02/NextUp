@@ -4,16 +4,12 @@ import { connect } from 'react-redux';
 import { createListItem, deleteListItem } from '../../actions/list_item_actions';
 import { fetchList } from '../../actions/list_actions';
 import VideoIndexItem from '../videos/video_index_item';
-import GenreContent from './genre_content';
-
-
 
 const msp = state => {
     return{
         all_videos: state.entities.videos,
         list: state.entities.list,
         profile: state.session.profile,
-        
     }
 }
 
@@ -32,19 +28,9 @@ class GenreIndexItem extends React.Component{
             length: this.props.genre.video_ids.length,
             shift: 0
         }
-        // this.selectListItem = this.selectListItem.bind(this);
-        // this.closeContent = this.closeContent.bind(this);
         this.shiftLeft = this.shiftLeft.bind(this);
         this.shiftRight = this.shiftRight.bind(this);
     }
-
-    // selectListItem(video){
-    //     this.setState({selectedItem: video});
-    // }
-
-    // closeContent(){
-    //     this.setState({selectedItem: null})
-    // }
 
     shiftRight(){
         if(this.state.shift < this.state.length){
@@ -55,9 +41,8 @@ class GenreIndexItem extends React.Component{
                 element.style.transform.length < 1 ? 
                 element.style.transform = "translateX(-19vw)" : 
                 element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx, rightIdx)) - 19}vw)`;
-            })
-
-            this.setState({shift: this.state.shift + 1})
+            });
+            this.setState({shift: this.state.shift + 1});
         }
     }
 
@@ -75,9 +60,9 @@ class GenreIndexItem extends React.Component{
     }
 
     render(){
-        const genre = this.props.genre
-        const profile = this.props.profile
-        const all_videos = this.props.all_videos 
+        const genre = this.props.genre;
+        const profile = this.props.profile;
+        const all_videos = this.props.all_videos;
 
         if(Object.values(all_videos).length < 1){
             return null
@@ -100,35 +85,34 @@ class GenreIndexItem extends React.Component{
         ) : arrowRight = null;
 
         
-        const videos = genre.video_ids.map(video_id => {
-            return(
-                <>
-                <VideoIndexItem 
-                    classId={genre.id}
-                    currVid={this.props.currVid}
-                    selectListItem={this.props.selectListItem} 
-                    genreId={genre.id}
-                    profile={this.props.profile} 
-                    deleteListItem={this.props.deleteListItem}  
-                    list={this.props.list}
-                    createListItem={this.props.createListItem} 
-                    video={this.props.all_videos[video_id]} 
-                    className="actual-video" />
-                </>
-            );
-        });
+        const videos = genre.video_ids.map(video_id => 
+            <>
+            <VideoIndexItem 
+                classId={genre.id}
+                currVid={this.props.currVid}
+                selectListItem={this.props.selectListItem} 
+                genreId={genre.id}
+                profile={this.props.profile} 
+                deleteListItem={this.props.deleteListItem}  
+                list={this.props.list}
+                createListItem={this.props.createListItem} 
+                video={this.props.all_videos[video_id]} 
+                className="actual-video" 
+            />
+            </>
+        );
 
         return(
-                <div>
-                    <br/>
-                    <div className="genre-index-links"><h2 className="genre-content"><Link genre={genre} to={`/${profile.id}/genre/${genre.id}`}>{genre.name.toUpperCase()}</Link></h2></div>
-                    <ul className="row" >
+            <div>
+                <br/>
+                <div className="genre-index-links"><h2 className="genre-content"><Link genre={genre} to={`/${profile.id}/genre/${genre.id}`}>{genre.name.toUpperCase()}</Link></h2></div>
+                <ul className="row" >
                     {arrowLeft}
-                        {videos}
-                        {videos}
+                    {videos}
+                    {videos}
                     {arrowRight}
-                    </ul>
-                </div>
+                </ul>
+            </div>
         )
     }
 }

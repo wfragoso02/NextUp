@@ -97,8 +97,7 @@ class GenreShow extends React.Component{
                 <h1>No Video Here</h1>
             )
         }
-        console.log(this.props.genre.video_ids);
-
+        
         const videos = this.props.genre.video_ids.sort().map(video_id=> {
             return(
                 <VideoIndexItem 
