@@ -93,7 +93,7 @@ class videoIndexItem extends React.Component{
             <div className={`tile ${this.props.classId}`}
                 onMouseEnter={() =>{
                     if(this.props.currVid && this.props.currVid.id !== video.id){
-                        selectListItem(video)
+                        selectListItem(video, this.props.genreId)
                     }
                 }}
             >
@@ -104,7 +104,7 @@ class videoIndexItem extends React.Component{
                 <Link to={`/${profile.id}/videos/${video.id}`}><img className="tile__img" src={video.image_url}/></Link>
                 <Link to={`/${profile.id}/videos/${video.id}`}><h2 className="video-title">{video.title}</h2></Link>
                 <div className="random">
-                    <button className="dropdown-button" onClick={() => selectListItem(video)}><i className="fas fa-chevron-down"></i></button>
+                    <button className="dropdown-button" onClick={() => selectListItem(video, this.props.genreId)}><i className="fas fa-chevron-down"></i></button>
                 </div>
             </div>
         )

@@ -11,7 +11,9 @@ import GenreContent from './genre_content';
 const msp = state => {
     return{
         all_videos: state.entities.videos,
-        list: state.entities.list
+        list: state.entities.list,
+        profile: state.session.profile,
+        
     }
 }
 
@@ -27,19 +29,18 @@ class GenreIndexItem extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            selectedItem: null,
             length: this.props.genre.video_ids.length,
             shift: 0
         }
-        this.selectListItem = this.selectListItem.bind(this);
+        // this.selectListItem = this.selectListItem.bind(this);
         this.closeContent = this.closeContent.bind(this);
         this.shiftLeft = this.shiftLeft.bind(this);
         this.shiftRight = this.shiftRight.bind(this);
     }
 
-    selectListItem(video){
-        this.setState({selectedItem: video});
-    }
+    // selectListItem(video){
+    //     this.setState({selectedItem: video});
+    // }
 
     closeContent(){
         this.setState({selectedItem: null})
@@ -78,7 +79,7 @@ class GenreIndexItem extends React.Component{
         const profile = this.props.profile
         const all_videos = this.props.all_videos 
 
-        if(Object.values(all_videos).length === 0){
+        if(Object.values(all_videos).length < 1){
             return null
         }
 
@@ -105,7 +106,8 @@ class GenreIndexItem extends React.Component{
                 <VideoIndexItem 
                     classId={genre.id}
                     currVid={this.state.selectedItem}
-                    selectListItem={this.selectListItem} 
+                    selectListItem={this.props.selectListItem} 
+                    genreId={genre.id}
                     profile={this.props.profile} 
                     deleteListItem={this.props.deleteListItem}  
                     list={this.props.list}
@@ -126,7 +128,7 @@ class GenreIndexItem extends React.Component{
                         {videos}
                     {arrowRight}
                     </ul>
-                    <GenreContent video={this.state.selectedItem} closeContent={this.closeContent}/>
+                    {/* <GenreContent  video={this.props.selectedItem} closeContent={this.closeContent}/> */}
                 </div>
         )
     }

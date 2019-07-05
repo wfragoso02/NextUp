@@ -35,7 +35,11 @@ class GenreIndex extends React.Component{
             function onlyUnique(value, index, self) { 
                 return self.indexOf(value) === index;
             }
-        this.setState({genres: Object.values(res.genres), length: this.props.list.video_ids.filter(onlyUnique).length - 5})
+        this.setState(({genres: Object.values(res.genres).slice(0,1), length: this.props.list.video_ids.filter(onlyUnique).length - 5}), () => {
+            this.state.genres.map(genre => {
+                this.setState({[genre.id]: null})
+            })
+        })
         });
     }
 
@@ -108,20 +112,28 @@ class GenreIndex extends React.Component{
         this.setState({selectedItem: null})
     }
 
-    selectListItem(video){
-        this.setState({selectedItem: video});
+    selectListItem(video, id = null){
+        if(id){
+            this.setState({[id]: video})
+        }else{
+            this.setState({selectedItem: video});
+        }
     }
 
     render(){
         if(!this.props.list)return null;
-
+        console.log(this.state)
         const genres = this.state.genres.map((genre, idx) => {
             return (
+                <>
                 <li key={Math.floor(Math.random() * 1000000)}>
-                    <GenreIndexItem  key={Math.floor(Math.random() * 1000000)} 
-                    profile={this.props.profile} 
+                    <GenreIndexItem  
+                    selectListItem={this.selectListItem}
+                    key={Math.floor(Math.random() * 1000000)} 
                     genre={genre} />
                 </li>
+                <GenreContent video={this.state[genre.id]} closeContent={this.closeContent}/>
+                </>
             )
         });
         
