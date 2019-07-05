@@ -33,7 +33,7 @@ class GenreIndexItem extends React.Component{
             shift: 0
         }
         // this.selectListItem = this.selectListItem.bind(this);
-        this.closeContent = this.closeContent.bind(this);
+        // this.closeContent = this.closeContent.bind(this);
         this.shiftLeft = this.shiftLeft.bind(this);
         this.shiftRight = this.shiftRight.bind(this);
     }
@@ -42,9 +42,9 @@ class GenreIndexItem extends React.Component{
     //     this.setState({selectedItem: video});
     // }
 
-    closeContent(){
-        this.setState({selectedItem: null})
-    }
+    // closeContent(){
+    //     this.setState({selectedItem: null})
+    // }
 
     shiftRight(){
         if(this.state.shift < this.state.length){
@@ -105,7 +105,7 @@ class GenreIndexItem extends React.Component{
                 <>
                 <VideoIndexItem 
                     classId={genre.id}
-                    currVid={this.state.selectedItem}
+                    currVid={this.props.currVid}
                     selectListItem={this.props.selectListItem} 
                     genreId={genre.id}
                     profile={this.props.profile} 
@@ -128,7 +128,6 @@ class GenreIndexItem extends React.Component{
                         {videos}
                     {arrowRight}
                     </ul>
-                    {/* <GenreContent  video={this.props.selectedItem} closeContent={this.closeContent}/> */}
                 </div>
         )
     }

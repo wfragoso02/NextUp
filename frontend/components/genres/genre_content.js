@@ -8,7 +8,7 @@ const msp = state => {
     }
 }
 
-const GenreContent = ({video, closeContent, profile }) => {
+const GenreContent = ({video, closeContent, profile, id }) => {
     if(!video){
         return(
             <div></div>
@@ -32,7 +32,7 @@ const GenreContent = ({video, closeContent, profile }) => {
                 <div className="content-container">
                 
                 </div> 
-            <button className="bring-up-button" onClick={() => closeContent()}><i className="fas fa-times"></i></button>
+            <button className="bring-up-button" onClick={() => closeContent(id)}><i className="fas fa-times"></i></button>
         </div>
     )
 }
