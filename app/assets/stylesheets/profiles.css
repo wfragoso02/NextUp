@@ -347,13 +347,13 @@ a > p{
 }
 
 .error-profile{
-    border: 1px solid red;
+    border: 1px solid #870709;
 }
 
 .error-message-profile{
     position: relative;
     top: -1vw;
-    color: red;
+    color: #870709;
     display: flex;
     justify-content: center;
     font-family: 'Rubik', sans-serif;
@@ -410,6 +410,6 @@ a > p{
 }
 
 .error-edit-profile{
-    border: 1px solid red;
+    border: 1px solid #870709;
 }
 
