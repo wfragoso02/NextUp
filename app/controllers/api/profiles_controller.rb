@@ -5,14 +5,14 @@ class Api::ProfilesController < ApplicationController
     def create
         @profile = Profile.new(profile_params)
         @profile.user_id = current_user.id
+
         if @profile.save
             List.create!({profile: @profile})
             @profile.save!
             render :show
         else
-            render json: ["Please enter a name"]
+            render json: ["Please enter a name"], status: 401
         end
-
     end
 
     def index
@@ -25,15 +25,14 @@ class Api::ProfilesController < ApplicationController
         render :show
     end
 
-
     def update
         @profile = Profile.find(params[:id])
+
         if @profile.update(profile_params)
             render :show
         else
-            render json: ["Please enter a name"]
+            render json: ["Please enter a name"], status: 401
         end
-            
     end
     
     def destroy
