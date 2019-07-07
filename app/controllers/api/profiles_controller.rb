@@ -28,8 +28,12 @@ class Api::ProfilesController < ApplicationController
 
     def update
         @profile = Profile.find(params[:id])
-        @profile.update(profile_params);
-        render :show
+        if @profile.update(profile_params)
+            render :show
+        else
+            render json: ["Please enter a name"], status: 401
+        end
+            
     end
     
     def destroy

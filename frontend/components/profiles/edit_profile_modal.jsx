@@ -30,7 +30,11 @@ class editProfileModal extends React.Component{
     }
 
     render() {
+        console.log(this.props.error)
         const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
+        const errorClass = this.props.error &&  this.state.name.length < 1 ? "error-edit-profile" : "";
+        const error = this.props.error && this.state.name.length < 1 ? this.props.error : "";
+
         return (
             <div className={showHideClassName}>
                 <section className="modal-main">
@@ -41,10 +45,10 @@ class editProfileModal extends React.Component{
                     <div className="edit-form-mid">
                         <img className="profile-pic"src={this.state.image_url} />
                         <div className="edit-this-text">
-
-                        <input className="edit-form-mid-text"type="text" value={this.state.name} onChange={this.handleInput('name')} />
+                        <input className={`edit-form-mid-text ${errorClass}`} type="text" value={this.state.name} onChange={this.handleInput('name')} />
                         </div>
                     </div>
+                    <h6 className="error-message-profile">{error}</h6>
                     <div className="Edit-form-submit">
                         <input className="edit-from-save-button"type="submit" onClick={this.handleSubmit}value="SAVE" />
                         <button className="edit-from-save-cancel"onClick={this.props.handleClose} >CANCEL</button>

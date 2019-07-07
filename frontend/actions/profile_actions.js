@@ -34,9 +34,10 @@ export const createProfile = (profile) => dispatch => (
       (errors) => dispatch(receiveProfileErrors(errors.responseJSON))
 ));
   
-export const updateProfile = profile => dispatch => (
-    ProfileApiUtil.updateProfile(profile).then(payload => dispatch(receiveProfile(payload)))
-);
+export const updateProfile = (profile) => dispatch => (
+    ProfileApiUtil.updateProfile(profile).then((payload)=>(dispatch(receiveProfile(payload))), 
+      (errors) => dispatch(receiveProfileErrors(errors.responseJSON))
+));
 
 export const deleteProfile = id => dispatch => (
     ProfileApiUtil.deleteProfile(id).then(payload => dispatch(removeProfile(payload)))

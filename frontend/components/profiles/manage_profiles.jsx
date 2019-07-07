@@ -48,7 +48,7 @@ class ManageProfiles extends React.Component{
         const profiles = this.props.profiles.map((profile, idx) => {
             return (
                 <li key={idx} className="profile-item">
-                    <EditProfileModal deleteProfile={this.props.deleteProfile} updateProfile={this.props.updateProfile} profile={profile} show={this.state[idx]} handleClose={this.hideEditModal(idx)} />
+                    <EditProfileModal clearError={this.props.clearError} error={this.props.error} deleteProfile={this.props.deleteProfile} updateProfile={this.props.updateProfile} profile={profile} show={this.state[idx]} handleClose={this.hideEditModal(idx)} />
                     <button className="manage-profile-link" onClick={this.showEditModal(idx)}><img className="profile-pic" src={profile.image_url}/><p className="profile-name">{profile.name}</p></button>
                 </li>
             )
