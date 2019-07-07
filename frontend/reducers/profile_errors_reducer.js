@@ -6,7 +6,6 @@ export default (state = [], action) => {
     case RECEIVE_PROFILE_ERRORS:
       return action.errors;
     case CLEAR_ERRORS:
-          debugger
       return ([]);
     default:
       return ([]);
