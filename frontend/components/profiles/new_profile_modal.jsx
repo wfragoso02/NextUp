@@ -16,22 +16,18 @@ class newProfileModal extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.createProfile(this.state)
-        (this.props.handleClose);
-        this.setState({
-            name: '',
-            image_url: this.images[Math.floor(this.images.length * Math.random())],
-        });
+        this.props.createProfile(this.state).then(() => this.props.handleClose()).then(() => {
+            this.setState({
+                name: '',
+                image_url: this.images[Math.floor(this.images.length * Math.random())],
+            });
+        })
     }
 
     handleInput(type){
         return(e)=>{
             this.setState({[type]: e.target.value});
         }
-    }
-
-    componentWillUnmount(){
-        this.props.clearError();
     }
     
     render(){

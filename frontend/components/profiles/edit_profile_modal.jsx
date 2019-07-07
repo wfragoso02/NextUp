@@ -30,7 +30,6 @@ class editProfileModal extends React.Component{
     }
 
     render() {
-        console.log(this.props.error)
         const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
         const errorClass = this.props.error &&  this.state.name.length < 1 ? "error-edit-profile" : "";
         const error = this.props.error && this.state.name.length < 1 ? this.props.error : "";
