@@ -10,7 +10,7 @@ class Api::ProfilesController < ApplicationController
             @profile.save!
             render :show
         else
-            render json: ["Please enter a name"], status: 401
+            render json: ["Please enter a name"]
         end
 
     end
@@ -31,7 +31,7 @@ class Api::ProfilesController < ApplicationController
         if @profile.update(profile_params)
             render :show
         else
-            render json: ["Please enter a name"], status: 401
+            render json: ["Please enter a name"]
         end
             
     end
