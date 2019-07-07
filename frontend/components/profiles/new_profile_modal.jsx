@@ -13,21 +13,25 @@ class newProfileModal extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.images = images;
     }
+
     handleSubmit(e){
         e.preventDefault();
         this.props.createProfile(this.state).then(this.props.handleClose);
         this.setState({
             name: '',
             image_url: this.images[Math.floor(this.images.length * Math.random())],
-        })
+        });
     }
+
     handleInput(type){
         return(e)=>{
             this.setState({[type]: e.target.value});
         }
     }
+    
     render(){
         const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
+        
         return (
             <div className={showHideClassName}>
                 <section className="modal-main">
