@@ -13,7 +13,7 @@
 
 #need to get my list here through listitems
 class Profile < ApplicationRecord
-    validate :name, length: { minimum: 2 }
+    validates :name, length: { minimum: 1 }
     validate :image_url
     belongs_to :user
 

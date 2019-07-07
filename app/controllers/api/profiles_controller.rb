@@ -5,9 +5,16 @@ class Api::ProfilesController < ApplicationController
     def create
         @profile = Profile.new(profile_params)
         @profile.user_id = current_user.id
-        List.create!({profile: @profile})
-        @profile.save!
-        render :show
+        debugger
+        if @profile.save
+            List.create!({profile: @profile})
+            @profile.save!
+            render :show
+          else
+            debugger
+            render json: ["Please enter a name"], status: 401
+          end
+
     end
 
     def index
