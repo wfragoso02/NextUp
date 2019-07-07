@@ -29,10 +29,10 @@ export const fetchProfile = (id) => dispatch => (
     ProfileApiUtil.fetchProfile(id).then(payload => dispatch(receiveProfile(payload)))
 )
 
-export const createProfile = profile => dispatch => (
-    ProfileApiUtil.createProfile(profile).then((payload) => dispatch(receiveProfile(payload))), 
-    (errors) => dispatch(receiveProfileErrors(errors.responseJSON))
-);
+export const createProfile = (profile) => dispatch => (
+    ProfileApiUtil.createProfile(profile).then((payload)=>(dispatch(receiveProfile(payload))), 
+      (errors) => dispatch(receiveProfileErrors(errors.responseJSON))
+));
   
 export const updateProfile = profile => dispatch => (
     ProfileApiUtil.updateProfile(profile).then(payload => dispatch(receiveProfile(payload)))

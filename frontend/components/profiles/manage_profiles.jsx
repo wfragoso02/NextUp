@@ -29,7 +29,8 @@ class ManageProfiles extends React.Component{
     };
 
     hideNewModal() {
-        this.setState({ showNew: false });
+        this.setState({ showNew: false })
+        this.props.clearError();
     };
     showEditModal(idx) {
         return(e) => {
@@ -72,7 +73,7 @@ class ManageProfiles extends React.Component{
                         </div>
                         <p className="profile-name">Add Profile</p>
                     </button>
-                    <NewProfileModal createProfile={this.props.createProfile} show={this.state.showNew} handleClose={this.hideNewModal} />
+                    <NewProfileModal clearError={this.props.clearError} error={this.props.error} createProfile={this.props.createProfile} show={this.state.showNew} handleClose={this.hideNewModal} />
                 </li>
             )
         }

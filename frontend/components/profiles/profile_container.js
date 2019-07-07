@@ -5,7 +5,7 @@ import { logout } from '../../actions/session_actions';
 
 const msp = state => {
     return{
-        profiles: Object.values(state.entities.profiles) 
+        profiles: Object.values(state.entities.profiles)
     };
 };
 

@@ -310,7 +310,7 @@ a > p{
     /* padding: 1vw 0; */
 
   }
-  .edit-form-mid-text::-webkit-input-placeholder{
+  .edit-form-mid-text::-webkit-input-placeholder, .error-profile::-webkit-input-placeholder{
       color: white;
   }
   .edit-profile-text{
@@ -335,7 +335,7 @@ a > p{
     display: -webkit-inline-box;
 
 }
-.edit-form-mid-text{
+.edit-form-mid-text, .error-profile{
     background: rgb(126, 126, 126);
     color: rgb(255, 255, 255);
     border: none;
@@ -344,6 +344,20 @@ a > p{
     font-size: 1.2vw;
     padding: 0 1vw;
     margin-left: 1vw;
+}
+
+.error-profile{
+    border: 1px solid red;
+}
+
+.error-message-profile{
+    position: relative;
+    top: -1vw;
+    color: red;
+    display: flex;
+    justify-content: center;
+    font-family: 'Rubik', sans-serif;
+    height: 1.5vw;
 }
 .edit-this-text{
     display: flex;
@@ -393,4 +407,8 @@ a > p{
 .edit-from-save-cancel:hover{
     color: white;
     border: 1px solid white;
+}
+
+.error{
+    border-color: red;
 }

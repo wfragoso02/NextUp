@@ -16,7 +16,8 @@ class newProfileModal extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.createProfile(this.state).then(this.props.handleClose);
+        this.props.createProfile(this.state)
+        (this.props.handleClose);
         this.setState({
             name: '',
             image_url: this.images[Math.floor(this.images.length * Math.random())],
@@ -28,10 +29,16 @@ class newProfileModal extends React.Component {
             this.setState({[type]: e.target.value});
         }
     }
+
+    componentWillUnmount(){
+        this.props.clearError();
+    }
     
     render(){
         const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
-        
+        const errorClass = this.props.error &&  this.state.name.length < 1 ? "error-profile" : "edit-form-mid-text";
+        const error = this.props.error && this.state.name.length < 1 ? this.props.error : "";
+
         return (
             <div className={showHideClassName}>
                 <section className="modal-main">
@@ -42,8 +49,9 @@ class newProfileModal extends React.Component {
                     <form >
                     <div className="edit-form-mid">
                         <img className="profile-pic" src={this.state.image_url} alt=""/>
-                        <input className="edit-form-mid-text" type="text" value={this.state.name} onChange={this.handleInput('name')} placeholder="Name" />
+                        <input className={`${errorClass}`} type="text" value={this.state.name} onChange={this.handleInput('name')} placeholder="Name" />
                     </div>
+                    <h6 className="error-message-profile">{error}</h6>
                     <div className="Edit-form-submit">
                         <input onClick={this.handleSubmit}className="edit-from-save-button" type="submit"  value="CONTINUE" />
                         <button className="edit-from-save-cancel" onClick={this.props.handleClose} >CANCEL</button>
