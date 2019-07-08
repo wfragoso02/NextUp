@@ -11,6 +11,8 @@
 #  description :text             not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  like        :boolean          default(FALSE)
+#  dislike     :boolean          default(FALSE)
 #
 
 class Video < ApplicationRecord
@@ -20,10 +22,15 @@ class Video < ApplicationRecord
     has_many :categories,
         foreign_key: :video_id,
         class_name: :Category
+
     has_many :genres,
         through: :categories,
         source: :genre
-
+        
+    has_many :video_ratings,
+        foreign_key: :video_id,
+        class_name: :Rating
+    
     has_many :list_items
 
 end

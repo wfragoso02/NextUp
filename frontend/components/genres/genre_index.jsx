@@ -41,8 +41,9 @@ class GenreIndex extends React.Component{
     
 
     componentDidUpdate(prevProps){
+
         if (prevProps.profile.id !== this.props.profile.id){
-            this.props.fecthProfile(this.props.match.params.profileId);
+            this.props.fecthProfile(this.props.match.params.profileId).then(() => this.props.fetchVideos());
         }
 
         if (prevProps.list.video_ids && (this.props.list.video_ids.length !== prevProps.list.video_ids.length)){

@@ -11,7 +11,6 @@
 #
 
 
-#need to get my list here through listitems
 class Profile < ApplicationRecord
     validates :name, length: { minimum: 1 }
     validate :image_url

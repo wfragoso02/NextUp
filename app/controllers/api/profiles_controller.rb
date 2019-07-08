@@ -8,6 +8,9 @@ class Api::ProfilesController < ApplicationController
 
         if @profile.save
             List.create!({profile: @profile})
+            Video.all.each do |video|
+                Rating.create!({video: video, profile: @profile})
+            end
             @profile.save!
             render :show
         else

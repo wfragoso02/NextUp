@@ -13,6 +13,7 @@ Genre.destroy_all
 Video.destroy_all
 List.destroy_all
 ListItem.destroy_all
+Rating.destroy_all
 
 
 User.create!({email: 'faker@gmail.com', password: 'password'})
@@ -181,7 +182,11 @@ equilizer.image.attach(io: open('https://nextup-seed.s3.amazonaws.com/equilizer.
 equilizer.movie.attach(io: open('https://nextup-seed.s3.amazonaws.com/THE+EQUALIZER+2+-+Official+Trailer+(HD).mp4'), filename: 'Equilizer 2-trailer.mp4')
 Category.create!(genre_id: toprated.id, video_id: equilizer.id)
 
-
+Video.all.each do |video|
+    Profile.all.each do |profile|
+        Rating.create({video: video, profile: profile})
+    end
+end
 
 ListItem.create({list: marcusList, video: avengers_end_game })
 ListItem.create({list: nicolasList, video: black_panther })

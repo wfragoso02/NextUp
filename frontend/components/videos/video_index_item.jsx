@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import {updateVideo} from '../../actions/video_actions';
+import { updateVideo } from '../../actions/video_actions';
+import { updateRating }  from '../../actions/rating_actions';
 
 const msp = state => {
     return{
@@ -11,7 +12,8 @@ const msp = state => {
 
 const mdp = dispatch => {
     return{
-        updateVideo: (video) => dispatch(updateVideo(video))
+        updateVideo: (video) => dispatch(updateVideo(video)),
+        updateRating: (rating) => dispatch(updateRating(rating))
     }
 }
 
@@ -24,40 +26,43 @@ class videoIndexItem extends React.Component{
     displayVideo(){
         document.getElementById("hidden-video-show").style.display="block";
     }
-    componentUpdate(){
-        this.setState({id: this.props.video.id});
-    }
-    componentUpdate(){
-        this.props.fetchList()
-    }
     like(){
-        this.setState({like: true, dislike: false}, () => this.props.updateVideo(this.state));
+        this.setState((prevState => {
+            let video_ratings = Object.assign({}, prevState.video_ratings);
+            video_ratings[this.props.profile.id]["like"] = 'like';                                
+            return { video_ratings };                                 
+              }), () => {
+                this.props.updateRating(this.state.video_ratings[this.props.profile.id])})
     }
 
     dislike(){
-        this.setState({like: false, dislike: true}, () => this.props.updateVideo(this.state));
+        this.setState((prevState => {
+            let video_ratings = Object.assign({}, prevState.video_ratings);
+
+            video_ratings[this.props.profile.id]["like"] = 'dislike';                                
+            return { video_ratings };                                 
+              }), () => {
+                this.props.updateRating(this.state.video_ratings[this.props.profile.id])})
     }
 
     render(){
-        const video = this.props.video;
+        const video = this.state;
         if(video === undefined) return null;
 
         const list = this.props.list; 
         const deleteListItem = this.props.deleteListItem;
         const createListItem = this.props.createListItem; 
         const profile = this.props.profile;
-        const liked = video.like;
-        const disLiked = video.dislike;
+        const rating = video.video_ratings[this.props.profile.id]["like"];
         const selectListItem = this.props.selectListItem;
-
 
         let likeButton;
         let dislikeButton;
         let like;
         let dislike;
 
-        liked === true ? like = "like" : like = "";
-        disLiked === true ? dislike = "dislike" : dislike = "";
+        rating === "like" ? like = "like" : like = "";
+        rating === "dislike" ? dislike = "dislike" : dislike = "";
         
         likeButton = (
             <button className={`like-button ${like}`} onClick={() => this.like()}>
