@@ -15,7 +15,7 @@ const msp = (state) => {
 const mdp = (dispatch) => {
     return {
         processForm: (formUser) => dispatch(signup(formUser)),
-        formText: () => (<p>Already a Member? <Link className="session-a"to="/login">Sign In</Link></p>),
+        formText: () => (<p className="form-text">Already a Member? <Link className="session-a"to="/login">Sign In</Link></p>),
         clearErrors: () => dispatch(clearErrors())
 
     };
