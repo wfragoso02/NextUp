@@ -257,9 +257,13 @@ input::placeholder{
     /* justify-content: space-around; */
     
 }
-.checkmark{
+.checkmark, .form-text{
     color: grey;
-    
+    font-family: 'Rubik', sans-serif;
+}
+
+.form-text{
+    font-weight: 500;
 }
 
 
@@ -298,24 +302,26 @@ input::placeholder{
       font-size: 15px;
       font-weight: 100;
   }
+  
   .session-a:hover{
     text-decoration: underline;
   }
+
   .logo1{
     position: absolute;
-    // left: 1.9%;
-    // top: -8%;
     left: 28px;
     top: -80px;
     height: 250px;
     width: 200px;
    border: 1 solid white;
 }
+
 .fb-logo {
     position: absolute;
     top: 71vh;
-    font-family: sans-serif;
-    font-size: 15px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
     color: grey;
     background: transparent;
     border: none;
