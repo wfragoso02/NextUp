@@ -41,19 +41,15 @@ class GenreIndex extends React.Component{
     
 
     componentDidUpdate(prevProps){
-
         if (prevProps.profile.id !== this.props.profile.id){
-            this.props.fecthProfile(this.props.match.params.profileId).then(() => this.props.fetchVideos());
+            this.props.fecthProfile(this.props.match.params.profileId).then(() => this.props.fetchList(this.props.profile.list.id)).then(() => this.props.fetchVideos());
         }
 
         if (prevProps.list.video_ids && (this.props.list.video_ids.length !== prevProps.list.video_ids.length)){
-            this.props.fetchList(this.props.profile.list.id).then((res => {
-                function onlyUnique(value, index, self) { 
-                    return self.indexOf(value) === index;
-                }
-                this.setState({length: res.list.video_ids.filter(onlyUnique).length - 5})
+            function onlyUnique(value, index, self) { 
+                return self.indexOf(value) === index;
             }
-            ))
+            this.setState({length: this.props.list.video_ids.filter(onlyUnique).length - 5})
         }
     }
 
@@ -119,7 +115,7 @@ class GenreIndex extends React.Component{
         const genres = this.state.genres.map((genre, idx) => {
             return (
                 <>
-                <li key={Math.floor(Math.random() * 1000000)}>
+                <li key={`${genre.id}-${idx}`}>
                     <GenreIndexItem  
                     selectListItem={this.selectListItem}
                     currVid={this.state[genre.id]}
@@ -179,7 +175,7 @@ class GenreIndex extends React.Component{
             function onlyUnique(value, index, self) { 
                 return self.indexOf(value) === index;
             }
-            listVideos = this.props.list.video_ids.filter(onlyUnique).map(video_id => {
+            listVideos = this.props.list.video_ids.sort().filter(onlyUnique).map(video_id => {
                 return (
                         <VideoIndexItem 
                         classId={this.props.list.id}

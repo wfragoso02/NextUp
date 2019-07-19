@@ -22,6 +22,16 @@ class videoIndexItem extends React.Component{
         super(props);
         this.state=this.props.video;
     }
+    componentDidMount(){
+        this.setState(this.props.video)
+    }
+
+    componentDidUpdate(prevProps){
+        debugger
+        if(prevProps.video && this.props.video && this.props.video.id !== prevProps.video.id){
+            this.setState(this.props.video)
+        }
+    }
     
     displayVideo(){
         document.getElementById("hidden-video-show").style.display="block";
@@ -46,8 +56,8 @@ class videoIndexItem extends React.Component{
     }
 
     render(){
+        if(this.props.video === undefined) return null;
         const video = this.state;
-        if(video === undefined) return null;
 
         const list = this.props.list; 
         const deleteListItem = this.props.deleteListItem;

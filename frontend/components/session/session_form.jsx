@@ -82,7 +82,6 @@ class SessionForm extends React.Component{
             b = 'form-input'
         }
 
-        // const 
         return(
         <div className="sessions-form">
             <div className="temp">
@@ -114,14 +113,6 @@ class SessionForm extends React.Component{
                             </div>
                         </div>
                         <Facebook processForm={this.props.processForm}/>
-                   
-                        {/* <FacebookLogin
-                            appId="358268101562524"
-                            autoLoad={true}
-                            fields="name,email,picture"
-                            onClick={this.componentClicked.bind(this)}
-                            callback={this.responseFacebook.bind(this)} />  */}
-                        
                         <div className="session-bottom">
                         {this.props.formText()}
                     </div>

@@ -5,3 +5,9 @@ json.videos do
     end
 end
 
+
+
+# precense true
+# q
+# 
+
