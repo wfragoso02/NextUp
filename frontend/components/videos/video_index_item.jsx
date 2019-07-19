@@ -27,7 +27,6 @@ class videoIndexItem extends React.Component{
     }
 
     componentDidUpdate(prevProps){
-        debugger
         if(prevProps.video && this.props.video && this.props.video.id !== prevProps.video.id){
             this.setState(this.props.video)
         }
