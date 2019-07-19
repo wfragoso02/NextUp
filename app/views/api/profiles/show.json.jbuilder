@@ -1,6 +1,8 @@
-json.profile do 
-    json.partial! 'api/profiles/profile', profile: @profile
+# frozen_string_literal: true
+
+json.profile do
+  json.partial! 'api/profiles/profile', profile: @profile
 end
 json.list do
-    json.partial! 'api/lists/list', list: @profile.list
+  json.partial! 'api/lists/list', list: @profile.list
 end

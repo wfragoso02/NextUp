@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: genres
@@ -7,16 +9,14 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
 class Genre < ApplicationRecord
-    validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true
 
-    has_many :categories,
-        foreign_key: :genre_id,
-        class_name: :Category
-        
-    has_many :videos,
-        through: :categories,
-        source: :video
+  has_many :categories,
+    foreign_key: :genre_id,
+    class_name: :Category
 
+  has_many :videos,
+    through: :categories,
+    source: :video
 end

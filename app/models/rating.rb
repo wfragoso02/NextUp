@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: ratings
@@ -9,8 +11,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
 class Rating < ApplicationRecord
-    belongs_to :video
-    belongs_to :profile
+  belongs_to :video
+  belongs_to :profile
 end

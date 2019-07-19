@@ -1,52 +1,53 @@
+# frozen_string_literal: true
+
 class Api::ProfilesController < ApplicationController
+  before_action :ensure_logged_in
 
-    before_action :ensure_logged_in
+  def create
+    @profile = Profile.new(profile_params)
+    @profile.user_id = current_user.id
 
-    def create
-        @profile = Profile.new(profile_params)
-        @profile.user_id = current_user.id
-
-        if @profile.save
-            List.create!({profile: @profile})
-            Video.all.each do |video|
-                Rating.create!({video: video, profile: @profile})
-            end
-            @profile.save!
-            render :show
-        else
-            render json: ["Please enter a name"], status: 401
-        end
+    if @profile.save
+      List.create!(profile: @profile)
+      Video.all.each do |video|
+        Rating.create!(video: video, profile: @profile)
+      end
+      @profile.save!
+      render :show
+    else
+      render json: ['Please enter a name'], status: 401
     end
+  end
 
-    def index
-        @profiles = current_user.profiles.includes(:list)
-        render :index
-    end
+  def index
+    @profiles = current_user.profiles.includes(:list)
+    render :index
+  end
 
-    def show
-        @profile = Profile.find(params[:id])
-        render :show
-    end
+  def show
+    @profile = Profile.find(params[:id])
+    render :show
+  end
 
-    def update
-        @profile = Profile.find(params[:id])
+  def update
+    @profile = Profile.find(params[:id])
 
-        if @profile.update(profile_params)
-            render :show
-        else
-            render json: ["Please enter a name"], status: 401
-        end
+    if @profile.update(profile_params)
+      render :show
+    else
+      render json: ['Please enter a name'], status: 401
     end
-    
-    def destroy
-        @profile = Profile.find(params[:id])
-        @profile.destroy!
-        render :show
-    end
+  end
 
-    private
-    def profile_params
-        params.require(:profile).permit(:image_url, :name)
-    end
-    
+  def destroy
+    @profile = Profile.find(params[:id])
+    @profile.destroy!
+    render :show
+  end
+
+  private
+
+  def profile_params
+    params.require(:profile).permit(:image_url, :name)
+  end
 end

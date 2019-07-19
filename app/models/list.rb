@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: lists
@@ -7,12 +9,11 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
 class List < ApplicationRecord
-    belongs_to :profile
-    has_many :list_items
+  belongs_to :profile
+  has_many :list_items
 
-    has_many :videos,
-        through: :list_items,
-        source: :video
+  has_many :videos,
+    through: :list_items,
+    source: :video
 end

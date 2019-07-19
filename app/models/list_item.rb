@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: list_items
@@ -8,8 +10,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
 class ListItem < ApplicationRecord
-    belongs_to :list
-    belongs_to :video
+  belongs_to :list
+  belongs_to :video
 end
