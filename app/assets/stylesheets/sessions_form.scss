@@ -89,7 +89,7 @@
       top: -35px;
       margin-left: 10px;
       font-size: 15px;
-      transition: 300ms ease-in-out;
+      transition: 50ms ease-in-out;
   }
 
     input:focus + .form-input-label {
@@ -112,7 +112,7 @@
       font-size: 15px;
       width: 290px;
       margin-top: -1%;
-      transition: 300ms ease-in-out;
+      transition: 200ms ease-in-out;
   }
 
   .form-input-with-email-error{
