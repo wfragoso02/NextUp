@@ -18,13 +18,16 @@ const Facebook = ({login, signup}) => {
         fbContent = "";
     }else{
         fbContent = (
+            <>
+            {/* <i className="fab fa-facebook-square"></i> */}
             <FacebookLogin
                 appId="358268101562524"
                 autoLoad={false}
                 fields="email"
                 callback={responseFacebook} 
-                className="fb-logo"
+                cssClass="fb-logo"
             /> 
+            </>
         )
     }
 

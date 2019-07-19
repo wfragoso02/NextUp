@@ -255,8 +255,13 @@ input::placeholder{
     left: -2%;
     display: flex;
     /* justify-content: space-around; */
-
+    
 }
+.checkmark{
+    color: grey;
+    
+}
+
 
 /* .checkmark {
     position: absolute;
@@ -312,24 +317,26 @@ input::placeholder{
     font-family: sans-serif;
     font-size: 15px;
     color: grey;
+    background: transparent;
+    border: none;
+   padding: 0;
 }
+.fb-logo:before{
+   font-family: "Font Awesome 5 Brands";
+   display: inline-block;
+   vertical-align: middle;
+   font-size: 23px;
+   content: "\f082";
+   color: rgb(59, 89, 152);
+   margin-right: 5px;
+}
+
 .fb-logo:hover{
     cursor: pointer;
-}
-.fb-logo > img{
-    width: 7%;
-    height: 77%;
-    /* background-image: url(fb.png);
-    z-index: 100000000;
-    background-repeat: no-repeat;
-    background-size: 20% 20%;
-    height: 10%;
-    position: relative; */
 }
   
 .error{
     position: relative;
-    /* top: 15%; */
     height: 10px;
     background: #e87c03;
     height: 5.5vh;;
