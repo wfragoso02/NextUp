@@ -144,7 +144,7 @@ class GenreIndex extends React.Component{
             volumes = <i className="fas fa-volume-up fa-xs"></i>
         }
         let mainVideo;
-        if (this.props.all_videos && this.props.genres){
+        if (Object.values(this.props.all_videos).length > 0 && this.props.genres.length > 0){
             const mainVid = this.props.all_videos[this.props.genres[0].video_ids[0]]
             mainVideo = (
                 <>
