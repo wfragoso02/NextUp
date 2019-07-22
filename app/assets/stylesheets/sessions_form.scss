@@ -243,10 +243,6 @@ input::placeholder{
     background-color: rgb(184, 184, 184);
 }
 
-.checkmark:active {
-    background: #737373;
-}
-
 .checkmark:after {
     content: "";
     position: absolute;
@@ -256,7 +252,6 @@ input::placeholder{
 .remember-me input:checked ~ .checkmark:after {
     display: block;
 }
-
 
 .remember-me .checkmark:after {
     left: 5px;
