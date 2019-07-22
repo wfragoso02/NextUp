@@ -13,10 +13,10 @@ class Genre < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   has_many :categories,
-    foreign_key: :genre_id,
-    class_name: :Category
+           foreign_key: :genre_id,
+           class_name: :Category
 
   has_many :videos,
-    through: :categories,
-    source: :video
+           through: :categories,
+           source: :video
 end

@@ -5,8 +5,8 @@ import NavContainer from '../nav/nav_cotainer';
 import Footer from '../footer';
 import GenreContent from './genre_content';
 
-class GenreShow extends React.Component{
-    constructor(props){
+class GenreShow extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {
             volume: 1,
@@ -20,36 +20,36 @@ class GenreShow extends React.Component{
         this.hoverItem = this.hoverItem.bind(this);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.fetchVideos();
         this.props.fetchGenre(this.props.match.params.genreId);
         this.props.fetchProfile(this.props.match.params.profileId);
     }
 
-    componentDidUpdate(prevProps){
+    componentDidUpdate(prevProps) {
         if (prevProps.match.params.genreId !== this.props.match.params.genreId) {
             this.props.fetchGenre(this.props.match.params.genreId).then(() => this.props.fetchVideos());
         }
-        if (prevProps.list.video_ids && this.props.list.video_ids.length !== prevProps.list.video_ids.length){
+        if (prevProps.list.video_ids && this.props.list.video_ids.length !== prevProps.list.video_ids.length) {
             this.props.fetchList();
         }
     }
 
-    hoverItem(video){
-        if(this.state.selectedItem && this.state.selectedItem.id !== video.id){
+    hoverItem(video) {
+        if (this.state.selectedItem && this.state.selectedItem.id !== video.id) {
             this.selectListItem(video)
         }
     }
 
-    closeContent(){
-        this.setState({selectedItem: null})
+    closeContent() {
+        this.setState({ selectedItem: null })
     }
 
-    selectListItem(video){
-        this.setState({selectedItem: video});
+    selectListItem(video) {
+        this.setState({ selectedItem: video });
     }
 
-    setMuted(){
+    setMuted() {
         if (this.refs.player.muted) {
             this.refs.player.muted = false;
             this.setState({ volume: 1 });
@@ -59,9 +59,9 @@ class GenreShow extends React.Component{
         }
     }
 
-    render(){
+    render() {
         let defaultButton = "";
-        if (!this.props.list.video_ids || !this.props.genre.videos || Object.values(this.props.all_videos).length < 1){
+        if (!this.props.list.video_ids || !this.props.genre.videos || Object.values(this.props.all_videos).length < 1) {
             return null;
         }
         if (this.props.list.video_ids.includes(Object.values(this.props.genre.videos)[0].id)) {
@@ -69,7 +69,7 @@ class GenreShow extends React.Component{
         } else {
             defaultButton = (<button onClick={() => this.props.createListItem({ video_id: Object.values(this.props.genre.videos)[0].id, list_id: this.props.list.id })} className="front-page-button"><h3 className="fa-plus-text"><i className="fas fa-plus"></i>My List</h3></button>)
         }
-       
+
         let volumes;
         if (this.state.volume === 0) {
             volumes = <i className="fas fa-volume-mute fa-xs"></i>
@@ -77,8 +77,8 @@ class GenreShow extends React.Component{
             volumes = <i className="fas fa-volume-up fa-xs"></i>
         }
         let mainVideo;
-        if (this.props.genre.videos){
-            
+        if (this.props.genre.videos) {
+
             mainVideo = (
                 <>
                     <video ref='player' className="home-trailer" >
@@ -91,39 +91,39 @@ class GenreShow extends React.Component{
                     <h1 className="main-video-rating">{this.props.all_videos[this.props.genre.video_ids.sort()[0]].rating}</h1>
                 </>
             )
-            
-        }else{
+
+        } else {
             mainVideo = (
                 <h1>No Video Here</h1>
             )
         }
-        
-        const videos = this.props.genre.video_ids.sort().map(video_id=> {
-            return(
-                <VideoIndexItem 
+
+        const videos = this.props.genre.video_ids.sort().map(video_id => {
+            return (
+                <VideoIndexItem
                     currVid={this.state.selectedItem}
-                    selectListItem={this.selectListItem} 
-                    profile={this.props.profile} 
-                    deleteListItem={this.props.deleteListItem}  
+                    selectListItem={this.selectListItem}
+                    profile={this.props.profile}
+                    deleteListItem={this.props.deleteListItem}
                     list={this.props.list}
-                    createListItem={this.props.createListItem} 
-                    video={this.props.all_videos[video_id]} 
-                    className="actual-video" 
+                    createListItem={this.props.createListItem}
+                    video={this.props.all_videos[video_id]}
+                    className="actual-video"
                 />
             )
         })
 
-        return(
+        return (
             <div className="genre-show">
-                <NavContainer profileId={this.props.match.params.profileId}/>
+                <NavContainer profileId={this.props.match.params.profileId} />
                 <div className="home" >
                     {mainVideo}
                 </div>
                 <div className="genreItems">
-                <ul className="row">
-                    {videos}
-                </ul>
-                    <GenreContent video={this.state.selectedItem} closeContent={this.closeContent}/>
+                    <ul className="row">
+                        {videos}
+                    </ul>
+                    <GenreContent video={this.state.selectedItem} closeContent={this.closeContent} />
                 </div>
                 <Footer />
             </div>

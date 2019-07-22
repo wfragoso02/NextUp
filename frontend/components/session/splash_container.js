@@ -4,9 +4,9 @@ import Splash from './splash';
 
 
 const mdp = dispatch => {
-    return{
+    return {
         demo: (user) => dispatch(login(user))
     };
 };
 
-export default connect(null ,mdp)(Splash);
+export default connect(null, mdp)(Splash);

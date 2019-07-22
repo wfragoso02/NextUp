@@ -3,11 +3,11 @@ import GenreIndex from './genre_index';
 import { fetchGenres } from '../../actions/genre_actions';
 import { fetchProfile } from '../../actions/profile_actions';
 import { fetchList } from '../../actions/list_actions';
-import {createListItem,deleteListItem } from '../../actions/list_item_actions';
-import {fetchVideos} from '../../actions/video_actions';
+import { createListItem, deleteListItem } from '../../actions/list_item_actions';
+import { fetchVideos } from '../../actions/video_actions';
 
 const msp = (state, ownProps) => {
-    return{
+    return {
         genres: Object.values(state.entities.genres),
         profile: state.entities.profiles[ownProps.match.params.profileId] || {},
         list: state.entities.list,
@@ -16,7 +16,7 @@ const msp = (state, ownProps) => {
 };
 
 const mdp = dispatch => {
-    return{
+    return {
         fetchGenres: () => dispatch(fetchGenres()),
         fecthProfile: (id) => dispatch(fetchProfile(id)),
         fetchList: (id) => dispatch(fetchList(id)),

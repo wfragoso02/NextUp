@@ -7,11 +7,11 @@ const _nullState = {
 
 export default (state = _nullState, action) => {
   Object.freeze(state);
-  switch(action.type){
+  switch (action.type) {
     case RECEIVE_PROFILE:
-      return merge({}, state,{profile: action.payload.profile});
+      return merge({}, state, { profile: action.payload.profile });
     case RECEIVE_CURRENT_USER:
-      return merge({}, state,{id: action.currentUser.id});
+      return merge({}, state, { id: action.currentUser.id });
     case LOGOUT_CURRENT_USER:
       return _nullState;
     default:

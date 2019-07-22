@@ -4,9 +4,9 @@ import { RECEIVE_CURRENT_USER } from '../actions/types';
 export default (state = {}, action) => {
 
   Object.freeze(state);
-  switch(action.type){
+  switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return merge({}, state, {[action.currentUser.id]: action.currentUser});
+      return merge({}, state, { [action.currentUser.id]: action.currentUser });
     default:
       return state;
   }

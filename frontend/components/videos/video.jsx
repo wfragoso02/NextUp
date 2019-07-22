@@ -10,7 +10,7 @@ class Video extends React.Component {
             volume: "1",
             seek: "0",
             time: '0'
-            
+
         };
 
         this.load = this.load.bind(this);
@@ -47,60 +47,60 @@ class Video extends React.Component {
 
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         clearInterval(this.handle);
         clearInterval(this.videoPlayer);
         clearTimeout(this.handleControlsShow);
 
     }
 
-    checkVideo(){
-        if(this.refs.player){
-            if(this.refs.player.paused){
+    checkVideo() {
+        if (this.refs.player) {
+            if (this.refs.player.paused) {
                 this.controlsShow();
-            }else{
+            } else {
                 this.controlsHide();
             }
         }
     }
 
-    controlsShow(){
+    controlsShow() {
         clearTimeout();
-            this.handleControlsShow = setTimeout(function(){
-                document.getElementById('parsed-button').style.display="flex";
-                document.getElementById('rewind-button').style.display="block";
-                document.getElementById('forward-button').style.display="block";
-                document.getElementById('back').style.display="block";
-                document.getElementById('volume-button').style.display="flex";
-                document.getElementById('toggle-full').style.display="flex";
-                document.getElementById('movie-duration').style.display="flex";
-                document.getElementById('video-info').style.display="flex";
-                document.getElementById('view-bar').style.display="flex";
-            }, 100);
+        this.handleControlsShow = setTimeout(function () {
+            document.getElementById('parsed-button').style.display = "flex";
+            document.getElementById('rewind-button').style.display = "block";
+            document.getElementById('forward-button').style.display = "block";
+            document.getElementById('back').style.display = "block";
+            document.getElementById('volume-button').style.display = "flex";
+            document.getElementById('toggle-full').style.display = "flex";
+            document.getElementById('movie-duration').style.display = "flex";
+            document.getElementById('video-info').style.display = "flex";
+            document.getElementById('view-bar').style.display = "flex";
+        }, 100);
     }
 
-    controlsHide(){
+    controlsHide() {
         clearTimeout();
-        setTimeout(function(){
-            document.getElementById('parsed-button').style.display="none";
-            document.getElementById('rewind-button').style.display="none";
-            document.getElementById('forward-button').style.display="none";
-            document.getElementById('back').style.display="none";
-            document.getElementById('volume-button').style.display="none";
-            document.getElementById('toggle-full').style.display="none";
-            document.getElementById('movie-duration').style.display="none";
-            document.getElementById('video-info').style.display="none";
-            document.getElementById('view-bar').style.display="none";
+        setTimeout(function () {
+            document.getElementById('parsed-button').style.display = "none";
+            document.getElementById('rewind-button').style.display = "none";
+            document.getElementById('forward-button').style.display = "none";
+            document.getElementById('back').style.display = "none";
+            document.getElementById('volume-button').style.display = "none";
+            document.getElementById('toggle-full').style.display = "none";
+            document.getElementById('movie-duration').style.display = "none";
+            document.getElementById('video-info').style.display = "none";
+            document.getElementById('view-bar').style.display = "none";
         }, 2000)
     }
 
-    handleVideo(){
-        if (this.state.content === "►"){
+    handleVideo() {
+        if (this.state.content === "►") {
             this.refs.player.play();
-            this.setState({content: "||"});
-        }else{
+            this.setState({ content: "||" });
+        } else {
             this.refs.player.pause();
-            this.setState({content: "►"});
+            this.setState({ content: "►" });
         }
     }
 
@@ -120,48 +120,48 @@ class Video extends React.Component {
         };
     }
 
-    changeSeek(max){
-        return(e) => {
+    changeSeek(max) {
+        return (e) => {
             const time = this.refs.player.duration * (e.target.value / max);
             this.refs.player.currentTime = time;
-            this.setState({seek: time});
+            this.setState({ seek: time });
         }
     }
-    
+
     changeVolume(e) {
         e.preventDefault();
         this.refs.player.volume = parseFloat(e.target.value);
-        this.setState({volume: e.target.value});
+        this.setState({ volume: e.target.value });
     }
 
-    fullScreen(){
-        return() => {
+    fullScreen() {
+        return () => {
             if (this.refs.player.requestFullscreen) {
                 this.refs.player.requestFullscreen();
-            } else{
+            } else {
                 this.refs.player.webkitRequestFullscreen();
             }
         };
     }
 
-    secondsToString(seconds){
+    secondsToString(seconds) {
         let numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
         let numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
         let numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
-        if(numhours < 10){
+        if (numhours < 10) {
             numhours = '0' + numhours;
         }
-        if(numminutes < 10){
+        if (numminutes < 10) {
             numminutes = '0' + numminutes;
         }
-        if(numseconds < 10){
+        if (numseconds < 10) {
             numseconds = '0' + numseconds;
         }
-        return  numhours + ":" + numminutes + ":" + numseconds;
-        
+        return numhours + ":" + numminutes + ":" + numseconds;
+
     }
 
-    setMuted(){
+    setMuted() {
         if (this.refs.player.muted) {
             this.refs.player.muted = false;
             this.setState({ volume: '1' });
@@ -172,21 +172,21 @@ class Video extends React.Component {
     }
 
 
-    checkSeek(){
-        if(this.refs.player){
-            this.setState({seek: this.refs.player.currentTime});
-            this.setState({time: this.secondsToString(Math.floor(this.refs.player.duration - this.refs.player.currentTime))});
+    checkSeek() {
+        if (this.refs.player) {
+            this.setState({ seek: this.refs.player.currentTime });
+            this.setState({ time: this.secondsToString(Math.floor(this.refs.player.duration - this.refs.player.currentTime)) });
         }
     }
 
-   
+
 
     render() {
         if (!this.state.video.video_url) {
             return null;
         }
-        
-        
+
+
         let volumes;
         if (this.state.volume === '0') {
             volumes = <i className="fas fa-volume-mute"></i>
@@ -194,12 +194,12 @@ class Video extends React.Component {
             volumes = <i className="fas fa-volume-up"></i>
         }
         let max;
-        if(this.refs.player){
+        if (this.refs.player) {
             max = `${Math.floor(this.refs.player.duration)}`
-        }else{
+        } else {
             max = '1';
         }
-        
+
 
         return (
             <div onMouseMove={this.controlsShow}>
@@ -215,10 +215,10 @@ class Video extends React.Component {
                     <button onMouseOver={this.controlsShow} onClick={this.fullScreen()} id="toggle-full"><i className="fas fa-compress"></i>
                     </button>
                     <div className="volume-controls">
-                    <button onMouseOver={this.controlsShow} onClick={this.setMuted} id="volume-button">{volumes}</button>
-                    <input onMouseOver={this.controlsShow} type="range" min="0" max="1" step="0.01" value={this.state.volume} className="volume-bar" onChange={this.changeVolume}/>
+                        <button onMouseOver={this.controlsShow} onClick={this.setMuted} id="volume-button">{volumes}</button>
+                        <input onMouseOver={this.controlsShow} type="range" min="0" max="1" step="0.01" value={this.state.volume} className="volume-bar" onChange={this.changeVolume} />
                     </div>
-                    <input onMouseOver={this.controlsShow} type="range" min="0" max={max} step="1" value={this.state.seek} id="view-bar" onChange={this.changeSeek(max)}/>
+                    <input onMouseOver={this.controlsShow} type="range" min="0" max={max} step="1" value={this.state.seek} id="view-bar" onChange={this.changeSeek(max)} />
                     <h1 onMouseOver={this.controlsShow} id="video-info">{this.state.video.title}</h1>
                     <h6 onMouseOver={this.controlsShow} id="movie-duration">{this.state.time}</h6>
                 </div>
@@ -226,6 +226,6 @@ class Video extends React.Component {
         )
     }
 }
-        
+
 export default Video;
 

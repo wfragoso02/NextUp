@@ -18,8 +18,8 @@ const App = () => (
     <div className="home"></div>
     <div>
       <Switch>
-        <AuthRoute exact path='/login' component={LoginFormContainer}/>
-        <AuthRoute exact path='/signup' component={SignupFormContainer}/>
+        <AuthRoute exact path='/login' component={LoginFormContainer} />
+        <AuthRoute exact path='/signup' component={SignupFormContainer} />
         <ProtectedRoute exact path="/home" component={ProfileContainer} />
         <ProtectedRoute exact path="/manage-profiles" component={manageProfilesContainer} />
         <ProtectedRoute exact path='/:profileId/videos/:videoId' component={VideoContainer} />
@@ -27,7 +27,7 @@ const App = () => (
         <ProtectedRoute exact path="/:profileId/genre/:genreId" component={GenreShow} />
         <ProtectedRoute exact path='/:profileId/videos/:videoId' component={videoContainer} />
         <ProtectedRoute exact path='/:profileId/myList' component={ListContainer} />
-        <AuthRoute exact path="/" component={SplashContainer}/>
+        <AuthRoute exact path="/" component={SplashContainer} />
       </Switch>
     </div>
   </div>

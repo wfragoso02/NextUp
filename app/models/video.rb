@@ -19,16 +19,16 @@ class Video < ApplicationRecord
   has_one_attached :image
   has_one_attached :movie
   has_many :categories,
-    foreign_key: :video_id,
-    class_name: :Category
+           foreign_key: :video_id,
+           class_name: :Category
 
   has_many :genres,
-    through: :categories,
-    source: :genre
+           through: :categories,
+           source: :genre
 
   has_many :video_ratings,
-    foreign_key: :video_id,
-    class_name: :Rating
+           foreign_key: :video_id,
+           class_name: :Rating
 
   has_many :list_items
 end

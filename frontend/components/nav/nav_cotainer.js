@@ -4,8 +4,8 @@ import { logout } from '../../actions/session_actions';
 import { fetchProfiles, fetchProfile } from '../../actions/profile_actions';
 import { fetchList } from '../../actions/list_actions';
 
-const msp = (state,ownProps) => {
-    return{
+const msp = (state, ownProps) => {
+    return {
         profiles: state.entities.profiles || {},
         profile: state.entities.profiles[ownProps.profileId] || {},
         list: state.entities.list
@@ -13,7 +13,7 @@ const msp = (state,ownProps) => {
 }
 
 const mdp = dispatch => {
-    return{
+    return {
         logout: () => dispatch(logout()),
         fetchProfiles: () => dispatch(fetchProfiles()),
         fetchProfile: (id) => dispatch(fetchProfile(id)),

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import FacebookLogin from 'react-facebook-login';
 
-const Facebook = ({login, signup}) => {
+const Facebook = ({ login, signup }) => {
 
     const [loggedIn] = useState(false)
 
     const componentClicked = object => {
-        login(object).then( null, () => signup(object));
+        login(object).then(null, () => signup(object));
     }
 
     const responseFacebook = (response) => {
@@ -14,24 +14,24 @@ const Facebook = ({login, signup}) => {
     }
 
     let fbContent;
-    if (loggedIn){
+    if (loggedIn) {
         fbContent = "";
-    }else{
+    } else {
         fbContent = (
             <>
-            {/* <i className="fab fa-facebook-square"></i> */}
-            <FacebookLogin
-                appId="358268101562524"
-                autoLoad={false}
-                fields="email"
-                callback={responseFacebook} 
-                cssClass="fb-logo"
-            /> 
+                {/* <i className="fab fa-facebook-square"></i> */}
+                <FacebookLogin
+                    appId="358268101562524"
+                    autoLoad={false}
+                    fields="email"
+                    callback={responseFacebook}
+                    cssClass="fb-logo"
+                />
             </>
         )
     }
 
-    return(
+    return (
         <div>
             {fbContent}
         </div>

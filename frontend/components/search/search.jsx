@@ -1,13 +1,13 @@
 import react from 'react';
 
 
-class Search extends React.Component{
-    constructor(props){
+class Search extends React.Component {
+    constructor(props) {
         super(props);
-        this.state = {search: ''};
+        this.state = { search: '' };
     }
-    render(){
-        return(
+    render() {
+        return (
 
         )
     }

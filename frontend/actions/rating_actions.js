@@ -9,5 +9,5 @@ const receiveVideo = (video) => ({
 
 export const updateRating = rating => dispatch => (
     RatingApiUtil.updateRating(rating)
-    .then((rating) => VideoApiUtil.fetchVideo(rating.video.id).then(video => dispatch(receiveVideo(video))))
+        .then((rating) => VideoApiUtil.fetchVideo(rating.video.id).then(video => dispatch(receiveVideo(video))))
 );

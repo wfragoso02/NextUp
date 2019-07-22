@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Home = () =>{
-    return(
-        <img src="" alt=""/>
+const Home = () => {
+    return (
+        <img src="" alt="" />
     )
 }
 

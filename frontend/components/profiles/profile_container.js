@@ -4,7 +4,7 @@ import { fetchProfiles } from '../../actions/profile_actions';
 import { logout } from '../../actions/session_actions';
 
 const msp = state => {
-    return{
+    return {
         profiles: Object.values(state.entities.profiles)
     };
 };

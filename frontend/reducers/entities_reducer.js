@@ -5,7 +5,7 @@ import GenreReducer from './genres_reducer';
 import videoReducer from './video_reducer';
 import ListsReducer from './list_reducer';
 
-export default combineReducers ({
+export default combineReducers({
   users: usersReducer,
   profiles: ProfileReducer,
   genres: GenreReducer,

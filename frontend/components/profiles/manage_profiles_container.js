@@ -4,14 +4,14 @@ import { fetchProfiles, createProfile, updateProfile, deleteProfile } from '../.
 import { clearErrors } from '../../actions/session_actions';
 
 const msp = state => {
-    return{
+    return {
         profiles: Object.values(state.entities.profiles),
         error: state.errors.profile[0]
     };
 };
 
 const mdp = dispatch => {
-    return{
+    return {
         fetchProfiles: () => dispatch(fetchProfiles()),
         createProfile: (profile) => dispatch(createProfile(profile)),
         updateProfile: (profile) => dispatch(updateProfile(profile)),

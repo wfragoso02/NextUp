@@ -14,6 +14,6 @@ class List < ApplicationRecord
   has_many :list_items
 
   has_many :videos,
-    through: :list_items,
-    source: :video
+           through: :list_items,
+           source: :video
 end

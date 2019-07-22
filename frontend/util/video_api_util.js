@@ -15,8 +15,8 @@ export const fetchVideos = (filter) => (
 
 export const updateVideo = (video) => (
     $.ajax({
-      url: `api/videos/${video.id}`,
-      method: 'PATCH',
-      data: { video }
+        url: `api/videos/${video.id}`,
+        method: 'PATCH',
+        data: { video }
     })
 );

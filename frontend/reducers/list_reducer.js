@@ -1,10 +1,10 @@
-import {merge } from 'lodash';
+import { merge } from 'lodash';
 import { RECEIVE_PROFILE, RECEIVE_LIST, RECEIVE_LIST_ITEM, REMOVE_LIST_ITEM } from '../actions/types';
 
-export default (state={}, action) => {
+export default (state = {}, action) => {
     Object.freeze(state);
     let newState;
-    switch(action.type){
+    switch (action.type) {
         case RECEIVE_LIST:
             return merge({}, action.list)
         case RECEIVE_LIST_ITEM:

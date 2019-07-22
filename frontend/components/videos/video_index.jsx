@@ -1,17 +1,17 @@
 import React from 'react';
 import VideoIndexItem from './video_index_item';
 
-class VideoIndex extends React.Component{
-    render(){
+class VideoIndex extends React.Component {
+    render() {
         const videos = this.props.videos.map(video => {
-            return(
+            return (
                 <li key={video.id} >
                     <VideoIndexItem video={video} />
                 </li>
             )
         });
 
-        return(
+        return (
             <ul className="video-container">
                 {videos}
             </ul>

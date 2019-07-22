@@ -1,13 +1,13 @@
-import {merge} from 'lodash';
-import { RECEIVE_VIDEO, RECEIVE_ALL_VIDEOS} from '../actions/types';
+import { merge } from 'lodash';
+import { RECEIVE_VIDEO, RECEIVE_ALL_VIDEOS } from '../actions/types';
 
 export default (state = {}, action) => {
     Object.freeze(state);
-    switch(action.type){
+    switch (action.type) {
         case RECEIVE_ALL_VIDEOS:
             return action.videos;
         case RECEIVE_VIDEO:
-            return merge({}, state, {[action.video.id]: action.video});
+            return merge({}, state, { [action.video.id]: action.video });
         default:
             return state;
     }

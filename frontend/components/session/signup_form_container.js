@@ -3,7 +3,7 @@ import { signup } from '../../actions/session_actions';
 import SessionForm from './session_form';
 import { Link } from 'react-router-dom';
 import React from 'react';
-import {clearErrors} from '../../actions/session_actions';
+import { clearErrors } from '../../actions/session_actions';
 
 
 const msp = (state) => {
@@ -15,7 +15,7 @@ const msp = (state) => {
 const mdp = (dispatch) => {
     return {
         processForm: (formUser) => dispatch(signup(formUser)),
-        formText: () => (<p className="form-text">Already a Member? <Link className="session-a"to="/login">Sign In</Link></p>),
+        formText: () => (<p className="form-text">Already a Member? <Link className="session-a" to="/login">Sign In</Link></p>),
         clearErrors: () => dispatch(clearErrors())
 
     };
