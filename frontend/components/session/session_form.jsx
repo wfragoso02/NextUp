@@ -106,10 +106,9 @@ class SessionForm extends React.Component{
 
                         </form>
                         <div className="form-sub">
-                            <label className='remember-me'>
+                            <label className='remember-me'>Remember me
                                 <input type="checkbox" checked={this.state.checked} onChange={this.update()}/>
-                                <span className="checkmark">Remember me</span>
-                                
+                                <span className="checkmark"></span>
                             </label>
                                 <a className="sub-a" href="">Need help?</a>
                             </div>

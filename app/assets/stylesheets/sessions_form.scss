@@ -205,10 +205,11 @@ input::placeholder{
 
 .sub-a {
     position: relative;
-    color: gray;
+    color: #B3B3B3;
     text-decoration: none;
     top: 45px;
     left: -2%;
+    font-family: 'Rubik', sans-serif;
 }
 
 .sub-a:hover{
@@ -220,9 +221,57 @@ input::placeholder{
     top: 45px;
     left: -2%;
     display: flex;
+    padding-left: 25px;
+    color: #B3B3B3;
+}
+.remember-me input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
 }
 
-.checkmark, .form-text{
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    border: 1px transparent;
+    border-radius: 1px;
+    background-color: rgb(184, 184, 184);
+}
+
+.checkmark:active {
+    background: #737373;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.remember-me input:checked ~ .checkmark:after {
+    display: block;
+}
+
+
+.remember-me .checkmark:after {
+    left: 5px;
+    top: 0px;
+    width: 3px;
+    height: 10px;
+    border: solid black;
+    border-width: 0 2.5px 2.5px 0;
+    border-radius: 2px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+.form-text{
     color: grey;
     font-family: 'Rubik', sans-serif;
 }
@@ -276,10 +325,22 @@ input::placeholder{
    font-family: "Font Awesome 5 Brands";
    display: inline-block;
    vertical-align: middle;
+   position: relative;
    font-size: 23px;
    content: "\f082";
    color: rgb(59, 89, 152);
    margin-right: 5px;
+   z-index: 1;
+}
+
+.fb-logo::after{
+    content: "";
+    left: 8px;
+    height: 18px;
+    width: 10px;
+    background: whitesmoke;
+    position: absolute;
+    top: 3px;
 }
 
 .fb-logo:hover{
