@@ -311,7 +311,7 @@ input::placeholder{
 
 .fb-logo {
     position: absolute;
-    top: 71vh;
+    top: 69vh;
     font-family: 'Rubik', sans-serif;
     font-size: 13px;
     font-weight: 500;
@@ -319,6 +319,7 @@ input::placeholder{
     background: transparent;
     border: none;
    padding: 0;
+   margin-bottom: 10px;
 }
 
 .fb-logo:before{
@@ -329,7 +330,7 @@ input::placeholder{
    font-size: 23px;
    content: "\f082";
    color: rgb(59, 89, 152);
-   margin-right: 5px;
+   margin-right: 10px;
    z-index: 1;
 }
 
