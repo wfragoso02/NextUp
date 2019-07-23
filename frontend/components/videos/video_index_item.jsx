@@ -41,7 +41,7 @@ class videoIndexItem extends React.Component {
       video_ratings[this.props.profile.id]["like"] = 'like';
       return { video_ratings };
     }), () => {
-      this.props.updateRating(this.state.video_ratings[this.props.profile.id])
+      this.props.updateRating(this.state.video_ratings[this.props.profile.id]);
     });
   }
 
@@ -49,10 +49,10 @@ class videoIndexItem extends React.Component {
     this.setState((prevState => {
       let video_ratings = Object.assign({}, prevState.video_ratings);
 
-      video_ratings[this.props.profile.id]["like"] = 'dislike';
+      video_ratings[this.props.profile.id]['like'] = 'dislike';
       return { video_ratings };
     }), () => {
-      this.props.updateRating(this.state.video_ratings[this.props.profile.id])
+      this.props.updateRating(this.state.video_ratings[this.props.profile.id]);
     });
   }
 

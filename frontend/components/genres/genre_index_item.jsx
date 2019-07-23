@@ -37,7 +37,7 @@ const GenreIndexItem = props => {
       });
       changeShift(shift + 1);
     }
-  }
+  };
 
   const shiftLeft = () => {
     if (shift > 0) {

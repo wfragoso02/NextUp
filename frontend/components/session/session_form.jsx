@@ -37,7 +37,7 @@ class SessionForm extends React.Component {
     return (e) => {
       if (type === 'password' && (e.target.value.length < 4 || e.target.value.length > 60)) {
         this.setState({ errorsPassword: 'Your password must contain between 4 and 60 characters.' });
-      } else if ((e.target.value.length > 4 && e.target.value.length < 60)) {
+      } else if ((e.target.value.length >= 4 && e.target.value.length <= 60)) {
         this.setState({ errorsPassword: '' });
       }
 
@@ -93,11 +93,11 @@ class SessionForm extends React.Component {
               <form >
                 {sessionErrors}
                 <br />
-                <input className={a} name={a} type="text" value={this.state.email} onChange={this.handleInput('email')} />
+                <input className={a} name={a} type="text" value={this.state.email} onChange={this.handleInput('email')} required/>
                 <label className="form-input-label" htmlFor={a}>Email</label>
                 <h3 className="session-errors">{this.state.errorsEmail}</h3>
                 <br />
-                <input className={b} name={b} type="password" value={this.state.password} onChange={this.handleInput('password')} />
+                <input className={b} name={b} type="password" value={this.state.password} onChange={this.handleInput('password')} required/>
                 <label className="form-input-label" htmlFor={b}>Password</label>
                 <h3 className="session-errors">{this.state.errorsPassword}</h3>
                 <br />

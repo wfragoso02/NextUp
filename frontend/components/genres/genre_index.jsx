@@ -76,7 +76,7 @@ class GenreIndex extends React.Component {
         const rightIdx = element.style.transform.indexOf(")");
         element.style.transform.length < 1 ? element.style.transform = "translateX(-19vw)" :
           element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx + 1, rightIdx - 2)) - 19}vw)`;
-      })
+      });
       this.setState({ shift: this.state.shift + 1 });
     }
   }

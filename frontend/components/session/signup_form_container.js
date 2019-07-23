@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import { clearErrors } from '../../actions/session_actions';
 
-
 const msp = (state) => {
   return {
     errors: state.errors.session || [],

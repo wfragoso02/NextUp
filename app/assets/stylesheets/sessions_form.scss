@@ -70,10 +70,11 @@
     pointer-events: none;
 }
 
-input:focus + .form-input-label {
+input:focus + .form-input-label, input:valid + .form-input-label{
     top: -50px;
     font-size: 60%;
 }
+
 
 .form-input{
     position: relative;
