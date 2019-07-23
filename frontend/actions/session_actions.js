@@ -32,4 +32,4 @@ export const logout = () => dispatch => (
 export const signup = (formUser) => dispatch => (
   APIUtil.signup(formUser).then((user) => (dispatch(receiveCurrentUser(user))),
     (errors) => dispatch(receiveErrors(errors.responseJSON))
-  ));
+));

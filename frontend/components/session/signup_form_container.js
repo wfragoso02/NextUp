@@ -7,18 +7,18 @@ import { clearErrors } from '../../actions/session_actions';
 
 
 const msp = (state) => {
-    return {
-        errors: state.errors.session || [],
-        formType: 'Sign Up'
-    };
+  return {
+    errors: state.errors.session || [],
+    formType: 'Sign Up'
+  };
 };
-const mdp = (dispatch) => {
-    return {
-        processForm: (formUser) => dispatch(signup(formUser)),
-        formText: () => (<p className="form-text">Already a Member? <Link className="session-a" to="/login">Sign In</Link></p>),
-        clearErrors: () => dispatch(clearErrors())
 
-    };
+const mdp = (dispatch) => {
+  return {
+    processForm: (formUser) => dispatch(signup(formUser)),
+    formText: () => (<p className="form-text">Already a Member? <Link className="session-a" to="/login">Sign In</Link></p>),
+    clearErrors: () => dispatch(clearErrors())
+  };
 };
 
 export default connect(msp, mdp)(SessionForm);

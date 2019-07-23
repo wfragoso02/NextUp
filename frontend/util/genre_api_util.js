@@ -1,13 +1,13 @@
 export const fetchGenres = () => (
-    $.ajax({
-        method: 'GET',
-        url: 'api/genres'
-    })
+  $.ajax({
+    method: 'GET',
+    url: 'api/genres'
+  })
 );
 
 export const fetchGenre = (id) => (
-    $.ajax({
-        method: "GET",
-        url: `api/genres/${id}`
-    })
+  $.ajax({
+    method: "GET",
+    url: `api/genres/${id}`
+  })
 );
