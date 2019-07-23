@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 import { RECEIVE_ALL_GENRES, RECEIVE_GENRE } from '../actions/types';
 
-export default (action, state = {}) => {
+export default (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_GENRE:

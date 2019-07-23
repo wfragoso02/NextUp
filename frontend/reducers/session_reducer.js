@@ -5,7 +5,7 @@ const _nullState = {
   id: null
 };
 
-export default (action, state = _nullState) => {
+export default (state = _nullState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_PROFILE:

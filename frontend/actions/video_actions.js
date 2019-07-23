@@ -1,5 +1,5 @@
 import * as VideoApiUtil from '../util/video_api_util';
-import { RECEIVE_VIDEO, RECEIVE_ALL_VIDEOS } from './types'
+import { RECEIVE_VIDEO, RECEIVE_ALL_VIDEOS } from './types';
 
 const receiveVideo = (video) => ({
   type: RECEIVE_VIDEO,

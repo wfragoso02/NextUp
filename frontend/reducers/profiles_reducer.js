@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 import { RECEIVE_ALL_PROFILES, RECEIVE_PROFILE, REMOVE_PROFILE } from '../actions/types';
 
-export default (action, state = {}) => {
+export default (state = {}, action) => {
   let newState;
   Object.freeze(state);
   switch (action.type) {

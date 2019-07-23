@@ -1,5 +1,5 @@
 import * as ProfileApiUtil from '../util/profile_api_util';
-import { RECEIVE_ALL_PROFILES, RECEIVE_PROFILE, REMOVE_PROFILE, RECEIVE_PROFILE_ERRORS } from './types'
+import { RECEIVE_ALL_PROFILES, RECEIVE_PROFILE, REMOVE_PROFILE, RECEIVE_PROFILE_ERRORS } from './types';
 
 const receiveProfiles = (profiles) => ({
   type: RECEIVE_ALL_PROFILES,
