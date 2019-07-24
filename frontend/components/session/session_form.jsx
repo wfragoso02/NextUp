@@ -86,7 +86,6 @@ const SessionForm = props => {
               <input className={a} name={a} type="text" value={state.email} onChange={handleInput('email')} required />
               <label className="form-input-label" htmlFor={a}>Email</label>
               <h3 className="session-errors">{state.errorsEmail}</h3>
-              <br />
               <input className={b} name={b} type="password" value={state.password} onChange={handleInput('password')} required />
               <label className="form-input-label" htmlFor={b}>Password</label>
               <h3 className="session-errors">{state.errorsPassword}</h3>
