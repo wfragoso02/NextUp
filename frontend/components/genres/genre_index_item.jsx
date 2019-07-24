@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { createListItem, deleteListItem } from '../../actions/list_item_actions';
 import { fetchList } from '../../actions/list_actions';
 import VideoIndexItem from '../videos/video_index_item';
-import ArrowRight from './arrow_right';
-import ArrowLeft from './arrow_left';
+import ArrowRight from '../arrow_right';
+import ArrowLeft from '../arrow_left';
 
 const msp = state => {
   return {
@@ -24,8 +24,8 @@ const mdp = dispatch => {
 };
 
 const GenreIndexItem = props => {
-  const length = props.genre.video_ids.length;
   const [shift, changeShift] = useState(0);
+  const length = props.genre.video_ids.length;
   const genre = props.genre;
   const profile = props.profile;
   const all_videos = props.all_videos;
@@ -37,15 +37,14 @@ const GenreIndexItem = props => {
   let arrowLeft;
   shift > 0 ?
     arrowLeft = (
-      <ArrowLeft shift={shift} genre={props.genre} changeShift={changeShift} />
+      <ArrowLeft shift={shift} id={genre.id} changeShift={changeShift} />
     ) : arrowLeft = null;
 
   let arrowRight;
   shift < length ?
     arrowRight = (
-      <ArrowRight shift={shift} genre={props.genre} changeShift={changeShift} />
+      <ArrowRight shift={shift} id={genre.id} changeShift={changeShift} />
     ) : arrowRight = null;
-
 
   const videos = genre.video_ids.map(video_id =>
     <>
@@ -58,7 +57,7 @@ const GenreIndexItem = props => {
         deleteListItem={props.deleteListItem}
         list={props.list}
         createListItem={props.createListItem}
-        video={props.all_videos[video_id]}
+        video={all_videos[video_id]}
         className="actual-video"
       />
     </>

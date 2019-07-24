@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import Footer from '../footer';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import GenreContent from './genre_content';
+import ArrowLeft from '../arrow_left';
+import ArrowRight from '../arrow_right';
 
 
 class GenreIndex extends React.Component {
@@ -25,6 +27,11 @@ class GenreIndex extends React.Component {
     this.setMuted = this.setMuted.bind(this);
     this.selectListItem = this.selectListItem.bind(this);
     this.closeContent = this.closeContent.bind(this);
+    this.changeShift = this.changeShift.bind(this);
+  }
+
+  changeShift(num){
+    this.setState({ shift: num});
   }
 
   componentDidMount() {
@@ -38,7 +45,16 @@ class GenreIndex extends React.Component {
     });
   }
 
-
+  // useEffect(() => {
+  //   props.fetchVideos();
+  //   props.fecthProfile(props.match.params.profileId);
+  //   props.fetchGenres().then((res) => {
+  //     function onlyUnique(value, index, self) {
+  //       return self.indexOf(value) === index;
+  //     }
+  //     setState({ genres: Object.values(res.genres).slice(0, 1), length: props.list.video_ids.filter(onlyUnique).length - 5 });
+  //   });
+  // }, [])
 
   componentDidUpdate(prevProps) {
     if (prevProps.profile.id !== this.props.profile.id) {
@@ -54,7 +70,9 @@ class GenreIndex extends React.Component {
   }
 
   updateCount() {
-    this.setState({ start: this.state.count, count: this.state.count + 1, genres: this.state.genres.concat(this.props.genres.slice(this.state.count, this.state.count + 1)) });
+    setTimeout(() => {
+      this.setState({ start: this.state.count, count: this.state.count + 1, genres: this.state.genres.concat(this.props.genres.slice(this.state.count, this.state.count + 1)) });
+    }, 800);
   }
 
   setMuted() {
@@ -65,32 +83,6 @@ class GenreIndex extends React.Component {
     } else {
       this.refs.player.muted = true;
       this.setState({ volume: 0 });
-    }
-  }
-
-  shiftRight() {
-    if (this.state.shift < this.state.length) {
-      const elements = document.getElementsByClassName(`${this.props.list.id}`);
-      Array.from(elements).map(element => {
-        const leftIdx = element.style.transform.indexOf("(");
-        const rightIdx = element.style.transform.indexOf(")");
-        element.style.transform.length < 1 ? element.style.transform = "translateX(-19vw)" :
-          element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx + 1, rightIdx - 2)) - 19}vw)`;
-      });
-      this.setState({ shift: this.state.shift + 1 });
-    }
-  }
-
-  shiftLeft() {
-    if (this.state.shift > 0) {
-      const elements = document.getElementsByClassName(`${this.props.list.id}`);
-      Array.from(elements).map(element => {
-        const leftIdx = element.style.transform.indexOf("(");
-        const rightIdx = element.style.transform.indexOf(")");
-        element.style.transform.length < 1 ? element.style.transform = "translateX(19vw)" :
-          element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx + 1, rightIdx - 2)) + 19}vw)`;
-      });
-      this.setState({ shift: this.state.shift - 1 });
     }
   }
 
@@ -193,17 +185,13 @@ class GenreIndex extends React.Component {
     let arrowLeft;
     this.state.shift > 0 ?
       arrowLeft = (
-        <>
-          <button className="slider_left" onClick={() => this.shiftLeft()}><i className="fas fa-chevron-left"></i></button>
-        </>
+        <ArrowLeft shift={this.state.shift} id={this.props.list.id} changeShift={this.changeShift} />
       ) : arrowLeft = null;
 
     let arrowRight
     this.state.shift < this.state.length ?
       arrowRight = (
-        <>
-          <button className="slider_right" onClick={() => this.shiftRight()}><i className="fas fa-chevron-right"></i></button>
-        </>
+        <ArrowRight shift={this.state.shift} id={this.props.list.id} changeShift={this.changeShift} />
       ) : arrowRight = null;
 
     return (

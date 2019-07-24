@@ -4,6 +4,8 @@ import VideoIndexItem from '../videos/video_index_item';
 import NavContainer from '../nav/nav_cotainer';
 import Footer from '../footer';
 import GenreContent from '../genres/genre_content';
+import ArrowLeft from '../arrow_left';
+import ArrowRight from '../arrow_right';
 
 class List extends React.Component {
   constructor(props) {
@@ -18,34 +20,11 @@ class List extends React.Component {
     this.closeContent = this.closeContent.bind(this);
     this.selectListItem = this.selectListItem.bind(this);
     this.setMuted = this.setMuted.bind(this);
-    this.shiftLeft = this.shiftLeft.bind(this);
-    this.shiftRight = this.shiftRight.bind(this);
+    this.changeShift = this.changeShift.bind(this);
   }
 
-  shiftRight() {
-    if (this.state.shift < this.state.length) {
-      const elements = document.getElementsByClassName(`${this.props.list.id}`);
-      Array.from(elements).map(element => {
-        const leftIdx = element.style.transform.indexOf("(");
-        const rightIdx = element.style.transform.indexOf(")");
-        element.style.transform.length < 1 ? element.style.transform = "translateX(-19vw)" :
-          element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx + 1, rightIdx - 2)) - 19}vw)`;
-      })
-      this.setState({ shift: this.state.shift + 1 });
-    }
-  }
-
-  shiftLeft() {
-    if (this.state.shift > 0) {
-      const elements = document.getElementsByClassName(`${this.props.list.id}`);
-      Array.from(elements).map(element => {
-        const leftIdx = element.style.transform.indexOf("(");
-        const rightIdx = element.style.transform.indexOf(")");
-        element.style.transform.length < 1 ? element.style.transform = "translateX(19vw)" :
-          element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx + 1, rightIdx - 2)) + 19}vw)`;
-      })
-      this.setState({ shift: this.state.shift - 1 });
-    }
+  changeShift(num){
+    this.setState({ shift: num});
   }
 
   componentDidMount() {
@@ -93,19 +72,14 @@ class List extends React.Component {
     let arrowLeft;
     this.state.shift > 0 ?
       arrowLeft = (
-        <>
-          <button className="slider_left" onClick={() => this.shiftLeft()}><i className="fas fa-chevron-left"></i></button>
-        </>
+        <ArrowLeft shift={this.state.shift} id={this.props.list.id} changeShift={this.changeShift} />
       ) : arrowLeft = null;
 
     let arrowRight
     this.state.shift < this.state.length ?
       arrowRight = (
-        <>
-          <button className="slider_right" onClick={() => this.shiftRight()}><i className="fas fa-chevron-right"></i></button>
-        </>
+        <ArrowRight shift={this.state.shift} id={this.props.list.id} changeShift={this.changeShift} />
       ) : arrowRight = null;
-
 
     if (this.props.list.video_ids.length === 0) {
       return (

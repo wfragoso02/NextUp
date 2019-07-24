@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ArrowLeft = ({ shift, genre, changeShift }) => {
+const ArrowLeft = ({ shift, id, changeShift }) => {
 
   const shiftRight = () => {
-    const elements = document.getElementsByClassName(`${genre.id}`);
+    const elements = document.getElementsByClassName(`${id}`);
     Array.from(elements).map(element => {
       const leftIdx = element.style.transform.indexOf("(") + 1;
       const rightIdx = element.style.transform.indexOf(")") - 2;

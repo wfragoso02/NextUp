@@ -1,8 +1,8 @@
 import React from 'react';
 import VideoIndexItem from './video_index_item';
 
-const VideoIndex = props => {
-  const videos = props.videos.map(video => {
+const VideoIndex = ({ videos }) => {
+  const all_videos = videos.map(video => {
     return (
       <li key={video.id} >
         <VideoIndexItem video={video} />
@@ -12,7 +12,7 @@ const VideoIndex = props => {
 
   return (
     <ul className="video-container">
-      {videos}
+      {all_videos}
     </ul>
   )
 }

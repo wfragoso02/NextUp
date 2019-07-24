@@ -10,7 +10,6 @@ class Video extends React.Component {
       volume: "1",
       seek: "0",
       time: '0'
-
     };
 
     this.load = this.load.bind(this);
@@ -51,7 +50,6 @@ class Video extends React.Component {
     clearInterval(this.handle);
     clearInterval(this.videoPlayer);
     clearTimeout(this.handleControlsShow);
-
   }
 
   checkVideo() {

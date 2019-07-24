@@ -1,100 +1,91 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import NewProfileModal from './new_profile_modal';
 import EditProfileModal from './edit_profile_modal';
 
-class ManageProfiles extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showNew: false,
-      0: false,
-      1: false,
-      2: false,
-      3: false,
-      4: false
-    };
-    this.showNewModal = this.showNewModal.bind(this);
-    this.hideNewModal = this.hideNewModal.bind(this);
-    this.showEditModal = this.showEditModal.bind(this);
-    this.hideEditModal = this.hideEditModal.bind(this);
-  }
+const ManageProfiles = props => {
+  const [state, setState] = useState({
+    showNew: false,
+    0: false,
+    1: false,
+    2: false,
+    3: false,
+    4: false
+  });
 
-  componentDidMount() {
-    this.props.fetchProfiles();
-  }
+  useEffect(() => {
+    props.fetchProfiles();
+  }, []);
 
-  showNewModal() {
-    this.setState({ showNew: true });
-  }
+  const showNewModal = () => {
+    setState({ ...state, showNew: true });
+  };
 
-  hideNewModal() {
-    this.setState({ showNew: false });
-    this.props.clearError();
-  }
+  const hideNewModal = () => {
+    setState({ ...state, showNew: false });
+    props.clearError();
+  };
 
-  showEditModal(idx) {
+  const showEditModal = (idx) => {
     return (e) => {
-      this.setState({ [idx]: true });
+      setState({ ...state, [idx]: true });
     };
-  }
+  };
 
-  hideEditModal(idx) {
+  const hideEditModal = (idx) => {
     return (e) => {
-      this.setState({ [idx]: false });
+      setState({ ...state, [idx]: false });
     };
-  }
+  };
 
-  render() {
-    const profiles = this.props.profiles.map((profile, idx) => {
-      return (
-        <li key={idx} className="profile-item">
-          <EditProfileModal clearError={this.props.clearError} error={this.props.error} deleteProfile={this.props.deleteProfile} updateProfile={this.props.updateProfile} profile={profile} show={this.state[idx]} handleClose={this.hideEditModal(idx)} />
-          <button className="manage-profile-link" onClick={this.showEditModal(idx)}><img className="profile-pic" src={profile.image_url} /><p className="profile-name">{profile.name}</p></button>
-        </li>
-      )
-    });
-
-    let link;
-    if (this.props.profiles[0]) {
-      link = <Link to={`/${this.props.profiles[0].id}`} profile={this.props.profiles[0]}><img src={window.logo} className="logo2" /></Link>
-    } else {
-      link = " ";
-    }
-    let newProfile;
-    if (profiles.length >= 5) {
-      newProfile = null
-    } else {
-      newProfile = (
-        <li className="profile-item">
-          <button className="manage-profile-link" onClick={this.showNewModal}>
-            <div className="temp-manage">
-
-              <i className="fas fa-plus-circle add-new-profile" styles={{ display: "flex" }}></i>
-            </div>
-            <p className="profile-name">Add Profile</p>
-          </button>
-          <NewProfileModal clearError={this.props.clearError} error={this.props.error} createProfile={this.props.createProfile} show={this.state.showNew} handleClose={this.hideNewModal} />
-        </li>
-      )
-    }
-
+  const profiles = props.profiles.map((profile, idx) => {
     return (
-      <div>
-        {link}
-        <div className="profiles-page">
-          <h1 className="whos-watching">Manage Profiles:</h1>
-          <ul className="profiles">
-            <div className="profile-container">
-              {profiles}
-              {newProfile}
-            </div>
-          </ul>
-        </div>
-        <Link className="done" to="/" ><h2 >DONE</h2></Link>
-      </div>
+      <li key={idx} className="profile-item">
+        <EditProfileModal clearError={props.clearError} error={props.error} deleteProfile={props.deleteProfile} updateProfile={props.updateProfile} profile={profile} show={state[idx]} handleClose={hideEditModal(idx)} />
+        <button className="manage-profile-link" onClick={showEditModal(idx)}><img className="profile-pic" src={profile.image_url} /><p className="profile-name">{profile.name}</p></button>
+      </li>
+    )
+  });
+
+  let link;
+  if (props.profiles[0]) {
+    link = <Link to={`/${props.profiles[0].id}`} profile={props.profiles[0]}><img src={window.logo} className="logo2" /></Link>
+  } else {
+    link = " ";
+  }
+  let newProfile;
+  if (profiles.length >= 5) {
+    newProfile = null
+  } else {
+    newProfile = (
+      <li className="profile-item">
+        <button className="manage-profile-link" onClick={showNewModal}>
+          <div className="temp-manage">
+
+            <i className="fas fa-plus-circle add-new-profile" styles={{ display: "flex" }}></i>
+          </div>
+          <p className="profile-name">Add Profile</p>
+        </button>
+        <NewProfileModal clearError={props.clearError} error={props.error} createProfile={props.createProfile} show={state.showNew} handleClose={hideNewModal} />
+      </li>
     )
   }
+
+  return (
+    <div>
+      {link}
+      <div className="profiles-page">
+        <h1 className="whos-watching">Manage Profiles:</h1>
+        <ul className="profiles">
+          <div className="profile-container">
+            {profiles}
+            {newProfile}
+          </div>
+        </ul>
+      </div>
+      <Link className="done" to="/" ><h2 >DONE</h2></Link>
+    </div>
+  )
 }
 
 export default ManageProfiles;
