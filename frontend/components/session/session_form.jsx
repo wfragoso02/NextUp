@@ -17,6 +17,7 @@ class SessionForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.validateEmail = this.validateEmail.bind(this);
   }
 
   update() {
@@ -33,6 +34,11 @@ class SessionForm extends React.Component {
     this.props.clearErrors();
   }
 
+  validateEmail(email){
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
   handleInput(type) {
     return (e) => {
       if (type === 'password' && (e.target.value.length < 4 || e.target.value.length > 60)) {
@@ -41,16 +47,12 @@ class SessionForm extends React.Component {
         this.setState({ errorsPassword: '' });
       }
 
-      const validEmails = ['@yahoo.com', '@gmail.com', '@aol.com', '@hotmail.com'];
       if (type === 'email') {
-        let valid = false;
-        validEmails.forEach(email => {
-          if (e.target.value.includes(email)) {
-            this.setState({ errorsEmail: '' });
-            valid = true;
-          }
-        });
-        if (valid === false) this.setState({ errorsEmail: 'Please enter a valid email address' });
+        if (this.validateEmail(e.target.value)){
+          this.setState({ errorsEmail: '' });
+        }else{
+          this.setState({ errorsEmail: 'Please enter a valid email address' });
+        }
       }
 
       this.setState({ [type]: e.target.value });
