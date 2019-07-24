@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { createListItem, deleteListItem } from '../../actions/list_item_actions';
 import { fetchList } from '../../actions/list_actions';
 import VideoIndexItem from '../videos/video_index_item';
+import ArrowRight from './arrow_right';
+import ArrowLeft from './arrow_left';
 
 const msp = state => {
   return {
@@ -24,34 +26,6 @@ const mdp = dispatch => {
 const GenreIndexItem = props => {
   const length = props.genre.video_ids.length;
   const [shift, changeShift] = useState(0);
-
-  const shiftRight = () => {
-    if (shift < length) {
-      const elements = document.getElementsByClassName(`${props.genre.id}`)
-      Array.from(elements).map(element => {
-        const leftIdx = element.style.transform.indexOf("(") + 1;
-        const rightIdx = element.style.transform.indexOf(")") - 2;
-        element.style.transform.length < 1 ?
-          element.style.transform = "translateX(-19vw)" :
-          element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx, rightIdx)) - 19}vw)`;
-      });
-      changeShift(shift + 1);
-    }
-  };
-
-  const shiftLeft = () => {
-    if (shift > 0) {
-      const elements = document.getElementsByClassName(`${props.genre.id}`);
-      Array.from(elements).map(element => {
-        const leftIdx = element.style.transform.indexOf("(");
-        const rightIdx = element.style.transform.indexOf(")");
-        element.style.transform.length < 1 ? element.style.transform = "translateX(19vw)" :
-          element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx + 1, rightIdx - 2)) + 19}vw)`;
-      });
-      changeShift(shift - 1);
-    }
-  };
-
   const genre = props.genre;
   const profile = props.profile;
   const all_videos = props.all_videos;
@@ -63,17 +37,13 @@ const GenreIndexItem = props => {
   let arrowLeft;
   shift > 0 ?
     arrowLeft = (
-      <>
-        <button className="slider_left" onClick={() => shiftLeft()}><i className="fas fa-chevron-left"></i></button>
-      </>
+      <ArrowLeft shift={shift} genre={props.genre} changeShift={changeShift} />
     ) : arrowLeft = null;
 
   let arrowRight;
   shift < length ?
     arrowRight = (
-      <>
-        <button className="slider_right" onClick={() => shiftRight()}><i className="fas fa-chevron-right"></i></button>
-      </>
+      <ArrowRight shift={shift} genre={props.genre} changeShift={changeShift} />
     ) : arrowRight = null;
 
 

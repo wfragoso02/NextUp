@@ -29,7 +29,6 @@ const GenreContent = ({ video, closeContent, profile, id }) => {
         <div className="right" style={{ background: `url(${video.image_url})` }}></div>
       </div>
       <div className="content-container">
-
       </div>
       <button className="bring-up-button" onClick={() => closeContent(id)}><i className="fas fa-times"></i></button>
     </div>
