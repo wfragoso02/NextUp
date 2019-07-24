@@ -44,13 +44,13 @@ const videoIndexItem = props => {
   const liked = rating === "like" ? "like" : "";
   const disliked = rating === "dislike" ? "dislike" : "";
 
-  likeButton = (
+  let likeButton = (
     <button className={`like-button ${liked}`} onClick={() => changeLike('like')}>
       <i className="fas fa-thumbs-up"></i>
     </button>
   )
 
-  dislikeButton = (
+  let dislikeButton = (
     <button className={`dislike-button ${disliked}`} onClick={() => changeLike('dislike')}>
       <i className="fas fa-thumbs-down"></i>
     </button>

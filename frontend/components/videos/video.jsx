@@ -38,7 +38,9 @@ class Video extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.videoId !== prevProps.match.params.videoId) {
-      this.props.fetchVideo(this.props.match.params.videoId);
+      this.props.fetchVideo(this.props.match.params.videoId).then((video) =>  {
+        this.setState({ video: video, seek: "0", time: '0' });
+      });
     }
     if (this.props.match.params.profileId !== prevProps.match.params.profileId) {
       this.props.fetchProfile(this.props.match.params.profileId);
