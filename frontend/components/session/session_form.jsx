@@ -13,6 +13,9 @@ const SessionForm = props => {
     errorsPassword: ''
   });
 
+  const [confirmedPassword, setConfirmedPassword] = useState('');
+  const [confirmedPasswordErrors, setConfirmedPasswordError] = useState('');
+
   const update = () => {
     return () => {
       if (state.checked === '') {
@@ -47,13 +50,41 @@ const SessionForm = props => {
           setState({ ...state, errorsEmail: 'Please enter a valid email address', [type]: e.target.value });
         }
       }
+
+      if(type === 'confirmedPassword'){
+        if(e.target.value !== state.password){
+          setConfirmedPasswordError('Your passwords do not match');
+        }else{
+          setConfirmedPasswordError('');
+        }
+        setConfirmedPassword(e.target.value);
+      }
     };
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.processForm(state);
+    if(props.history.location.pathname === "/signup"){
+      state.password === confirmedPassword ? props.processForm(state) : alert("Please verify password");
+    }else{
+      props.processForm(state);
+    }
   };
+
+  let confirmPassword;
+  props.history.location.pathname === "/signup" ? 
+  confirmPassword = 
+    (
+      <>
+        <input className={b} name={b} type="password" value={confirmedPassword} onChange={handleInput('confirmedPassword')} required />
+        <label className="form-input-label" htmlFor={b}>Confirm Password</label>
+        <h3 className="session-errors">{confirmedPasswordErrors}</h3>
+      </>
+    )
+  :
+  confirmPassword = null;
+
+    
 
   const sessionErrors = props.errors.map((error, idx) => {
     return (
@@ -89,6 +120,7 @@ const SessionForm = props => {
               <input className={b} name={b} type="password" value={state.password} onChange={handleInput('password')} required />
               <label className="form-input-label" htmlFor={b}>Password</label>
               <h3 className="session-errors">{state.errorsPassword}</h3>
+              {confirmPassword}
               <br />
               <button className="session-button" onClick={handleSubmit}>{props.formType}</button>
             </form>
