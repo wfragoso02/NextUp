@@ -37,11 +37,18 @@ const SessionForm = props => {
 
   const handleInput = (type) => {
     return (e) => {
-      if (type === 'password' && (e.target.value.length < 4 || e.target.value.length > 60)) {
-        setState({ ...state, errorsPassword: 'Your password must contain between 4 and 60 characters.', [type]: e.target.value });
-      } else if ((e.target.value.length >= 4 && e.target.value.length <= 60)) {
-        setState({ ...state, errorsPassword: '', [type]: e.target.value });
-      }
+      if (type === 'password') {
+        if(e.target.value !== state.password){
+          setConfirmedPasswordError('Your passwords do not match');
+        }
+        if(e.target.value.length < 4 || e.target.value.length > 60){
+
+          setState({ ...state, errorsPassword: 'Your password must contain between 4 and 60 characters.', [type]: e.target.value });
+        }else{
+
+          setState({ ...state, errorsPassword: '', [type]: e.target.value });
+        }
+      } 
 
       if (type === 'email') {
         if (validateEmail(e.target.value)) {
@@ -65,34 +72,22 @@ const SessionForm = props => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(props.history.location.pathname === "/signup"){
-      state.password === confirmedPassword ? props.processForm(state) : alert("Please verify password");
+      state.password === confirmedPassword ? props.processForm(state) : alert('Please verify your password');
     }else{
       props.processForm(state);
     }
   };
-
-  let confirmPassword;
-  props.history.location.pathname === "/signup" ? 
-  confirmPassword = 
-    (
-      <>
-        <input className={b} name={b} type="password" value={confirmedPassword} onChange={handleInput('confirmedPassword')} required />
-        <label className="form-input-label" htmlFor={b}>Confirm Password</label>
-        <h3 className="session-errors">{confirmedPasswordErrors}</h3>
-      </>
-    )
-  :
-  confirmPassword = null;
-
-    
 
   const sessionErrors = props.errors.map((error, idx) => {
     return (
       <li key={idx} className="error">{error}</li>
     )
   })
-  let a = "";
-  let b = "";
+
+  let a;
+  let b;
+  let c;
+
   if (state.errorsEmail.length > 0) {
     a = "form-input-with-email-error"
   } else {
@@ -103,6 +98,24 @@ const SessionForm = props => {
   } else {
     b = 'form-input'
   }
+  if (confirmedPasswordErrors.length > 0) {
+    c = "form-input-with-password-error"
+  } else {
+    c = 'form-input'
+  }
+
+  let confirmPassword;
+  props.history.location.pathname === "/signup" ? 
+  confirmPassword = 
+    (
+      <>
+        <input className={c} name={c} type="password" value={confirmedPassword} onChange={handleInput('confirmedPassword')} required />
+        <label className="form-input-label" htmlFor={c}>Confirm Password</label>
+        <h3 className="session-errors">{confirmedPasswordErrors}</h3>
+      </>
+    )
+  :
+  confirmPassword = null;
 
   return (
     <div className="sessions-form">
