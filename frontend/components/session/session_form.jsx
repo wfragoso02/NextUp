@@ -42,10 +42,8 @@ const SessionForm = props => {
           setConfirmedPasswordError('Your passwords do not match');
         }
         if(e.target.value.length < 4 || e.target.value.length > 60){
-
           setState({ ...state, errorsPassword: 'Your password must contain between 4 and 60 characters.', [type]: e.target.value });
         }else{
-
           setState({ ...state, errorsPassword: '', [type]: e.target.value });
         }
       } 
