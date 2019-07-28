@@ -497,15 +497,20 @@ color: black;
   opacity: 1;
 }
 .slider_left, .slider_right{
+  width: 3.75vw;
+  opacity: 0;
   color: white;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.219);
   font-size: 2.8vw;
   height: 10.5vw;
   position: absolute;
   z-index: 6;
   border: none;
-  margin-top: 0.6vw;
+  margin-top: 1.25vw;
+  align-self: center;
 }
+
+
 .slider_left{
   left: 0;
 }
@@ -516,6 +521,9 @@ color: black;
   font-size: 3vw;
 }
 
+.row:hover .slider_left, .row:hover .slider_right{
+  opacity: 1;
+}
 .play-button-genre_content {
   margin-left: 2vw;
   background: red;

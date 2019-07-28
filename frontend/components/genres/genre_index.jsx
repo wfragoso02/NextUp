@@ -21,9 +21,10 @@ class GenreIndex extends React.Component {
       selectedItem: null,
       length: 0,
       shift: 0,
+      promoVideo: this.props.promoVid
     };
 
-    this.updateCount = this.updateCount.bind(this)
+    this.updateCount = this.updateCount.bind(this);
     this.setMuted = this.setMuted.bind(this);
     this.selectListItem = this.selectListItem.bind(this);
     this.closeContent = this.closeContent.bind(this);
@@ -35,7 +36,12 @@ class GenreIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchVideos();
+    this.props.fetchVideos().then(() => {
+      const promoVideo = Object.values(this.props.all_videos)[Math.floor(Math.random() * Object.values(this.props.all_videos).length)];
+      if(!this.state.promoVideo){
+        this.setState({promoVideo: promoVideo});
+      }
+    });
     this.props.fecthProfile(this.props.match.params.profileId);
     this.props.fetchGenres().then((res) => {
       function onlyUnique(value, index, self) {
@@ -60,7 +66,6 @@ class GenreIndex extends React.Component {
     if (prevProps.profile.id !== this.props.profile.id) {
       this.props.fecthProfile(this.props.match.params.profileId).then(() => this.props.fetchList(this.props.profile.list.id)).then(() => this.props.fetchVideos());
     }
-
     if (prevProps.list.video_ids && (this.props.list.video_ids.length !== prevProps.list.video_ids.length)) {
       function onlyUnique(value, index, self) {
         return self.indexOf(value) === index;
@@ -103,7 +108,7 @@ class GenreIndex extends React.Component {
   }
 
   render() {
-    if (!this.props.list) return null;
+    if (!this.props.list || Object.values(this.props.all_videos).length < 1) return null;
     const genres = this.state.genres.map((genre, idx) => {
       return (
         <>
@@ -123,10 +128,10 @@ class GenreIndex extends React.Component {
       return null;
     }
 
-    this.props.list.video_ids.includes(this.props.genres[0].video_ids[0]) ?
-      defaultButton = (<button onClick={() => this.props.deleteListItem(this.props.genres[0].video_ids[0])} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
+    this.props.list.video_ids.includes(this.state.promoVideo.id) ?
+      defaultButton = (<button onClick={() => this.props.deleteListItem(this.state.promoVideo.id)} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
       :
-      defaultButton = (<button onClick={() => this.props.createListItem({ video_id: this.props.genres[0].video_ids[0], list_id: this.props.list.id })} className="front-page-button"><h3 className="fa-plus-text"><i className="fas fa-plus"></i>My List</h3></button>)
+      defaultButton = (<button onClick={() => this.props.createListItem({ video_id: this.state.promoVideo.id, list_id: this.props.list.id })} className="front-page-button"><h3 className="fa-plus-text"><i className="fas fa-plus"></i>My List</h3></button>)
       ;
 
     let volumes;
@@ -136,18 +141,17 @@ class GenreIndex extends React.Component {
       volumes = <i className="fas fa-volume-up fa-xs"></i>
     }
     let mainVideo;
-    if (Object.values(this.props.all_videos).length > 0 && this.props.genres.length > 0) {
-      const mainVid = this.props.all_videos[this.props.genres[0].video_ids[0]]
+    if (Object.values(this.props.all_videos).length > 0) {
       mainVideo = (
         <>
           <video ref='player' className="home-trailer" loop autoPlay>
-            <source src={mainVid.video_url} />
+            <source src={this.state.promoVideo.video_url} />
           </video>
-          <Link to={`/${this.props.profile.id}/videos/${mainVid.id}`} className="play-button"><h3>► Play</h3></Link>
+          <Link to={`/${this.props.profile.id}/videos/${this.state.promoVideo.id}`} className="play-button"><h3>► Play</h3></Link>
           {defaultButton}
           <button onClick={this.setMuted} className="home-page-volume-button">{volumes}</button>
-          <h1 className="main-video-title">{mainVid.title}</h1>
-          <h1 className="main-video-rating">{mainVid.rating}</h1>
+          <h1 className="main-video-title">{this.state.promoVideo.title}</h1>
+          <h1 className="main-video-rating">{this.state.promoVideo.rating}</h1>
         </>
       )
 

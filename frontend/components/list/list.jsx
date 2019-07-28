@@ -103,17 +103,18 @@ class List extends React.Component {
     }
 
     let mainVideo;
-    if (this.props.list.videos) {
+    if (Object.values(this.props.all_videos).length > 0) {
+      const video = Object.values(this.props.list.videos)[Math.floor(Math.random() * Object.values(this.props.list.videos).length)]
       mainVideo = (
         <>
           <video ref='player' className="home-trailer" loop autoPlay>
-            <source src={Object.values(this.props.list.videos)[0].video_url} />
+            <source src={video.video_url} />
           </video>
-          <Link to={`/${this.props.profile.id}/videos/${Object.values(this.props.list.videos)[0].id}`} className="play-button"><h3>► Play</h3></Link>
+          <Link to={`/${this.props.profile.id}/videos/${video.id}`} className="play-button"><h3>► Play</h3></Link>
           {defaultButton}
           <button onClick={this.setMuted} className="home-page-volume-button">{volumes}</button>
           <h1 className="main-video-title">My List</h1>
-          <h1 className="main-video-rating">{Object.values(this.props.list.videos)[0].rating}</h1>
+          <h1 className="main-video-rating">{video.rating}</h1>
         </>
       )
     } else {
