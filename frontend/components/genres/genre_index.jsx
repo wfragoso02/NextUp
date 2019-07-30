@@ -147,10 +147,14 @@ class GenreIndex extends React.Component {
           <video ref='player' className="home-trailer" loop autoPlay>
             <source src={this.state.promoVideo.video_url} />
           </video>
-          <Link to={`/${this.props.profile.id}/videos/${this.state.promoVideo.id}`} className="play-button"><h3>► Play</h3></Link>
-          {defaultButton}
+          <div className={`main-video-title ${this.state.promoVideo.title.length > 25 ? "large-title": "small-title"}`}>
+            <h1 >{this.state.promoVideo.title}</h1>
+            <div className="genre-content-play-and-list">
+              <Link to={`/${this.props.profile.id}/videos/${this.state.promoVideo.id}`} className="play-button"><h3>► Play</h3></Link>
+              {defaultButton}
+            </div>
+          </div>
           <button onClick={this.setMuted} className="home-page-volume-button">{volumes}</button>
-          <h1 className="main-video-title">{this.state.promoVideo.title}</h1>
           <h1 className="main-video-rating">{this.state.promoVideo.rating}</h1>
         </>
       )

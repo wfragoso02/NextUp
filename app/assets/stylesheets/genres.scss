@@ -153,7 +153,6 @@ color: black;
 .play-button, .play-button-genre_content{
   border: 1px solid transparent;
   background: rgba(0,0,0,.4);
-  position: absolute;
   color: white;
   font-weight: 500;
   padding: 1vh 4.3vh;
@@ -162,42 +161,43 @@ color: black;
   border-radius: 2px;
 }
 
-.play-button{
-  top: 43.5%;
-  left: 4%;
+.content{
+  position: absolute;
 }
+
 
 .main-video-title{
   position: absolute;
   color: white;
   font-weight: 600;
-  top: 18vh;
+  top: 25vh;
   text-shadow: 1px 1px 1px #0f0f0f;
   left: 4%;
-
-  font-size: 5.3vw;
+  height: 20vw;
   width: 40vw;
   font-family: 'Rubik Mono One', cursive;
   white-space: wrap;
+  font-size: 5.3vw;
+}
+.large-title{
+  font-size: 3.5vw;
+}
+.small-title{
+  font-size: 5.3vw;
 }
 
 .front-page-button{
   border: 1px solid transparent;
   background: rgba(0,0,0,.4);
-  position: absolute;
-    color: white;
-    font-weight: 500;
-    top: 43.5%;
-    
-    left: 14%;
-  
-   padding: 1vh 4.3vh;
-   font-size: 1.3vw;
-   font-family: 'Rubik', sans-serif;
-   border-radius: 2px;
-   white-space: nowrap;
-   display: flex;
-
+  color: white;
+  font-weight: 500;
+  left: 20%;
+  padding: 1vh 4.3vh;
+  font-size: 1.3vw;
+  font-family: 'Rubik', sans-serif;
+  border-radius: 2px;
+  white-space: nowrap;
+  display: flex;
 }
 
 .front-page-button:hover h3{
@@ -533,4 +533,13 @@ color: black;
 .play-button-genre_content:hover{
   transform: scale(1.1);
   transition: 0.3s all ease;
+}
+
+.genre-content-play-and-list {
+  position: relative;
+  display: flex;
+}
+
+.play-button{
+  margin-right: 20px;
 }

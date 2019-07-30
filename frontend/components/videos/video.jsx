@@ -201,7 +201,7 @@ class Video extends React.Component {
       <div onMouseMove={this.controlsShow}>
         <Link to={`/${this.props.profile.id}`} id="back"><i className="fas fa-arrow-left" ><h6 className="back-text">Back to Browser</h6></i></Link>
         <div className="video-player">
-          <video ref="player" id="thevideo" className="player" src={this.state.video.video_url} poster={this.state.video.image_url} preload="meta"></video>
+          <video ref="player" id="thevideo" className="player" src={this.state.video.video_url} poster={this.state.video.image_url} preload="meta" loop autoPlay></video>
           <button onMouseOver={this.controlsShow} onClick={this.handleVideo} id="parsed-button" >{this.state.content}
           </button>
           <button onMouseOver={this.controlsShow} onClick={this.changeCurrentTime(10)} id="forward-button"><i className="fas fa-redo"></i><h6>10</h6>

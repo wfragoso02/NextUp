@@ -110,10 +110,14 @@ class List extends React.Component {
           <video ref='player' className="home-trailer" loop autoPlay>
             <source src={video.video_url} />
           </video>
-          <Link to={`/${this.props.profile.id}/videos/${video.id}`} className="play-button"><h3>► Play</h3></Link>
-          {defaultButton}
+          <div className="main-video-title">
+            <h1>My List</h1>
+            <div className="genre-content-play-and-list">
+              <Link to={`/${this.props.profile.id}/videos/${video.id}`} className="play-button"><h3>► Play</h3></Link>
+              {defaultButton}
+            </div>
+          </div>
           <button onClick={this.setMuted} className="home-page-volume-button">{volumes}</button>
-          <h1 className="main-video-title">My List</h1>
           <h1 className="main-video-rating">{video.rating}</h1>
         </>
       )
