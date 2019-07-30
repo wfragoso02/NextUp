@@ -63,7 +63,7 @@
   padding: 0;
   background: none;
   float: right;
-  margin-right: 0;
+  right: 0;
 }
 .secondary-nav > li {
   display: inline-block;
@@ -76,7 +76,7 @@
 .nav-dropdown {
   position: relative;
   display: inline-block;
-  width: 100px;
+  width: 5.25vw;
 } 
   
 .dropdown-content {
@@ -133,12 +133,15 @@
 .nav-col{
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid grey;
+  border: 1px solid #3b3b3b50;
+  border-bottom: 1px solid rgb(44, 44, 44);
   padding: 0.60vw 0.5vw;
 }
 
 .nav-2-col{
   padding: 0.75vw 0.25vw;
+  border-top: 1px solid transparent;
+  border: 1px solid #3b3b3b50;
 }
 
 .nav-profile-list{
@@ -147,6 +150,7 @@
 
 .nav-profile-row{
   display: flex;
+  align-items: center;
 }
 
 .nav-pic-list{
@@ -169,8 +173,15 @@
 }
 .sign-out-button{
   background: transparent;
+  padding: 0;
 }
 .manage-profile-link-nav{
-  padding-top: 0.7vw;
-  font-size: 0.65vw;
+  white-space: nowrap;
+  font-size: 0.8vw;
+  padding: 0.7vw 0;
+  text-transform: uppercase;
+}
+
+.dropdown{
+  margin-right: 0;
 }

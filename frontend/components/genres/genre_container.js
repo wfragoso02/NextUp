@@ -7,7 +7,6 @@ import { createListItem, deleteListItem } from '../../actions/list_item_actions'
 import { fetchVideos } from '../../actions/video_actions';
 
 const msp = (state, ownProps) => {
-  debugger
   return {
     genres: Object.values(state.entities.genres),
     profile: state.entities.profiles[ownProps.match.params.profileId] || {},
