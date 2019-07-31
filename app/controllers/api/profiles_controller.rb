@@ -9,9 +9,6 @@ class Api::ProfilesController < ApplicationController
 
     if @profile.save
       List.create!(profile: @profile)
-      Video.all.each do |video|
-        Rating.create!(video: video, profile: @profile)
-      end
       @profile.save!
       render :show
     else
@@ -42,6 +39,9 @@ class Api::ProfilesController < ApplicationController
   def destroy
     @profile = Profile.find(params[:id])
     @profile.destroy!
+    list = List.find(@profile.list.id)
+    list.destroy!
+    Rating.where(`profile_id = #{@profile.id}`).each(&:destroy)
     render :show
   end
 

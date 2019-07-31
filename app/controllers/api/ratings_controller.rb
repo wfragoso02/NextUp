@@ -8,7 +8,7 @@ class Api::RatingsController < ApplicationController
     @rating.update(rating_params)
     render :show
   end
-  
+
   def create
     @rating = Rating.new(rating_params)
     @rating.save!

@@ -33,7 +33,7 @@ const videoIndexItem = props => {
       props.updateRating(state.video_ratings[props.profile.id]);
       setState(video);
     }else{
-      props.createRating({video: video, profile: props.profile, like: rating}).then((res) => {
+      props.createRating({video_id: video.id, profile_id: props.profile.id, like: rating}).then((res) => {
         setState(res.video);
       });
     }
@@ -45,7 +45,7 @@ const videoIndexItem = props => {
   const deleteListItem = props.deleteListItem;
   const createListItem = props.createListItem;
   const profile = props.profile;
-  const rating = video.video_ratings[props.profile.id]["like"] || null;
+  const rating = video.video_ratings[props.profile.id] ? video.video_ratings[props.profile.id]["like"] : null;
   const selectListItem = props.selectListItem;
 
   const liked = rating === "like" ? "like" : "";
