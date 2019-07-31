@@ -47,7 +47,7 @@ class GenreIndex extends React.Component {
       function onlyUnique(value, index, self) {
         return self.indexOf(value) === index;
       }
-      this.setState({ genres: Object.values(res.genres).slice(0, 1), length: this.props.list.video_ids.filter(onlyUnique).length - 5 });
+      this.setState({ genres: Object.values(res.genres).slice(0, 1), length: this.props.list.list_video_ids.filter(onlyUnique).length - 5 });
     });
   }
 
@@ -64,20 +64,21 @@ class GenreIndex extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.profile.id !== this.props.profile.id) {
+      this.setState({selectedItem: null});
       this.props.fecthProfile(this.props.match.params.profileId).then(() => this.props.fetchList(this.props.profile.list.id)).then(() => this.props.fetchVideos());
     }
-    if (prevProps.list.video_ids && (this.props.list.video_ids.length !== prevProps.list.video_ids.length)) {
+    if (prevProps.list.list_video_ids && (this.props.list.list_video_ids.length !== prevProps.list.list_video_ids.length)) {
       function onlyUnique(value, index, self) {
         return self.indexOf(value) === index;
       }
-      this.setState({ length: this.props.list.video_ids.filter(onlyUnique).length - 5 });
+      this.setState({ length: this.props.list.list_video_ids.filter(onlyUnique).length - 5 });
     }
   }
 
   updateCount() {
     setTimeout(() => {
       this.setState({ start: this.state.count, count: this.state.count + 1, genres: this.state.genres.concat(this.props.genres.slice(this.state.count, this.state.count + 1)) });
-    }, 800);
+    }, 700);
   }
 
   setMuted() {
@@ -124,11 +125,11 @@ class GenreIndex extends React.Component {
     });
 
     let defaultButton = "";
-    if (!this.props.list.video_ids || !this.props.genres[0]) {
+    if (!this.props.list.list_video_ids || !this.props.genres[0]) {
       return null;
     }
 
-    this.props.list.video_ids.includes(this.state.promoVideo.id) ?
+    this.props.list.list_video_ids.includes(this.state.promoVideo.id) ?
       defaultButton = (<button onClick={() => this.props.deleteListItem(this.state.promoVideo.id)} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
       :
       defaultButton = (<button onClick={() => this.props.createListItem({ video_id: this.state.promoVideo.id, list_id: this.props.list.id })} className="front-page-button"><h3 className="fa-plus-text"><i className="fas fa-plus"></i>My List</h3></button>)
@@ -169,13 +170,13 @@ class GenreIndex extends React.Component {
 
     let listVideos;
     myList = <div className="genre-index-links"><h2 className="genre-content"><Link to={`/${this.props.profile.id}/myList`} >My List</Link></h2></div>
-    if (!this.props.list.video_ids) {
+    if (!this.props.list.list_video_ids) {
       return null;
     } else {
       function onlyUnique(value, index, self) {
         return self.indexOf(value) === index;
       }
-      listVideos = this.props.list.video_ids.sort().filter(onlyUnique).map(video_id => {
+      listVideos = this.props.list.list_video_ids.filter(onlyUnique).map(video_id => {
         return (
           <VideoIndexItem
             classId={this.props.list.id}

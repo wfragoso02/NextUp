@@ -10,7 +10,7 @@ class Nav extends React.Component {
     if (prevProps.profileId !== this.props.profileId) {
       this.props.fetchProfiles().then(this.props.fetchProfile(this.props.profileId)).then(this.props.fetchList(this.props.profile.list.id));
     }
-    if (prevProps.list.video_ids.length !== this.props.list.video_ids.length) {
+    if (prevProps.list.list_video_ids.length !== this.props.list.list_video_ids.length) {
       this.props.fetchList(this.props.profile.list.id);
     }
   }

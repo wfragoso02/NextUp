@@ -30,7 +30,7 @@ class GenreShow extends React.Component {
     if (prevProps.match.params.genreId !== this.props.match.params.genreId) {
       this.props.fetchGenre(this.props.match.params.genreId).then(() => this.props.fetchVideos());
     }
-    if (prevProps.list.video_ids && this.props.list.video_ids.length !== prevProps.list.video_ids.length) {
+    if (prevProps.list.list_video_ids && this.props.list.list_video_ids.length !== prevProps.list.list_video_ids.length) {
       this.props.fetchList();
     }
   }
@@ -61,10 +61,10 @@ class GenreShow extends React.Component {
 
   render() {
     let defaultButton = "";
-    if (!this.props.list.video_ids || !this.props.genre.videos || Object.values(this.props.all_videos).length < 1) {
+    if (!this.props.list.list_video_ids || !this.props.genre.videos || Object.values(this.props.all_videos).length < 1) {
       return null;
     }
-    if (this.props.list.video_ids.includes(Object.values(this.props.genre.videos)[0].id)) {
+    if (this.props.list.list_video_ids.includes(Object.values(this.props.genre.videos)[0].id)) {
       defaultButton = (<button onClick={() => this.props.deleteListItem(Object.values(this.props.genre.videos)[0].id)} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
     } else {
       defaultButton = (<button onClick={() => this.props.createListItem({ video_id: Object.values(this.props.genre.videos)[0].id, list_id: this.props.list.id })} className="front-page-button"><h3 className="fa-plus-text"><i className="fas fa-plus"></i>My List</h3></button>)

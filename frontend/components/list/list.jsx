@@ -32,19 +32,19 @@ class List extends React.Component {
       function onlyUnique(value, index, self) {
         return self.indexOf(value) === index;
       }
-      this.setState({ length: this.props.list.video_ids.filter(onlyUnique).length - 5 });
+      this.setState({ length: this.props.list.list_video_ids.filter(onlyUnique).length - 5 });
     })
   }
 
   componentDidUpdate(prevProps) {
 
     if (prevProps.profile.id !== this.props.profile.id) this.props.fetchProfile(this.props.match.params.profileId).then(() => this.props.fetchVideos());
-    if (prevProps.list.video_ids && this.props.list.video_ids.length !== prevProps.list.video_ids.length) {
+    if (prevProps.list.list_video_ids && this.props.list.list_video_ids.length !== prevProps.list.list_video_ids.length) {
       this.props.fetchList(this.props.profile.list.id).then((res) => {
         function onlyUnique(value, index, self) {
           return self.indexOf(value) === index;
         }
-        this.setState({ length: res.list.video_ids.filter(onlyUnique).length - 5 });
+        this.setState({ length: res.list.list_video_ids.filter(onlyUnique).length - 5 });
       });
     }
   }
@@ -68,7 +68,7 @@ class List extends React.Component {
   }
 
   render() {
-    if (!this.props.list.video_ids || Object.values(this.props.all_videos).length < 1) return null;
+    if (!this.props.list.list_video_ids || Object.values(this.props.all_videos).length < 1) return null;
     let arrowLeft;
     this.state.shift > 0 ?
       arrowLeft = (
@@ -81,7 +81,7 @@ class List extends React.Component {
         <ArrowRight shift={this.state.shift} id={this.props.list.id} changeShift={this.changeShift} />
       ) : arrowRight = null;
 
-    if (this.props.list.video_ids.length === 0) {
+    if (this.props.list.list_video_ids.length === 0) {
       return (
         <div className="genre-show">
           <NavContainer profileId={this.props.match.params.profileId} />
@@ -129,7 +129,7 @@ class List extends React.Component {
     function onlyUnique(value, index, self) {
       return self.indexOf(value) === index;
     }
-    const videos = this.props.list.video_ids.filter(onlyUnique).map(video_id => {
+    const videos = this.props.list.list_video_ids.filter(onlyUnique).map(video_id => {
       return (
         <VideoIndexItem
           classId={this.props.list.id}

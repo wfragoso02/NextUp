@@ -26,7 +26,8 @@ const videoIndexItem = props => {
 
   const changeLike = (rating) => {
     let video = state;
-    video.video_ratings[props.profile.id]['like'] = rating;
+    let videoRating = video.video_ratings[props.profile.id]['like'] ? null : rating;
+    video.video_ratings[props.profile.id]['like'] = videoRating;
     setState(video);
     props.updateRating(state.video_ratings[props.profile.id]);
   };
@@ -44,20 +45,20 @@ const videoIndexItem = props => {
   const liked = rating === "like" ? "like" : "";
   const disliked = rating === "dislike" ? "dislike" : "";
 
-  let likeButton = (
+  let likeButton = disliked.length > 1 ? null : (
     <button className={`like-button ${liked}`} onClick={() => changeLike('like')}>
       <i className="fas fa-thumbs-up"></i>
     </button>
-  )
+  );
 
-  let dislikeButton = (
+  let dislikeButton = liked.length > 1 ? null :(
     <button className={`dislike-button ${disliked}`} onClick={() => changeLike('dislike')}>
       <i className="fas fa-thumbs-down"></i>
     </button>
-  )
+  );
 
   let defaultButton;
-  if (list.video_ids.includes(video.id)) {
+  if (list.list_video_ids.includes(video.id)) {
 
     defaultButton = (
       <button onClick={() => deleteListItem(video.id)} className="default-button">
