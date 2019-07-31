@@ -109,8 +109,7 @@ class GenreIndex extends React.Component {
   }
 
   render() {
-    console.log(this.state.promoVideo)
-    if (!this.props.list || Object.values(this.props.all_videos).length < 1) return null;
+    if (!this.props.list || Object.values(this.props.all_videos).length < 1 || this.state.promoVideo === undefined ) return null;
     const genres = this.state.genres.map((genre, idx) => {
       return (
         <>
