@@ -34,7 +34,7 @@ const videoIndexItem = props => {
 
   if (props.video === undefined) return null;
   const video = state;
-
+  debugger
   const list = props.list;
   const deleteListItem = props.deleteListItem;
   const createListItem = props.createListItem;
