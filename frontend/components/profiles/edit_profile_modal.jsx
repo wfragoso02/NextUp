@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const editProfileModal = ({ profile, handleClose, updateProfile, deleteProfile, show, error }) => {
+const editProfileModal = ({ profile, handleClose, updateProfile, deleteProfile, show, error, deleteRating }) => {
   const [state, setState] = useState({
     name: profile.name,
     image_url: profile.image_url,
@@ -14,6 +14,7 @@ const editProfileModal = ({ profile, handleClose, updateProfile, deleteProfile, 
 
   const handleDelete = (e) => {
     e.preventDefault();
+    deleteRating({profile_id: profile.id});
     deleteProfile(profile.id).then(handleClose);
   };
 

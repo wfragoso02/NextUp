@@ -41,7 +41,7 @@ const ManageProfiles = props => {
   const profiles = props.profiles.map((profile, idx) => {
     return (
       <li key={idx} className="profile-item">
-        <EditProfileModal clearError={props.clearError} error={props.error} deleteProfile={props.deleteProfile} updateProfile={props.updateProfile} profile={profile} show={state[idx]} handleClose={hideEditModal(idx)} />
+        <EditProfileModal deleteRating={props.deleteRating} clearError={props.clearError} error={props.error} deleteProfile={props.deleteProfile} updateProfile={props.updateProfile} profile={profile} show={state[idx]} handleClose={hideEditModal(idx)} />
         <button className="manage-profile-link" onClick={showEditModal(idx)}><img className="profile-pic" src={profile.image_url} /><p className="profile-name">{profile.name}</p></button>
       </li>
     )

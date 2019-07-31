@@ -10,6 +10,10 @@ const newProfileModal = props => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setState({
+      name: '',
+      image_url: images[Math.floor(images.length * Math.random())],
+    });
     props.createProfile(state).then(() => props.handleClose());
   };
 

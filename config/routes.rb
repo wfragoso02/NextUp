@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   Rails.application.routes.draw do
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     root to: 'static_pages#root'
+    delete 'api/ratings', to: 'api/ratings#special_destroy'
     namespace :api, default: { format: :json } do
       resources :users, only: %i[create]
       resource :session, only: %i[create destroy]

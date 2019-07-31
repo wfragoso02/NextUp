@@ -13,3 +13,11 @@ export const createRating = (rating) => (
     data: { rating }
   })
 );
+
+export const deleteRating = (data) => (
+  $.ajax({
+    url: `api/ratings/`,
+    method: 'DELETE',
+    data: { data }
+  })
+);

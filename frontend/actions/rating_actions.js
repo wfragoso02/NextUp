@@ -16,3 +16,7 @@ export const createRating = rating => dispatch => (
   RatingApiUtil.createRating(rating)
     .then((rating) => VideoApiUtil.fetchVideo(rating.video.id).then(video => dispatch(receiveVideo(video))))
 );
+
+export const deleteRating = data => dispatch => (
+  RatingApiUtil.deleteRating(data)
+);
