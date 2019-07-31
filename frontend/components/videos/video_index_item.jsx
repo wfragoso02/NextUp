@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateVideo } from '../../actions/video_actions';
-import { updateRating } from '../../actions/rating_actions';
+import { updateRating, createRating } from '../../actions/rating_actions';
 
 const msp = state => {
   return {
@@ -13,7 +13,8 @@ const msp = state => {
 const mdp = dispatch => {
   return {
     updateVideo: (video) => dispatch(updateVideo(video)),
-    updateRating: (rating) => dispatch(updateRating(rating))
+    updateRating: (rating) => dispatch(updateRating(rating)),
+    createRating: (rating) => dispatch(createRating(rating))
   };
 };
 
@@ -26,20 +27,25 @@ const videoIndexItem = props => {
 
   const changeLike = (rating) => {
     let video = state;
-    let videoRating = video.video_ratings[props.profile.id]['like'] ? null : rating;
-    video.video_ratings[props.profile.id]['like'] = videoRating;
-    setState(video);
-    props.updateRating(state.video_ratings[props.profile.id]);
+    if(video.video_ratings[props.profile.id]){
+      let videoRating = video.video_ratings[props.profile.id]['like'] ? null : rating;
+      video.video_ratings[props.profile.id]['like'] = videoRating;
+      props.updateRating(state.video_ratings[props.profile.id]);
+      setState(video);
+    }else{
+      props.createRating({video: video, profile: props.profile, like: rating}).then((res) => {
+        setState(res.video);
+      });
+    }
   };
 
   if (props.video === undefined) return null;
   const video = state;
-  debugger
   const list = props.list;
   const deleteListItem = props.deleteListItem;
   const createListItem = props.createListItem;
   const profile = props.profile;
-  const rating = video.video_ratings[props.profile.id]["like"];
+  const rating = video.video_ratings[props.profile.id]["like"] || null;
   const selectListItem = props.selectListItem;
 
   const liked = rating === "like" ? "like" : "";

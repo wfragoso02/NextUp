@@ -5,3 +5,11 @@ export const updateRating = (rating) => (
     data: { rating }
   })
 );
+
+export const createRating = (rating) => (
+  $.ajax({
+    url: `api/ratings`,
+    method: 'POST',
+    data: { rating }
+  })
+);

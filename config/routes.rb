@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       resources :videos, only: %i[show index update]
       resources :lists, only: %i[index show]
       resources :list_items, only: %i[create destroy]
-      resources :ratings, only: %i[update]
+      resources :ratings, only: %i[create update]
     end
   end
 end
