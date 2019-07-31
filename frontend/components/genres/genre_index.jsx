@@ -38,7 +38,7 @@ class GenreIndex extends React.Component {
   componentDidMount() {
     this.props.fetchVideos().then(() => {
       const promoVideo = Object.values(this.props.all_videos)[Math.floor(Math.random() * Object.values(this.props.all_videos).length)];
-      if(!this.state.promoVideo){
+      if(this.state.promoVideo === undefined){
         this.setState({promoVideo: promoVideo});
       }
     });
@@ -109,6 +109,7 @@ class GenreIndex extends React.Component {
   }
 
   render() {
+    console.log(this.state.promoVideo)
     if (!this.props.list || Object.values(this.props.all_videos).length < 1) return null;
     const genres = this.state.genres.map((genre, idx) => {
       return (

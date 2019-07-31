@@ -30,7 +30,7 @@ class Nav extends React.Component {
           <li className="nav-profile-list" key={profile.id} >
             <Link to={`/${profile.id}`} className="nav-profile-row">
               <img className="nav-pic dropdown" src={profile.image_url} />
-              <p className="nav-profile-text" style={{ display: "flex" }}>{profile.name}</p>
+              <p className="nav-profile-text">{profile.name}</p>
             </Link>
           </li>
         )

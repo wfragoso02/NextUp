@@ -162,6 +162,7 @@
 
 .nav-profile-text{
   font-size: 0.65vw;
+  display: flex;
 }
 
 .nav-2-col > button{

@@ -18,7 +18,7 @@ const GenreContent = ({ video, closeContent, profile, id }) => {
   return (
     <div id="content">
       <div className="background" >
-        <Link to={`/${profile.id}/videos/${video.id}`} className="play-button-genre_content content" style={{ zIndex: "7" }}>► Play</Link>
+        <Link to={`/${profile.id}/videos/${video.id}`} className="play-button-genre-content content">► Play</Link>
         <div className="left">
           <h1 className="genre_content_header">{video.title}</h1>
           <br />
