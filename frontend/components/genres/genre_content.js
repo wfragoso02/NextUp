@@ -26,7 +26,7 @@ const GenreContent = ({ video, closeContent, profile, id }) => {
           <br />
           <p className={`genre_content_text`} >{videoDescription}</p>
         </div>
-        <div className="right" style={{ background: `url(${video.image_url})` }}></div>
+        <div className="right" style={{ 'background-image': `url(${video.image_url})` }}></div>
       </div>
       <div className="content-container">
       </div>

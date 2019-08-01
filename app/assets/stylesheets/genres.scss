@@ -483,13 +483,13 @@ color: black;
 }
 
 .right {
-  background: transparent;
   width: 70%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .genre_content_header, .genre_content_text, .genre_content_year{
   display: flex;
-  // justify-content: center;
   font-family: 'Rubik', sans-serif;
   margin-left: 2vw;
 }
