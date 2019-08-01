@@ -9,8 +9,10 @@ class Api::ListItemsController < ApplicationController
     render :show
   end
 
-  def destroy
-    @list_item = ListItem.find_by(video_id: params[:id])
+  def special_destroy
+    video_id = params['data']['video_id']
+    list_id = params['data']['list_id']
+    @list_item = ListItem.find_by(video_id: video_id, list_id: list_id)
     @list_item.destroy!
     render :show
   end

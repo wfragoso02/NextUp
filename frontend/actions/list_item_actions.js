@@ -11,8 +11,8 @@ const removeListItem = (listItem) => ({
   listItem: listItem
 });
 
-export const deleteListItem = (id) => dispatch => (
-  ListItemApiUtil.deleteListItem(id).then((listItem) => dispatch(removeListItem(listItem)))
+export const deleteListItem = (data) => dispatch => (
+  ListItemApiUtil.deleteListItem(data).then((listItem) => dispatch(removeListItem(listItem)))
 );
 
 export const createListItem = (listItem) => dispatch => (

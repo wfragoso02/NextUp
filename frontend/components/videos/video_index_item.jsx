@@ -67,7 +67,7 @@ const videoIndexItem = props => {
   if (list.list_video_ids.includes(video.id)) {
 
     defaultButton = (
-      <button onClick={() => deleteListItem(video.id)} className="default-button">
+      <button onClick={() => deleteListItem({ video_id: video.id, list_id: list.id })} className="default-button">
         <i className="fas fa-check"></i>
         <h3 className="fa-check-text-link">Remove From My List</h3>
       </button>

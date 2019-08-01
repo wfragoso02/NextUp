@@ -16,7 +16,8 @@ class Api::RatingsController < ApplicationController
   end
 
   def special_destroy
-    Rating.where(`profile_id = #{params['data']['profile_id']}`).each(&:destroy)
+    profile_id = params['data']['profile_id']
+    Rating.where(profile_id: `#{profile_id}`).each(&:destroy)
   end
 
   private

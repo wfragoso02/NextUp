@@ -6,9 +6,10 @@ export const createListItem = (listItem) => (
   })
 );
 
-export const deleteListItem = (id) => (
+export const deleteListItem = (data) => (
   $.ajax({
     method: "DELETE",
-    url: `api/list_items/${id}`
+    url: `api/list_items/`,
+    data: { data }
   })
 );
