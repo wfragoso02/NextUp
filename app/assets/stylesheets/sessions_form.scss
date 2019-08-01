@@ -54,15 +54,15 @@
     position: relative;
     color: rgb(155, 155, 155);
     font-family: 'Rubiks', sans-serif;
-    top: -35px;
-    margin-left: 10px;
+    top: -4vh;
+    margin-left: 11px;
     font-size: 15px;
     transition: 50ms ease-in-out;
     pointer-events: none;
 }
 
 input:focus + .form-input-label, input:valid + .form-input-label{
-    top: -50px;
+    top: -6vh;
     font-size: 60%;
 }
 

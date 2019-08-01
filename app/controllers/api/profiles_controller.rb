@@ -41,7 +41,6 @@ class Api::ProfilesController < ApplicationController
     @profile.destroy!
     list = List.find(@profile.list.id)
     list.destroy!
-    # Rating.where(`profile_id = #{@profile.id}`).each(&:destroy)
     render :show
   end
 
