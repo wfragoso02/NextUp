@@ -145,7 +145,7 @@ class List extends React.Component {
 
     return (
       <div className="genre-show">
-        <NavContainer profileId={this.props.match.params.profileId} />
+        <Nav profileId={this.props.match.params.profileId} />
         <div className="home" >
           {mainVideo}
         </div>
