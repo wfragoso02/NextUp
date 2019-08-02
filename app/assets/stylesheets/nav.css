@@ -65,10 +65,12 @@
   float: right;
   right: 0;
 }
+
 .secondary-nav > li {
   display: inline-block;
   vertical-align: middle;
 }
+
 .left-nav-links {
   padding: 14px 16px;
 }
@@ -172,10 +174,12 @@
   font-size: 0.65vw;
   font-weight: 600;
 }
+
 .sign-out-button{
   background: transparent;
   padding: 0;
 }
+
 .manage-profile-link-nav{
   white-space: nowrap;
   font-size: 0.8vw;

@@ -31,7 +31,7 @@ const SessionForm = props => {
   }, []);
 
   const validateEmail = (email) => {
-    const valid = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const valid = /^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return valid.test(String(email).toLowerCase());
   };
 
@@ -69,7 +69,7 @@ const SessionForm = props => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(props.history.location.pathname === "/signup"){
+    if(props.history.location.pathname === '/signup'){
       state.password === confirmedPassword ? props.processForm(state) : alert('Please verify your password');
     }else{
       props.processForm(state);
@@ -78,7 +78,7 @@ const SessionForm = props => {
 
   const sessionErrors = props.errors.map((error, idx) => {
     return (
-      <li key={idx} className="error">{error}</li>
+      <li key={idx} className='error'>{error}</li>
     )
   })
 
@@ -86,44 +86,44 @@ const SessionForm = props => {
   const b = state.errorsPassword.length > 0 ? 'form-input-with-password-error' : 'form-input';
   const c = confirmedPasswordErrors.length > 0 ? 'form-input-with-password-error' : 'form-input';
 
-  const confirmPassword = props.history.location.pathname === "/signup" ? 
+  const confirmPassword = props.history.location.pathname === '/signup' ? 
     <>
-      <input className={c} name={c} type="password" value={confirmedPassword} onChange={handleInput('confirmedPassword')} required />
-      <label className="form-input-label" htmlFor={c}>Confirm Password</label>
-      <h3 className="session-errors">{confirmedPasswordErrors}</h3>
+      <input className={c} name={c} type='password' value={confirmedPassword} onChange={handleInput('confirmedPassword')} required />
+      <label className='form-input-label' htmlFor={c}>Confirm Password</label>
+      <h3 className='session-errors'>{confirmedPasswordErrors}</h3>
     </>
   : null;
 
   return (
-    <div className="sessions-form">
-      <div className="temp">
-        <Link to="/"><img src={window.logo} className="logo1" /></Link>
-        <div className="session-body">
-          <div className="display-form">
+    <div className='sessions-form'>
+      <div className='temp'>
+        <Link to='/'><img src={window.logo} className='logo1' /></Link>
+        <div className='session-body'>
+          <div className='display-form'>
             <h1>{props.formType}</h1>
             <form >
               {sessionErrors}
               <br />
-              <input className={a} name={a} type="text" value={state.email} onChange={handleInput('email')} required />
-              <label className="form-input-label" htmlFor={a}>Email</label>
-              <h3 className="session-errors">{state.errorsEmail}</h3>
-              <input className={b} name={b} type="password" value={state.password} onChange={handleInput('password')} required />
-              <label className="form-input-label" htmlFor={b}>Password</label>
-              <h3 className="session-errors">{state.errorsPassword}</h3>
+              <input className={a} name={a} type='text' value={state.email} onChange={handleInput('email')} required />
+              <label className='form-input-label' htmlFor={a}>Email</label>
+              <h3 className='session-errors'>{state.errorsEmail}</h3>
+              <input className={b} name={b} type='password' value={state.password} onChange={handleInput('password')} required />
+              <label className='form-input-label' htmlFor={b}>Password</label>
+              <h3 className='session-errors'>{state.errorsPassword}</h3>
               {confirmPassword}
               <br />
-              <button className="session-button" onClick={handleSubmit}>{props.formType}</button>
+              <button className='session-button' onClick={handleSubmit}>{props.formType}</button>
             </form>
-            <div className="form-sub">
+            <div className='form-sub'>
               <label className='remember-me'>Remember me
-                  <input type="checkbox" checked={state.checked} onChange={update()} />
-                <span className="checkmark"></span>
+                  <input type='checkbox' checked={state.checked} onChange={update()} />
+                <span className='checkmark'></span>
               </label>
-              <a className="sub-a" href="">Need help?</a>
+              <a className='sub-a' href=''>Need help?</a>
             </div>
           </div>
           <Facebook processForm={props.processForm} />
-          <div className="session-bottom">
+          <div className='session-bottom'>
             {props.formText()}
           </div>
         </div>
