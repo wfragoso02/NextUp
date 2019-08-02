@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import { createListItem, deleteListItem } from '../../actions/list_item_actions';
 import { fetchList } from '../../actions/list_actions';
 import VideoIndexItem from '../videos/video_index_item';
-import ArrowRight from '../arrow_right';
-import ArrowLeft from '../arrow_left';
+import Arrow from '../arrow';
 
 const msp = state => {
   return {
@@ -37,13 +36,13 @@ const GenreIndexItem = props => {
   let arrowLeft;
   shift > 0 ?
     arrowLeft = (
-      <ArrowLeft shift={shift} id={genre.id} changeShift={changeShift} />
+      <Arrow direction='left' shift={shift} id={genre.id} changeShift={changeShift} />
     ) : arrowLeft = null;
 
   let arrowRight;
   shift < length ?
     arrowRight = (
-      <ArrowRight shift={shift} id={genre.id} changeShift={changeShift} />
+      <Arrow direction='right' shift={shift} id={genre.id} changeShift={changeShift} />
     ) : arrowRight = null;
 
   const videos = genre.video_ids.map(video_id =>

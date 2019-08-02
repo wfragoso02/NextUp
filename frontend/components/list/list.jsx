@@ -4,8 +4,7 @@ import VideoIndexItem from '../videos/video_index_item';
 import NavContainer from '../nav/nav_cotainer';
 import Footer from '../footer';
 import GenreContent from '../genres/genre_content';
-import ArrowLeft from '../arrow_left';
-import ArrowRight from '../arrow_right';
+import Arrow from '../arrow';
 
 class List extends React.Component {
   constructor(props) {
@@ -72,13 +71,13 @@ class List extends React.Component {
     let arrowLeft;
     this.state.shift > 0 ?
       arrowLeft = (
-        <ArrowLeft shift={this.state.shift} id={this.props.list.id} changeShift={this.changeShift} />
+        <Arrow direction='left' shift={this.state.shift} id={this.props.list.id} changeShift={this.changeShift} />
       ) : arrowLeft = null;
 
     let arrowRight
     this.state.shift < this.state.length ?
       arrowRight = (
-        <ArrowRight shift={this.state.shift} id={this.props.list.id} changeShift={this.changeShift} />
+        <Arrow direction='right' shift={this.state.shift} id={this.props.list.id} changeShift={this.changeShift} />
       ) : arrowRight = null;
 
     if (this.props.list.list_video_ids.length === 0) {

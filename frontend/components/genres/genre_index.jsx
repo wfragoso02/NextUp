@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../footer';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import GenreContent from './genre_content';
-import ArrowLeft from '../arrow_left';
-import ArrowRight from '../arrow_right';
+import Arrow from '../arrow';
 
 
 class GenreIndex extends React.Component {
@@ -194,13 +193,13 @@ class GenreIndex extends React.Component {
     let arrowLeft;
     this.state.shift > 0 ?
       arrowLeft = (
-        <ArrowLeft shift={this.state.shift} id={this.props.list.id} changeShift={this.changeShift} />
+        <Arrow direction='left' shift={this.state.shift} id={this.props.list.id} changeShift={this.changeShift} />
       ) : arrowLeft = null;
 
     let arrowRight
     this.state.shift < this.state.length ?
       arrowRight = (
-        <ArrowRight shift={this.state.shift} id={this.props.list.id} changeShift={this.changeShift} />
+        <Arrow direction='right' shift={this.state.shift} id={this.props.list.id} changeShift={this.changeShift} />
       ) : arrowRight = null;
 
     return (
