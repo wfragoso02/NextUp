@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import VideoIndexItem from '../videos/video_index_item';
-import NavContainer from '../nav/nav_cotainer';
+import Nav from '../nav/nav_cotainer';
 import Footer from '../footer';
 import GenreContent from '../genres/genre_content';
 import Arrow from '../arrow';
@@ -83,7 +83,7 @@ class List extends React.Component {
     if (this.props.list.list_video_ids.length === 0) {
       return (
         <div className="genre-show">
-          <NavContainer profileId={this.props.match.params.profileId} />
+          <Nav profileId={this.props.match.params.profileId} />
           <div className="no-list" >
             <h1 className="no-list-text">Add Items to your List</h1>
           </div>
@@ -92,18 +92,18 @@ class List extends React.Component {
       )
     }
 
-    const defaultButton = (<button onClick={() => this.props.deleteListItem(Object.values(this.props.genre.videos)[0].id)} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
-
+    
     let volumes;
     if (this.state.volume === 0) {
       volumes = <i className="fas fa-volume-mute fa-xs"></i>
     } else {
       volumes = <i className="fas fa-volume-up fa-xs"></i>
     }
-
+    
     let mainVideo;
     if (Object.values(this.props.all_videos).length > 0) {
-      const video = Object.values(this.props.list.videos)[Math.floor(Math.random() * Object.values(this.props.list.videos).length)]
+      const video_id = Object.values(this.props.list.list_video_ids)[Math.floor(Math.random() * Object.values(this.props.list.list_video_ids).length)];
+      const video = this.props.all_videos[video_id];
       mainVideo = (
         <>
           <video ref='player' className="home-trailer" loop autoPlay>
@@ -113,7 +113,6 @@ class List extends React.Component {
             <h1>My List</h1>
             <div className="genre-content-play-and-list">
               <Link to={`/${this.props.profile.id}/videos/${video.id}`} className="play-button"><h3>► Play</h3></Link>
-              {defaultButton}
             </div>
           </div>
           <button onClick={this.setMuted} className="home-page-volume-button">{volumes}</button>

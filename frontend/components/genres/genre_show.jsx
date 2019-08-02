@@ -10,7 +10,6 @@ class GenreShow extends React.Component {
     super(props);
     this.state = {
       volume: 1,
-      videos: this.props.list.videos,
       selectedItem: null
     };
 
@@ -65,7 +64,7 @@ class GenreShow extends React.Component {
       return null;
     }
     if (this.props.list.list_video_ids.includes(Object.values(this.props.genre.videos)[0].id)) {
-      defaultButton = (<button onClick={() => this.props.deleteListItem(Object.values(this.props.genre.videos)[0].id)} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
+      defaultButton = (<button onClick={() => this.props.deleteListItem({ video_id: Object.values(this.props.genre.videos)[0].id, list_id: this.props.list.id })} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
     } else {
       defaultButton = (<button onClick={() => this.props.createListItem({ video_id: Object.values(this.props.genre.videos)[0].id, list_id: this.props.list.id })} className="front-page-button"><h3 className="fa-plus-text"><i className="fas fa-plus"></i>My List</h3></button>)
     }

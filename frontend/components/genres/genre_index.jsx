@@ -129,7 +129,7 @@ class GenreIndex extends React.Component {
     }
 
     this.props.list.list_video_ids.includes(this.state.promoVideo.id) ?
-      defaultButton = (<button onClick={() => this.props.deleteListItem(this.state.promoVideo.id)} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
+      defaultButton = (<button onClick={() => this.props.deleteListItem({ video_id: this.state.promoVideo.id, list_id: this.props.list.id })} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
       :
       defaultButton = (<button onClick={() => this.props.createListItem({ video_id: this.state.promoVideo.id, list_id: this.props.list.id })} className="front-page-button"><h3 className="fa-plus-text"><i className="fas fa-plus"></i>My List</h3></button>)
       ;
