@@ -32,7 +32,7 @@ class List extends React.Component {
         return self.indexOf(value) === index;
       }
       this.setState({ length: this.props.list.list_video_ids.filter(onlyUnique).length - 5 });
-    })
+    });
   }
 
   componentDidUpdate(prevProps) {

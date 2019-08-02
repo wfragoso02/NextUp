@@ -31,8 +31,8 @@ const SessionForm = props => {
   }, []);
 
   const validateEmail = (email) => {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+    const valid = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return valid.test(String(email).toLowerCase());
   };
 
   const handleInput = (type) => {
@@ -82,38 +82,17 @@ const SessionForm = props => {
     )
   })
 
-  let a;
-  let b;
-  let c;
+  const a = state.errorsEmail.length > 0 ? 'form-input-with-email-error' : 'form-input';
+  const b = state.errorsPassword.length > 0 ? 'form-input-with-password-error' : 'form-input';
+  const c = confirmedPasswordErrors.length > 0 ? 'form-input-with-password-error' : 'form-input';
 
-  if (state.errorsEmail.length > 0) {
-    a = "form-input-with-email-error"
-  } else {
-    a = 'form-input'
-  }
-  if (state.errorsPassword.length > 0) {
-    b = "form-input-with-password-error"
-  } else {
-    b = 'form-input'
-  }
-  if (confirmedPasswordErrors.length > 0) {
-    c = "form-input-with-password-error"
-  } else {
-    c = 'form-input'
-  }
-
-  let confirmPassword;
-  props.history.location.pathname === "/signup" ? 
-  confirmPassword = 
-    (
-      <>
-        <input className={c} name={c} type="password" value={confirmedPassword} onChange={handleInput('confirmedPassword')} required />
-        <label className="form-input-label" htmlFor={c}>Confirm Password</label>
-        <h3 className="session-errors">{confirmedPasswordErrors}</h3>
-      </>
-    )
-  :
-  confirmPassword = null;
+  const confirmPassword = props.history.location.pathname === "/signup" ? 
+    <>
+      <input className={c} name={c} type="password" value={confirmedPassword} onChange={handleInput('confirmedPassword')} required />
+      <label className="form-input-label" htmlFor={c}>Confirm Password</label>
+      <h3 className="session-errors">{confirmedPasswordErrors}</h3>
+    </>
+  : null;
 
   return (
     <div className="sessions-form">

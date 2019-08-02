@@ -16,7 +16,7 @@ export const createRating = (rating) => (
 
 export const deleteRating = (data) => (
   $.ajax({
-    url: `api/ratings/`,
+    url: `api/ratings`,
     method: 'DELETE',
     data: { data }
   })

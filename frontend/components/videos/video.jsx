@@ -6,7 +6,7 @@ class Video extends React.Component {
     super(props);
     this.state = {
       video: this.props.video,
-      content: "►",
+      content: "||",
       volume: "1",
       seek: "0",
       time: '0'

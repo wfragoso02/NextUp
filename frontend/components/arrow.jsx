@@ -11,7 +11,7 @@ const Arrow = ({ shift, id, changeShift, direction }) => {
       const rightIdx = element.style.transform.indexOf(")") - 2;
       element.style.transform.length < 1 ? 
         element.style.transform = `translateX(${multiplier}vw)` :
-        element.style.transform = `translateX(${parseInt(element.style.transform.slice(leftIdx, rightIdx)) + multiplier}vw)`;
+        element.style.transform = `translateX(${Number(element.style.transform.slice(leftIdx, rightIdx)) + multiplier}vw)`;
     });
     changeShift(newShift);
   };

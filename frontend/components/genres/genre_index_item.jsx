@@ -33,17 +33,13 @@ const GenreIndexItem = props => {
     return null;
   }
 
-  let arrowLeft;
-  shift > 0 ?
-    arrowLeft = (
-      <Arrow direction='left' shift={shift} id={genre.id} changeShift={changeShift} />
-    ) : arrowLeft = null;
+  const arrowLeft = shift > 0 ?
+    <Arrow direction='left' shift={shift} id={genre.id} changeShift={changeShift} />
+  : null;
 
-  let arrowRight;
-  shift < length ?
-    arrowRight = (
-      <Arrow direction='right' shift={shift} id={genre.id} changeShift={changeShift} />
-    ) : arrowRight = null;
+  const arrowRight = shift < length ?
+    <Arrow direction='right' shift={shift} id={genre.id} changeShift={changeShift} />
+  : null;
 
   const videos = genre.video_ids.map(video_id =>
     <>

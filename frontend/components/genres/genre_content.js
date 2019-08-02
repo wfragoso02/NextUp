@@ -9,12 +9,10 @@ const msp = state => {
 };
 
 const GenreContent = ({ video, closeContent, profile, id }) => {
-  if (!video) {
-    return (<div></div>);
-  }
+  if (!video) return (<div></div>);
   
-  let videoDescription;
-  video.description.indexOf(".") ? videoDescription = (video.description.slice(0, video.description.indexOf(".") + 1)) : videoDescription = video.description;
+  const descriptionIndex = video.description.indexOf(".");
+  const videoDescription = descriptionIndex > 0 ? video.description.slice(0, descriptionIndex + 1) : video.description;
   return (
     <div id="content">
       <div className="background" >
