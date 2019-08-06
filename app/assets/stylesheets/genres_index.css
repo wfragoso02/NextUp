@@ -12,10 +12,6 @@
   width: 100%;
 }
 
-.genre-index-links{
-  padding-bottom: 0;
-}
-
 .inner-row{
   display: flex;
   position: relative;
@@ -55,11 +51,7 @@
   border-color: white;
 }
 
-.row {
-  display: flex;
-  padding: 0 55px;
-  overflow: hidden;
-}
+
 
 .tile {
   flex: 0 0 19.7%;
@@ -93,9 +85,7 @@
   text-shadow: 1px 1px 1px #0f0f0f;
 }
 
-.genre-content{
-  margin-left: 2vw;
-}
+
 
 .tile__img{
   position: relative;
@@ -124,11 +114,6 @@
   font-size: 1.3vw;
   font-family: 'Rubik', sans-serif;
   border-radius: 2px;
-}
-
-.content{
-  position: absolute;
-  z-index: 7;
 }
 
 .main-video-title{
@@ -360,16 +345,6 @@
   font-size: 2vw;
 }
 
-.bring-up-button{
-  position: absolute;
-  right: 2vw;
-  top: 2vw;
-  border: none;
-  background: transparent;
-  color: white;
-  font-size: 2vw;
-}
-
 .tile:hover .video-title{
   opacity: 1;
 }
@@ -433,73 +408,6 @@
   top: 50%;
 }
 
-#content {
-  margin-top: 40px;
-  height: 35vw;
-  position: relative;
-}
-
-.background {
-  display: flex;
-  height: 100%;
-  background-repeat: no-repeat;
-}
-
-.left {
-  background: black;
-  width: 30%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.left:before {
-  content: '';
-  position: absolute;
-  background-image: linear-gradient(to right,#000,transparent);
-  top: 0;
-  bottom: 0;
-  left: 100%;
-  width: 275px;
-}
-
-.right {
-  width: 70%;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.genre_content_header, .genre_content_text, .genre_content_year{
-  display: flex;
-  font-family: 'Rubik', sans-serif;
-  margin-left: 2vw;
-}
-
-.genre_content_text{
-  font-size: 1.1em;
-  color: #535353;
-}
-
-.genre_content_header{
-  white-space: nowrap;
-  font-size: 4em;
-  z-index: 6;
-}
-
-.genre_content_year{
-  font-size: 2em;
-}
-
-.content-container {
-  color: white;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 30px;
-}
-
 .tile:hover ~ .slider{
   opacity: 1;
 }
@@ -532,17 +440,6 @@
 
 .row:hover .slider_left, .row:hover .slider_right{
   opacity: 1;
-}
-
-.play-button-genre-content {
-  margin-left: 2vw;
-  background: red;
-  bottom: 2vw;
-}
-
-.play-button-genre-content:hover{
-  transform: scale(1.1);
-  transition: 0.3s all ease;
 }
 
 .genre-content-play-and-list {

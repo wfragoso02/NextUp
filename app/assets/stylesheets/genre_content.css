@@ -1,0 +1,92 @@
+#content {
+  margin-top: 40px;
+  height: 35vw;
+  position: relative;
+}
+
+.background {
+  display: flex;
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
+.content{
+  position: absolute;
+  z-index: 7;
+}
+
+.play-button-genre-content {
+  margin-left: 2vw;
+  background: red !important;
+  bottom: 2vw;
+}
+
+.play-button-genre-content:hover{
+  transform: scale(1.1);
+  transition: 0.3s all ease;
+}
+
+.left {
+  background: black;
+  width: 30%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.left:before {
+  content: '';
+  position: absolute;
+  background-image: linear-gradient(to right,#000,transparent);
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  width: 275px;
+}
+
+.genre-content-header, .genre-content-text, .genre-content-year{
+  display: flex;
+  font-family: 'Rubik', sans-serif;
+  margin-left: 2vw;
+}
+
+.genre-content-header{
+  white-space: nowrap;
+  font-size: 4em;
+  z-index: 6;
+}
+
+.genre-content-text{
+  font-size: 1.1em;
+  color: #535353;
+}
+
+.genre-content-year{
+  font-size: 2em;
+}
+
+.right {
+  width: 70%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.content-container {
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 30px;
+}
+
+.bring-up-button{
+  position: absolute;
+  right: 2vw;
+  top: 2vw;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 2vw;
+}

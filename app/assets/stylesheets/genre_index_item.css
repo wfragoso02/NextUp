@@ -1,0 +1,13 @@
+.genre-index-links{
+  padding-bottom: 0;
+}
+
+.genre-content{
+  margin-left: 2vw;
+}
+
+.row {
+  display: flex;
+  padding: 0 55px;
+  overflow: hidden;
+}

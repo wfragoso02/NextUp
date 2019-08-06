@@ -11,12 +11,12 @@ const profileIndex = ({ profiles, fetchProfiles }) => {
     return <ProfileIndexItem key={idx} profile={profile} className="profile-item" />
   });
 
-  let link;
-  if (profiles[0]) {
-    link = <Link to={`/${profiles[0].id}`} profile={profiles[0]}><img src={window.logo} className="logo2" /></Link>
-  } else {
-    link = " ";
-  }
+  const link = profiles[0] ? 
+    <Link to={`/${profiles[0].id}`} profile={profiles[0]}><img src={window.logo} className="logo2" /></Link>
+  :
+    null;
+  ;
+
   return (
     <div>
       {link}

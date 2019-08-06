@@ -13,22 +13,17 @@ const Facebook = ({ login, signup }) => {
     componentClicked({ email: response.email, password: response.userID });
   };
 
-  let fbContent;
-  if (loggedIn) {
-    fbContent = "";
-  } else {
-    fbContent = (
-      <>
-        <FacebookLogin
-          appId="358268101562524"
-          autoLoad={false}
-          fields="email"
-          callback={responseFacebook}
-          cssClass="fb-logo"
-        />
-      </>
-    )
-  }
+  const fbContent = loggedIn ? "" :
+    <>
+      <FacebookLogin
+        appId="358268101562524"
+        autoLoad={false}
+        fields="email"
+        callback={responseFacebook}
+        cssClass="fb-logo"
+      />
+    </>
+  ;
 
   return (
     <div>

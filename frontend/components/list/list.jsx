@@ -36,7 +36,6 @@ class List extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-
     if (prevProps.profile.id !== this.props.profile.id) this.props.fetchProfile(this.props.match.params.profileId).then(() => this.props.fetchVideos());
     if (prevProps.list.list_video_ids && this.props.list.list_video_ids.length !== prevProps.list.list_video_ids.length) {
       this.props.fetchList(this.props.profile.list.id).then((res) => {
@@ -91,7 +90,6 @@ class List extends React.Component {
         </div>
       )
     }
-
     
     let volumes;
     if (this.state.volume === 0) {
