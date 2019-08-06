@@ -8,7 +8,7 @@ const receiveListItem = (listItem) => ({
 
 const removeListItem = (listItem) => ({
   type: REMOVE_LIST_ITEM,
-  listItem: listItem
+  listItem
 });
 
 export const deleteListItem = (data) => dispatch => (

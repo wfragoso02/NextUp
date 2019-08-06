@@ -27,8 +27,8 @@ const videoIndexItem = props => {
 
   const changeLike = (rating) => {
     let video = state;
-    if(video.video_ratings[props.profile.id]){
-      let videoRating = video.video_ratings[props.profile.id]['like'] ? null : rating;
+    if(props.profile.id in video.video_ratings){
+      const videoRating = video.video_ratings[props.profile.id]['like'] ? null : rating;
       video.video_ratings[props.profile.id]['like'] = videoRating;
       props.updateRating(state.video_ratings[props.profile.id]);
       setState(video);
@@ -39,7 +39,7 @@ const videoIndexItem = props => {
     }
   };
 
-  if (props.video === undefined) return null;
+  if (typeof props.video === 'undefined') return null;
   const video = state;
   const rating = video.video_ratings[props.profile.id] ? video.video_ratings[props.profile.id]["like"] : null;
   const liked = rating === "like" ? "like" : "";
@@ -75,8 +75,7 @@ const videoIndexItem = props => {
         if (props.currVid && props.currVid.id !== video.id) {
           props.selectListItem(video, props.genreId)
         }
-      }}
-    >
+    }}>
       {likeButton}
       {dislikeButton}
       {defaultButton}
