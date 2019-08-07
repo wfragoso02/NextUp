@@ -41,6 +41,7 @@ class GenreIndex extends React.Component {
         this.setState({promoVideo: promoVideo});
       }
     });
+    debugger
     this.props.fecthProfile(this.props.match.params.profileId);
     this.props.fetchGenres().then((res) => {
       function onlyUnique(value, index, self) {
@@ -49,17 +50,6 @@ class GenreIndex extends React.Component {
       this.setState({ genres: Object.values(res.genres).slice(0, 1), length: this.props.list.list_video_ids.filter(onlyUnique).length - 5 });
     });
   }
-
-  // useEffect(() => {
-  //   props.fetchVideos();
-  //   props.fecthProfile(props.match.params.profileId);
-  //   props.fetchGenres().then((res) => {
-  //     function onlyUnique(value, index, self) {
-  //       return self.indexOf(value) === index;
-  //     }
-  //     setState({ genres: Object.values(res.genres).slice(0, 1), length: props.list.video_ids.filter(onlyUnique).length - 5 });
-  //   });
-  // }, [])
 
   componentDidUpdate(prevProps) {
     if (prevProps.profile.id !== this.props.profile.id) {
@@ -81,7 +71,6 @@ class GenreIndex extends React.Component {
   }
 
   setMuted() {
-
     if (this.refs.player.muted) {
       this.refs.player.muted = false;
       this.setState({ volume: 1 });
@@ -124,9 +113,9 @@ class GenreIndex extends React.Component {
     });
 
     let defaultButton = "";
-    if (!this.props.list.list_video_ids || !this.props.genres[0]) {
-      return null;
-    }
+    // if (!this.props.list.list_video_ids || !this.props.genres[0]) {
+    //   return null;
+    // }
 
     this.props.list.list_video_ids.includes(this.state.promoVideo.id) ?
       defaultButton = (<button onClick={() => this.props.deleteListItem({ video_id: this.state.promoVideo.id, list_id: this.props.list.id })} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)

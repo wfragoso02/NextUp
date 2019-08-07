@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import GenreIndex from './genre_index';
+import GenreIndex from './genre_index2';
 import { fetchGenres } from '../../actions/genre_actions';
-import { fetchProfile } from '../../actions/profile_actions';
+import { fetchProfiles } from '../../actions/profile_actions';
 import { fetchList } from '../../actions/list_actions';
 import { createListItem, deleteListItem } from '../../actions/list_item_actions';
 import { fetchVideos } from '../../actions/video_actions';
@@ -19,7 +19,7 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => {
   return {
     fetchGenres: () => dispatch(fetchGenres()),
-    fecthProfile: (id) => dispatch(fetchProfile(id)),
+    fecthProfiles: () => dispatch(fetchProfiles()),
     fetchList: (id) => dispatch(fetchList(id)),
     deleteListItem: (id) => dispatch(deleteListItem(id)),
     createListItem: (listItem) => dispatch(createListItem(listItem)),
