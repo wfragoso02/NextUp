@@ -16,7 +16,7 @@ const GenreIndex = props => {
   const [selectedItem, changeSelectedItem] = useState(null);
   const [length, changeLength] = useState(0);
   const [shift, changeShift]  = useState(0);
-  const [promoVideo, changePromoVideo] = useState(props.promoVide);
+  const [promoVideo, changePromoVideo] = useState(props.promoVid);
   const [contentVideos, changeContentVideos] = useState({});
   const videoRef = React.createRef();
 
@@ -25,22 +25,25 @@ const GenreIndex = props => {
   };
 
   useEffect(() => {
-    props.fetchVideos().then(() => {
-      const promoVideo = Object.values(props.all_videos)[Math.floor(Math.random() * Object.values(props.all_videos).length)];
-      if(typeof promoVideo === 'undefined') changePromoVideo(promoVideo);
+    props.fetchVideos().then((res) => {
+      const promoVid = Object.values(res.videos)[Math.floor(Math.random() * Object.values(res.videos).length)];
+      if(typeof promoVideo === 'undefined') changePromoVideo(promoVid);
     });
-    props.fetchProfile(props.match.params.profileId);
     props.fetchGenres().then((res) => {
       changeGenres(Object.values(res.genres).slice(0, 1));
-      changeLength(props.list.list_video_ids.length - 5);
     });
   },[]);
 
   useEffect(() => {
     changeSelectedItem(null);
-    props.fecthProfile(props.match.params.profileId);
-    props.fetchVideos();
+    props.fetchProfile(props.match.params.profileId).then((res) => {
+      changeLength(res.payload.list.list_video_ids.length - 5);
+    });
   }, [props.match.params.profileId]);
+
+  useEffect(() => {
+    if(props.list.list_video_ids) changeLength(props.list.list_video_ids.length - 5);
+  }, [props.list]);
 
 
   const updateCount = () => {
@@ -48,7 +51,7 @@ const GenreIndex = props => {
       changeStart(count);
       changeCount(count + 1);
       changeGenres(genres.concat(props.genres.slice(count, count + 1)));
-    }, 700);
+    }, 500);
   };
 
   const setMuted = (newVolume) => {
@@ -79,10 +82,10 @@ const GenreIndex = props => {
     )
   });
 
-  const defaultButton = list.list_video_ids.includes(promoVideo.id) ?
-    (<button onClick={() => deleteListItem({ video_id: promoVideo.id, list_id: list.id })} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
+  const defaultButton = props.list.list_video_ids.includes(promoVideo.id) ?
+    (<button onClick={() => props.deleteListItem({ video_id: promoVideo.id, list_id: props.list.id })} className="front-page-button"><h3 className="fa-check-text"><i className="fas fa-check"></i>My List </h3></button>)
   :
-    (<button onClick={() => createListItem({ video_id: promoVideo.id, list_id: list.id })} className="front-page-button"><h3 className="fa-plus-text"><i className="fas fa-plus"></i>My List</h3></button>)
+    (<button onClick={() => props.createListItem({ video_id: promoVideo.id, list_id: props.list.id })} className="front-page-button"><h3 className="fa-plus-text"><i className="fas fa-plus"></i>My List</h3></button>)
   ;
 
   const newVolume = volume === 0 ? 1 : 0;
@@ -94,7 +97,7 @@ const GenreIndex = props => {
 
   const mainVideo = (
     <>
-      <video ref='player' className="home-trailer" loop autoPlay>
+      <video ref={videoRef} className="home-trailer" loop autoPlay>
         <source src={promoVideo.video_url} />
       </video>
       <div className={`main-video-title ${promoVideo.title.length > 25 ? "large-title": "small-title"}`}>
@@ -109,11 +112,11 @@ const GenreIndex = props => {
     </>
   )
 
-  arrowLeft = shift <= 0 ? null :
+  const arrowLeft = shift <= 0 ? null :
     <Arrow direction='left' shift={shift} id={props.list.id} changeShift={changeShift} />
   ;
 
-  arrowRight = shift >= length ? null : 
+  const arrowRight = shift >= length ? null : 
     <Arrow direction='right' shift={shift} id={props.list.id} changeShift={changeShift} />
   ;
   

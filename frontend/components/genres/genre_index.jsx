@@ -41,7 +41,6 @@ class GenreIndex extends React.Component {
         this.setState({promoVideo: promoVideo});
       }
     });
-    debugger
     this.props.fecthProfile(this.props.match.params.profileId);
     this.props.fetchGenres().then((res) => {
       function onlyUnique(value, index, self) {
