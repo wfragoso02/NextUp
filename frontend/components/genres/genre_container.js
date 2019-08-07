@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import GenreIndex from './genre_index2';
+import GenreIndex from './genre_index';
 import { fetchGenres } from '../../actions/genre_actions';
 import { fetchProfiles } from '../../actions/profile_actions';
 import { fetchList } from '../../actions/list_actions';
