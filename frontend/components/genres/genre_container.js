@@ -16,6 +16,7 @@ const msp = (state, ownProps) => {
   };
 };
 
+
 const mdp = dispatch => {
   return {
     fetchGenres: () => dispatch(fetchGenres()),
